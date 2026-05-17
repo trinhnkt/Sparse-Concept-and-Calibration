@@ -60,6 +60,14 @@ junyi_bkt_test,learner_based,2,very_sparse,440
 junyi_bkt_test,temporal,0,medium,142
 junyi_bkt_test,temporal,0,sparse,766
 junyi_bkt_test,temporal,0,very_sparse,401
+xes3g5m,learner_based,0,dense,499
+xes3g5m,learner_based,0,medium,172
+xes3g5m,learner_based,0,sparse,122
+xes3g5m,learner_based,0,very_sparse,73
+xes3g5m,temporal,0,dense,433
+xes3g5m,temporal,0,medium,160
+xes3g5m,temporal,0,sparse,77
+xes3g5m,temporal,0,very_sparse,196
 xes_bkt_test,learner_based,0,dense,13
 xes_bkt_test,learner_based,0,medium,119
 xes_bkt_test,learner_based,0,sparse,212

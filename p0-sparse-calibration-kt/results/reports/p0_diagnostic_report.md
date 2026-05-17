@@ -4,7 +4,7 @@
 
 **Report type:** protocol / diagnostic / resource report
 
-**Generated at:** 2026-05-17 11:57:15
+**Generated at:** 2026-05-17 13:28:42
 
 This report summarizes sparse-concept diagnostics, calibration diagnostics, cold-start concept analysis, and leakage auditing for Knowledge Tracing baselines. It does not report results for any new KT model, SSL module, GNN module, path recommendation method, or distillation method.
 
@@ -23,8 +23,8 @@ Source file: `results/tables/dataset_stats.csv`
 | xes_dkt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
 | xes_simplekt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
 | assist2012 | 6123270 | 2657490 | 27806 | 52672 | 265 | 95.5725 | 0.6393 |
-| xes3g5m | 7953709 | 7953709 | 18066 | 7653 | 866 | 440.2584 | 0.4916 |
 | junyi | 16217311 | 16215567 | 71014 | 25784 | 1326 | 228.3432 | 0.8278 |
+| xes3g5m | 7953709 | 7953709 | 18066 | 7653 | 866 | 440.2584 | 0.4916 |
 
 
 ## 2. Split summary
@@ -58,21 +58,21 @@ Source file: `results/tables/overall_results_summary.csv`
 | assist_gpu_test | temporal | bkt | 0.4850 | 0.0000 | 0.3454 | 0.0000 | 22.2080 | 0.0000 | 0.8004 | 0.0000 |
 | assist_gpu_test | temporal | dkt | 0.5015 | 0.0027 | 0.6404 | 0.0015 | 0.9284 | 0.0069 | 0.5303 | 0.0014 |
 | assist_gpu_test | temporal | simplekt | 0.4948 | 0.0040 | 0.6233 | 0.0025 | 1.4291 | 0.0170 | 0.5641 | 0.0012 |
+| junyi | learner_based | dkt | 0.7326 |  | 0.7333 |  | 0.5442 |  | 0.4253 |  |
 | junyi_bkt_test | learner_based | bkt | 0.4990 | 0.0031 | 0.3963 | 0.0109 | 21.6806 | 0.3084 | 0.7762 | 0.0059 |
 | junyi_bkt_test | temporal | bkt | 0.5026 | 0.0000 | 0.3966 | 0.0000 | 21.7209 | 0.0000 | 0.7771 | 0.0000 |
+| xes3g5m | learner_based | bkt | 0.5000 |  | 0.4178 |  | 20.9837 |  | 0.7630 |  |
 | xes3g5m | learner_based | dkt | 0.9176 |  | 0.8657 |  | 0.3129 |  | 0.3121 |  |
 | xes3g5m | learner_based | simplekt | 0.8889 |  | 0.8444 |  | 0.4922 |  | 0.3510 |  |
+| xes3g5m | temporal | bkt | 0.5000 |  | 0.3373 |  | 22.4015 |  | 0.8214 |  |
+| xes3g5m | temporal | dkt | 0.4992 |  | 0.6599 |  | 0.8683 |  | 0.4925 |  |
 | xes3g5m | temporal | simplekt | 0.4997 |  | 0.6551 |  | 1.2517 |  | 0.5207 |  |
 | xes_bkt_test | learner_based | bkt | 0.5013 | 0.0003 | 0.3229 | 0.0204 | 24.3932 | 0.7311 | 0.8230 | 0.0123 |
 | xes_bkt_test | temporal | bkt | 0.4937 | 0.0000 | 0.3408 | 0.0000 | 22.1637 | 0.0000 | 0.8202 | 0.0000 |
 | xes_dkt_test | learner_based | dkt | 0.8586 | 0.0097 | 0.8475 | 0.0168 | 0.3670 | 0.0251 | 0.3370 | 0.0149 |
 | xes_dkt_test | temporal | dkt | 0.5001 | 0.0012 | 0.6615 | 0.0139 | 0.7095 | 0.0258 | 0.4809 | 0.0082 |
-| xes_gpu_test | learner_based | bkt | 0.5013 | 0.0003 | 0.3229 | 0.0204 | 24.3932 | 0.7311 | 0.8230 | 0.0123 |
-| xes_gpu_test | learner_based | dkt | 0.8586 | 0.0097 | 0.8475 | 0.0168 | 0.3670 | 0.0251 | 0.3370 | 0.0149 |
-| xes_gpu_test | learner_based | simplekt | 0.8672 | 0.0059 | 0.8410 | 0.0145 | 0.3800 | 0.0234 | 0.3422 | 0.0131 |
-| xes_gpu_test | temporal | bkt | 0.4937 | 0.0000 | 0.3408 | 0.0000 | 22.1637 | 0.0000 | 0.8202 | 0.0000 |
 
-_Showing first 25 of 29 rows._
+_Showing first 25 of 33 rows._
 
 
 ## 4. KC bucket distribution
@@ -107,7 +107,7 @@ Source file: `results/tables/bucket_distribution.csv`
 | assist_bkt_test | learner_based | 1 | very_sparse | 113 |
 | assist_bkt_test | learner_based | 2 | dense | 12 |
 
-_Showing first 25 of 109 rows._
+_Showing first 25 of 117 rows._
 
 
 ## 5. Sparse-concept performance metrics
