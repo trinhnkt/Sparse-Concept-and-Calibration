@@ -1,6 +1,8 @@
-\begin{table}
+\begin{table}[h]
 \caption{Sensitivity Analysis}
 \label{tab:sens}
+\centering
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llrr}
 \toprule
 setting & bucket & auc & ece \\
@@ -22,5 +24,6 @@ Main & medium & 0.534065 & 0.456328 \\
 Main & sparse & 0.498949 & 0.490948 \\
 Main & very\_sparse & 0.490946 & 0.479457 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}

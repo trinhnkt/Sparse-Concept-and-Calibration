@@ -1,6 +1,7 @@
-\begin{table}
+\begin{table*}[t]
 \caption{Leakage Audit}
 \label{tab:leakage}
+\centering
 \begin{tabular}{lllll}
 \toprule
 channel & description & evidence\_file & status & notes \\
@@ -14,4 +15,4 @@ L6 & Hyperparameter leakage (model selection) & src/baseline\_runner.py & PASS &
 L7 & Cold-start leakage & src/three\_split\_constructor.py & PASS & Classification uses train\_freq only \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}

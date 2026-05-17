@@ -1,6 +1,8 @@
-\begin{table}
+\begin{table}[h]
 \caption{Calibration by Bucket}
 \label{tab:calib}
+\centering
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lllr}
 \toprule
 dataset & model & bucket & ece \\
@@ -21,5 +23,6 @@ junyi\_bkt\_test & bkt & medium & 0.651717 \\
 junyi\_bkt\_test & bkt & sparse & 0.585545 \\
 junyi\_bkt\_test & bkt & very\_sparse & 0.559252 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
