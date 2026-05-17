@@ -6,6 +6,13 @@ The experimental setting uses ASSISTments 2012, Junyi Academy, and XES3G5M. Tabl
 
 \input{tables/table1_dataset_stats}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/figure2_bucket_distribution.pdf}
+\caption{KC-frequency strata distribution across datasets. The long-tail behavior shows that a significant proportion of KCs are concentrated in the sparse and very sparse strata, highlighting the importance of separate diagnostics.}
+\label{fig:strata_dist}
+\end{figure}
+
 \subsection{Baselines}
 The baseline set includes BKT, DKT, and SimpleKT. Hyperparameters follow benchmark defaults. Model selection uses validation data only.
 
@@ -20,9 +27,28 @@ Table~\ref{tab:strata_performance} reports AUC, accuracy, and NLL by KC-frequenc
 \input{tables/table4_metric_per_bucket}
 
 \subsection{Calibration by KC Stratum}
-Table~\ref{tab:calibration} reports ECE and Brier decomposition by stratum. Reliability diagrams are generated for selected model--dataset pairs in the artifact folder.
+Table~\ref{tab:calibration} reports ECE and Brier decomposition by stratum. 
 
 \input{tables/table5_calibration_per_bucket}
+
+\begin{figure*}[t]
+\centering
+\begin{minipage}{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{figures/junyi_temporal_simplekt_dense.pdf}
+\caption{Reliability diagram of SimpleKT on Junyi temporal split for Dense KCs.}
+\label{fig:reliability_dense}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+\centering
+\includegraphics[width=\linewidth]{figures/junyi_temporal_simplekt_very_sparse.pdf}
+\caption{Reliability diagram of SimpleKT on Junyi temporal split for Very Sparse KCs.}
+\label{fig:reliability_sparse}
+\end{minipage}
+\caption{Comparison of reliability curves between Dense and Very Sparse KCs for SimpleKT on Junyi. The diagonal dashed line represents perfect calibration. The deviation in the very sparse strata highlights the calibration degradation on low-frequency concepts.}
+\label{fig:reliability_comparison}
+\end{figure>
 
 \subsection{Limited Cold-start Concept Diagnostics}
 We define limited cold-start KCs using a pre-registered threshold $k$ such as $k=10$. Table~\ref{tab:coldstart} compares cold-start and warm KC groups.
