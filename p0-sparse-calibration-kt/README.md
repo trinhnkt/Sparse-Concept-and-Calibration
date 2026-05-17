@@ -41,9 +41,12 @@ p0-sparse-calibration-kt/
 │
 ├── scripts/                       # Các kịch bản thực thi tự động (.ps1 cho Windows, .sh cho Linux/Bash)
 │   ├── reproduce_one_dataset.ps1  # Khởi chạy toàn bộ quy trình chẩn đoán cho 1 tệp cấu hình
-│   ├── run_junyi_dkt_42_seed.ps1   # Chạy DKT trên Junyi với duy nhất seed 42
-│   ├── run_junyi_simplekt_42_seed.ps1 # Chạy SimpleKT trên Junyi với duy nhất seed 42
+│   ├── run_assist_bkt_42_seed.ps1 # Chạy BKT trên ASSIST2012 với duy nhất seed 42
 │   ├── run_assist_dkt_42_seed.ps1 # Chạy DKT trên ASSIST2012 với duy nhất seed 42
+│   ├── run_assist_simplekt_42_seed.ps1 # Chạy SimpleKT trên ASSIST2012 với duy nhất seed 42
+│   ├── run_junyi_bkt_42_seed.ps1  # Chạy BKT trên Junyi với duy nhất seed 42
+│   ├── run_junyi_dkt_42_seed.ps1  # Chạy DKT trên Junyi với duy nhất seed 42
+│   ├── run_junyi_simplekt_42_seed.ps1 # Chạy SimpleKT trên Junyi với duy nhất seed 42
 │   ├── run_xes_bkt_42_seed.ps1    # Chạy BKT trên xes3g5m với duy nhất seed 42
 │   ├── run_xes_dkt_42_seed.ps1    # Chạy DKT trên xes3g5m với duy nhất seed 42
 │   └── run_xes_simplekt_42_seed.ps1 # Chạy SimpleKT trên xes3g5m với duy nhất seed 42
@@ -91,6 +94,10 @@ Dự án hỗ trợ cả môi trường **PowerShell** (Windows) và **Bash** (G
 Tôi đã xây dựng các kịch bản chạy chuyên biệt cho từng mô hình và tập dữ liệu trên GPU với duy nhất **1 seed chuẩn 42**:
 
 #### 1. Bộ dữ liệu ASSISTments 2012 (111MB):
+* **Chạy BKT (CPU):**
+  ```powershell
+  .\scripts\run_assist_bkt_42_seed.ps1
+  ```
 * **Chạy DKT (GPU):**
   ```powershell
   .\scripts\run_assist_dkt_42_seed.ps1
