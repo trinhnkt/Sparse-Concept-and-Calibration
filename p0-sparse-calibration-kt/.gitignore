@@ -1,8 +1,11 @@
-# Data and datasets (large files)
-data/
-data/raw/
-data/processed/
-data/sample/
+# Ignore everything under data recursively (files and directories)
+data/**
+
+# Unignore all directories so Git can traverse them to find .gitkeep files
+!data/**/
+
+# Unignore .gitkeep files so they are tracked
+!data/**/.gitkeep
 
 # Predictions (large files)
 results/predictions/
