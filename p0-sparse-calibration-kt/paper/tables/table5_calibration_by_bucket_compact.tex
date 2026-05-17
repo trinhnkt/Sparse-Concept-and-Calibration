@@ -1,0 +1,45 @@
+\begin{table}[t]
+\caption{Compact Calibration Breakdown by Frequency Stratum}
+\label{tab:calib_compact}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lllrcc}
+\toprule
+Dataset & Model & Bucket & \#Events & ECE & Brier \\
+\midrule
+A12 & BKT & dense & 458,732 & $0.7113 \pm 0.0006$ & $0.7113 \pm 0.0006$ \\
+ &  & medium & 2,827 & $0.5646 \pm 0.0217$ & $0.5646 \pm 0.0217$ \\
+ &  & sparse & 30 & $0.4908 \pm 0.0606$ & $0.4908 \pm 0.0606$ \\
+ &  & very\_sparse & 3 & $0.4667 \pm 0.0577$ & $0.4000 \pm 0.1732$ \\
+ & DKT & dense & 530,911 & $0.0587 \pm 0.0013$ & $0.1926 \pm 0.0001$ \\
+ &  & medium & 5,650 & $0.1457 \pm 0.0071$ & $0.2195 \pm 0.0070$ \\
+ &  & sparse & 443 & $0.2165 \pm 0.0232$ & $0.2517 \pm 0.0172$ \\
+ &  & very\_sparse & 10 & $0.1780 \pm 0.0946$ & $0.1268 \pm 0.0883$ \\
+ & SimpleKT & dense & 530,911 & $0.1164 \pm 0.0011$ & $0.2122 \pm 0.0009$ \\
+ &  & medium & 5,650 & $0.1559 \pm 0.0051$ & $0.2257 \pm 0.0070$ \\
+ &  & sparse & 443 & $0.2297 \pm 0.0046$ & $0.2637 \pm 0.0052$ \\
+ &  & very\_sparse & 10 & $0.3231 \pm 0.0728$ & $0.2556 \pm 0.0829$ \\
+\midrule
+Junyi & BKT & dense & 2,918,783 & $0.7041$ & $0.7041$ \\
+ &  & medium & 4,128 & $0.5693$ & $0.5693$ \\
+ & DKT & dense & 3,264,405 & $0.0410 \pm 0.0006$ & $0.1807 \pm 0.0000$ \\
+ &  & medium & 4,617 & $0.2399 \pm 0.0063$ & $0.3018 \pm 0.0054$ \\
+ & SimpleKT & dense & 3,264,405 & $0.0752 \pm 0.0007$ & $0.1865 \pm 0.0000$ \\
+ &  & medium & 4,617 & $0.0927 \pm 0.0031$ & $0.2268 \pm 0.0034$ \\
+\midrule
+XES & BKT & dense & 767,845 & $0.8119$ & $0.8119$ \\
+ &  & medium & 2,030 & $0.8473$ & $0.8473$ \\
+ &  & sparse & 80 & $0.6250$ & $0.6250$ \\
+ &  & very\_sparse & 6 & $0.5000$ & $0.3333$ \\
+ & DKT & dense & 1,267,014 & $0.0371 \pm 0.0004$ & $0.1203 \pm 0.0002$ \\
+ &  & medium & 13,137 & $0.0773 \pm 0.0054$ & $0.1141 \pm 0.0017$ \\
+ &  & sparse & 2,164 & $0.1077 \pm 0.0043$ & $0.1356 \pm 0.0040$ \\
+ &  & very\_sparse & 107 & $0.1579 \pm 0.0146$ & $0.1499 \pm 0.0172$ \\
+ & SimpleKT & dense & 1,267,014 & $0.1137 \pm 0.0009$ & $0.1522 \pm 0.0003$ \\
+ &  & medium & 13,137 & $0.1051 \pm 0.0051$ & $0.1296 \pm 0.0032$ \\
+ &  & sparse & 2,164 & $0.1195 \pm 0.0066$ & $0.1430 \pm 0.0017$ \\
+ &  & very\_sparse & 107 & $0.1783 \pm 0.0131$ & $0.1672 \pm 0.0091$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

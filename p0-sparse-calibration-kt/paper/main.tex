@@ -19,6 +19,7 @@
 \usepackage{listings}
 \usepackage[hidelinks]{hyperref}
 \usepackage{subcaption}
+\usepackage{placeins}
 
 % ----- Code listing style -----
 \lstdefinestyle{p0style}{
@@ -51,14 +52,14 @@
 
 \author{\IEEEauthorblockN{
 Khanh-Trinh Nguyen\IEEEauthorrefmark{1},
-Tien-Duong Nguyen\IEEEauthorrefmark{1},
-Minh-Tuan Dao\IEEEauthorrefmark{1},
-Van-Hau Nguyen\IEEEauthorrefmark{1}, and
-Chi-Thanh Nguyen\IEEEauthorrefmark{2}
+Van-Hau Nguyen\IEEEauthorrefmark{1},
+Chi-Thanh Nguyen\IEEEauthorrefmark{2},
+Tien-Duong Nguyen\IEEEauthorrefmark{1}, and
+Minh-Tuan Dao\IEEEauthorrefmark{1}
 }
 \IEEEauthorblockA{
 \IEEEauthorrefmark{1}Hung Yen University of Technology and Education, Hung Yen, Viet Nam\\
-Email: \{trinhnkt, nduongnt, tuan.ymc, hau666\}@gmail.com
+Email: \{trinhnkt, hau666, nduongnt, tuan.ymc\}@gmail.com
 }
 \IEEEauthorblockA{
 \IEEEauthorrefmark{2}Academy of Military Science and Technology, Ha Noi, Viet Nam\\
@@ -86,10 +87,10 @@ Knowledge Tracing, Educational Data Mining, Calibration, Expected Calibration Er
 \section*{Artifact Availability}
 We will release the reproducibility package upon acceptance at \url{https://github.com/trinhnkt/P0}. It includes preprocessing scripts, split constructors, KC-stratification scripts, calibration diagnostics, Brier decomposition, reliability diagram generation, leakage-audit logs, and report templates.
 
-\bibliographystyle{IEEEtran}
-\bibliography{references}
-
 \appendices
 \input{appendix/appendix_a_sensitivity}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
 
 \end{document}

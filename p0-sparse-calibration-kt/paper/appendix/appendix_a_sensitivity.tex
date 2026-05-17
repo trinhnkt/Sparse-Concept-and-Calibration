@@ -1,11 +1,14 @@
 \section{Threshold Sensitivity}
 \label{app:sensitivity}
-Report alternative KC-frequency thresholds here. Suggested settings are: (i) $\{10,50,250\}$, (ii) $\{30,150,750\}$, and (iii) quantile-based buckets. If conclusions change substantially across settings, state this explicitly as a limitation rather than forcing a positive conclusion.
+To establish the robustness of our diagnostic stratification, we conduct a sensitivity analysis evaluating whether the observed predictive degradation and calibration decay are highly sensitive to the choice of frequency thresholds. We evaluate three alternative threshold configurations: (i) an aggressive setting with thresholds \{10, 50, 250\} training interactions, (ii) a conservative setting with thresholds \{30, 150, 750\} training interactions, and (iii) a dynamic quantile-based bucketing scheme where buckets are defined by equal-quantile KCs. The results, summarized in Table~\ref{tab:sensitivity}, show that while the absolute counts of KCs in each category shift, the diagnostic patterns are broadly consistent, although effect magnitudes vary across threshold definitions. Specifically, the noticeable calibration degradation in the sparse and very sparse categories persists, indicating that our diagnostics capture intrinsic model behaviors on low-frequency concepts rather than artifacts of threshold definitions.
 
 \input{tables/tableA1_sensitivity}
+\FloatBarrier
 
 \section{Overall and Bucket-level Performance under Temporal Splits}
+\label{app:temporal_performance}
 In this section, we present the comprehensive overall performance (Table~\ref{tab:overall_temporal}) and strata-specific performance breakdowns (Table~\ref{tab:bucket_temporal}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable calibration degradation and predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting.
 
 \input{tables/tableA_overall_full}
 \input{tables/tableA_performance_by_bucket_full}
+\FloatBarrier

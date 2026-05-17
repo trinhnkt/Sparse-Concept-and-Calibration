@@ -45,17 +45,14 @@ where $\rel$ captures reliability error, $\res$ captures resolution, and $\unc$ 
 \subsection{Seven-channel Leakage Audit}
 Table~\ref{tab:leakage} summarizes the leakage audit. The audit is not a model component; it is an evaluation hygiene requirement.
 
-\input{tables/table2_leakage_audit}
+\input{tables/table1_leakage_audit}
 
 \subsection{Diagnostic Pipeline}
 Figure~\ref{fig:pipeline} illustrates the pipeline.
 
 \begin{figure}[t]
 \centering
-\fbox{\begin{minipage}{0.95\linewidth}
-\small
-\textbf{Pipeline.} Raw KT logs $\rightarrow$ schema normalization $\rightarrow$ learner/temporal/cold-start splits $\rightarrow$ train-only KC-frequency buckets $\rightarrow$ baseline training $\rightarrow$ prediction export $\rightarrow$ AUC/ACC/NLL/RMSE $\rightarrow$ ECE/Brier/reliability diagrams per bucket $\rightarrow$ leakage audit $\rightarrow$ reproducible report.
-\end{minipage}}
-\caption{Overview of the reproducible sparse-concept and calibration diagnostic pipeline. Replace this placeholder with a vector diagram before submission.}
+\includegraphics[width=0.98\linewidth]{figures/figure1_pipeline.pdf}
+\caption{Overview of the reproducible sparse-concept and calibration diagnostic pipeline for Knowledge Tracing.}
 \label{fig:pipeline}
 \end{figure}

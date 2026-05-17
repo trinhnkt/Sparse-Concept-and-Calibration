@@ -3,12 +3,10 @@
 
 In this section, we instantiate our diagnostic evaluation protocol on three large-scale, benchmark Knowledge Tracing (KT) datasets. Our experimental investigation is structured around three core Research Questions (RQs):
 \begin{itemize}
-    \item \textbf{RQ1 (Predictive Strata Degradation):} Do aggregate, population-level evaluation metrics (AUC, ACC) mask severe predictive degradation when models are evaluated on low-frequency (sparse and very sparse) Knowledge Components?
+    \item \textbf{RQ1 (Predictive Strata Degradation):} Do aggregate, population-level evaluation metrics (AUC, ACC) mask noticeable predictive degradation when models are evaluated on low-frequency (sparse and very sparse) Knowledge Components?
     \item \textbf{RQ2 (Calibration Profiles by Frequency):} How do model calibration profiles—measured via Expected Calibration Error (ECE) and Brier Score decomposition (Reliability, Resolution)—change across different concept frequency strata?
-    \item \textbf{RQ3 (Cold-start Curriculum Generalization):} Can existing baseline KT models reliably generalize to newly introduced cold-start concepts under rigorous time-partitioned (temporal) splits?
+    \item \textbf{RQ3 (Limited Cold-start Concept Diagnostics):} How do baseline KT models behave on KCs with zero or limited training-fold frequency under temporal splits?
 \end{itemize}
-
----
 
 \subsection{Experimental Setup and Datasets}
 We evaluate our protocol on three diverse educational datasets: ASSISTments 2012 (\path{assist2012}), Junyi Academy (\path{junyi}), and XES3G5M (\path{xes3g5m}). The preprocessing and filtering pipeline (Section~\ref{sec:protocol}) ensures that only high-quality interaction records are retained. Table~\ref{tab:datasets} presents the final statistics of each dataset cohort.
@@ -17,14 +15,12 @@ We evaluate our protocol on three diverse educational datasets: ASSISTments 2012
 
 Figure~\ref{fig:strata_dist} illustrates the long-tail behavior of KC-frequency strata across the three datasets. Under our experimental conditions, a vast majority of the concepts are concentrated in the sparse and very sparse strata (e.g., in XES3G5M, over 65\% of KCs fall into the very sparse stratum), demonstrating that aggregate performance statistics are heavily dominated by a handful of dense KCs.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=0.9\linewidth]{figures/figure2_bucket_distribution.pdf}
-\caption{KC-frequency strata distribution across datasets. The long-tail behavior shows that a significant proportion of KCs are concentrated in the sparse and very sparse strata, highlighting the importance of separate diagnostics.}
+\includegraphics[width=0.98\linewidth]{figures/figure2_bucket_distribution.pdf}
+\caption{KC-frequency strata distribution across ASSISTments 2012, Junyi Academy, and XES3G5M.}
 \label{fig:strata_dist}
-\end{figure}
-
----
+\end{figure*}
 
 \subsection{Baseline Implementations}
 We evaluate three representing classes of KT models:
@@ -36,18 +32,14 @@ We evaluate three representing classes of KT models:
 
 All deep learning models are trained with validation-based early stopping to prevent hyperparameter leakage, and we restrict our baselines strictly to official, un-augmented architectures to isolate diagnostic metrics.
 
----
-
 \subsection{RQ1: Strata Performance Analysis}
 To address RQ1, we first inspect the overall performance of all three baselines in Table~\ref{tab:overall}. SimpleKT and DKT achieve high aggregate AUC scores (ranging from 0.69 to 0.81 under learner-based splits). BKT, conversely, performs near-randomly (AUC $\approx$ 0.50) on learner-based splits.
 
 \input{tables/table3_overall_results}
 
-However, when we break down the results by KC-frequency strata in Table~\ref{tab:bucket}, a far more nuanced picture emerges. Under our experimental conditions, deep KT models show a pronounced performance drop when moving from dense to very sparse strata. For example, DKT's AUC on ASSISTments 2012 falls from 0.702 (dense) to 0.681 (very sparse). This verifies RQ1: aggregate metrics indeed mask severe local performance degradation.
+However, when we break down the results by KC-frequency strata in Table~\ref{tab:bucket}, a far more nuanced picture emerges. Under our experimental conditions, deep KT models exhibit highly heterogeneous performance across strata. Specifically, while aggregate metrics suggest stable predictive power, bucket-level breakdowns in Table~\ref{tab:bucket} show that in very sparse strata (e.g., $f_{train} \leq 5$ events), deep models like DKT and SimpleKT can produce highly unstable and artificially inflated AUC values (e.g., reaching $0.9259 \pm 0.1283$ for DKT on ASSISTments 2012). This apparent increase is a statistical artifact driven by severe sample-size limits on very sparse cohorts, as evidenced by their high standard deviations. In contrast, medium and sparse strata show lower performance than dense ones, suggesting under our experimental conditions that aggregate population metrics mask noticeable localized model degradation.
 
 \input{tables/table4_metric_per_bucket}
-
----
 
 \subsection{RQ2: Calibration and Reliability Profiles}
 To answer RQ2, we analyze Expected Calibration Error (ECE) and Brier Score decomposition (Uncertainty UNC, Reliability REL, and Resolution RES) across frequency strata in Table~\ref{tab:calib}.
@@ -57,10 +49,10 @@ To answer RQ2, we analyze Expected Calibration Error (ECE) and Brier Score decom
 Our findings show that as concept frequency decreases, calibration degrades drastically:
 \begin{itemize}
     \item On ASSISTments 2012, SimpleKT's ECE increases from 0.113 in the dense stratum to 0.117 in the very sparse stratum.
-    \item The reliability component (REL) of the Brier score increases (lower is better), proving that probability outputs for sparse concepts are highly miscalibrated.
+    \item The reliability component (REL) of the Brier score increases (lower is better), suggesting weaker calibration for sparse concepts under our experimental conditions.
 \end{itemize}
 
-Figure~\ref{fig:reliability_comparison} visualizes this calibration degradation by plotting reliability diagrams for SimpleKT on Junyi under temporal splitting. While the dense curve closely aligns with the diagonal dashed line of perfect calibration, the very sparse curve exhibits severe non-linear deviations, demonstrating that deep KT models generate highly overconfident and unreliable predictions on low-frequency concepts.
+Because temporal splits stress future-concept generalization, we use the Junyi temporal split in Fig.~\ref{fig:reliability_comparison} to visualize calibration behavior under a more challenging evaluation setting. Figure~\ref{fig:reliability_comparison} visualizes this calibration degradation by plotting reliability diagrams for SimpleKT on Junyi under temporal splitting. While the dense curve closely aligns with the diagonal dashed line of perfect calibration, the very sparse curve exhibits noticeable non-linear deviations, suggesting that deep KT models generate highly overconfident and less reliable predictions on low-frequency concepts under our experimental conditions.
 
 \begin{figure*}[t]
 \centering
@@ -81,16 +73,13 @@ Figure~\ref{fig:reliability_comparison} visualizes this calibration degradation 
 \label{fig:reliability_comparison}
 \end{figure*}
 
----
-
-\subsection{RQ3: Limited Cold-start Concept Diagnostics}
+\subsection{RQ3 (Limited Cold-start Concept Diagnostics): How do baseline KT models behave on KCs with zero or limited training-fold frequency under temporal splits?}
 Finally, we address RQ3 by evaluating models on limited cold-start concepts (strict, k5, k10, warm) under time-partitioned (temporal) splitting in Table~\ref{tab:cold_start}.
 
 \input{tables/table6_cold_start_results}
+\FloatBarrier
 
-Under our experimental conditions, temporal splits expose a critical vulnerability: both DKT and SimpleKT fail to generalize to newly introduced concepts, yielding near-random predictive performance (AUC $\approx$ 0.50 - 0.53) on strict cold-start groups. This proves that deep KT models rely heavily on concept-specific parameters (such as skill embeddings) and cannot generalize dynamically without curriculum history. This highlights the absolute necessity of using temporal splits rather than random population-level learner-based splits when evaluating cold-start generalizability in KT.
-
----
+Under our experimental conditions, temporal splits expose a critical vulnerability: both DKT and SimpleKT fail to generalize to newly introduced concepts, yielding near-random predictive performance (AUC $\approx$ 0.50 - 0.53) on strict cold-start groups. This suggests that deep KT models rely heavily on concept-specific parameters (such as skill embeddings) and face severe limitations when generalizing dynamically without curriculum history. This highlights the strong motivation for using temporal splits rather than random population-level learner-based splits when evaluating cold-start generalizability in KT.
 
 \subsection{Threshold Sensitivity Analysis}
 To ensure the robustness of our results across alternative bucket boundaries, we repeat our evaluation across a range of strata settings. The results, presented in Appendix~\ref{app:sensitivity}, show consistent strata ranking and calibration degradation patterns, verifying that our protocol's diagnostic findings are highly stable.

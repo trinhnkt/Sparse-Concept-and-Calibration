@@ -57,18 +57,18 @@ def main():
         f.write("\n".join(tex_stats) + "\n")
         
     # -------------------------------------------------------------
-    # 2. Table I: Leakage Audit (table2_leakage_audit.tex)
+    # 2. Table I: Leakage Audit (table1_leakage_audit.tex & table2_leakage_audit.tex)
     # -------------------------------------------------------------
-    # Standard Leakage table using \path{} for files
+    # Standard Leakage table using \path{} for files with explicit column widths to prevent overflow
     tex_leakage = []
     tex_leakage.append("\\begin{table*}[t]")
     tex_leakage.append("\\caption{Rigorous Multi-Channel Leakage Prevention Checklist}")
     tex_leakage.append("\\label{tab:leakage}")
     tex_leakage.append("\\centering")
-    tex_leakage.append("\\small")
-    tex_leakage.append("\\begin{tabular}{lllll}")
+    tex_leakage.append("\\footnotesize")
+    tex_leakage.append("\\begin{tabular}{lp{5.5cm}p{4.2cm}lp{5.5cm}}")
     tex_leakage.append("\\toprule")
-    tex_leakage.append("Channel & Description & Evidence File & Status & Notes \\\\")
+    tex_leakage.append("Channel & Risk / Description & Evidence & Status & Notes \\\\")
     tex_leakage.append("\\midrule")
     tex_leakage.append("L1 & Split leakage (user overlap, temporal order) & \\path{logs/split_audit.csv} & PASS & No user overlap or temporal inversions detected \\\\")
     tex_leakage.append("L2 & Preprocessing leakage (transformations fit scope) & \\path{src/preprocess.py} & PASS & No global normalization detected \\\\")
@@ -81,6 +81,9 @@ def main():
     tex_leakage.append("\\end{tabular}")
     tex_leakage.append("\\end{table*}")
     
+    with open(out_dir / "table1_leakage_audit.tex", "w") as f:
+        f.write("\n".join(tex_leakage) + "\n")
+        
     with open(out_dir / "table2_leakage_audit.tex", "w") as f:
         f.write("\n".join(tex_leakage) + "\n")
         
@@ -98,10 +101,10 @@ def main():
         tex.append(f"\\caption{{{title}}}")
         tex.append(f"\\label{{{label}}}")
         tex.append("\\centering")
-        tex.append("\\small")
+        tex.append("\\resizebox{\\textwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcccc}")
         tex.append("\\toprule")
-        tex.append("Dataset & Split Mode & Model & AUC & ACC & NLL & RMSE \\\\")
+        tex.append("Dataset & Split & Model & AUC & ACC & NLL & RMSE \\\\")
         tex.append("\\midrule")
         
         filtered = df[df['split_mode'] == split_mode].copy()
@@ -136,16 +139,22 @@ def main():
             nll_str = fmt(row['nll_mean'], row['nll_std'])
             rmse_str = fmt(row['rmse_mean'], row['rmse_std'])
             
-            tex.append(f"{ds_col} & {row['split_mode']} & {model_display} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
+            # Map split_mode to user-friendly name
+            split_display = "Learner-based" if row['split_mode'] == "learner_based" else "Temporal"
+            
+            tex.append(f"{ds_col} & {split_display} & {model_display} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\end{tabular}")
+        tex.append("\\multicolumn{7}{p{14.5cm}}{\\scriptsize \\textit{Note: The unusually high NLL values for BKT are mainly caused by near-deterministic probability outputs and should be interpreted cautiously. We retain BKT primarily as a classical reference baseline.}} \\\\")
+        tex.append("\\end{tabular}%")
+        tex.append("}")
         tex.append("\\end{table*}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
             
-    generate_overall_tex(df_overall, "learner_based", "Overall Performance under Population Cross-Validation (Learner-based)", "tab:overall", out_dir / "table3_overall_results.tex")
+    generate_overall_tex(df_overall, "learner_based", "Overall Performance under Learner-based Split", "tab:overall", out_dir / "table3_overall_results.tex")
+    generate_overall_tex(df_overall, "learner_based", "Overall Performance under Learner-based Split", "tab:overall", out_dir / "table3_overall_performance.tex")
     generate_overall_tex(df_overall, "temporal", "Overall Performance under Future Validation (Temporal Splits) [Appendix]", "tab:overall_temporal", out_dir / "tableA_overall_full.tex", is_appendix=True)
     
     # -------------------------------------------------------------
@@ -154,15 +163,16 @@ def main():
     df_bucket = pd.read_csv("results/tables/clean_metric_per_bucket_summary.csv")
     
     def generate_bucket_tex(df, split_mode, title, label, filepath):
+        df_raw = pd.read_csv("results/tables/clean_metric_per_bucket.csv")
         tex = []
         tex.append("\\begin{table*}[t]")
         tex.append(f"\\caption{{{title}}}")
         tex.append(f"\\label{{{label}}}")
         tex.append("\\centering")
-        tex.append("\\small")
-        tex.append("\\begin{tabular}{lllccccc}")
+        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\begin{tabular}{lllcrcccc}")
         tex.append("\\toprule")
-        tex.append("Dataset & Model & Bucket & AUC & ACC & NLL & RMSE \\\\")
+        tex.append("Dataset & Model & Bucket & \\#KCs & \\#Events & AUC & ACC & NLL & RMSE \\\\")
         tex.append("\\midrule")
         
         filtered = df[df['split_mode'] == split_mode].copy()
@@ -200,21 +210,37 @@ def main():
                 
             bucket_display = row['bucket'].replace("_", "\\_")
             
+            # Retrieve KCs and Events count
+            raw_match = df_raw[(df_raw['dataset'] == row['dataset']) & 
+                               (df_raw['split_mode'] == split_mode) & 
+                               (df_raw['bucket'] == row['bucket'])]
+            if not raw_match.empty:
+                n_kcs = int(raw_match['n_kcs'].iloc[0])
+                n_events = int(raw_match['n_events'].iloc[0])
+                n_kcs_str = f"{n_kcs:,}"
+                n_events_str = f"{n_events:,}"
+            else:
+                n_kcs_str = "-"
+                n_events_str = "-"
+            
             auc_str = fmt(row['auc_mean'], row['auc_std'])
             acc_str = fmt(row['acc_mean'], row['acc_std'])
             nll_str = fmt(row['nll_mean'], row['nll_std'])
             rmse_str = fmt(row['rmse_mean'], row['rmse_std'])
             
-            tex.append(f"{ds_col} & {model_col} & {bucket_display} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
+            tex.append(f"{ds_col} & {model_col} & {bucket_display} & {n_kcs_str} & {n_events_str} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\end{tabular}")
+        tex.append("\\multicolumn{9}{p{16.5cm}}{\\scriptsize \\textit{Note: Very sparse AUC should be interpreted cautiously due to limited test events.}} \\\\")
+        tex.append("\\end{tabular}%")
+        tex.append("}")
         tex.append("\\end{table*}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
             
     generate_bucket_tex(df_bucket, "learner_based", "Knowledge Tracing Performance Breakdown by Skill Strata (Learner-based)", "tab:bucket", out_dir / "table4_metric_per_bucket.tex")
+    generate_bucket_tex(df_bucket, "learner_based", "Knowledge Tracing Performance Breakdown by Skill Strata (Learner-based)", "tab:bucket", out_dir / "table4_performance_by_bucket.tex")
     generate_bucket_tex(df_bucket, "temporal", "Knowledge Tracing Performance Breakdown by Skill Strata (Temporal splits) [Appendix]", "tab:bucket_temporal", out_dir / "tableA_performance_by_bucket_full.tex")
     
     # -------------------------------------------------------------
@@ -223,22 +249,54 @@ def main():
     # Calibration ECE and Brier score decomposition (UNC, REL, RES)
     df_calib = pd.read_csv("results/tables/clean_calibration_by_bucket.csv")
     df_calib = df_calib[df_calib['split_mode'] == 'learner_based'].copy()
+    df_events = pd.read_csv("results/tables/clean_metric_per_bucket.csv")
+    df_events = df_events[df_events['split_mode'] == 'learner_based'].copy()
+    
+    # Calculate average events across seeds
+    events_summary = df_events.groupby(['dataset', 'model', 'bucket'])['n_events'].mean().reset_index()
+    
+    df_calib = df_calib.merge(events_summary, on=['dataset', 'model', 'bucket'], how='left')
     
     df_calib['dataset_sort'] = df_calib['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
     df_calib['model_sort'] = df_calib['model'].map({'bkt': 0, 'dkt': 1, 'simplekt': 2})
     df_calib['bucket_sort'] = df_calib['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
     df_calib = df_calib.sort_values(['dataset_sort', 'model_sort', 'bucket_sort'])
     
+    # A. Table V (Compact/Main): Dataset, Model, Bucket, #Events, ECE, Brier, REL, RES
     tex_cal = []
     tex_cal.append("\\begin{table}[t]")
-    tex_cal.append("\\caption{Calibration Breakdown and Brier Score Decomposition}")
+    tex_cal.append("\\caption{Calibration Breakdown by Frequency Stratum}")
     tex_cal.append("\\label{tab:calib}")
     tex_cal.append("\\centering")
     tex_cal.append("\\resizebox{\\columnwidth}{!}{%")
-    tex_cal.append("\\begin{tabular}{lllccccc}")
+    tex_cal.append("\\begin{tabular}{lllrcccc}")
     tex_cal.append("\\toprule")
-    tex_cal.append("Dataset & Model & Bucket & ECE & Brier & UNC & REL & RES \\\\")
+    tex_cal.append("Dataset & Model & Bucket & \\#Events & ECE & Brier & REL & RES \\\\")
     tex_cal.append("\\midrule")
+    
+    # B. Table V Compact: Dataset, Model, Bucket, #Events, ECE, Brier
+    tex_compact = []
+    tex_compact.append("\\begin{table}[t]")
+    tex_compact.append("\\caption{Compact Calibration Breakdown by Frequency Stratum}")
+    tex_compact.append("\\label{tab:calib_compact}")
+    tex_compact.append("\\centering")
+    tex_compact.append("\\resizebox{\\columnwidth}{!}{%")
+    tex_compact.append("\\begin{tabular}{lllrcc}")
+    tex_compact.append("\\toprule")
+    tex_compact.append("Dataset & Model & Bucket & \\#Events & ECE & Brier \\\\")
+    tex_compact.append("\\midrule")
+    
+    # C. Table A Full (Appendix): Dataset, Model, Bucket, #Events, ECE, Brier, UNC, REL, RES
+    tex_full = []
+    tex_full.append("\\begin{table*}[t]")
+    tex_full.append("\\caption{Comprehensive Calibration Breakdown and Brier Score Decomposition}")
+    tex_full.append("\\label{tab:calib_full}")
+    tex_full.append("\\centering")
+    tex_full.append("\\small")
+    tex_full.append("\\begin{tabular}{lllrcccccc}")
+    tex_full.append("\\toprule")
+    tex_full.append("Dataset & Model & Bucket & \\#Events & ECE & Brier & UNC & REL & RES \\\\")
+    tex_full.append("\\midrule")
     
     last_ds = None
     last_model = None
@@ -254,6 +312,8 @@ def main():
         if ds_display != last_ds:
             if last_ds is not None:
                 tex_cal.append("\\midrule")
+                tex_compact.append("\\midrule")
+                tex_full.append("\\midrule")
             last_ds = ds_display
             ds_col = ds_display
             last_model = None
@@ -269,27 +329,48 @@ def main():
             
         bucket_display = row['bucket'].replace("_", "\\_")
         
+        n_events = int(row['n_events']) if not pd.isna(row['n_events']) else 0
+        n_events_str = f"{n_events:,}"
+        
         ece_str = fmt(row['ece_mean'], row['ece_std'])
         brier_str = fmt(row['brier_mean'], row['brier_std'])
         unc_str = f"${row['uncertainty_mean']:.4f}$" if not pd.isna(row['uncertainty_mean']) else "-"
         rel_str = f"${row['reliability_mean']:.4f}$" if not pd.isna(row['reliability_mean']) else "-"
         res_str = f"${row['resolution_mean']:.4f}$" if not pd.isna(row['resolution_mean']) else "-"
         
-        tex_cal.append(f"{ds_col} & {model_col} & {bucket_display} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
+        tex_cal.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} & {rel_str} & {res_str} \\\\")
+        tex_compact.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} \\\\")
+        tex_full.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
         
     tex_cal.append("\\bottomrule")
     tex_cal.append("\\end{tabular}")
     tex_cal.append("}")
     tex_cal.append("\\end{table}")
     
+    tex_compact.append("\\bottomrule")
+    tex_compact.append("\\end{tabular}")
+    tex_compact.append("}")
+    tex_compact.append("\\end{table}")
+    
+    tex_full.append("\\bottomrule")
+    tex_full.append("\\end{tabular}")
+    tex_full.append("\\end{table*}")
+    
     with open(out_dir / "table5_calibration_per_bucket.tex", "w") as f:
         f.write("\n".join(tex_cal) + "\n")
+        
+    with open(out_dir / "table5_calibration_by_bucket_compact.tex", "w") as f:
+        f.write("\n".join(tex_compact) + "\n")
+        
+    with open(out_dir / "tableA_calibration_by_bucket_full.tex", "w") as f:
+        f.write("\n".join(tex_full) + "\n")
         
     # -------------------------------------------------------------
     # 6. Table VI: Cold-start Results (table6_cold_start_results.tex)
     # -------------------------------------------------------------
     df_cold = pd.read_csv("results/tables/clean_cold_start_results_summary.csv")
     df_cold = df_cold[df_cold['split_mode'] == 'temporal'].copy()
+    df_raw_cold = pd.read_csv("results/tables/clean_cold_start_results.csv")
     
     df_cold['dataset_sort'] = df_cold['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
     df_cold['model_sort'] = df_cold['model'].map({'bkt': 0, 'dkt': 1, 'simplekt': 2})
@@ -297,14 +378,14 @@ def main():
     df_cold = df_cold.sort_values(['dataset_sort', 'model_sort', 'group_sort'])
     
     tex_cold = []
-    tex_cold.append("\\begin{table}[h]")
+    tex_cold.append("\\begin{table*}[t]")
     tex_cold.append("\\caption{Cold-start Performance Metrics under Temporal Validation}")
     tex_cold.append("\\label{tab:cold_start}")
     tex_cold.append("\\centering")
-    tex_cold.append("\\resizebox{\\columnwidth}{!}{%")
-    tex_cold.append("\\begin{tabular}{lllcccccc}")
+    tex_cold.append("\\resizebox{\\textwidth}{!}{%")
+    tex_cold.append("\\begin{tabular}{lllcrcccccc}")
     tex_cold.append("\\toprule")
-    tex_cold.append("Dataset & Model & Group & AUC & ACC & ECE & Brier & REL & RES \\\\")
+    tex_cold.append("Dataset & Model & Group & \\#KCs & \\#Events & AUC & ACC & ECE & Brier & REL & RES \\\\")
     tex_cold.append("\\midrule")
     
     last_ds = None
@@ -312,11 +393,11 @@ def main():
     for _, row in df_cold.iterrows():
         ds_name = row['dataset'].upper()
         if ds_name == "ASSIST2012":
-            ds_display = "A12"
+            ds_display = "ASSISTments 2012"
         elif ds_name == "JUNYI":
-            ds_display = "Junyi"
+            ds_display = "Junyi Academy"
         else:
-            ds_display = "XES"
+            ds_display = "XES3G5M"
             
         if ds_display != last_ds:
             if last_ds is not None:
@@ -336,6 +417,20 @@ def main():
             
         group_display = row['group']
         
+        # Retrieve KCs and Events count
+        raw_match = df_raw_cold[(df_raw_cold['dataset'] == row['dataset']) & 
+                               (df_raw_cold['split_mode'] == 'temporal') & 
+                               (df_raw_cold['model'] == row['model']) & 
+                               (df_raw_cold['group'] == row['group'])]
+        if not raw_match.empty:
+            n_kcs = int(raw_match['n_kcs'].iloc[0])
+            n_events = int(raw_match['n_events'].iloc[0])
+            n_kcs_str = f"{n_kcs:,}"
+            n_events_str = f"{n_events:,}"
+        else:
+            n_kcs_str = "-"
+            n_events_str = "-"
+            
         auc_str = fmt(row['auc_mean'], row['auc_std'])
         acc_str = fmt(row['acc_mean'], row['acc_std'])
         ece_str = fmt(row['ece_mean'], row['ece_std'])
@@ -343,12 +438,13 @@ def main():
         rel_str = fmt(row['reliability_mean'], row['reliability_std'])
         res_str = fmt(row['resolution_mean'], row['resolution_std'])
         
-        tex_cold.append(f"{ds_col} & {model_col} & {group_display} & {auc_str} & {acc_str} & {ece_str} & {brier_str} & {rel_str} & {res_str} \\\\")
+        tex_cold.append(f"{ds_col} & {model_col} & {group_display} & {n_kcs_str} & {n_events_str} & {auc_str} & {acc_str} & {ece_str} & {brier_str} & {rel_str} & {res_str} \\\\")
         
     tex_cold.append("\\bottomrule")
-    tex_cold.append("\\end{tabular}")
+    tex_cold.append("\\multicolumn{11}{p{16.5cm}}{\\scriptsize \\textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency.}} \\\\")
+    tex_cold.append("\\end{tabular}%")
     tex_cold.append("}")
-    tex_cold.append("\\end{table}")
+    tex_cold.append("\\end{table*}")
     
     with open(out_dir / "table6_cold_start_results.tex", "w") as f:
         f.write("\n".join(tex_cold) + "\n")
@@ -366,7 +462,7 @@ def main():
     
     tex_sens = []
     tex_sens.append("\\begin{table}[h]")
-    tex_sens.append("\\caption{Sensitivity Analysis to Bin Count and Binning Strategies}")
+    tex_sens.append("\\caption{Sensitivity Analysis to KC-frequency Threshold Settings}")
     tex_sens.append("\\label{tab:sensitivity}")
     tex_sens.append("\\centering")
     tex_sens.append("\\resizebox{\\columnwidth}{!}{%")
