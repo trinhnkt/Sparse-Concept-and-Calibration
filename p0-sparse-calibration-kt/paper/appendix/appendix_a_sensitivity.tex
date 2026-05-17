@@ -3,3 +3,9 @@
 Report alternative KC-frequency thresholds here. Suggested settings are: (i) $\{10,50,250\}$, (ii) $\{30,150,750\}$, and (iii) quantile-based buckets. If conclusions change substantially across settings, state this explicitly as a limitation rather than forcing a positive conclusion.
 
 \input{tables/tableA1_sensitivity}
+
+\section{Overall and Bucket-level Performance under Temporal Splits}
+In this section, we present the comprehensive overall performance (Table~\ref{tab:overall_temporal}) and strata-specific performance breakdowns (Table~\ref{tab:bucket_temporal}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable calibration degradation and predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting.
+
+\input{tables/tableA_overall_full}
+\input{tables/tableA_performance_by_bucket_full}

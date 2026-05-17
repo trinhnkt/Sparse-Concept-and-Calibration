@@ -163,7 +163,7 @@ def run_experiments(config_path):
     dataset_name = config['dataset_name']
     seeds = config.get('seeds', [42, 123, 2026])
     baselines = config.get('baselines', ['bkt', 'dkt', 'simplekt'])
-    split_modes = ['learner_based', 'temporal'] # Or read from config if defined
+    split_modes = config.get('split_modes', ['learner_based', 'temporal'])
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[{dataset_name}] Using device: {device}")

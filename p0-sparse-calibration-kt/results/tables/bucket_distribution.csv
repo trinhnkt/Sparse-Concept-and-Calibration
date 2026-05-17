@@ -3,14 +3,6 @@ assist2012,learner_based,0,dense,147
 assist2012,learner_based,0,medium,68
 assist2012,learner_based,0,sparse,39
 assist2012,learner_based,0,very_sparse,11
-assist2012,learner_based,1,dense,148
-assist2012,learner_based,1,medium,67
-assist2012,learner_based,1,sparse,39
-assist2012,learner_based,1,very_sparse,11
-assist2012,learner_based,2,dense,145
-assist2012,learner_based,2,medium,70
-assist2012,learner_based,2,sparse,38
-assist2012,learner_based,2,very_sparse,12
 assist2012,temporal,0,dense,145
 assist2012,temporal,0,medium,35
 assist2012,temporal,0,sparse,35
@@ -47,6 +39,12 @@ assist_gpu_test,temporal,0,dense,13
 assist_gpu_test,temporal,0,medium,50
 assist_gpu_test,temporal,0,sparse,53
 assist_gpu_test,temporal,0,very_sparse,122
+junyi,learner_based,0,dense,1293
+junyi,learner_based,0,medium,33
+junyi,temporal,0,dense,1238
+junyi,temporal,0,medium,78
+junyi,temporal,0,sparse,6
+junyi,temporal,0,very_sparse,4
 junyi_bkt_test,learner_based,0,medium,153
 junyi_bkt_test,learner_based,0,sparse,726
 junyi_bkt_test,learner_based,0,very_sparse,430

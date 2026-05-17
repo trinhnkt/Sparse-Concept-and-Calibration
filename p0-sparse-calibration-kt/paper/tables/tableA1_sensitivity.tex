@@ -1,29 +1,32 @@
 \begin{table}[h]
-\caption{Sensitivity Analysis}
-\label{tab:sens}
+\caption{Sensitivity Analysis to Bin Count and Binning Strategies}
+\label{tab:sensitivity}
 \centering
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{llrr}
+\begin{tabular}{llcc}
 \toprule
-setting & bucket & auc & ece \\
+Setting & Bucket & AUC & ECE \\
 \midrule
-Alt\_1 & dense & 0.547168 & 0.537264 \\
-Alt\_1 & medium & 0.531041 & 0.447450 \\
-Alt\_1 & sparse & 0.498413 & 0.509199 \\
-Alt\_1 & very\_sparse & 0.482836 & 0.462831 \\
-Alt\_2 & dense & 0.576567 & 0.325002 \\
-Alt\_2 & medium & 0.533272 & 0.484115 \\
-Alt\_2 & sparse & 0.547383 & 0.443572 \\
-Alt\_2 & very\_sparse & 0.491553 & 0.479219 \\
-Alt\_Quantile & dense & 0.547325 & 0.447121 \\
-Alt\_Quantile & medium & 0.543683 & 0.440687 \\
-Alt\_Quantile & sparse & 0.544706 & 0.407420 \\
-Alt\_Quantile & very\_sparse & 0.533599 & 0.422124 \\
-Main & dense & 0.576564 & 0.324545 \\
-Main & medium & 0.534065 & 0.456328 \\
-Main & sparse & 0.498949 & 0.490948 \\
-Main & very\_sparse & 0.490946 & 0.479457 \\
+Alt\_1 & dense & $0.5766 \pm 0.1186$ & $0.3239 \pm 0.3020$ \\
+ & medium & $0.5511 \pm 0.0844$ & $0.3502 \pm 0.2101$ \\
+ & sparse & $0.4925 \pm 0.0083$ & $0.4109 \pm 0.3639$ \\
+ & very\_sparse & $0.4898 \pm 0.0122$ & $0.3731 \pm 0.1278$ \\
+\midrule
+Alt\_2 & dense & $0.5766 \pm 0.1187$ & $0.3250 \pm 0.3041$ \\
+ & medium & $0.5544 \pm 0.0851$ & $0.3180 \pm 0.1900$ \\
+ & sparse & $0.5778 \pm 0.1284$ & $0.3469 \pm 0.1972$ \\
+ & very\_sparse & $0.4861 \pm 0.0126$ & $0.3725 \pm 0.2277$ \\
+\midrule
+Alt\_Quantile & dense & $0.5777 \pm 0.1206$ & $0.3345 \pm 0.3261$ \\
+ & medium & $0.5719 \pm 0.1116$ & $0.3214 \pm 0.2951$ \\
+ & sparse & $0.5730 \pm 0.1140$ & $0.3163 \pm 0.2805$ \\
+ & very\_sparse & $0.5693 \pm 0.1065$ & $0.3075 \pm 0.2291$ \\
+\midrule
+Main & dense & $0.5766 \pm 0.1187$ & $0.3245 \pm 0.3032$ \\
+ & medium & $0.5557 \pm 0.0877$ & $0.3261 \pm 0.1897$ \\
+ & sparse & $0.4955 \pm 0.0045$ & $0.3648 \pm 0.2385$ \\
+ & very\_sparse & $0.4898 \pm 0.0122$ & $0.3731 \pm 0.1278$ \\
 \bottomrule
-\end{tabular}%
+\end{tabular}
 }
 \end{table}

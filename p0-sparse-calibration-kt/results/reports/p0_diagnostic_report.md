@@ -4,7 +4,7 @@
 
 **Report type:** protocol / diagnostic / resource report
 
-**Generated at:** 2026-05-17 13:28:42
+**Generated at:** 2026-05-17 16:48:02
 
 This report summarizes sparse-concept diagnostics, calibration diagnostics, cold-start concept analysis, and leakage auditing for Knowledge Tracing baselines. It does not report results for any new KT model, SSL module, GNN module, path recommendation method, or distillation method.
 
@@ -22,9 +22,9 @@ Source file: `results/tables/dataset_stats.csv`
 | xes_bkt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
 | xes_dkt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
 | xes_simplekt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
+| xes3g5m | 7953709 | 7953709 | 18066 | 7653 | 866 | 440.2584 | 0.4916 |
 | assist2012 | 6123270 | 2657490 | 27806 | 52672 | 265 | 95.5725 | 0.6393 |
 | junyi | 16217311 | 16215567 | 71014 | 25784 | 1326 | 228.3432 | 0.8278 |
-| xes3g5m | 7953709 | 7953709 | 18066 | 7653 | 866 | 440.2584 | 0.4916 |
 
 
 ## 2. Split summary
@@ -48,8 +48,10 @@ Source file: `results/tables/overall_results_summary.csv`
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | assist2012 | learner_based | bkt | 0.5000 | 0.0000 | 0.2896 | 0.0005 | 25.6066 | 0.0162 | 0.8429 | 0.0003 |
 | assist2012 | learner_based | dkt | 0.6989 |  | 0.7186 |  | 0.5803 |  | 0.4392 |  |
+| assist2012 | learner_based | simplekt | 0.6835 |  | 0.6997 |  | 0.6994 |  | 0.4605 |  |
 | assist2012 | temporal | bkt | 0.5000 | 0.0000 | 0.3125 | 0.0000 | 24.7458 | 0.0000 | 0.8291 | 0.0000 |
 | assist2012 | temporal | dkt | 0.4992 |  | 0.6129 |  | 0.8100 |  | 0.5177 |  |
+| assist2012 | temporal | simplekt | 0.5015 |  | 0.5771 |  | 1.0974 |  | 0.5538 |  |
 | assist_bkt_test | learner_based | bkt | 0.4981 | 0.0010 | 0.3040 | 0.0030 | 25.0209 | 0.0953 | 0.8336 | 0.0016 |
 | assist_bkt_test | temporal | bkt | 0.4850 | 0.0000 | 0.3454 | 0.0000 | 22.2080 | 0.0000 | 0.8004 | 0.0000 |
 | assist_gpu_test | learner_based | bkt | 0.4981 | 0.0010 | 0.3040 | 0.0030 | 25.0209 | 0.0953 | 0.8336 | 0.0016 |
@@ -58,21 +60,19 @@ Source file: `results/tables/overall_results_summary.csv`
 | assist_gpu_test | temporal | bkt | 0.4850 | 0.0000 | 0.3454 | 0.0000 | 22.2080 | 0.0000 | 0.8004 | 0.0000 |
 | assist_gpu_test | temporal | dkt | 0.5015 | 0.0027 | 0.6404 | 0.0015 | 0.9284 | 0.0069 | 0.5303 | 0.0014 |
 | assist_gpu_test | temporal | simplekt | 0.4948 | 0.0040 | 0.6233 | 0.0025 | 1.4291 | 0.0170 | 0.5641 | 0.0012 |
+| junyi | learner_based | bkt | 0.5000 |  | 0.2961 |  | 25.3729 |  | 0.8390 |  |
 | junyi | learner_based | dkt | 0.7326 |  | 0.7333 |  | 0.5442 |  | 0.4253 |  |
+| junyi | learner_based | simplekt | 0.7267 |  | 0.7286 |  | 0.5951 |  | 0.4320 |  |
+| junyi | temporal | bkt | 0.5001 |  | 0.3012 |  | 25.1775 |  | 0.8359 |  |
+| junyi | temporal | dkt | 0.5003 |  | 0.6237 |  | 0.8316 |  | 0.5165 |  |
+| junyi | temporal | simplekt | 0.4998 |  | 0.5999 |  | 0.9903 |  | 0.5317 |  |
 | junyi_bkt_test | learner_based | bkt | 0.4990 | 0.0031 | 0.3963 | 0.0109 | 21.6806 | 0.3084 | 0.7762 | 0.0059 |
 | junyi_bkt_test | temporal | bkt | 0.5026 | 0.0000 | 0.3966 | 0.0000 | 21.7209 | 0.0000 | 0.7771 | 0.0000 |
 | xes3g5m | learner_based | bkt | 0.5000 |  | 0.4178 |  | 20.9837 |  | 0.7630 |  |
 | xes3g5m | learner_based | dkt | 0.9176 |  | 0.8657 |  | 0.3129 |  | 0.3121 |  |
 | xes3g5m | learner_based | simplekt | 0.8889 |  | 0.8444 |  | 0.4922 |  | 0.3510 |  |
-| xes3g5m | temporal | bkt | 0.5000 |  | 0.3373 |  | 22.4015 |  | 0.8214 |  |
-| xes3g5m | temporal | dkt | 0.4992 |  | 0.6599 |  | 0.8683 |  | 0.4925 |  |
-| xes3g5m | temporal | simplekt | 0.4997 |  | 0.6551 |  | 1.2517 |  | 0.5207 |  |
-| xes_bkt_test | learner_based | bkt | 0.5013 | 0.0003 | 0.3229 | 0.0204 | 24.3932 | 0.7311 | 0.8230 | 0.0123 |
-| xes_bkt_test | temporal | bkt | 0.4937 | 0.0000 | 0.3408 | 0.0000 | 22.1637 | 0.0000 | 0.8202 | 0.0000 |
-| xes_dkt_test | learner_based | dkt | 0.8586 | 0.0097 | 0.8475 | 0.0168 | 0.3670 | 0.0251 | 0.3370 | 0.0149 |
-| xes_dkt_test | temporal | dkt | 0.5001 | 0.0012 | 0.6615 | 0.0139 | 0.7095 | 0.0258 | 0.4809 | 0.0082 |
 
-_Showing first 25 of 33 rows._
+_Showing first 25 of 40 rows._
 
 
 ## 4. KC bucket distribution
@@ -85,14 +85,6 @@ Source file: `results/tables/bucket_distribution.csv`
 | assist2012 | learner_based | 0 | medium | 68 |
 | assist2012 | learner_based | 0 | sparse | 39 |
 | assist2012 | learner_based | 0 | very_sparse | 11 |
-| assist2012 | learner_based | 1 | dense | 148 |
-| assist2012 | learner_based | 1 | medium | 67 |
-| assist2012 | learner_based | 1 | sparse | 39 |
-| assist2012 | learner_based | 1 | very_sparse | 11 |
-| assist2012 | learner_based | 2 | dense | 145 |
-| assist2012 | learner_based | 2 | medium | 70 |
-| assist2012 | learner_based | 2 | sparse | 38 |
-| assist2012 | learner_based | 2 | very_sparse | 12 |
 | assist2012 | temporal | 0 | dense | 145 |
 | assist2012 | temporal | 0 | medium | 35 |
 | assist2012 | temporal | 0 | sparse | 35 |
@@ -106,8 +98,16 @@ Source file: `results/tables/bucket_distribution.csv`
 | assist_bkt_test | learner_based | 1 | sparse | 55 |
 | assist_bkt_test | learner_based | 1 | very_sparse | 113 |
 | assist_bkt_test | learner_based | 2 | dense | 12 |
+| assist_bkt_test | learner_based | 2 | medium | 59 |
+| assist_bkt_test | learner_based | 2 | sparse | 54 |
+| assist_bkt_test | learner_based | 2 | very_sparse | 113 |
+| assist_bkt_test | temporal | 0 | dense | 13 |
+| assist_bkt_test | temporal | 0 | medium | 50 |
+| assist_bkt_test | temporal | 0 | sparse | 53 |
+| assist_bkt_test | temporal | 0 | very_sparse | 122 |
+| assist_gpu_test | learner_based | 0 | dense | 12 |
 
-_Showing first 25 of 117 rows._
+_Showing first 25 of 115 rows._
 
 
 ## 5. Sparse-concept performance metrics
@@ -116,6 +116,24 @@ Source file: `results/tables/metric_per_bucket_summary.csv`
 
 | dataset | split_mode | model | bucket | auc_mean | auc_std | acc_mean | acc_std | nll_mean | nll_std | rmse_mean | rmse_std | n_events_sum | n_kcs_first |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| junyi | learner_based | bkt | dense | 0.5000 |  | 0.2959 |  | 25.3797 |  | 0.8391 |  | 3264405 | 1293 |
+| junyi | learner_based | bkt | medium | 0.5000 |  | 0.4307 |  | 20.5190 |  | 0.7545 |  | 4617 | 33 |
+| junyi | learner_based | dkt | dense | 0.7328 |  | 0.7335 |  | 0.5436 |  | 0.4251 |  | 3264405 | 1293 |
+| junyi | learner_based | dkt | medium | 0.6195 |  | 0.5922 |  | 0.9972 |  | 0.5459 |  | 4617 | 33 |
+| junyi | learner_based | simplekt | dense | 0.7267 |  | 0.7287 |  | 0.5950 |  | 0.4319 |  | 3264405 | 1293 |
+| junyi | learner_based | simplekt | medium | 0.7067 |  | 0.6556 |  | 0.6659 |  | 0.4737 |  | 4617 | 33 |
+| junyi | temporal | bkt | dense | 0.5000 |  | 0.2932 |  | 25.4683 |  | 0.8407 |  | 3072767 | 1235 |
+| junyi | temporal | bkt | medium | 0.5001 |  | 0.4554 |  | 19.6252 |  | 0.7380 |  | 151597 | 78 |
+| junyi | temporal | bkt | sparse | 0.4999 |  | 0.3599 |  | 23.0573 |  | 0.8000 |  | 16206 | 6 |
+| junyi | temporal | bkt | very_sparse | 0.5000 |  | 0.4797 |  | 18.7544 |  | 0.7213 |  | 2545 | 4 |
+| junyi | temporal | dkt | dense | 0.5002 |  | 0.6286 |  | 0.8215 |  | 0.5133 |  | 3072767 | 1235 |
+| junyi | temporal | dkt | medium | 0.5041 |  | 0.5312 |  | 1.0214 |  | 0.5742 |  | 151597 | 78 |
+| junyi | temporal | dkt | sparse | 0.4958 |  | 0.5869 |  | 0.9149 |  | 0.5417 |  | 16206 | 6 |
+| junyi | temporal | dkt | very_sparse | 0.4762 |  | 0.4986 |  | 1.1290 |  | 0.5997 |  | 2545 | 4 |
+| junyi | temporal | simplekt | dense | 0.4996 |  | 0.6038 |  | 0.9776 |  | 0.5289 |  | 3072767 | 1235 |
+| junyi | temporal | simplekt | medium | 0.5036 |  | 0.5260 |  | 1.2282 |  | 0.5826 |  | 151597 | 78 |
+| junyi | temporal | simplekt | sparse | 0.4909 |  | 0.5697 |  | 1.1206 |  | 0.5553 |  | 16206 | 6 |
+| junyi | temporal | simplekt | very_sparse | 0.4931 |  | 0.4931 |  | 1.3210 |  | 0.6041 |  | 2545 | 4 |
 | junyi_bkt_test | learner_based | bkt | medium | 0.5000 |  | 0.3570 |  | 23.1759 |  | 0.8019 |  | 6597 | 153 |
 | junyi_bkt_test | learner_based | bkt | sparse | 0.5000 |  | 0.4080 |  | 21.3376 |  | 0.7694 |  | 9902 | 726 |
 | junyi_bkt_test | learner_based | bkt | very_sparse | 0.4397 |  | 0.4048 |  | 18.3959 |  | 0.7346 |  | 1264 | 360 |
@@ -144,6 +162,21 @@ Source file: `results/tables/ece_per_bucket.csv`
 | junyi_bkt_test | temporal | bkt | 42 | medium | 0.6546 | 5780 | 15 |
 | junyi_bkt_test | temporal | bkt | 42 | sparse | 0.5834 | 10589 | 15 |
 | junyi_bkt_test | temporal | bkt | 42 | very_sparse | 0.5684 | 1391 | 15 |
+| junyi | learner_based | bkt | 42 | dense | 0.7041 | 3264405 | 15 |
+| junyi | learner_based | bkt | 42 | medium | 0.5693 | 4617 | 15 |
+| junyi | learner_based | dkt | 42 | dense | 0.0405 | 3264405 | 15 |
+| junyi | learner_based | dkt | 42 | medium | 0.2354 | 4617 | 15 |
+| junyi | learner_based | simplekt | 42 | dense | 0.0757 | 3264405 | 15 |
+| junyi | learner_based | simplekt | 42 | medium | 0.0905 | 4617 | 15 |
+| junyi | temporal | bkt | 42 | dense | 0.7068 | 3072767 | 15 |
+| junyi | temporal | bkt | 42 | medium | 0.5446 | 151597 | 15 |
+| junyi | temporal | bkt | 42 | sparse | 0.6398 | 16206 | 15 |
+| junyi | temporal | bkt | 42 | very_sparse | 0.5203 | 2545 | 15 |
+| junyi | temporal | dkt | 42 | dense | 0.1935 | 3072767 | 15 |
+| junyi | temporal | dkt | 42 | medium | 0.2526 | 151597 | 15 |
+| junyi | temporal | dkt | 42 | sparse | 0.2139 | 16206 | 15 |
+
+_Showing first 25 of 30 rows._
 
 ### 6.2. Brier decomposition
 
@@ -151,6 +184,24 @@ Source file: `results/tables/brier_decomposition_summary.csv`
 
 | dataset | split_mode | model | bucket | brier_mean | brier_std | uncertainty_mean | reliability_mean | resolution_mean |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| junyi | learner_based | bkt | dense | 0.7041 |  | 0.2083 | 0.4958 | 0.0000 |
+| junyi | learner_based | bkt | medium | 0.5693 |  | 0.2452 | 0.3241 | 0.0000 |
+| junyi | learner_based | dkt | dense | 0.1807 |  | 0.2081 | 0.0024 | 0.0296 |
+| junyi | learner_based | dkt | medium | 0.2980 |  | 0.2452 | 0.0643 | 0.0110 |
+| junyi | learner_based | simplekt | dense | 0.1866 |  | 0.2081 | 0.0074 | 0.0288 |
+| junyi | learner_based | simplekt | medium | 0.2244 |  | 0.2452 | 0.0112 | 0.0313 |
+| junyi | temporal | bkt | dense | 0.7068 |  | 0.2071 | 0.4998 | 0.0000 |
+| junyi | temporal | bkt | medium | 0.5446 |  | 0.2480 | 0.2966 | 0.0000 |
+| junyi | temporal | bkt | sparse | 0.6399 |  | 0.2303 | 0.4096 | 0.0000 |
+| junyi | temporal | bkt | very_sparse | 0.5203 |  | 0.2496 | 0.2707 | 0.0000 |
+| junyi | temporal | dkt | dense | 0.2635 |  | 0.2070 | 0.0561 | 0.0000 |
+| junyi | temporal | dkt | medium | 0.3297 |  | 0.2479 | 0.0813 | 0.0000 |
+| junyi | temporal | dkt | sparse | 0.2935 |  | 0.2306 | 0.0628 | 0.0005 |
+| junyi | temporal | dkt | very_sparse | 0.3597 |  | 0.2498 | 0.1097 | 0.0009 |
+| junyi | temporal | simplekt | dense | 0.2797 |  | 0.2070 | 0.0723 | 0.0000 |
+| junyi | temporal | simplekt | medium | 0.3394 |  | 0.2479 | 0.0912 | 0.0000 |
+| junyi | temporal | simplekt | sparse | 0.3084 |  | 0.2306 | 0.0776 | 0.0002 |
+| junyi | temporal | simplekt | very_sparse | 0.3649 |  | 0.2498 | 0.1169 | 0.0016 |
 | junyi_bkt_test | learner_based | bkt | medium | 0.6430 |  | 0.2296 | 0.4134 | 0.0000 |
 | junyi_bkt_test | learner_based | bkt | sparse | 0.5920 |  | 0.2415 | 0.3505 | 0.0000 |
 | junyi_bkt_test | learner_based | bkt | very_sparse | 0.5397 |  | 0.2477 | 0.3000 | 0.0080 |
@@ -186,6 +237,17 @@ Source file: `results/tables/cold_start_results.csv`
 | junyi_bkt_test | temporal | bkt | 42 | k5 | 174 | 0.5000 | 0.3871 | 22.0913 | 0.6129 | 0.6129 | 0.3757 | 0.0000 |
 | junyi_bkt_test | temporal | bkt | 42 | k10 | 511 | 0.5128 | 0.4242 | 20.7629 | 0.5833 | 0.5795 | 0.3404 | 0.0026 |
 | junyi_bkt_test | temporal | bkt | 42 | warm | 17249 | 0.5023 | 0.3957 | 21.7503 | 0.6050 | 0.6046 | 0.3664 | 0.0002 |
+| junyi | learner_based | bkt | 42 | warm | 3269022 | 0.5000 | 0.2961 | 25.3729 | 0.7039 | 0.7039 | 0.4955 | 0.0000 |
+| junyi | learner_based | dkt | 42 | warm | 3269022 | 0.7326 | 0.7333 | 0.5442 | 0.0408 | 0.1808 | 0.0024 | 0.0296 |
+| junyi | learner_based | simplekt | 42 | warm | 3269022 | 0.7267 | 0.7286 | 0.5951 | 0.0757 | 0.1866 | 0.0074 | 0.0288 |
+| junyi | temporal | bkt | 42 | strict | 2545 | 0.5000 | 0.4797 | 18.7544 | 0.5203 | 0.5203 | 0.2707 | 0.0000 |
+| junyi | temporal | bkt | 42 | k5 | 2545 | 0.5000 | 0.4797 | 18.7544 | 0.5203 | 0.5203 | 0.2707 | 0.0000 |
+| junyi | temporal | bkt | 42 | k10 | 2545 | 0.5000 | 0.4797 | 18.7544 | 0.5203 | 0.5203 | 0.2707 | 0.0000 |
+| junyi | temporal | bkt | 42 | warm | 3240570 | 0.5001 | 0.3011 | 25.1825 | 0.6988 | 0.6989 | 0.4886 | 0.0000 |
+| junyi | temporal | dkt | 42 | strict | 2545 | 0.4762 | 0.4986 | 1.1290 | 0.2905 | 0.3597 | 0.1097 | 0.0009 |
+| junyi | temporal | dkt | 42 | k5 | 2545 | 0.4762 | 0.4986 | 1.1290 | 0.2905 | 0.3597 | 0.1097 | 0.0009 |
+
+_Showing first 25 of 31 rows._
 
 
 ## 9. Sensitivity analysis
@@ -220,7 +282,7 @@ Source file: `results/tables/sensitivity_analysis.csv`
 | junyi_bkt_test | temporal | bkt | 2024 | Alt_2 | very_sparse | 0.5050 | 0.5609 | 0.5595 | 2579 |
 | junyi_bkt_test | temporal | bkt | 2024 | Alt_Quantile | dense | 0.5023 | 0.6144 | 0.6140 | 9817 |
 
-_Showing first 25 of 56 rows._
+_Showing first 25 of 137 rows._
 
 
 ## 10. Leakage audit L1-L7
