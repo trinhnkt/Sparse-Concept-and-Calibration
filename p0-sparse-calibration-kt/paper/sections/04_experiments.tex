@@ -2,45 +2,32 @@
 \label{sec:experiments}
 
 \subsection{Datasets}
-The minimal experimental setting uses \todo{ASSISTments 2012} and \todo{Junyi Academy}. An optional extension can include \todo{XES3G5M} if the pipeline is stable. Table~\ref{tab:datasets} reports dataset statistics after preprocessing.
+The experimental setting uses ASSISTments 2012, Junyi Academy, and XES3G5M. Table~\ref{tab:datasets} reports dataset statistics after preprocessing.
 
-\input{tables/table_dataset_statistics}
+\input{tables/table1_dataset_stats}
 
 \subsection{Baselines}
-The minimal baseline set includes BKT, DKT, and either simpleKT or AKT. Additional baselines such as DKVMN or sparseKT may be added in an extended version. Hyperparameters should follow benchmark defaults unless explicitly justified. Model selection must use validation data only.
+The baseline set includes BKT, DKT, and SimpleKT. Hyperparameters follow benchmark defaults. Model selection uses validation data only.
 
 \subsection{Overall Baseline Diagnostics}
 Table~\ref{tab:overall} reports aggregate metrics. These metrics are used to verify that the pipeline runs correctly; they are not the sole basis for conclusions.
 
-\input{tables/table_overall_results}
+\input{tables/table3_overall_results}
 
 \subsection{Sparse-concept Diagnostics}
 Table~\ref{tab:strata_performance} reports AUC, accuracy, and NLL by KC-frequency stratum. The expected diagnostic question is whether aggregate results hide degradation on sparse and very sparse KCs.
 
-\input{tables/table_strata_performance}
+\input{tables/table4_metric_per_bucket}
 
 \subsection{Calibration by KC Stratum}
-Table~\ref{tab:calibration} reports ECE and Brier decomposition by stratum. Reliability diagrams should be generated for selected model--dataset pairs.
+Table~\ref{tab:calibration} reports ECE and Brier decomposition by stratum. Reliability diagrams are generated for selected model--dataset pairs in the artifact folder.
 
-\input{tables/table_calibration_results}
-
-\begin{figure}[t]
-\centering
-\fbox{\begin{minipage}{0.95\linewidth}
-\centering
-\vspace{0.3in}
-\textbf{Placeholder for reliability diagrams}\par
-\small Replace with a figure showing dense vs. sparse KC reliability curves.\par
-\vspace{0.3in}
-\end{minipage}}
-\caption{Reliability diagrams by KC stratum. The diagonal line represents perfect calibration. The final figure should include sample sizes per bin or per panel.}
-\label{fig:reliability}
-\end{figure}
+\input{tables/table5_calibration_per_bucket}
 
 \subsection{Limited Cold-start Concept Diagnostics}
 We define limited cold-start KCs using a pre-registered threshold $k$ such as $k=10$. Table~\ref{tab:coldstart} compares cold-start and warm KC groups.
 
-\input{tables/table_cold_start}
+\input{tables/table6_cold_start_results}
 
 \subsection{Threshold Sensitivity}
-To ensure that conclusions do not depend on a single bucket definition, we repeat the diagnostic analysis with alternative thresholds, such as $\{10,50,250\}$, $\{30,150,750\}$, and quantile-based thresholds. Results can be reported in Appendix~\ref{app:sensitivity}.
+To ensure that conclusions do not depend on a single bucket definition, we repeat the diagnostic analysis with alternative thresholds. Results are reported in Appendix~\ref{app:sensitivity}.

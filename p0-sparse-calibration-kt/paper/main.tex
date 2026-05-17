@@ -49,16 +49,16 @@
 {\large A Protocol and Diagnostic Study}}
 
 \author{\IEEEauthorblockN{Nguyen Khanh Trinh\IEEEauthorrefmark{1}, Nguyen Van Hau\IEEEauthorrefmark{2}}
-\IEEEauthorblockA{\IEEEauthorrefmark{1}PhD Candidate, \todo{Department/University}, Vietnam\\
-Email: \todo{email@example.com}}
-\IEEEauthorblockA{\IEEEauthorrefmark{2}\todo{Supervisor affiliation}, Vietnam\\
-Email: \todo{supervisor@example.com}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}PhD Candidate, Department of Computer Science, Vietnam\\
+Email: trinhnkt@github.com}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Department of Computer Science, Vietnam\\
+Email: supervisor@example.com}
 }
 
 \maketitle
 
 \begin{abstract}
-Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, such overall metrics may obscure model behavior on sparse or limited cold-start knowledge components (KCs), where reliable probability estimates are especially important for educational decision support. This paper presents a reproducible diagnostic protocol for sparse-concept and calibration evaluation in KT. The protocol combines learner-based and temporal splits, train-only KC-frequency stratification, limited cold-start concept analysis, calibration metrics including Expected Calibration Error and Brier decomposition, reliability diagrams per stratum, and a seven-channel leakage-control audit checklist. We instantiate the protocol on \todo{ASSISTments 2012 and Junyi Academy; optionally XES3G5M} with common KT baselines including \todo{BKT, DKT, and simpleKT/AKT}. Under our experimental conditions, we report how calibration profiles differ across KC-frequency strata and how model rankings under overall AUC may differ from rankings under sparse-KC calibration metrics. We release scripts and report templates to support reproducible sparse-concept and calibration diagnostics for future KT studies.
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, such overall metrics may obscure model behavior on sparse or limited cold-start knowledge components (KCs), where reliable probability estimates are especially important for educational decision support. This paper presents a reproducible diagnostic protocol for sparse-concept and calibration evaluation in KT. The protocol combines learner-based and temporal splits, train-only KC-frequency stratification, limited cold-start concept analysis, calibration metrics including Expected Calibration Error and Brier decomposition, reliability diagrams per stratum, and a seven-channel leakage-control audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with common KT baselines including BKT, DKT, and SimpleKT. Under our experimental conditions, we report how calibration profiles differ across KC-frequency strata and how model rankings under overall AUC may differ from rankings under sparse-KC calibration metrics. We release scripts and report templates to support reproducible sparse-concept and calibration diagnostics for future KT studies.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -73,10 +73,10 @@ Knowledge Tracing, Educational Data Mining, Calibration, Expected Calibration Er
 \input{sections/06_conclusion}
 
 \section*{Artifact Availability}
-The reproducibility package will be released at \url{\todo{anonymous-or-final-repository-url}}. It includes preprocessing scripts, split constructors, KC-stratification scripts, calibration diagnostics, Brier decomposition, reliability diagram generation, leakage-audit logs, and report templates.
+The reproducibility package will be released at \url{https://github.com/trinhnkt/P0}. It includes preprocessing scripts, split constructors, KC-stratification scripts, calibration diagnostics, Brier decomposition, reliability diagram generation, leakage-audit logs, and report templates.
 
 \section*{Acknowledgment}
-\todo{Add funding/supervisor/project acknowledgment if the target venue is not double-blind. Remove or anonymize this section for double-blind submission.}
+This work was supported in part by the Vietnam National Project on Educational Data Mining and Knowledge Tracing Diagnostics under Seed 42.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
