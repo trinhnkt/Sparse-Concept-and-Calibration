@@ -3,15 +3,15 @@
 \label{tab:leakage}
 \begin{tabular}{lllll}
 \toprule
-channel & description & evidence_file & status & notes \\
+channel & description & evidence\_file & status & notes \\
 \midrule
-L1 & Split leakage (user overlap, temporal order) & logs/split_audit.csv & PASS & No user overlap or temporal inversions detected \\
+L1 & Split leakage (user overlap, temporal order) & logs/split\_audit.csv & PASS & No user overlap or temporal inversions detected \\
 L2 & Preprocessing leakage (transformations fit scope) & src/preprocess.py & PASS & No global normalization detected \\
-L3 & Q-matrix / KC mapping leakage & data/processed/assist2012/kc_map.json & PASS & Static mapping from dataset \\
-L4 & Sparse-bucket leakage & results/tables/kc_strata.csv & PASS & Bucket assignment is strictly based on training frequency \\
-L5 & Calibration leakage (test-based tuning) & src/baseline_runner.py & PASS & No post-hoc tuning on test set \\
-L6 & Hyperparameter leakage (model selection) & src/baseline_runner.py & PASS & Validation-based selection only \\
-L7 & Cold-start leakage & src/three_split_constructor.py & PASS & Classification uses train_freq only \\
+L3 & Q-matrix / KC mapping leakage & data/processed/assist2012/kc\_map.json & PASS & Static mapping from dataset \\
+L4 & Sparse-bucket leakage & results/tables/kc\_strata.csv & PASS & Bucket assignment is strictly based on training frequency \\
+L5 & Calibration leakage (test-based tuning) & src/baseline\_runner.py & PASS & No post-hoc tuning on test set \\
+L6 & Hyperparameter leakage (model selection) & src/baseline\_runner.py & PASS & Validation-based selection only \\
+L7 & Cold-start leakage & src/three\_split\_constructor.py & PASS & Classification uses train\_freq only \\
 \bottomrule
 \end{tabular}
 \end{table}

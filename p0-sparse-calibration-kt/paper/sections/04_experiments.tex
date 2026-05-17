@@ -4,13 +4,13 @@
 \subsection{Datasets}
 The experimental setting uses ASSISTments 2012, Junyi Academy, and XES3G5M. Table~\ref{tab:datasets} reports dataset statistics after preprocessing.
 
-\input{tables/table1_dataset_stats}
+\input{tables/table1\_dataset\_stats}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.9\linewidth]{figures/figure2_bucket_distribution.pdf}
+\includegraphics[width=0.9\linewidth]{figures/figure2\_bucket\_distribution.pdf}
 \caption{KC-frequency strata distribution across datasets. The long-tail behavior shows that a significant proportion of KCs are concentrated in the sparse and very sparse strata, highlighting the importance of separate diagnostics.}
-\label{fig:strata_dist}
+\label{fig:strata\_dist}
 \end{figure}
 
 \subsection{Baselines}
@@ -19,41 +19,41 @@ The baseline set includes BKT, DKT, and SimpleKT. Hyperparameters follow benchma
 \subsection{Overall Baseline Diagnostics}
 Table~\ref{tab:overall} reports aggregate metrics. These metrics are used to verify that the pipeline runs correctly; they are not the sole basis for conclusions.
 
-\input{tables/table3_overall_results}
+\input{tables/table3\_overall\_results}
 
 \subsection{Sparse-concept Diagnostics}
-Table~\ref{tab:strata_performance} reports AUC, accuracy, and NLL by KC-frequency stratum. The expected diagnostic question is whether aggregate results hide degradation on sparse and very sparse KCs.
+Table~\ref{tab:strata\_performance} reports AUC, accuracy, and NLL by KC-frequency stratum. The expected diagnostic question is whether aggregate results hide degradation on sparse and very sparse KCs.
 
-\input{tables/table4_metric_per_bucket}
+\input{tables/table4\_metric\_per\_bucket}
 
 \subsection{Calibration by KC Stratum}
 Table~\ref{tab:calibration} reports ECE and Brier decomposition by stratum. 
 
-\input{tables/table5_calibration_per_bucket}
+\input{tables/table5\_calibration\_per\_bucket}
 
 \begin{figure*}[t]
 \centering
 \begin{minipage}{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth]{figures/junyi_temporal_simplekt_dense.pdf}
+\includegraphics[width=\linewidth]{figures/junyi\_temporal\_simplekt\_dense.pdf}
 \caption{Reliability diagram of SimpleKT on Junyi temporal split for Dense KCs.}
-\label{fig:reliability_dense}
+\label{fig:reliability\_dense}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\linewidth}
 \centering
-\includegraphics[width=\linewidth]{figures/junyi_temporal_simplekt_very_sparse.pdf}
+\includegraphics[width=\linewidth]{figures/junyi\_temporal\_simplekt\_very\_sparse.pdf}
 \caption{Reliability diagram of SimpleKT on Junyi temporal split for Very Sparse KCs.}
-\label{fig:reliability_sparse}
+\label{fig:reliability\_sparse}
 \end{minipage}
 \caption{Comparison of reliability curves between Dense and Very Sparse KCs for SimpleKT on Junyi. The diagonal dashed line represents perfect calibration. The deviation in the very sparse strata highlights the calibration degradation on low-frequency concepts.}
-\label{fig:reliability_comparison}
+\label{fig:reliability\_comparison}
 \end{figure>
 
 \subsection{Limited Cold-start Concept Diagnostics}
 We define limited cold-start KCs using a pre-registered threshold $k$ such as $k=10$. Table~\ref{tab:coldstart} compares cold-start and warm KC groups.
 
-\input{tables/table6_cold_start_results}
+\input{tables/table6\_cold\_start\_results}
 
 \subsection{Threshold Sensitivity}
 To ensure that conclusions do not depend on a single bucket definition, we repeat the diagnostic analysis with alternative thresholds. Results are reported in Appendix~\ref{app:sensitivity}.
