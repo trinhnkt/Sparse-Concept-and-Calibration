@@ -1,0 +1,87 @@
+% -----------------------------------------------------------------------------
+% IEEE Conference LaTeX Template for P0 Paper
+% Title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+% Recommended compiler on Overleaf: pdfLaTeX
+% -----------------------------------------------------------------------------
+\documentclass[conference]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+
+% ----- Packages -----
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+
+% ----- Code listing style -----
+\lstdefinestyle{p0style}{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2
+}
+\lstset{style=p0style}
+
+% ----- Macros -----
+\newcommand{\pzero}{P0}
+\newcommand{\kt}{Knowledge Tracing}
+\newcommand{\kc}{Knowledge Component}
+\newcommand{\kcs}{Knowledge Components}
+\newcommand{\ece}{\mathrm{ECE}}
+\newcommand{\brier}{\mathrm{Brier}}
+\newcommand{\unc}{\mathrm{UNC}}
+\newcommand{\rel}{\mathrm{REL}}
+\newcommand{\res}{\mathrm{RES}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\begin{document}
+
+\title{Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing\\
+{\large A Protocol and Diagnostic Study}}
+
+\author{\IEEEauthorblockN{Nguyen Khanh Trinh\IEEEauthorrefmark{1}, Nguyen Van Hau\IEEEauthorrefmark{2}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}PhD Candidate, \todo{Department/University}, Vietnam\\
+Email: \todo{email@example.com}}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}\todo{Supervisor affiliation}, Vietnam\\
+Email: \todo{supervisor@example.com}}
+}
+
+\maketitle
+
+\begin{abstract}
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, such overall metrics may obscure model behavior on sparse or limited cold-start knowledge components (KCs), where reliable probability estimates are especially important for educational decision support. This paper presents a reproducible diagnostic protocol for sparse-concept and calibration evaluation in KT. The protocol combines learner-based and temporal splits, train-only KC-frequency stratification, limited cold-start concept analysis, calibration metrics including Expected Calibration Error and Brier decomposition, reliability diagrams per stratum, and a seven-channel leakage-control audit checklist. We instantiate the protocol on \todo{ASSISTments 2012 and Junyi Academy; optionally XES3G5M} with common KT baselines including \todo{BKT, DKT, and simpleKT/AKT}. Under our experimental conditions, we report how calibration profiles differ across KC-frequency strata and how model rankings under overall AUC may differ from rankings under sparse-KC calibration metrics. We release scripts and report templates to support reproducible sparse-concept and calibration diagnostics for future KT studies.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Knowledge Tracing, Educational Data Mining, Calibration, Expected Calibration Error, Brier Score, Sparse Concepts, Cold-start Knowledge Components, Reproducibility
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_protocol}
+\input{sections/04_experiments}
+\input{sections/05_discussion_limitations}
+\input{sections/06_conclusion}
+
+\section*{Artifact Availability}
+The reproducibility package will be released at \url{\todo{anonymous-or-final-repository-url}}. It includes preprocessing scripts, split constructors, KC-stratification scripts, calibration diagnostics, Brier decomposition, reliability diagram generation, leakage-audit logs, and report templates.
+
+\section*{Acknowledgment}
+\todo{Add funding/supervisor/project acknowledgment if the target venue is not double-blind. Remove or anonymize this section for double-blind submission.}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\appendices
+\input{appendix/appendix_a_sensitivity}
+
+\end{document}

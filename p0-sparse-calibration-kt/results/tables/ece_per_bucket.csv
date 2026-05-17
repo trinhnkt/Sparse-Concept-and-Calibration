@@ -1,0 +1,13 @@
+dataset,split_mode,model,seed,bucket,ece,n_events,n_bins
+junyi_bkt_test,learner_based,bkt,42,medium,0.6429942418426103,6597,15
+junyi_bkt_test,learner_based,bkt,42,sparse,0.5919923736892279,9902,15
+junyi_bkt_test,learner_based,bkt,42,very_sparse,0.5317460317460317,1264,15
+junyi_bkt_test,temporal,bkt,2024,medium,0.6546242774566473,5780,15
+junyi_bkt_test,temporal,bkt,2024,sparse,0.5833956619296933,10589,15
+junyi_bkt_test,temporal,bkt,2024,very_sparse,0.5684210526315789,1391,15
+junyi_bkt_test,temporal,bkt,2025,medium,0.6546242774566473,5780,15
+junyi_bkt_test,temporal,bkt,2025,sparse,0.5833956619296933,10589,15
+junyi_bkt_test,temporal,bkt,2025,very_sparse,0.5684210526315789,1391,15
+junyi_bkt_test,temporal,bkt,42,medium,0.6546242774566473,5780,15
+junyi_bkt_test,temporal,bkt,42,sparse,0.5833956619296933,10589,15
+junyi_bkt_test,temporal,bkt,42,very_sparse,0.5684210526315789,1391,15

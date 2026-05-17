@@ -1,0 +1,34 @@
+\begin{table}
+\caption{Overall Performance}
+\label{tab:overall}
+\begin{tabular}{lllrrrr}
+\toprule
+dataset & split_mode & model & auc_mean & acc_mean & nll_mean & rmse_mean \\
+\midrule
+assist2012 & learner_based & bkt & 0.499995 & 0.289564 & 25.606607 & 0.842872 \\
+assist2012 & temporal & bkt & 0.500010 & 0.312473 & 24.745778 & 0.829051 \\
+assist_bkt_test & learner_based & bkt & 0.498057 & 0.304034 & 25.020901 & 0.833643 \\
+assist_bkt_test & temporal & bkt & 0.484985 & 0.345436 & 22.208033 & 0.800350 \\
+assist_gpu_test & learner_based & bkt & 0.498057 & 0.304034 & 25.020901 & 0.833643 \\
+assist_gpu_test & learner_based & dkt & 0.545128 & 0.649075 & 0.996919 & 0.524519 \\
+assist_gpu_test & learner_based & simplekt & 0.554456 & 0.633878 & 1.442052 & 0.555118 \\
+assist_gpu_test & temporal & bkt & 0.484985 & 0.345436 & 22.208033 & 0.800350 \\
+assist_gpu_test & temporal & dkt & 0.501472 & 0.640422 & 0.928420 & 0.530322 \\
+assist_gpu_test & temporal & simplekt & 0.494816 & 0.623266 & 1.429119 & 0.564080 \\
+junyi_bkt_test & learner_based & bkt & 0.498955 & 0.396345 & 21.680650 & 0.776214 \\
+junyi_bkt_test & temporal & bkt & 0.502565 & 0.396575 & 21.720902 & 0.777094 \\
+xes_bkt_test & learner_based & bkt & 0.501337 & 0.322856 & 24.393195 & 0.823046 \\
+xes_bkt_test & temporal & bkt & 0.493736 & 0.340788 & 22.163721 & 0.820240 \\
+xes_dkt_test & learner_based & dkt & 0.858555 & 0.847467 & 0.366974 & 0.337038 \\
+xes_dkt_test & temporal & dkt & 0.500089 & 0.661547 & 0.709461 & 0.480928 \\
+xes_gpu_test & learner_based & bkt & 0.501337 & 0.322856 & 24.393195 & 0.823046 \\
+xes_gpu_test & learner_based & dkt & 0.858555 & 0.847467 & 0.366974 & 0.337038 \\
+xes_gpu_test & learner_based & simplekt & 0.867205 & 0.840991 & 0.380027 & 0.342156 \\
+xes_gpu_test & temporal & bkt & 0.493736 & 0.340788 & 22.163721 & 0.820240 \\
+xes_gpu_test & temporal & dkt & 0.500089 & 0.661547 & 0.709461 & 0.480928 \\
+xes_gpu_test & temporal & simplekt & 0.504334 & 0.593147 & 0.807343 & 0.519893 \\
+xes_simplekt_test & learner_based & simplekt & 0.867312 & 0.840968 & 0.379641 & 0.342113 \\
+xes_simplekt_test & temporal & simplekt & 0.504272 & 0.595094 & 0.805976 & 0.519322 \\
+\bottomrule
+\end{tabular}
+\end{table}

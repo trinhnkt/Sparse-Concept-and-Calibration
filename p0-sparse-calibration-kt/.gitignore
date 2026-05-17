@@ -1,0 +1,39 @@
+# Data and datasets (large files)
+data/
+data/raw/
+data/processed/
+data/sample/
+
+# Predictions (large files)
+results/predictions/
+
+# Python environment & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# System / IDE settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Saved weights / Models
+*.pt
+*.pth
+*.pkl
+*.bin
+
+# Log files
+logs/
+*.log
+*.csv.log

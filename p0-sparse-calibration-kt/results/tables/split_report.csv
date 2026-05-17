@@ -1,0 +1,6 @@
+dataset,split_mode,fold,n_train,n_valid,n_test,status,violation_count
+assist2012,learner_based,0,1865217,258123,534150,PASS,0.0
+assist2012,temporal,0,1860242,265749,531499,PASS,0.0
+assist2012,cold_start_test_strict,0,1865217,0,0,PASS,0.0
+assist2012,cold_start_test_k5,0,1865217,0,5,PASS,0.0
+assist2012,cold_start_test_k10,0,1865217,0,6,PASS,0.0
