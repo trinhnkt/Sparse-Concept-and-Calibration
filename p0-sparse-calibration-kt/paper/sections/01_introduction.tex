@@ -1,0 +1,16 @@
+\section{Introduction}
+\label{sec:introduction}
+Knowledge Tracing (KT) estimates a learner's evolving mastery state from sequential interactions and predicts future correctness \cite{corbett1994knowledge,piech2015deep,abdelrahman2023knowledge}. Recent KT models, including memory-based, attention-based, and transformer-style variants, are typically compared using aggregate predictive metrics such as AUC and accuracy \cite{zhang2017dynamic,ghosh2020context,liu2023simplekt}. These metrics are useful, but they may hide systematic weaknesses on low-frequency knowledge components (KCs), especially when most test interactions are concentrated on dense, frequently observed KCs.
+
+This issue is not merely a reporting detail. In educational decision support, predicted probabilities can be used to decide whether a learner should receive remediation, practice another item, or progress to a new concept. A model that ranks answers well overall may still be poorly calibrated on sparse or limited cold-start KCs. In such cases, high predicted confidence can be misleading even when the model's aggregate AUC appears competitive. Calibration metrics such as Expected Calibration Error (ECE), Brier score, and reliability diagrams therefore provide a complementary diagnostic view \cite{guo2017calibration,brier1950verification,degroot1983comparison}.
+
+This paper studies KT evaluation as a reproducibility and diagnostic problem. We do not propose a new KT architecture. Instead, we extend standard KT evaluation with train-only KC-frequency stratification, calibration diagnostics per stratum, limited cold-start KC analysis, and a seven-channel leakage audit. This framing is intentionally conservative: the goal is to provide reusable evaluation infrastructure for future KT and structure-aware self-supervised learning studies, rather than to claim state-of-the-art performance.
+
+Our contributions are:
+\begin{itemize}
+    \item We propose a reproducible sparse-concept evaluation protocol for KT using learner-based, temporal, and limited cold-start concept splits, with KC buckets defined only from training-fold frequencies.
+    \item We report calibration diagnostics by KC-frequency stratum using ECE, Brier decomposition, and reliability diagrams, enabling model behavior on sparse KCs to be inspected separately from aggregate AUC.
+    \item We introduce a seven-channel leakage checklist for downstream KT evaluation decisions, covering split construction, preprocessing, Q-matrix provenance, sparse-bucket assignment, calibration setup, hyperparameter selection, and cold-start definition.
+\end{itemize}
+
+The remainder of this paper is organized as follows. Section~\ref{sec:related} reviews KT evaluation, sparse-concept analysis, and calibration. Section~\ref{sec:protocol} presents the diagnostic protocol. Section~\ref{sec:experiments} describes the experimental design and placeholder result tables to be filled after running the pipeline. Section~\ref{sec:discussion} discusses implications and limitations.

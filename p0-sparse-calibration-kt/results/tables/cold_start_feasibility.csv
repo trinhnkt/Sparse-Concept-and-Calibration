@@ -11,6 +11,10 @@ assist2012,learner_based,bkt,42,strict,0,0
 assist2012,learner_based,bkt,42,k5,0,0
 assist2012,learner_based,bkt,42,k10,0,0
 assist2012,learner_based,bkt,42,warm,0,0
+assist2012,learner_based,dkt,42,strict,0,0
+assist2012,learner_based,dkt,42,k5,0,0
+assist2012,learner_based,dkt,42,k10,0,0
+assist2012,learner_based,dkt,42,warm,0,0
 assist2012,temporal,bkt,123,strict,0,0
 assist2012,temporal,bkt,123,k5,0,0
 assist2012,temporal,bkt,123,k10,0,0
@@ -23,6 +27,10 @@ assist2012,temporal,bkt,42,strict,0,0
 assist2012,temporal,bkt,42,k5,0,0
 assist2012,temporal,bkt,42,k10,0,0
 assist2012,temporal,bkt,42,warm,0,0
+assist2012,temporal,dkt,42,strict,0,0
+assist2012,temporal,dkt,42,k5,0,0
+assist2012,temporal,dkt,42,k10,0,0
+assist2012,temporal,dkt,42,warm,0,0
 assist_bkt_test,learner_based,bkt,42,strict,0,0
 assist_bkt_test,learner_based,bkt,42,k5,0,0
 assist_bkt_test,learner_based,bkt,42,k10,0,0

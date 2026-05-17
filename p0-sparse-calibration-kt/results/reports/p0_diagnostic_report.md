@@ -4,7 +4,7 @@
 
 **Report type:** protocol / diagnostic / resource report
 
-**Generated at:** 2026-05-17 10:02:22
+**Generated at:** 2026-05-17 10:41:35
 
 This report summarizes sparse-concept diagnostics, calibration diagnostics, cold-start concept analysis, and leakage auditing for Knowledge Tracing baselines. It does not report results for any new KT model, SSL module, GNN module, path recommendation method, or distillation method.
 
@@ -23,8 +23,8 @@ Source file: `results/tables/dataset_stats.csv`
 | xes_dkt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
 | xes_simplekt_test | 76164 | 76164 | 185 | 5236 | 713 | 411.6973 | 0.4226 |
 | assist2012 | 6123270 | 2657490 | 27806 | 52672 | 265 | 95.5725 | 0.6393 |
-| junyi | 16217311 | 16215567 | 71014 | 25784 | 1326 | 228.3432 | 0.8278 |
 | xes3g5m | 7953709 | 7953709 | 18066 | 7653 | 866 | 440.2584 | 0.4916 |
+| junyi | 16217311 | 16215567 | 71014 | 25784 | 1326 | 228.3432 | 0.8278 |
 
 
 ## 2. Split summary
@@ -47,7 +47,9 @@ Source file: `results/tables/overall_results_summary.csv`
 | dataset | split_mode | model | auc_mean | auc_std | acc_mean | acc_std | nll_mean | nll_std | rmse_mean | rmse_std |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | assist2012 | learner_based | bkt | 0.5000 | 0.0000 | 0.2896 | 0.0005 | 25.6066 | 0.0162 | 0.8429 | 0.0003 |
+| assist2012 | learner_based | dkt | 0.6989 |  | 0.7186 |  | 0.5803 |  | 0.4392 |  |
 | assist2012 | temporal | bkt | 0.5000 | 0.0000 | 0.3125 | 0.0000 | 24.7458 | 0.0000 | 0.8291 | 0.0000 |
+| assist2012 | temporal | dkt | 0.4992 |  | 0.6129 |  | 0.8100 |  | 0.5177 |  |
 | assist_bkt_test | learner_based | bkt | 0.4981 | 0.0010 | 0.3040 | 0.0030 | 25.0209 | 0.0953 | 0.8336 | 0.0016 |
 | assist_bkt_test | temporal | bkt | 0.4850 | 0.0000 | 0.3454 | 0.0000 | 22.2080 | 0.0000 | 0.8004 | 0.0000 |
 | assist_gpu_test | learner_based | bkt | 0.4981 | 0.0010 | 0.3040 | 0.0030 | 25.0209 | 0.0953 | 0.8336 | 0.0016 |
@@ -69,7 +71,8 @@ Source file: `results/tables/overall_results_summary.csv`
 | xes_gpu_test | temporal | dkt | 0.5001 | 0.0012 | 0.6615 | 0.0139 | 0.7095 | 0.0258 | 0.4809 | 0.0082 |
 | xes_gpu_test | temporal | simplekt | 0.5043 | 0.0027 | 0.5931 | 0.0358 | 0.8073 | 0.0553 | 0.5199 | 0.0215 |
 | xes_simplekt_test | learner_based | simplekt | 0.8673 | 0.0060 | 0.8410 | 0.0130 | 0.3796 | 0.0226 | 0.3421 | 0.0121 |
-| xes_simplekt_test | temporal | simplekt | 0.5043 | 0.0028 | 0.5951 | 0.0337 | 0.8060 | 0.0539 | 0.5193 | 0.0206 |
+
+_Showing first 25 of 26 rows._
 
 
 ## 4. KC bucket distribution

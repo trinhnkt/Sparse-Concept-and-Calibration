@@ -1,0 +1,14 @@
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Knowledge Tracing and Benchmarking}
+Bayesian Knowledge Tracing (BKT) models mastery as a latent state for each skill \cite{corbett1994knowledge}. Deep Knowledge Tracing (DKT) introduced recurrent neural networks for KT \cite{piech2015deep}, followed by memory-based and attention-based models such as DKVMN, AKT, and simpleKT \cite{zhang2017dynamic,ghosh2020context,liu2023simplekt}. Benchmarking libraries such as pyKT have improved reproducibility by standardizing preprocessing, sequence handling, and evaluation protocols \cite{liu2022pykt}. This paper builds on that direction but focuses on diagnostics that are usually not reported in aggregate KT benchmarks.
+
+\subsection{Sparse and Cold-start Knowledge Components}
+KT datasets often exhibit long-tail KC-frequency distributions. A small number of dense KCs can dominate the number of interactions, while many KCs have limited training evidence. We distinguish sparse KCs from cold-start users or items in recommender systems. In this paper, a sparse KC is defined by its training-fold interaction count, and limited cold-start KCs are those with training frequency below a pre-registered threshold. This definition is evaluated at the KC level rather than at the user or item level.
+
+\subsection{Calibration and Reliability of Probabilistic Predictions}
+Calibration measures whether predicted probabilities reflect empirical correctness rates. Guo et al. showed that modern neural networks can be miscalibrated even when classification accuracy is high \cite{guo2017calibration}. ECE summarizes the gap between predicted confidence and empirical accuracy across bins. Brier score and its decomposition separate uncertainty, reliability, and resolution components \cite{brier1950verification,degroot1983comparison}. In KT, calibration is especially relevant because predicted mastery probabilities can drive educational interventions.
+
+\subsection{Statistical Testing and Reproducibility}
+When comparing AUC values, DeLong's test provides a standard nonparametric approach for correlated ROC curves \cite{delong1988comparing}. For repeated measurements across seeds or folds, nonparametric alternatives such as Wilcoxon signed-rank tests are often appropriate \cite{demsar2006statistical}. In this paper, statistical tests are treated as supporting evidence; the primary contribution is the diagnostic protocol and reproducible artifact.
