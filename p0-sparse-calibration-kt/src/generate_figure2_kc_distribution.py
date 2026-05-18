@@ -59,7 +59,7 @@ def main():
         ax.set_title(dataset_titles[dataset], fontsize=13, fontweight='bold', pad=10)
         ax.set_ylabel("Number of KCs", fontsize=11)
         ax.set_xlabel("KC Strata", fontsize=11)
-        ax.set_xticklabels(['Very Sparse\n(<=5)', 'Sparse\n(5-20)', 'Medium\n(20-100)', 'Dense\n(>100)'], rotation=0, fontsize=9.5)
+        ax.set_xticklabels(['Very Sparse\n(<20)', 'Sparse\n(20-100)', 'Medium\n(100-500)', 'Dense\n(>=500)'], rotation=0, fontsize=9.5)
         ax.grid(axis='y', linestyle='--', alpha=0.5)
         ax.legend().remove()
         

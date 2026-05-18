@@ -12,3 +12,5 @@ Calibration measures whether predicted probabilities reflect empirical correctne
 
 \subsection{Statistical Testing and Reproducibility}
 When comparing AUC values, DeLong's test provides a standard nonparametric approach for correlated ROC curves \cite{delong1988comparing}. For repeated measurements across seeds or folds, nonparametric alternatives such as Wilcoxon signed-rank tests are often appropriate \cite{demsar2006statistical}. In this paper, statistical tests are treated as supporting evidence; the primary contribution is the diagnostic protocol and reproducible artifact.
+
+Existing KT benchmarks have improved reproducibility by standardizing model comparison, preprocessing, and aggregate evaluation metrics. However, sparse-KC behavior, calibration reliability, and leakage-audited reporting are not yet consistently treated as first-class evaluation outputs. This paper addresses this reporting gap by formalizing a reproducible diagnostic protocol rather than proposing a new KT architecture.

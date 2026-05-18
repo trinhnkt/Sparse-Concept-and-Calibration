@@ -6,11 +6,17 @@ This issue is not merely a reporting detail. In educational decision support, pr
 
 This paper studies KT evaluation as a reproducibility and diagnostic problem. We do not propose a new KT architecture. Instead, we extend standard KT evaluation with train-only KC-frequency stratification, calibration diagnostics per stratum, limited cold-start KC analysis, and a seven-channel leakage audit. This framing is intentionally conservative: the goal is to provide reusable evaluation infrastructure for future KT and structure-aware self-supervised learning studies, rather than to claim state-of-the-art performance.
 
-Our contributions are:
+\subsection{Motivating Diagnostic Gap}
+Under standard benchmarking protocols, overall KT performance can be misleading because sparse KCs and limited cold-start KCs expose different predictive and calibration behavior. For example, a model may achieve competitive overall AUC on a learner-based split while showing substantially higher calibration error or unstable AUC estimates on sparse KC strata. This discrepancy is particularly critical in educational decision support, where predicted probabilities are used to make decisions regarding student remediation, progression, or mastery thresholds. If a model's probabilities are poorly calibrated, educational interventions may be triggered inappropriately, despite a deceptively high population-level discrimination score. This motivates a diagnostic protocol that reports performance and reliability at the KC-frequency level, coupled with a systematic leakage audit to ensure that evaluation pipelines do not inadvertently contaminate results.
+
+In addressing this gap, this paper makes three contributions:
 \begin{itemize}
-    \item We propose a reproducible sparse-concept evaluation protocol for KT using learner-based, temporal, and limited cold-start concept splits, with KC buckets defined only from training-fold frequencies.
-    \item We report calibration diagnostics by KC-frequency stratum using ECE, Brier decomposition, and reliability diagrams, enabling model behavior on sparse KCs to be inspected separately from aggregate AUC.
-    \item We introduce a seven-channel leakage checklist for downstream KT evaluation decisions, covering split construction, preprocessing, Q-matrix provenance, sparse-bucket assignment, calibration setup, hyperparameter selection, and cold-start definition.
+    \item \textbf{Problem 1 (Hidden Stratum Behavior):} Overall AUC/ACC values can mask noticeable degradation or metric instability on low-frequency concepts. 
+    \textbf{Contribution 1:} We formalize a train-only KC-frequency stratification protocol that prevents sparse-bucket leakage and enables sample-size-aware KT diagnostics across defined frequency buckets.
+    \item \textbf{Problem 2 (Unreliable Probability Estimates):} Aggregate rankings do not reveal whether a model's predicted probabilities correspond to empirical correctness rates, which is crucial for educational decision-making. 
+    \textbf{Contribution 2:} We integrate calibration-oriented evaluation, including Expected Calibration Error (ECE), Brier decomposition (Uncertainty, Reliability, Resolution), and reliability diagrams, into bucket-level KT reporting.
+    \item \textbf{Problem 3 (Hidden Evaluation Pipeline Contamination):} KT evaluation pipelines can suffer from subtle, undocumented data leakage across folds or splits. 
+    \textbf{Contribution 3:} We establish a seven-channel leakage-control audit checklist and a reproducible workflow that exports prediction-level files, diagnostic reports, and paper-ready tables.
 \end{itemize}
 
 The remainder of this paper is organized as follows. Section~\ref{sec:related} reviews KT evaluation, sparse-concept analysis, and calibration. Section~\ref{sec:protocol} presents the diagnostic protocol. Section~\ref{sec:experiments} reports the experimental design and diagnostic results. Section~\ref{sec:discussion} discusses implications and limitations.

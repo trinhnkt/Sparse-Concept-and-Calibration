@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\caption{Diagnostic Interpretation Guide for Sparse-Concept and Calibration Analysis}
+\label{tab:interpretation_guide}
+\centering
+\begin{tabular}{p{7.5cm}p{9.5cm}}
+\toprule
+\textbf{Diagnostic Pattern} & \textbf{Interpretation / Recommendation} \\
+\midrule
+1. High overall AUC but high sparse-KC ECE & The model ranks responses well overall (good discrimination) but its predicted probabilities may be potentially unreliable (poor calibration) on low-frequency concepts. Educational interventions triggered by probability thresholds should be used with caution on these KCs. \\
+\midrule
+2. Dense AUC remains stable but very-sparse AUC is unstable or has high variance (e.g., high standard deviations) & Check the number of KCs and interaction events in the stratum. Volatility in metrics can be driven by small sample-size constraints (metric instability) rather than intrinsic model shifts. \\
+\midrule
+3. Brier reliability (REL) component increases in sparse buckets & Probabilistic calibration degrades under limited training evidence. Under our experimental conditions, deep sequence models tend to generate overconfident or under-confident probability predictions as concepts become scarcer. \\
+\midrule
+4. Temporal split AUC converges near random guess ($\approx 0.50$) & Future-oriented concept generalization can be challenging. This diagnostic highlights that baseline models may rely on static concept-specific parameters (e.g., skill embeddings) and struggle under strict temporal cold-start constraints. \\
+\midrule
+5. strict, k5, and k10 cold-start groups show near-identical event counts or metrics & The dataset under study has very few genuinely cold-start concepts under the chosen split, or the KCs are densely linked, meaning the cold-start setting is not highly active for this cohort. \\
+\midrule
+6. ECE and Brier score model rankings differ from AUC discrimination rankings & Discrimination and calibration capture orthogonal model characteristics. They answer different diagnostic questions and should be reported separately. Models optimized purely for pairwise ranking (AUC) may not produce reliable soft posterior masteries. \\
+\bottomrule
+\end{tabular}
+\end{table*}

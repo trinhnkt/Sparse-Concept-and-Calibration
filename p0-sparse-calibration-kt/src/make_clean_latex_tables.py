@@ -70,13 +70,13 @@ def main():
     tex_leakage.append("\\toprule")
     tex_leakage.append("Channel & Risk / Description & Evidence & Status & Notes \\\\")
     tex_leakage.append("\\midrule")
-    tex_leakage.append("L1 & Split leakage (user overlap, temporal order) & \\path{logs/split_audit.csv} & PASS & No user overlap or temporal inversions detected \\\\")
-    tex_leakage.append("L2 & Preprocessing leakage (transformations fit scope) & \\path{src/preprocess.py} & PASS & No global normalization detected \\\\")
-    tex_leakage.append("L3 & Q-matrix / KC mapping leakage & \\path{data/processed/assist2012/kc_map.json} & PASS & Static mapping from dataset \\\\")
-    tex_leakage.append("L4 & Sparse-bucket leakage & \\path{results/tables/kc_strata.csv} & PASS & Bucket assignment is strictly based on training frequency \\\\")
-    tex_leakage.append("L5 & Calibration leakage (test-based tuning) & \\path{src/baseline_runner.py} & PASS & No post-hoc tuning on test set \\\\")
-    tex_leakage.append("L6 & Hyperparameter leakage (model selection) & \\path{src/baseline_runner.py} & PASS & Validation-based selection only \\\\")
-    tex_leakage.append("L7 & Cold-start leakage & \\path{src/three_split_constructor.py} & PASS & Classification uses train\\_freq only \\\\")
+    tex_leakage.append("L1 & Split leakage (user overlap, temporal order) & \\path{split_audit.csv} & PASS & No user overlap or temporal inversions detected \\\\")
+    tex_leakage.append("L2 & Preprocessing leakage (transformations fit scope) & \\path{preprocess.py} & PASS & No global normalization detected \\\\")
+    tex_leakage.append("L3 & Q-matrix / KC mapping leakage & \\path{kc_map.json} & PASS & Static mapping from dataset \\\\")
+    tex_leakage.append("L4 & Sparse-bucket leakage & \\path{kc_strata.csv} & PASS & Bucket assignment is strictly based on training frequency \\\\")
+    tex_leakage.append("L5 & Calibration leakage (test-based tuning) & \\path{baseline_runner.py} & PASS & No post-hoc tuning on test set \\\\")
+    tex_leakage.append("L6 & Hyperparameter leakage (model selection) & \\path{baseline_runner.py} & PASS & Validation-based selection only \\\\")
+    tex_leakage.append("L7 & Cold-start leakage & \\path{split_constructor.py} & PASS & Classification uses train\\_freq only \\\\")
     tex_leakage.append("\\bottomrule")
     tex_leakage.append("\\end{tabular}")
     tex_leakage.append("\\end{table*}")
@@ -210,13 +210,14 @@ def main():
                 
             bucket_display = row['bucket'].replace("_", "\\_")
             
-            # Retrieve KCs and Events count
+            # Retrieve KCs and Events count (average across seeds for model consistency)
             raw_match = df_raw[(df_raw['dataset'] == row['dataset']) & 
                                (df_raw['split_mode'] == split_mode) & 
+                               (df_raw['model'] == row['model']) & 
                                (df_raw['bucket'] == row['bucket'])]
             if not raw_match.empty:
-                n_kcs = int(raw_match['n_kcs'].iloc[0])
-                n_events = int(raw_match['n_events'].iloc[0])
+                n_kcs = int(round(raw_match['n_kcs'].mean()))
+                n_events = int(raw_match['n_events'].mean())
                 n_kcs_str = f"{n_kcs:,}"
                 n_events_str = f"{n_events:,}"
             else:
@@ -231,7 +232,7 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {bucket_display} & {n_kcs_str} & {n_events_str} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{9}{p{16.5cm}}{\\scriptsize \\textit{Note: Very sparse AUC should be interpreted cautiously due to limited test events.}} \\\\")
+        tex.append("\\multicolumn{9}{p{16.5cm}}{\\scriptsize \\textit{Note: \\#Events denotes the number of prediction rows used for metric computation after model-specific prediction export and KC-strata matching. Very sparse AUC should be interpreted cautiously due to limited test events.}} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
         tex.append("\\end{table*}")
@@ -262,16 +263,16 @@ def main():
     df_calib['bucket_sort'] = df_calib['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
     df_calib = df_calib.sort_values(['dataset_sort', 'model_sort', 'bucket_sort'])
     
-    # A. Table V (Compact/Main): Dataset, Model, Bucket, #Events, ECE, Brier, REL, RES
+    # A. Table V (Compact/Main): Dataset, Model, Bucket, #Events, ECE, Brier, UNC, REL, RES
     tex_cal = []
-    tex_cal.append("\\begin{table}[t]")
+    tex_cal.append("\\begin{table*}[t]")
     tex_cal.append("\\caption{Calibration Breakdown by Frequency Stratum}")
     tex_cal.append("\\label{tab:calib}")
     tex_cal.append("\\centering")
-    tex_cal.append("\\resizebox{\\columnwidth}{!}{%")
-    tex_cal.append("\\begin{tabular}{lllrcccc}")
+    tex_cal.append("\\resizebox{\\textwidth}{!}{%")
+    tex_cal.append("\\begin{tabular}{lllrccccc}")
     tex_cal.append("\\toprule")
-    tex_cal.append("Dataset & Model & Bucket & \\#Events & ECE & Brier & REL & RES \\\\")
+    tex_cal.append("Dataset & Model & Bucket & \\#Events & ECE & Brier & UNC & REL & RES \\\\")
     tex_cal.append("\\midrule")
     
     # B. Table V Compact: Dataset, Model, Bucket, #Events, ECE, Brier
@@ -303,11 +304,11 @@ def main():
     for _, row in df_calib.iterrows():
         ds_name = row['dataset'].upper()
         if ds_name == "ASSIST2012":
-            ds_display = "A12"
+            ds_display = "ASSISTments 2012"
         elif ds_name == "JUNYI":
-            ds_display = "Junyi"
+            ds_display = "Junyi Academy"
         else:
-            ds_display = "XES"
+            ds_display = "XES3G5M"
             
         if ds_display != last_ds:
             if last_ds is not None:
@@ -338,14 +339,16 @@ def main():
         rel_str = f"${row['reliability_mean']:.4f}$" if not pd.isna(row['reliability_mean']) else "-"
         res_str = f"${row['resolution_mean']:.4f}$" if not pd.isna(row['resolution_mean']) else "-"
         
-        tex_cal.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} & {rel_str} & {res_str} \\\\")
+        tex_cal.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
         tex_compact.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} \\\\")
         tex_full.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
         
+    tex_cal.append("\\midrule")
+    tex_cal.append("\\multicolumn{9}{p{17.5cm}}{\\scriptsize \\textbf{Note:} For BKT, ECE and Brier are numerically close in several strata, likely due to near-deterministic probability outputs under this implementation. These values are retained as diagnostic warnings and should be interpreted cautiously.} \\\\")
     tex_cal.append("\\bottomrule")
     tex_cal.append("\\end{tabular}")
     tex_cal.append("}")
-    tex_cal.append("\\end{table}")
+    tex_cal.append("\\end{table*}")
     
     tex_compact.append("\\bottomrule")
     tex_compact.append("\\end{tabular}")
