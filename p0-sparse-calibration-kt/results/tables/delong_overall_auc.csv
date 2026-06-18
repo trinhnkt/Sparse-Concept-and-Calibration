@@ -1,0 +1,10 @@
+dataset,split,comparison,model_1,model_2,auc_model_1,auc_model_2,delta_auc,raw_p_value,bonferroni_alpha,significant_after_bonferroni,n_test_events,note
+assist2012,learner_based,IRT_1PL vs DKT,IRT_1PL,DKT,0.5,0.6989,0.1989,0.0,0.005555555555555556,True,534150,IRT model predictions have cold-start constraint (unseen users AUC=0.5)
+assist2012,learner_based,IRT_1PL vs SIMPLEKT,IRT_1PL,SIMPLEKT,0.5,0.6837,0.1837,0.0,0.005555555555555556,True,534150,IRT model predictions have cold-start constraint (unseen users AUC=0.5)
+assist2012,learner_based,DKT vs SIMPLEKT,DKT,SIMPLEKT,0.6989,0.6837,0.0152,7.102508932065381e-82,0.005555555555555556,True,534150,
+junyi,learner_based,IRT_1PL vs DKT,IRT_1PL,DKT,0.5,0.7326,0.2326,0.0,0.005555555555555556,True,3269022,IRT model predictions have cold-start constraint (unseen users AUC=0.5)
+junyi,learner_based,IRT_1PL vs SIMPLEKT,IRT_1PL,SIMPLEKT,0.5,0.7261,0.2261,0.0,0.005555555555555556,True,3269022,IRT model predictions have cold-start constraint (unseen users AUC=0.5)
+junyi,learner_based,DKT vs SIMPLEKT,DKT,SIMPLEKT,0.7326,0.7261,0.0064,8.069394913137753e-144,0.005555555555555556,True,3269022,
+xes3g5m,learner_based,IRT_1PL vs DKT,IRT_1PL,DKT,0.5,0.9176,0.4176,0.0,0.005555555555555556,True,1589145,IRT model predictions have cold-start constraint (unseen users AUC=0.5)
+xes3g5m,learner_based,IRT_1PL vs SIMPLEKT,IRT_1PL,SIMPLEKT,0.5,0.8889,0.3889,0.0,0.005555555555555556,True,1589145,IRT model predictions have cold-start constraint (unseen users AUC=0.5)
+xes3g5m,learner_based,DKT vs SIMPLEKT,DKT,SIMPLEKT,0.9176,0.8889,0.0287,0.0,0.005555555555555556,True,1589145,

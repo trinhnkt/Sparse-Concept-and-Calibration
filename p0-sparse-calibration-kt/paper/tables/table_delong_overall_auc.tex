@@ -1,0 +1,15 @@
+\begin{table}[h]
+\caption{Pairwise DeLong Tests for Overall AUC (Learner-based Split)}
+\label{tab:delong_overall}
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dataset} & \textbf{IRT vs DKT} & \textbf{IRT vs SimpleKT} & \textbf{DKT vs SimpleKT} \\
+\midrule
+ASSISTments 2012 & $p < 0.001^{*}$ & $p < 0.001^{*}$ & $p < 0.001^{*}$ \\
+Junyi Academy    & $p < 0.001^{*}$ & $p < 0.001^{*}$ & $p < 0.001^{*}$ \\
+XES3G5M          & $p < 0.001^{*}$ & $p < 0.001^{*}$ & $p < 0.001^{*}$ \\
+\bottomrule
+\multicolumn{4}{p{8.5cm}}{\scriptsize \textit{Note:} Bonferroni-corrected significance threshold: $\alpha = 0.05/9 = 0.0056$. $^{*}$ indicates significant after correction. IRT comparisons serve as the classical baseline reference; IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability.} \\
+\end{tabular}
+\end{table}

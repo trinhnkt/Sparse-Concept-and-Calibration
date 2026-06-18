@@ -1,0 +1,24 @@
+# Temporal Cold-Start Group Audit
+
+## train_freq computed from temporal train split only (P1-compliant): ✅
+
+| dataset    | split    | group   |   n_events |   n_kcs |   n_learners |   correctness_rate | train_freq_range   |
+|:-----------|:---------|:--------|-----------:|--------:|-------------:|-------------------:|:-------------------|
+| assist2012 | temporal | strict  |       1407 |      27 |          389 |             0.5039 | =0                 |
+| assist2012 | temporal | k5      |       1420 |      31 |          399 |             0.507  | <=5                |
+| assist2012 | temporal | k10     |       1713 |      33 |          489 |             0.5715 | <=10               |
+| assist2012 | temporal | warm    |     529786 |     212 |        11366 |             0.6891 | >10                |
+| junyi      | temporal | strict  |       2545 |       4 |          131 |             0.5147 | =0                 |
+| junyi      | temporal | k5      |       2545 |       4 |          131 |             0.5147 | <=5                |
+| junyi      | temporal | k10     |       2545 |       4 |          131 |             0.5147 | <=10               |
+| junyi      | temporal | warm    |    3240570 |    1319 |        28338 |             0.6994 | >10                |
+| xes3g5m    | temporal | strict  |     233214 |     117 |        16023 |             0.7875 | =0                 |
+| xes3g5m    | temporal | k5      |     258943 |     125 |        16097 |             0.792  | <=5                |
+| xes3g5m    | temporal | k10     |     259425 |     126 |        16100 |             0.7919 | <=10               |
+| xes3g5m    | temporal | warm    |    1331318 |     424 |        16366 |             0.8043 | >10                |
+
+## Warm cohort AUC ≈ 0.50?
+
+- **assist2012 warm**: n_events=529786, correct_rate=0.6891 (AUC requires predictions — see Step 4)
+- **junyi warm**: n_events=3240570, correct_rate=0.6994 (AUC requires predictions — see Step 4)
+- **xes3g5m warm**: n_events=1331318, correct_rate=0.8043 (AUC requires predictions — see Step 4)

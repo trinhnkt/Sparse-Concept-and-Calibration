@@ -36,7 +36,7 @@ def main():
     rect3 = patches.FancyBboxPatch((0.04, 0.515), 0.92, 0.09, boxstyle="round,pad=0.01", fc="#E8F8F5", ec="#17A589", lw=2)
     ax.add_patch(rect3)
     ax.text(0.5, 0.575, "3. Baseline Evaluation", ha='center', va='center', **font_title)
-    ax.text(0.5, 0.54, "Model Training (BKT, DKT, SimpleKT) $\\rightarrow$ Raw Prediction CSV Export", ha='center', va='center', **font_body)
+    ax.text(0.5, 0.54, "Model Training (IRT, DKT, SimpleKT) $\\rightarrow$ Raw Prediction CSV Export", ha='center', va='center', **font_body)
     
     # Arrow 3 -> 4
     ax.annotate("", xy=(0.5, 0.445), xytext=(0.5, 0.515), arrowprops=arrow_style)

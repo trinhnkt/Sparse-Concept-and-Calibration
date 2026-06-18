@@ -1,0 +1,91 @@
+run_id,status,error
+assist2012_learner_based_irt_1pl_seed42,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_irt_1pl_seed2024,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_irt_1pl_seed2025,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_irt_1pl_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\assist2012\splits\learner_based\fold_3
+assist2012_learner_based_irt_1pl_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\assist2012\splits\learner_based\fold_4
+assist2012_learner_based_dkt_seed42,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_dkt_seed2024,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_dkt_seed2025,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_dkt_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\assist2012\splits\learner_based\fold_3
+assist2012_learner_based_dkt_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\assist2012\splits\learner_based\fold_4
+assist2012_learner_based_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_simplekt_seed2024,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_simplekt_seed2025,SUCCESS,Success (Loaded cached predictions)
+assist2012_learner_based_simplekt_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\assist2012\splits\learner_based\fold_3
+assist2012_learner_based_simplekt_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\assist2012\splits\learner_based\fold_4
+assist2012_temporal_irt_1pl_seed42,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_irt_1pl_seed2024,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_irt_1pl_seed2025,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_irt_1pl_seed2026,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_irt_1pl_seed2027,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_dkt_seed42,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_dkt_seed2024,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_dkt_seed2025,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_dkt_seed2026,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_dkt_seed2027,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_simplekt_seed2024,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_simplekt_seed2025,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_simplekt_seed2026,SUCCESS,Success (Loaded cached predictions)
+assist2012_temporal_simplekt_seed2027,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_irt_1pl_seed42,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_irt_1pl_seed2024,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_irt_1pl_seed2025,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_irt_1pl_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\junyi\splits\learner_based\fold_3
+junyi_learner_based_irt_1pl_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\junyi\splits\learner_based\fold_4
+junyi_learner_based_dkt_seed42,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_dkt_seed2024,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_dkt_seed2025,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_dkt_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\junyi\splits\learner_based\fold_3
+junyi_learner_based_dkt_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\junyi\splits\learner_based\fold_4
+junyi_learner_based_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_simplekt_seed2024,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_simplekt_seed2025,SUCCESS,Success (Loaded cached predictions)
+junyi_learner_based_simplekt_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\junyi\splits\learner_based\fold_3
+junyi_learner_based_simplekt_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\junyi\splits\learner_based\fold_4
+junyi_temporal_irt_1pl_seed42,SUCCESS,Success (Loaded cached predictions)
+junyi_temporal_irt_1pl_seed2024,SUCCESS,Success (Loaded cached predictions)
+junyi_temporal_irt_1pl_seed2025,SUCCESS,Success (Loaded cached predictions)
+junyi_temporal_irt_1pl_seed2026,SUCCESS,Success (Loaded cached predictions)
+junyi_temporal_irt_1pl_seed2027,SUCCESS,Success in 0.72 min
+junyi_temporal_dkt_seed42,SUCCESS,Success (Loaded cached predictions)
+junyi_temporal_dkt_seed2024,FAILED,Skipped training to respect environment limits.
+junyi_temporal_dkt_seed2025,FAILED,Skipped training to respect environment limits.
+junyi_temporal_dkt_seed2026,FAILED,Skipped training to respect environment limits.
+junyi_temporal_dkt_seed2027,FAILED,Skipped training to respect environment limits.
+junyi_temporal_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
+junyi_temporal_simplekt_seed2024,FAILED,Skipped training to respect environment limits.
+junyi_temporal_simplekt_seed2025,FAILED,Skipped training to respect environment limits.
+junyi_temporal_simplekt_seed2026,FAILED,Skipped training to respect environment limits.
+junyi_temporal_simplekt_seed2027,FAILED,Skipped training to respect environment limits.
+xes3g5m_learner_based_irt_1pl_seed42,SUCCESS,Success in 0.21 min
+xes3g5m_learner_based_irt_1pl_seed2024,SUCCESS,Success in 0.20 min
+xes3g5m_learner_based_irt_1pl_seed2025,SUCCESS,Success in 0.20 min
+xes3g5m_learner_based_irt_1pl_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\xes3g5m\splits\learner_based\fold_3
+xes3g5m_learner_based_irt_1pl_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\xes3g5m\splits\learner_based\fold_4
+xes3g5m_learner_based_dkt_seed42,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_learner_based_dkt_seed2024,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_learner_based_dkt_seed2025,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_learner_based_dkt_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\xes3g5m\splits\learner_based\fold_3
+xes3g5m_learner_based_dkt_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\xes3g5m\splits\learner_based\fold_4
+xes3g5m_learner_based_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_learner_based_simplekt_seed2024,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_learner_based_simplekt_seed2025,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_learner_based_simplekt_seed2026,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\xes3g5m\splits\learner_based\fold_3
+xes3g5m_learner_based_simplekt_seed2027,FAILED,Data files not found at C:\TRINH\P0\p0-sparse-calibration-kt\data\processed\xes3g5m\splits\learner_based\fold_4
+xes3g5m_temporal_irt_1pl_seed42,SUCCESS,Success in 0.20 min
+xes3g5m_temporal_irt_1pl_seed2024,SUCCESS,Success in 0.21 min
+xes3g5m_temporal_irt_1pl_seed2025,SUCCESS,Success in 0.20 min
+xes3g5m_temporal_irt_1pl_seed2026,SUCCESS,Success in 0.20 min
+xes3g5m_temporal_irt_1pl_seed2027,SUCCESS,Success in 0.20 min
+xes3g5m_temporal_dkt_seed42,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_temporal_dkt_seed2024,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_dkt_seed2025,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_dkt_seed2026,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_dkt_seed2027,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
+xes3g5m_temporal_simplekt_seed2024,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_simplekt_seed2025,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_simplekt_seed2026,FAILED,Skipped training to respect environment limits.
+xes3g5m_temporal_simplekt_seed2027,FAILED,Skipped training to respect environment limits.

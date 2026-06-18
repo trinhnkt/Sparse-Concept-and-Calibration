@@ -47,18 +47,25 @@
 \begin{document}
 
 \title{Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing\\
-{\large A Protocol and Diagnostic Study}}
-
-\author{\IEEEauthorblockN{
-Khanh-Trinh Nguyen\IEEEauthorrefmark{1},
-Van-Hau Nguyen\IEEEauthorrefmark{1},
-Chi-Thanh Nguyen\IEEEauthorrefmark{2},
-Tien-Duong Nguyen\IEEEauthorrefmark{1}, and
-Minh-Tuan Dao\IEEEauthorrefmark{1}
 }
-\IEEEauthorblockA{\IEEEauthorrefmark{1}Hung Yen University of Technology and Education, Hung Yen, Viet Nam\\
-Email: \{trinhnkt, hau666, nduongnt, tuan.ymc\}@gmail.com}
-\IEEEauthorblockA{\IEEEauthorrefmark{2}Academy of Military Science and Technology, Ha Noi, Viet Nam\\
+
+\author{
+\IEEEauthorblockN{Nguyen Khanh-Trinh, Nguyen Tien-Duong, Nguyen Van-Hau}
+\IEEEauthorblockA{\textit{Hung Yen University of Technology and Education} \\
+Hung Yen, Viet Nam \\
+Email: \{trinhnk, duongnt, haunv\}@utehy.edu.vn \\
+ORCIDs: 0009-0004-3739-0484, 0009-0007-1104-7129, 0000-0002-3256-5626}
+\and
+\IEEEauthorblockN{Dao Minh-Tuan}
+\IEEEauthorblockA{\textit{Department of Quality Assurance and Testing} \\
+\textit{Hung Yen University of Technology and Education} \\
+Hung Yen, Vietnam \\
+Email: tuanymc@utehy.edu.vn \\
+ORCID: 0009-0009-1641-6813}
+\and
+\IEEEauthorblockN{Nguyen Chi-Thanh}
+\IEEEauthorblockA{\textit{Academy of Military Science and Technology} \\
+Ha Noi, Viet Nam \\
 Email: thanhnc80@gmail.com}
 }
 
@@ -68,7 +75,7 @@ Email: thanhnc80@gmail.com}
 % <RESULTS UPDATED: 2026-05-18 05:00:45>
 
 \begin{abstract}
-Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and a seven‑channel leakage‑control audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines BKT, DKT, and SimpleKT. Under our experimental conditions, calibration profiles differ across KC‑frequency strata, and overall AUC rankings can diverge from sparse‑KC calibration rankings. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and a seven‑channel leakage‑control audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, calibration error varies substantially across KC-frequency strata, and aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
 \end{abstract}
 
 \begin{IEEEkeywords}

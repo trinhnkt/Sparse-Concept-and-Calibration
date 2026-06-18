@@ -246,31 +246,40 @@ def run_experiments(config_path):
                     # For predictions in the required CSV format, we need to align with original test_df rows
                     # This is tricky with sequence models. A simpler way is to re-run prediction per user.
                     
-                    # To match the requested CSV exactly, let's predict for every interaction
-                    test_preds_list = []
+                    # BUG FIX (T11): Build predictions indexed by original DataFrame row index
+                    # to avoid prediction-label misalignment caused by groupby reordering.
+                    # test_df.groupby('user_id') iterates users in sorted user_id order,
+                    # but test_df rows may be in a different order (e.g., sorted by timestamp).
+                    # Assigning test_preds_list directly to pred_df['p_pred'] would misalign
+                    # predictions with labels. Fix: use a dict keyed by row index.
+                    test_preds_dict = {}  # {original_row_idx: pred_val}
+                    # Sort within each user's group by timestamp for causal correctness
+                    test_df_sorted = test_df.sort_values(['user_id', 'timestamp']) if 'timestamp' in test_df.columns else test_df.sort_values('user_id')
                     with torch.no_grad():
-                        for user_id, group in test_df.groupby('user_id'):
+                        for user_id, group in test_df_sorted.groupby('user_id', sort=True):
                             kcs = [kc_map[k] for k in group['kc_id'].values]
                             labels = group['correct'].values
+                            row_indices = group.index.tolist()
                             
-                            # Sequential prediction
+                            # Sequential prediction (causal: predict step i from history 0..i-1)
                             state_feats = []
                             for i in range(len(group)):
                                 current_kc = kcs[i]
                                 if i == 0:
-                                    # Cold start for this user, use global average or 0.5
-                                    pred_val = 0.5 
+                                    # Cold start for this user, use 0.5
+                                    pred_val = 0.5
                                 else:
                                     # Predict using previous interactions
                                     inp = torch.tensor([state_feats], dtype=torch.long).to(device)
-                                    out = model(inp) # (1, seq, n_kcs)
+                                    out = model(inp)  # (1, seq, n_kcs)
                                     pred_val = out[0, -1, current_kc].item()
                                 
-                                test_preds_list.append(pred_val)
+                                test_preds_dict[row_indices[i]] = pred_val
                                 # Update state for next step: kc * 2 + label
                                 state_feats.append(current_kc * 2 + labels[i])
-                                
-                    p_pred = np.array(test_preds_list)
+                    
+                    # Reconstruct p_pred aligned with test_df original row order
+                    p_pred = np.array([test_preds_dict[idx] for idx in test_df.index])
                     y_true = test_df['correct'].values
                 else:
                     print(f"        - Model {model_name} not implemented.")
