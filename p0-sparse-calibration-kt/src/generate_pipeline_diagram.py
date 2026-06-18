@@ -49,7 +49,7 @@ def main():
     ax.text(0.5, 0.37, "• Aggregate Metrics: AUC, Accuracy, NLL, RMSE", ha='center', va='center', **font_body)
     ax.text(0.5, 0.325, "• Calibration Strata: Expected Calibration Error (ECE) & Brier Decomposition", ha='center', va='center', **font_body)
     ax.text(0.5, 0.28, "• Visual Analytics: Multi-seed Reliability Diagrams per KC Bucket", ha='center', va='center', **font_body)
-    ax.text(0.5, 0.235, "• Cold-start Subsets: Strict (f_train = 0), k-shot subsets (f_train \u2264 5 or \u2264 10) & Warm cohorts", ha='center', va='center', **font_body)
+    ax.text(0.5, 0.235, "• Cold-start Subsets: Strict (f_train = 0), k-shot (f_train \u2264 5 or \u2264 10) & Warm", ha='center', va='center', **font_body)
     
     # Arrow 4 -> 5
     ax.annotate("", xy=(0.5, 0.145), xytext=(0.5, 0.215), arrowprops=arrow_style)
@@ -64,8 +64,9 @@ def main():
     # Save as PDF
     os.makedirs("paper/figures", exist_ok=True)
     plt.savefig("paper/figures/figure1_pipeline.pdf", format="pdf", bbox_inches="tight", dpi=300)
+    plt.savefig("paper/figures/figure1_pipeline.png", format="png", bbox_inches="tight", dpi=300)
     plt.close()
-    print("Pipeline diagram figure1_pipeline.pdf generated successfully.")
+    print("Pipeline diagram figure1_pipeline.pdf and figure1_pipeline.png generated successfully.")
 
 if __name__ == '__main__':
     main()
