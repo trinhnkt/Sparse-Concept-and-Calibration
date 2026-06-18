@@ -1,8 +1,8 @@
-\begin{table*}[t]
+\begin{table}[tbp]
 \caption{Overall Performance under Learner-based Split}
 \label{tab:overall}
 \centering
-\resizebox{\textwidth}{!}{%
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lllcccc}
 \toprule
 Dataset & Split & Model & AUC & ACC & NLL & RMSE \\
@@ -19,7 +19,7 @@ XES3G5M & Learner-based & IRT & $0.5000$ & $0.7968 \pm 0.0033$ & $0.5621 \pm 0.0
  & Learner-based & DKT & $0.8190 \pm 0.0005$ & $0.8341 \pm 0.0023$ & $0.3879 \pm 0.0028$ & $0.3478 \pm 0.0017$ \\
  & Learner-based & SimpleKT & $0.7566 \pm 0.0006$ & $0.8087 \pm 0.0019$ & $0.6122 \pm 0.0077$ & $0.3910 \pm 0.0019$ \\
 \bottomrule
-\multicolumn{7}{p{14.5cm}}{\scriptsize \textit{Note: IRT is used as the classical baseline across all datasets. Under learner-based splits, IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability.}} \\
+\multicolumn{7}{p{8.2cm}}{\scriptsize \textit{Note: IRT is used as the classical baseline across all datasets. Under learner-based splits, IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability.}} \\
 \end{tabular}%
 }
-\end{table*}
+\end{table}

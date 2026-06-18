@@ -1,8 +1,8 @@
-\begin{table*}[t]
+\begin{table}[tbp]
 \caption{Cold-start Performance Metrics under Temporal Validation}
 \label{tab:cold_start}
 \centering
-\resizebox{\textwidth}{!}{%
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lllcrcccccc}
 \toprule
 Dataset & Model & Group & \#KCs & \#Events & AUC & ACC & ECE & Brier & REL & RES \\
@@ -46,7 +46,7 @@ XES3G5M & IRT & strict & 117 & 233,214 & $0.5000$ & $0.7875$ & $0.2193$ & $0.215
  &  & k10 & 126 & 259,425 & $0.5025$ & $0.6510$ & $0.2652$ & $0.2749$ & $0.1098$ & $0.0000$ \\
  &  & warm & 424 & 1,331,318 & $0.4991$ & $0.6559$ & $0.2645$ & $0.2704$ & $0.1127$ & $0.0000$ \\
 \bottomrule
-\multicolumn{11}{p{17.5cm}}{\scriptsize \textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency. After label-alignment correction, ASSISTments 2012 shows recovered temporal predictive signal on the warm cohort. However, Junyi Academy and XES3G5M still show near-random AUC for deep KT baselines under temporal splits, suggesting dataset-specific temporal generalization challenges that require further analysis.}} \\
+\multicolumn{11}{p{8.2cm}}{\scriptsize \textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency. After label-alignment correction, ASSISTments 2012 shows recovered temporal predictive signal on the warm cohort. However, Junyi Academy and XES3G5M still show near-random AUC for deep KT baselines under temporal splits, suggesting dataset-specific temporal generalization challenges that require further analysis.}} \\
 \end{tabular}%
 }
-\end{table*}
+\end{table}

@@ -331,11 +331,11 @@ def main():
     # 1. Table III: Overall Performance (Learner-based)
     def make_table3(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[t]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Overall Performance under Learner-based Split}")
         tex.append("\\label{tab:overall}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\resizebox{\\columnwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcccc}")
         tex.append("\\toprule")
         tex.append("Dataset & Split & Model & AUC & ACC & NLL & RMSE \\\\")
@@ -373,10 +373,10 @@ def main():
             tex.append(f"{ds_col} & Learner-based & {model_display} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{7}{p{14.5cm}}{\\scriptsize \\textit{Note: IRT is used as the classical baseline across all datasets. Under learner-based splits, IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability.}} \\\\")
+        tex.append("\\multicolumn{7}{p{8.2cm}}{\\scriptsize \\textit{Note: IRT is used as the classical baseline across all datasets. Under learner-based splits, IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability.}} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        tex.append("\\end{table}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
@@ -388,11 +388,11 @@ def main():
     # 2. Table IV: Performance by Bucket with Reliability Flags
     def make_table4(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[t]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Knowledge Tracing Performance Breakdown by Skill Strata (Learner-based)}")
         tex.append("\\label{tab:bucket}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\resizebox{\\columnwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcrccccc}")
         tex.append("\\toprule")
         tex.append("Dataset & Model & Bucket & Rel. & \\#KCs & \\#Events & AUC & ACC & NLL & RMSE \\\\")
@@ -472,10 +472,10 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {bucket_display} & {rel_flag} & {n_kcs_str} & {n_events_str} & {auc_str} & {acc_str} & {nll_str} & {rmse_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textit{Note: Reliability is assigned based on the number of test events: Reliable (R: $N \\ge 1000$), Limited (L: $100 \\le N < 1000$), and Insufficient (I: $N < 100$). Results in Insufficient buckets are descriptive only. Bold results are not used in Insufficient buckets.}} \\\\")
+        tex.append("\\multicolumn{10}{p{8.2cm}}{\\scriptsize \\textit{Note: Reliability is assigned based on the number of test events: Reliable (R: $N \\ge 1000$), Limited (L: $100 \\le N < 1000$), and Insufficient (I: $N < 100$). Results in Insufficient buckets are descriptive only. Bold results are not used in Insufficient buckets.}} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        tex.append("\\end{table}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
@@ -488,11 +488,11 @@ def main():
     # 3. Table V: Calibration by Bucket
     def make_table5(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[t]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Calibration Breakdown by Frequency Stratum}")
         tex.append("\\label{tab:calib}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\resizebox{\\columnwidth}{!}{%")
         tex.append("\\begin{tabular}{lllrcccccc}")
         tex.append("\\toprule")
         tex.append("Dataset & Model & Bucket & Rel. & \\#Events & ECE & Brier & UNC & REL & RES \\\\")
@@ -562,10 +562,10 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {bucket_display} & {rel_flag} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} For IRT, standard logistic predictions are well calibrated, leading to lower ECE in most buckets compared to deep KT baselines.} \\\\")
+        tex.append("\\multicolumn{10}{p{8.2cm}}{\\scriptsize \\textbf{Note:} For IRT, standard logistic predictions are well calibrated, leading to lower ECE in most buckets compared to deep KT baselines.} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        tex.append("\\end{table}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
@@ -646,11 +646,11 @@ def main():
     # 4. Table VI: Cold-start results
     def make_table6(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[t]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Cold-start Performance Metrics under Temporal Validation}")
         tex.append("\\label{tab:cold_start}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\resizebox{\\columnwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcrcccccc}")
         tex.append("\\toprule")
         tex.append("Dataset & Model & Group & \\#KCs & \\#Events & AUC & ACC & ECE & Brier & REL & RES \\\\")
@@ -720,10 +720,10 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {group_display} & {n_kcs_str} & {n_events_str} & {auc_str} & {acc_str} & {ece_str} & {brier_str} & {rel_str} & {res_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{11}{p{17.5cm}}{\\scriptsize \\textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency. After label-alignment correction, ASSISTments 2012 shows recovered temporal predictive signal on the warm cohort. However, Junyi Academy and XES3G5M still show near-random AUC for deep KT baselines under temporal splits, suggesting dataset-specific temporal generalization challenges that require further analysis.}} \\\\")
+        tex.append("\\multicolumn{11}{p{8.2cm}}{\\scriptsize \\textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency. After label-alignment correction, ASSISTments 2012 shows recovered temporal predictive signal on the warm cohort. However, Junyi Academy and XES3G5M still show near-random AUC for deep KT baselines under temporal splits, suggesting dataset-specific temporal generalization challenges that require further analysis.}} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        tex.append("\\end{table}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
@@ -835,11 +835,11 @@ def main():
     # 7. Table IX: Temporal Bucket Diagnostics (Appendix)
     def make_table9(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[t]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Knowledge Tracing Performance Breakdown by Skill Strata (Temporal splits)}")
         tex.append("\\label{tab:bucket_temporal}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\resizebox{\\columnwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcrccccc}")
         tex.append("\\toprule")
         tex.append("Dataset & Model & Bucket & Rel. & \\#KCs & \\#Events & AUC & ACC & NLL & RMSE \\\\")
@@ -915,7 +915,7 @@ def main():
         tex.append("\\bottomrule")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        tex.append("\\end{table}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
