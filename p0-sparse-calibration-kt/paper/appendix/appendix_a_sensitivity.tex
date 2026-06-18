@@ -4,6 +4,7 @@ To establish the robustness of our diagnostic stratification, we conduct a sensi
 
 \input{tables/tableA1_sensitivity}
 
+\clearpage
 \section{Overall and Bucket-level Performance under Temporal Splits}
 \label{app:temporal_performance}
 In this section, we present the comprehensive overall performance (Table~\ref{tab:overall_temporal}) and strata-specific performance breakdowns (Table~\ref{tab:bucket_temporal}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable calibration degradation and predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting.
@@ -11,18 +12,21 @@ In this section, we present the comprehensive overall performance (Table~\ref{ta
 \input{tables/tableA_overall_full}
 \input{tables/tableA_performance_by_bucket_full}
 
+\clearpage
 \section{Detailed Calibration Results}
 \label{app:calibration_performance}
 Detailed calibration results by frequency stratum are reported in Table~\ref{tab:calib}.
 
 \input{tables/table_v_calibration_by_bucket_updated}
 
+\clearpage
 \section{Diagnostic Interpretation Guide}
 \label{app:interpretation}
 To assist researchers and practitioners in applying our diagnostic protocol, we provide Table~\ref{tab:interpretation_guide} which maps common empirical diagnostic patterns observed during evaluation to their theoretical and operational educational interpretation.
 
 \input{tables/table_interpretation_guide}
 
+\clearpage
 \section{Bayesian Knowledge Tracing Numerical Instability and Transition}
 \label{app:bkt_instability}
 During our initial protocol implementation, we instantiated Bayesian Knowledge Tracing (BKT) as the classical baseline utilizing the popular \texttt{pyBKT} library (v1.4.1). However, on all three large-scale datasets, BKT suffered from severe numerical instability during Expectation-Maximization (EM) parameter estimation. Specifically, for sparse and very sparse concept strata, the scarcity of interaction logs triggered a divide-by-zero error in the M-step update equation for the prior parameter, resulting in \texttt{NaN} value assignments. Consequently, the model's predictions degenerated into deterministic binary outputs ($p_{pred} \in \{0.0, \text{NaN}\}$), yielding a flat $0.50$ AUC and extreme Negative Log-Likelihood (NLL) values ranging between $23.7$ and $28.0$. To maintain scientific integrity and standard baseline comparison, we transitioned to Item Response Theory (IRT 1PL / Rasch Model) as the primary classical baseline. The raw prediction CSV files for the failed BKT runs are preserved within the codebase predictions directory for transparency.
