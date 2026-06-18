@@ -566,7 +566,7 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {bucket_display} & {rel_flag} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} For IRT, standard logistic predictions are well calibrated, leading to lower ECE in most buckets compared to deep KT baselines.} \\\\")
+        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} IRT provides a stable classical probability baseline and shows low ECE in several learner-based cohorts, but its calibration advantage is not uniform across all datasets and strata.} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
         if use_single_col:
