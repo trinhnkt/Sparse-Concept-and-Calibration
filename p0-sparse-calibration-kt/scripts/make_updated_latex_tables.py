@@ -779,11 +779,11 @@ def main():
     # 6. Table VIII: Temporal Overall Results (Appendix)
     def make_table8(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[t]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Overall Performance under Future Validation (Temporal Splits)}")
         tex.append("\\label{tab:overall_temporal}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\resizebox{\\columnwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcccc}")
 
         tex.append("\\toprule")
@@ -824,7 +824,7 @@ def main():
         tex.append("\\bottomrule")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        tex.append("\\end{table}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
