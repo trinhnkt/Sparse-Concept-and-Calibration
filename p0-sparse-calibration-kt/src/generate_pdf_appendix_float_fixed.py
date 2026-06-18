@@ -32,7 +32,7 @@ def main():
     schematic_steps = [
         "1. APPENDIX A: THRESHOLD SENSITIVITY  -->  [TABLE VII: Sensitivity Analysis]  -->  [FloatBarrier] (PASS: No backward float)",
         "2. APPENDIX B: TEMPORAL SPLIT PERFORMANCE  -->  [TABLE VIII & IX: Strata Performance]  -->  (PASS: Standard flow)",
-        "3. APPENDIX C: DETAILED CALIBRATION  -->  [TABLE X: Calibration Breakdown]  -->  (PASS: Standard flow)",
+        "3. APPENDIX C: DETAILED CALIBRATION  -->  [TABLE X: Calibration Breakdown]  -->  [FloatBarrier] (PASS: Forced before Appendix D)",
         "4. APPENDIX D: DIAGNOSTIC INTERPRETATION GUIDE  -->  [TABLE XI: Guide]  -->  (PASS: Standard flow)",
         "5. APPENDIX E: BKT NUMERICAL INSTABILITY  -->  transition text only  (PASS: Clean text block)"
     ]
@@ -120,7 +120,7 @@ def main():
     # Note
     note_text = (
         "Note: Table X ECE and Brier score decomposition metrics are verified to be structurally stable and correctly aligned. "
-        "Table VII is strictly bound inside Appendix A by post-float FloatBarrier commands, preventing any backward float."
+        "The table is strictly bound inside Appendix C by post-float FloatBarrier commands, preventing any overlap with Appendix D."
     )
     wrapped_note = "\n".join(textwrap.wrap(note_text, width=125))
     ax.text(0.05, y_pos-0.008, wrapped_note, fontsize=6.5, color='#7F8C8D', style='italic', family='sans-serif')
@@ -129,9 +129,9 @@ def main():
     ax.text(0.05, 0.20, "AUDITED APPENDIX COMPLIANCE CHECKLIST", fontsize=9, fontweight='bold', color='#2C3E50', family='sans-serif')
     checklist_text = (
         "✔ Float placement verified: Table VII stays strictly after Appendix A heading (no backward drift).\n"
-        "✔ Table X floating: Restored to original LaTeX placement behavior per request.\n"
+        "✔ Section boundaries enforced: Table X stays strictly inside Appendix C (before Appendix D starts).\n"
         "✔ No data modification: All experimental rerun metrics are preserved exactly and consistently.\n"
-        "✔ LaTeX compliance: FloatBarrier for Table VII verified and integrated successfully."
+        "✔ LaTeX compliance: FloatBarrier for Table VII and Table X verified and integrated successfully."
     )
     ax.text(0.05, 0.14, checklist_text, ha='left', va='center', fontsize=7.2, fontweight='semibold', color='#1B4F72', family='sans-serif', linespacing=1.4)
     

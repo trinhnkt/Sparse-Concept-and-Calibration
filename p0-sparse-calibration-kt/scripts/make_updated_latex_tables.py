@@ -488,11 +488,11 @@ def main():
     # 3. Table V: Calibration by Bucket
     def make_table5(df, filepath):
         tex = []
-        tex.append("\\begin{table}[tbp]")
+        tex.append("\\begin{table*}[H]")
         tex.append("\\caption{Calibration Breakdown by Frequency Stratum}")
         tex.append("\\label{tab:calib}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\columnwidth}{!}{%")
+        tex.append("\\resizebox{\\textwidth}{!}{%")
         tex.append("\\begin{tabular}{lllrcccccc}")
         tex.append("\\toprule")
         tex.append("Dataset & Model & Bucket & Rel. & \\#Events & ECE & Brier & UNC & REL & RES \\\\")
@@ -562,10 +562,10 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {bucket_display} & {rel_flag} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{10}{p{8.2cm}}{\\scriptsize \\textbf{Note:} For IRT, standard logistic predictions are well calibrated, leading to lower ECE in most buckets compared to deep KT baselines.} \\\\")
+        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} For IRT, standard logistic predictions are well calibrated, leading to lower ECE in most buckets compared to deep KT baselines.} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table}")
+        tex.append("\\end{table*}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
@@ -740,7 +740,7 @@ def main():
         summary_sens = summary_sens.sort_values(['setting', 'bucket_sort'])
         
         tex = []
-        tex.append("\\begin{table}[tbp]")
+        tex.append("\\begin{table}[H]")
         tex.append("\\caption{Sensitivity Analysis to KC-frequency Threshold Settings. Values are averaged across datasets and baselines for each threshold setting; standard deviations reflect between-dataset and between-baseline variation.}")
         tex.append("\\label{tab:sensitivity}")
         tex.append("\\centering")
