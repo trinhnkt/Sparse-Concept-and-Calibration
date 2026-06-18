@@ -488,7 +488,11 @@ def main():
     # 3. Table V: Calibration by Bucket
     def make_table5(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[H]")
+        use_single_col = "updated" in str(filepath)
+        if use_single_col:
+            tex.append("\\begin{table}[H]")
+        else:
+            tex.append("\\begin{table*}[H]")
         tex.append("\\caption{Calibration Breakdown by Frequency Stratum}")
         tex.append("\\label{tab:calib}")
         tex.append("\\centering")
@@ -565,7 +569,10 @@ def main():
         tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} For IRT, standard logistic predictions are well calibrated, leading to lower ECE in most buckets compared to deep KT baselines.} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
-        tex.append("\\end{table*}")
+        if use_single_col:
+            tex.append("\\end{table}")
+        else:
+            tex.append("\\end{table*}")
         
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
