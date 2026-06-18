@@ -27,7 +27,7 @@ Figure~\ref{fig:strata_dist} illustrates heterogeneous KC-frequency distribution
 \end{figure*}
 
 \subsection{Baseline Implementations}
-We initially evaluated BKT but replaced it with IRT after observing numerical instability in EM-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representing classes of KT models:
+We initially evaluated BKT but replaced it with IRT after observing numerical instability in EM-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representative classes of KT models:
 \begin{enumerate}
     \item \textbf{Item Response Theory (IRT 1PL):} A classical logistic baseline (specifically the one-parameter logistic Rasch model) that estimates a static user ability and concept difficulty. Because IRT does not model dynamic concept mastery transitions and relies on user identities, it cannot generalize to unseen users in learner-based splits (resulting in random ranking, AUC $\approx$ 0.50), but serves as a stable classical baseline under temporal splits.
     \item \textbf{Deep Knowledge Tracing (DKT):} The pioneering recurrent neural network KT architecture mapping student sequential states via LSTM/RNN cells.
