@@ -3,6 +3,7 @@
 To establish the robustness of our diagnostic stratification, we conduct a sensitivity analysis evaluating whether the observed predictive degradation and calibration decay are sensitive to the choice of frequency thresholds. We evaluate three alternative threshold configurations: (i) an aggressive setting with thresholds \{10, 50, 250\} training interactions, (ii) a conservative setting with thresholds \{30, 150, 750\} training interactions, and (iii) a dynamic quantile-based bucketing scheme where buckets are defined by equal-quantile KCs. The results, summarized in Table~\ref{tab:sensitivity}, show that while the absolute counts of KCs in each category shift, the diagnostic patterns are broadly consistent, although effect magnitudes vary across threshold definitions. Specifically, the noticeable calibration degradation in the sparse and very sparse categories persists, indicating that our diagnostics capture intrinsic model behaviors on low-frequency concepts rather than artifacts of threshold definitions.
 
 \input{tables/tableA1_sensitivity}
+\FloatBarrier
 
 \section{Overall and Bucket-level Performance under Temporal Splits}
 \label{app:temporal_performance}
@@ -10,18 +11,21 @@ In this section, we present the comprehensive overall performance (Table~\ref{ta
 
 \input{tables/tableA_overall_full}
 \input{tables/tableA_performance_by_bucket_full}
+\FloatBarrier
 
 \section{Detailed Calibration Results}
 \label{app:calibration_performance}
 Detailed calibration results by frequency stratum are reported in Table~\ref{tab:calib}.
 
 \input{tables/table_v_calibration_by_bucket_updated}
+\FloatBarrier
 
 \section{Diagnostic Interpretation Guide}
 \label{app:interpretation}
 To assist researchers and practitioners in applying our diagnostic protocol, we provide Table~\ref{tab:interpretation_guide} which maps common empirical diagnostic patterns observed during evaluation to their theoretical and operational educational interpretation.
 
 \input{tables/table_interpretation_guide}
+\FloatBarrier
 
 \section{Bayesian Knowledge Tracing Numerical Instability and Transition}
 \label{app:bkt_instability}
