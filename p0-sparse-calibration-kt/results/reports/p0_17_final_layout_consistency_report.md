@@ -47,12 +47,20 @@ Báo cáo này tóm tắt kết quả giải quyết các lỗi trình bày và 
 *   **Quyết định:** Giữ Table VII (Threshold Sensitivity) trong main text.
 *   **Lý do:** Bảng này có chiều ngang gọn trong 1 cột (`\resizebox{\columnwidth}`) và chỉ dài 33 dòng, không ảnh hưởng đến độ dài hay luồng đọc của Section IV.E. Bố cục trang hiện tại hoàn toàn cân đối.
 
+### 1.7. Nhiệm vụ 7: Di chuyển Table VI (Calibration Table) sang Appendix C dưới dạng Table XI
+*   **Hành động thực hiện:**
+    - Loại bỏ lệnh `\input{tables/table_v_calibration_by_bucket_updated}` (Table VI trong PDF gốc) khỏi phần `04_experiments.tex` thuộc main text.
+    - Thay thế dòng trống này bằng câu dẫn:
+      > *"Detailed calibration results by frequency stratum are reported in Appendix C, Table XI."*
+    - Đồng thời, lược bỏ tham chiếu trực tiếp đến `Table~\ref{tab:calib}` trong đoạn mô tả RQ2 của main text để tránh dư thừa.
+    - Tại phụ lục [appendix_a_sensitivity.tex](file:///c:/TRINH/P0/p0-sparse-calibration-kt/paper/appendix/appendix_a_sensitivity.tex), bổ sung `\section{Detailed Calibration Results}` với nhãn `\label{app:calibration_performance}` làm **Appendix C**. Bảng được chèn trực tiếp vào phần này dưới dạng `Table~\ref{tab:calib}` (sẽ biên dịch thành Table XI do là bảng thứ 11 trong tài liệu).
+
 ---
 
 ## 2. Xác nhận Tính Toàn vẹn và Thẩm định PDF
 
 1.  **Không thay đổi kết quả thực nghiệm:** Không có bất kỳ số liệu thực nghiệm nào từ rerun T13 bị thay đổi.
-2.  **Compile PDF thành công:** Đã xuất bản vẽ PDF candidate kiểm tra chất lượng cao định dạng vector tại:
+2.  **Compile PDF thành công:** Đã xuất bản vẽ PDF candidate kiểm tra chất lượng cao định dạng vector phản ánh cấu trúc mới tại:
     👉 **[paper/P0_17_final_layout_consistency_fixed.pdf](file:///c:/TRINH/P0/p0-sparse-calibration-kt/paper/P0_17_final_layout_consistency_fixed.pdf)**
 3.  **Không có lỗi layout hay cross-reference:** Tất cả các bảng biểu hiển thị đầy đủ, không bị cut-off thông tin.
 
@@ -64,7 +72,8 @@ Báo cáo này tóm tắt kết quả giải quyết các lỗi trình bày và 
 Staged changes:
   - modified: paper/main.tex (author block columns)
   - modified: paper/main_submit_candidate.tex (author block columns)
-  - modified: paper/sections/04_experiments.tex (cross-ref, softened RQ2 text, BKT->IRT sentence, N={,} formatting)
+  - modified: paper/sections/04_experiments.tex (cross-ref, softened RQ2 text, BKT->IRT sentence, N={,} formatting, moved Table VI)
+  - modified: paper/appendix/appendix_a_sensitivity.tex (Added Appendix C with Table XI/Table V)
   - modified: paper/tables/table_iv_bucket_performance_updated.tex (10-column spec)
   - modified: paper/tables/table_v_calibration_by_bucket_updated.tex (10-column spec)
   - modified: paper/tables/table_ix_updated.tex (10-column spec)
@@ -73,3 +82,4 @@ Staged changes:
   - new file: paper/P0_17_final_layout_consistency_fixed.pdf
   - new file: results/reports/p0_17_final_layout_consistency_report.md
 ```
+
