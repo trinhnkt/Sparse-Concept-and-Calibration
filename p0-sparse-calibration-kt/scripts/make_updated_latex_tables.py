@@ -740,7 +740,7 @@ def main():
         summary_sens = summary_sens.sort_values(['setting', 'bucket_sort'])
         
         tex = []
-        tex.append("\\begin{table}[h]")
+        tex.append("\\begin{table}[tbp]")
         tex.append("\\caption{Sensitivity Analysis to KC-frequency Threshold Settings. Values are averaged across datasets and baselines for each threshold setting; standard deviations reflect between-dataset and between-baseline variation.}")
         tex.append("\\label{tab:sensitivity}")
         tex.append("\\centering")
@@ -779,12 +779,13 @@ def main():
     # 6. Table VIII: Temporal Overall Results (Appendix)
     def make_table8(df, filepath):
         tex = []
-        tex.append("\\begin{table*}[h]")
+        tex.append("\\begin{table*}[t]")
         tex.append("\\caption{Overall Performance under Future Validation (Temporal Splits)}")
         tex.append("\\label{tab:overall_temporal}")
         tex.append("\\centering")
         tex.append("\\resizebox{\\textwidth}{!}{%")
         tex.append("\\begin{tabular}{lllcccc}")
+
         tex.append("\\toprule")
         tex.append("Dataset & Split & Model & AUC & ACC & NLL & RMSE \\\\")
         tex.append("\\midrule")
