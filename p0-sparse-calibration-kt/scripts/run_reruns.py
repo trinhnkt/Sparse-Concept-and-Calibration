@@ -32,7 +32,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.resolve()
 sys.path.append(str(project_root))
 
-from src.baseline_runner import DKT, SimpleKT, KTDataset, collate_fn, train_torch_model
+from src.baseline_runner import DKT, SimpleKT, KTDataset, collate_fn, train_torch_model, predict_sequential
 from src.models.irt_baseline import IRT1PL
 from src.recalculate_diagnostics import compute_ece, compute_brier_decomposition, calculate_metrics
 
@@ -165,8 +165,8 @@ def run_job(run, strata_map, overwrite=False):
             p_pred = irt.predict(test_df)
             
         elif model_name in ['dkt', 'simplekt']:
-            # SAFEGUARD: skip training if cached prediction is missing
-            if not pred_path.exists():
+            # SAFEGUARD: skip training if cached prediction is missing, unless overwrite is requested
+            if not pred_path.exists() and not overwrite:
                 print(f"  [SKIP TRAINING] {run_id_str} has no cached predictions. Skipping training to respect environment limits.")
                 return False, None, "Skipped training to respect environment limits."
                 
@@ -187,8 +187,8 @@ def run_job(run, strata_map, overwrite=False):
             train_ds = KTDataset(train_df, kc_map)
             valid_ds = KTDataset(valid_df, kc_map)
             
-            train_loader = torch.utils.data.DataLoader(train_ds, batch_size=64, shuffle=True, collate_fn=collate_fn)
-            valid_loader = torch.utils.data.DataLoader(valid_ds, batch_size=64, shuffle=False, collate_fn=collate_fn)
+            train_loader = torch.utils.data.DataLoader(train_ds, batch_size=8, shuffle=True, collate_fn=collate_fn)
+            valid_loader = torch.utils.data.DataLoader(valid_ds, batch_size=8, shuffle=False, collate_fn=collate_fn)
             
             if model_name == 'dkt':
                 model = DKT(n_kcs).to(device)
@@ -198,32 +198,7 @@ def run_job(run, strata_map, overwrite=False):
             # Train model
             model = train_torch_model(model, train_loader, valid_loader, device, n_epochs=50)
             
-            # Predict sequentially per user to avoid alignment issues (T11 bug fix)
-            model.eval()
-            test_preds_dict = {}
-            test_df_sorted = test_df.sort_values(['user_id', 'timestamp']) if 'timestamp' in test_df.columns else test_df.sort_values('user_id')
-            
-            with torch.no_grad():
-                for user_id, group in test_df_sorted.groupby('user_id', sort=True):
-                    kcs = [kc_map[k] for k in group['kc_id'].values]
-                    labels = group['correct'].values
-                    row_indices = group.index.tolist()
-                    state_feats = []
-                    
-                    for i in range(len(group)):
-                        current_kc = kcs[i]
-                        if i == 0:
-                            pred_val = 0.5
-                        else:
-                            inp = torch.tensor([state_feats], dtype=torch.long).to(device)
-                            out = model(inp)
-                            pred_val = out[0, -1, current_kc].item()
-                            
-                        test_preds_dict[row_indices[i]] = pred_val
-                        state_feats.append(current_kc * 2 + labels[i])
-                        
-            # Align predictions back with test_df's original order
-            p_pred = np.array([test_preds_dict[idx] for idx in test_df.index])
+            p_pred = predict_sequential(model, test_df, kc_map, device)
             
         else:
             raise NotImplementedError(f"Model {model_name} not supported.")

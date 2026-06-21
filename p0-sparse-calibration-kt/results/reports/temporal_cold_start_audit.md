@@ -1,6 +1,6 @@
 # Temporal Cold-Start Group Audit
 
-## train_freq computed from temporal train split only (P1-compliant): ✅
+train_freq computed from train split ONLY (P1-compliant): YES
 
 | dataset    | split    | group   |   n_events |   n_kcs |   n_learners |   correctness_rate | train_freq_range   |
 |:-----------|:---------|:--------|-----------:|--------:|-------------:|-------------------:|:-------------------|
@@ -16,9 +16,3 @@
 | xes3g5m    | temporal | k5      |     258943 |     125 |        16097 |             0.792  | <=5                |
 | xes3g5m    | temporal | k10     |     259425 |     126 |        16100 |             0.7919 | <=10               |
 | xes3g5m    | temporal | warm    |    1331318 |     424 |        16366 |             0.8043 | >10                |
-
-## Warm cohort AUC ≈ 0.50?
-
-- **assist2012 warm**: n_events=529786, correct_rate=0.6891 (AUC requires predictions — see Step 4)
-- **junyi warm**: n_events=3240570, correct_rate=0.6994 (AUC requires predictions — see Step 4)
-- **xes3g5m warm**: n_events=1331318, correct_rate=0.8043 (AUC requires predictions — see Step 4)

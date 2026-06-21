@@ -154,6 +154,66 @@ def train_torch_model(model, train_loader, valid_loader, device, n_epochs=50, lr
         model.load_state_dict(best_state)
     return model
 
+def predict_sequential(model, test_df, kc_map, device, batch_size=2048):
+    """
+    Predict outcomes sequentially per user to avoid prediction-label misalignment.
+    Ensures causal correctness by predicting step i from history 0..i-1.
+    Optimized with batched evaluations across users at each step.
+    """
+    if len(test_df) == 0:
+        return np.array([])
+        
+    model.eval()
+    test_df_sorted = test_df.sort_values(['user_id', 'timestamp']) if 'timestamp' in test_df.columns else test_df.sort_values('user_id')
+    
+    user_groups = test_df_sorted.groupby('user_id', sort=True)
+    
+    users_data = []
+    for user_id, group in user_groups:
+        kcs = [kc_map[k] for k in group['kc_id'].values]
+        labels = group['correct'].values
+        row_indices = group.index.tolist()
+        state_feats = [kcs[i] * 2 + int(labels[i]) for i in range(len(group))]
+        users_data.append({
+            'kcs': kcs,
+            'labels': labels,
+            'row_indices': row_indices,
+            'state_feats': state_feats,
+            'len': len(group)
+        })
+        
+    max_len = max(u['len'] for u in users_data)
+    test_preds_dict = {}
+    
+    # Initialize all step 0 predictions to 0.5
+    for u in users_data:
+        test_preds_dict[u['row_indices'][0]] = 0.5
+        
+    with torch.no_grad():
+        for step_idx in range(1, max_len):
+            active_users = [u for u in users_data if u['len'] > step_idx]
+            if not active_users:
+                break
+                
+            for start_u in range(0, len(active_users), batch_size):
+                sub_batch = active_users[start_u:start_u + batch_size]
+                
+                inp_list = [u['state_feats'][:step_idx] for u in sub_batch]
+                inp_tensor = torch.tensor(inp_list, dtype=torch.long, device=device)
+                
+                target_kcs = [u['kcs'][step_idx] for u in sub_batch]
+                
+                out = model(inp_tensor) # (sub_batch_size, step_idx, n_kcs)
+                
+                preds = out[torch.arange(len(sub_batch)), -1, target_kcs].cpu().numpy()
+                
+                for idx, u in enumerate(sub_batch):
+                    row_idx = u['row_indices'][step_idx]
+                    test_preds_dict[row_idx] = float(preds[idx])
+                    
+    p_pred = np.array([test_preds_dict[idx] for idx in test_df.index])
+    return p_pred
+
 # --- Runner ---
 
 def run_experiments(config_path):
@@ -224,62 +284,21 @@ def run_experiments(config_path):
                     train_ds = KTDataset(train_df, kc_map)
                     valid_ds = KTDataset(valid_df, kc_map)
                     
-                    train_loader = DataLoader(train_ds, batch_size=64, shuffle=True, collate_fn=collate_fn)
-                    valid_loader = DataLoader(valid_ds, batch_size=64, shuffle=False, collate_fn=collate_fn)
+                    batch_size = config.get('batch_size', 64)
+                    n_epochs = config.get('epochs', 50)
+                    
+                    train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True, collate_fn=collate_fn)
+                    valid_loader = DataLoader(valid_ds, batch_size=batch_size, shuffle=False, collate_fn=collate_fn)
                     
                     if model_name == 'dkt':
                         model = DKT(n_kcs).to(device)
                     else:
                         model = SimpleKT(n_kcs).to(device)
                     
-                    model = train_torch_model(model, train_loader, valid_loader, device)
+                    model = train_torch_model(model, train_loader, valid_loader, device, n_epochs=n_epochs)
                     
                     # Predict on test
-                    model.eval()
-                    # We need to process test users one by one to keep sequence context
-                    # Or reuse KTDataset logic
-                    test_ds = KTDataset(test_df, kc_map)
-                    test_loader = DataLoader(test_ds, batch_size=1, shuffle=False, collate_fn=collate_fn)
-                    
-                    p_pred = []
-                    y_true = []
-                    # For predictions in the required CSV format, we need to align with original test_df rows
-                    # This is tricky with sequence models. A simpler way is to re-run prediction per user.
-                    
-                    # BUG FIX (T11): Build predictions indexed by original DataFrame row index
-                    # to avoid prediction-label misalignment caused by groupby reordering.
-                    # test_df.groupby('user_id') iterates users in sorted user_id order,
-                    # but test_df rows may be in a different order (e.g., sorted by timestamp).
-                    # Assigning test_preds_list directly to pred_df['p_pred'] would misalign
-                    # predictions with labels. Fix: use a dict keyed by row index.
-                    test_preds_dict = {}  # {original_row_idx: pred_val}
-                    # Sort within each user's group by timestamp for causal correctness
-                    test_df_sorted = test_df.sort_values(['user_id', 'timestamp']) if 'timestamp' in test_df.columns else test_df.sort_values('user_id')
-                    with torch.no_grad():
-                        for user_id, group in test_df_sorted.groupby('user_id', sort=True):
-                            kcs = [kc_map[k] for k in group['kc_id'].values]
-                            labels = group['correct'].values
-                            row_indices = group.index.tolist()
-                            
-                            # Sequential prediction (causal: predict step i from history 0..i-1)
-                            state_feats = []
-                            for i in range(len(group)):
-                                current_kc = kcs[i]
-                                if i == 0:
-                                    # Cold start for this user, use 0.5
-                                    pred_val = 0.5
-                                else:
-                                    # Predict using previous interactions
-                                    inp = torch.tensor([state_feats], dtype=torch.long).to(device)
-                                    out = model(inp)  # (1, seq, n_kcs)
-                                    pred_val = out[0, -1, current_kc].item()
-                                
-                                test_preds_dict[row_indices[i]] = pred_val
-                                # Update state for next step: kc * 2 + label
-                                state_feats.append(current_kc * 2 + labels[i])
-                    
-                    # Reconstruct p_pred aligned with test_df original row order
-                    p_pred = np.array([test_preds_dict[idx] for idx in test_df.index])
+                    p_pred = predict_sequential(model, test_df, kc_map, device)
                     y_true = test_df['correct'].values
                 else:
                     print(f"        - Model {model_name} not implemented.")

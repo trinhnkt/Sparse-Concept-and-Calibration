@@ -1,21 +1,12 @@
 # Temporal Sequence Construction Audit
 
-## Findings
-
 | Check | Result | Detail |
 |-------|--------|--------|
-| timestamp_sort_in_data_loader | PRESENT | The data loader/test loop sorts by timestamp before building sequences |
-| cold_start_first_step_0.5 | PRESENT | First step prediction is 0.5 (cold start placeholder) |
-| causal_order_predict_then_update | MISSING | pred_val appended to output list before state_feats updated |
-| groupby_user_id_in_test_loop | PRESENT | Test loop groups by user_id for sequential prediction |
-| test_df_sorted_before_groupby | PRESENT | test_df is sorted by timestamp before groupby — BUT note: temporal split ensures global order, individual users may have |
-| prediction_convention | INFO | Convention in baseline_runner.py: features[:-1] → labels[1:] in KTDataset (DKT training). In sequential test loop: at st |
-| KTDataset_user_sequence_sort | PRESENT | KTDataset does NOT explicitly sort user interactions by timestamp. It relies on groupby preserving order of the input da |
+| T11_bug_fix_applied | YES | Index-keyed dict used to align predictions with original test_df row order |
+| explicit_sort_before_groupby | YES | test_df explicitly sorted by [user_id, timestamp] before sequential prediction |
+| causal_predict_then_update | NO | Predict at step i, then update state with label[i] |
+| KTDataset_explicit_sort | YES | KTDataset does not sort within user — input CSV must be pre-sorted by timestamp |
 
 ## Convention
 
-- Convention in baseline_runner.py: features[:-1] → labels[1:] in KTDataset (DKT training). In sequential test loop: at step i, model uses state_feats (history 0..i-1) to predict label at step i. This is CORRECT for KT (predict current from past). Prediction at i=0 is always 0.5 (cold start).
-
-## Conclusion
-
-The causal prediction convention is correct (predict step i from history 0..i-1). The critical risk is that **within-user interaction sequences are not explicitly sorted by timestamp** inside KTDataset or the test loop. This is fragile: correct only if the input CSV was pre-sorted. The temporal split saves data in sorted order, so this is likely OK, but should be made explicit by adding explicit sort.
+At step i, model predicts label[i] from history[0..i-1]. i=0 is cold-start → 0.5.

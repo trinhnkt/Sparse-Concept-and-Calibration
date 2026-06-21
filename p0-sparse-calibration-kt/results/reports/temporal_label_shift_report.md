@@ -1,2 +1,25 @@
-# Temporal Label Shift Report
+# Temporal Label Distribution Report
 
+| dataset    | split                   |   n_events |   n_learners |   n_kcs |   n_items |   correctness_rate |
+|:-----------|:------------------------|-----------:|-------------:|--------:|----------:|-------------------:|
+| assist2012 | train                   |    1860242 |        21198 |     237 |     43352 |             0.7026 |
+| assist2012 | valid                   |     265749 |         8640 |     225 |     33149 |             0.6679 |
+| assist2012 | test                    |     531499 |        11384 |     245 |     38761 |             0.6887 |
+| assist2012 | test_bucket_unknown     |     531499 |        11384 |     245 |     38761 |             0.6887 |
+| junyi      | train                   |   11350896 |        55782 |    1322 |     24659 |             0.7081 |
+| junyi      | valid                   |    1621556 |        19370 |    1320 |     23303 |             0.6823 |
+| junyi      | test                    |    3243115 |        28339 |    1323 |     23831 |             0.6992 |
+| junyi      | test_bucket_dense       |    3072767 |        27698 |    1235 |     22323 |             0.7073 |
+| junyi      | test_bucket_medium      |     151597 |         3322 |      78 |      1353 |             0.5455 |
+| junyi      | test_bucket_sparse      |      16206 |          990 |       6 |       146 |             0.6395 |
+| junyi      | test_bucket_very_sparse |       2545 |          131 |       4 |        67 |             0.5147 |
+| xes3g5m    | train                   |    5567596 |        18029 |     727 |      5938 |             0.5682 |
+| xes3g5m    | valid                   |     795370 |        17331 |     590 |      3365 |             0.8345 |
+| xes3g5m    | test                    |    1590743 |        16383 |     550 |      2828 |             0.8023 |
+| xes3g5m    | test_bucket_unknown     |    1590743 |        16383 |     550 |      2828 |             0.8023 |
+
+## Flag: Large Shifts (|Δ| > 0.10)
+
+- **assist2012**: Δ = 0.0139 → OK
+- **junyi**: Δ = 0.0089 → OK
+- **xes3g5m**: Δ = 0.2341 → LARGE SHIFT

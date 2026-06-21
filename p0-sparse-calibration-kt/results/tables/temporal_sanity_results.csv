@@ -1,16 +1,10 @@
-dataset,split_mode,model,seed,n_events,auc,y_true_mean,p_pred_mean,auc_flag
-assist2012,temporal,bkt,123,418724,0.5,0.6888,0.0017,⚠️ ~0.50
-assist2012,temporal,bkt,2026,418724,0.5,0.6888,0.0017,⚠️ ~0.50
-assist2012,temporal,bkt,42,418724,0.5,0.6888,0.0017,⚠️ ~0.50
-assist2012,temporal,dkt,42,531499,0.4992,0.6887,0.6822,⚠️ ~0.50
-assist2012,temporal,irt_1pl,42,531499,0.5913,0.6887,0.6854,OK
-assist2012,temporal,simplekt,42,531499,0.5015,0.6887,0.6429,⚠️ ~0.50
-junyi_bkt_test,temporal,bkt,2024,2219,0.5026,0.607,0.0027,⚠️ ~0.50
-junyi_bkt_test,temporal,bkt,2025,2219,0.5026,0.607,0.0027,⚠️ ~0.50
-junyi_bkt_test,temporal,bkt,42,2219,0.5026,0.607,0.0027,⚠️ ~0.50
-junyi,temporal,bkt,42,2855914,0.5001,0.6992,0.0004,⚠️ ~0.50
-junyi,temporal,dkt,42,3243115,0.5003,0.6992,0.7092,⚠️ ~0.50
-junyi,temporal,simplekt,42,3243115,0.4998,0.6992,0.6917,⚠️ ~0.50
-xes3g5m,temporal,bkt,42,1011570,0.5,0.802,0.1153,⚠️ ~0.50
-xes3g5m,temporal,dkt,42,1590743,0.4992,0.8023,0.7114,⚠️ ~0.50
-xes3g5m,temporal,simplekt,42,1590743,0.4997,0.8023,0.7294,⚠️ ~0.50
+dataset,model,seed,n_events,auc,y_true_mean,p_pred_mean,auc_flag
+assist2012,bkt,42,418724,0.5,0.6888,0.0017,~0.50 SUSPICIOUS
+assist2012,dkt,42,531499,0.4992,0.6887,0.6822,~0.50 SUSPICIOUS
+assist2012,simplekt,42,531499,0.5015,0.6887,0.6429,~0.50 SUSPICIOUS
+junyi,bkt,42,2855914,0.5001,0.6992,0.0004,~0.50 SUSPICIOUS
+junyi,dkt,42,3243115,0.5003,0.6992,0.7092,~0.50 SUSPICIOUS
+junyi,simplekt,42,3243115,0.4998,0.6992,0.6917,~0.50 SUSPICIOUS
+xes3g5m,bkt,42,1011570,0.5,0.802,0.1153,~0.50 SUSPICIOUS
+xes3g5m,dkt,42,1590743,0.6265,0.8023,0.7003,OK
+xes3g5m,simplekt,42,1590743,0.6505,0.8023,0.7197,OK

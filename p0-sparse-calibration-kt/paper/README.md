@@ -24,6 +24,12 @@ This template is designed for a **protocol / diagnostic / resource paper**. It i
 - Figure 1: diagnostic pipeline
 - Figure 2/3: reliability diagrams and KC bucket distribution
 
+## Data preparation
+The original learner-based splits only contain 3 folds (seeds 42, 2024, 2025). To perform the full 5-fold cross-validation, run the script to generate the missing folds (seeds 2026, 2027):
+```
+python scripts/create_new_folds.py
+```
+
 ## Notes for submission
 - Use cautious language: “under our experimental conditions”, “may differ”, “to our knowledge”.
 - Do not write “we propose a new KT model” or “we solve cold-start KT”.

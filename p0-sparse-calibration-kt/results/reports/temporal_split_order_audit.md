@@ -1,12 +1,13 @@
 # Temporal Split Timestamp Order Audit
 
-| Dataset | Status | Global Order OK | Train>Valid Viol | Valid>Test Viol | Train>Test Viol |
-|---------|--------|-----------------|------------------|-----------------|-----------------|
-| assist2012 | ✅ | True | 0 | 0 | 0 |
-| junyi | ✅ | True | 0 | 0 | 0 |
-| xes3g5m | ✅ | True | 0 | 0 | 0 |
+| Dataset | Status | Global OK | Train>Test Viol (sampled) |
+|---------|--------|-----------|---------------------------|
+| assist2012 | OK | True | 0 |
+| junyi | OK | True | 0 |
+| xes3g5m | OK | True | 0 |
 
-## Detail
+## Raw Data
+
 
 ### assist2012
 - **dataset**: assist2012
@@ -19,9 +20,8 @@
 - **max_valid_ts**: 2013-05-01 17:46:30
 - **min_test_ts**: 2013-05-01 17:46:35
 - **global_order_ok**: True
-- **learner_train_valid_violations**: 0
-- **learner_valid_test_violations**: 0
-- **learner_train_test_violations**: 0
+- **learner_train_test_violations_sampled**: 0
+- **shared_users_sampled**: 2000
 
 ### junyi
 - **dataset**: junyi
@@ -34,9 +34,8 @@
 - **max_valid_ts**: 2019-05-17 23:45:00+00:00
 - **min_test_ts**: 2019-05-17 23:45:00+00:00
 - **global_order_ok**: True
-- **learner_train_valid_violations**: 0
-- **learner_valid_test_violations**: 0
-- **learner_train_test_violations**: 0
+- **learner_train_test_violations_sampled**: 0
+- **shared_users_sampled**: 2000
 
 ### xes3g5m
 - **dataset**: xes3g5m
@@ -49,6 +48,5 @@
 - **max_valid_ts**: 2021-03-13 03:53:18
 - **min_test_ts**: 2021-03-13 03:53:20
 - **global_order_ok**: True
-- **learner_train_valid_violations**: 0
-- **learner_valid_test_violations**: 0
-- **learner_train_test_violations**: 0
+- **learner_train_test_violations_sampled**: 0
+- **shared_users_sampled**: 2000

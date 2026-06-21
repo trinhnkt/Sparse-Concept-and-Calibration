@@ -10,7 +10,7 @@ from pyBKT.models import Model as BKTModel
 from torch.utils.data import DataLoader
 
 # Import baseline model classes and data structures from original script
-from src.baseline_runner import DKT, SimpleKT, KTDataset, collate_fn, train_torch_model
+from src.baseline_runner import DKT, SimpleKT, KTDataset, collate_fn, train_torch_model, predict_sequential
 from src.metrics import compute_metrics
 
 def main():
@@ -135,34 +135,8 @@ def main():
                     # Train
                     model = train_torch_model(model, train_loader, valid_loader, device)
 
-                    # BUG FIX (T11): Build predictions indexed by original DataFrame row index
-                    # to avoid prediction-label misalignment caused by groupby reordering.
-                    # test_df.groupby('user_id') iterates users in sorted user_id order,
-                    # but test_df rows may be in a different order (e.g., sorted by timestamp
-                    # in temporal split). Assigning a flat list directly misaligns p_pred with
-                    # the original test_df row order. Fix: use a dict keyed by row index.
-                    test_preds_dict = {}  # {original_row_idx: pred_val}
-                    # Sort within each user's group by timestamp for causal correctness
-                    test_df_sorted = test_df.sort_values(['user_id', 'timestamp']) if 'timestamp' in test_df.columns else test_df.sort_values('user_id')
-                    with torch.no_grad():
-                        for user_id, group in test_df_sorted.groupby('user_id', sort=True):
-                            kcs = [kc_map[k] for k in group['kc_id'].values]
-                            labels = group['correct'].values
-                            row_indices = group.index.tolist()
-                            state_feats = []
-                            for i in range(len(group)):
-                                current_kc = kcs[i]
-                                if i == 0:
-                                    pred_val = 0.5
-                                else:
-                                    inp = torch.tensor([state_feats], dtype=torch.long).to(device)
-                                    out = model(inp)
-                                    pred_val = out[0, -1, current_kc].item()
-                                
-                                test_preds_dict[row_indices[i]] = pred_val
-                                state_feats.append(current_kc * 2 + labels[i])
-                    # Reconstruct p_pred aligned with test_df original row order
-                    p_pred = np.array([test_preds_dict[idx] for idx in test_df.index])
+                    p_pred = predict_sequential(model, test_df, kc_map, device)
+
 
                 # Save Predictions
                 pred_df = test_df.copy()
