@@ -60,7 +60,7 @@ Calibration is reported both overall and per KC stratum.
 
 AUC and calibration answer fundamentally different questions. AUC measures discrimination (i.e., whether a model ranks correct responses above incorrect ones), whereas calibration measures whether predicted probabilities correspond to empirical correctness rates. In educational decision support, this distinction is critical because probability thresholds are often used to trigger automated remediation, suggest additional practice, or license concept advancement. A model with high AUC may still exhibit substantial or potentially harmful miscalibration, leading to inappropriate instructional interventions due to biased confidence scores. Thus, calibration metrics are not auxiliary statistics but primary indicators of a model's operational reliability.
 
-\subsection{Seven-channel Leakage Audit}
+\subsection{Eight-channel Leakage Audit}
 Table~\ref{tab:leakage} summarizes the leakage audit. The audit is not a model component; it is an evaluation hygiene requirement.
 
 \input{tables/table1_leakage_audit}
@@ -71,7 +71,7 @@ Figure~\ref{fig:pipeline} illustrates the pipeline.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\linewidth]{figures/figure1_pipeline.pdf}
-\caption{Overview of the reproducible sparse-concept and calibration diagnostic pipeline for Knowledge Tracing.}
+\caption{Overview of the reproducible sparse-concept and calibration diagnostic pipeline for Knowledge Tracing. (\textit{Note: The term ``k-shot'' in the figure denotes ``limited'' cold-start KCs as discussed in the text.})}
 \label{fig:pipeline}
 \end{figure}
 
@@ -82,5 +82,5 @@ To ensure the mathematical validity and operational reproducibility of the diagn
     \item \textbf{P1. Train-only Definitions:} All knowledge component (KC) buckets and limited cold-start groups must be defined using training-fold information only. This prevents sparse-bucket leakage, wherein information about the testing split's distribution inadvertently influences the stratification boundaries or the preprocessing pipeline.
     \item \textbf{P2. Prediction-level Export:} Rather than computing downstream diagnostics in-memory during baseline training, our protocol mandates exporting raw prediction probabilities and ground-truth labels directly to disk. All metrics, including ECE, Brier score decomposition, and reliability diagrams, are computed post-hoc from these standardized artifacts. This decoupling helps keep diagnostic scoring consistent across baselines and reduces dependence on model-specific logging implementations.
     \item \textbf{P3. Sample-size-aware Interpretation:} Bucket-level metrics must never be reported in isolation. They must be accompanied by the exact number of KCs and interaction events contained within each stratum. This contextual reporting enables practitioners to differentiate between true performance degradation and metric instability due to small-sample constraints.
-    \item \textbf{P4. Leakage-audited Reporting:} No diagnostic result is considered complete or valid unless accompanied by an explicit, verifiable leakage-control check. This is formalized through our seven-channel leakage checklist (L1--L7), which enforces strict documentation of data splits, preprocessing scopes, and parameter configurations.
+    \item \textbf{P4. Leakage-audited Reporting:} No diagnostic result is considered complete or valid unless accompanied by an explicit, verifiable leakage-control check. This is formalized through our eight-channel leakage checklist (L1--L8), which enforces strict documentation of data splits, preprocessing scopes, and parameter configurations.
 \end{itemize}

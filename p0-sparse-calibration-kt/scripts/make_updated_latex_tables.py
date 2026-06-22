@@ -566,7 +566,7 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {bucket_display} & {rel_flag} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} IRT provides a stable classical probability baseline and shows low ECE in several learner-based cohorts, but its calibration advantage is not uniform across all datasets and strata.} \\\\")
+        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} IRT shows low ECE in several learner-based cohorts, but RES = 0 across strata indicates base-rate-like behavior with no resolving power. Thus, IRT calibration should be interpreted jointly with AUC and Brier resolution.} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
         if use_single_col:
@@ -727,7 +727,7 @@ def main():
             tex.append(f"{ds_col} & {model_col} & {group_display} & {n_kcs_str} & {n_events_str} & {auc_str} & {acc_str} & {ece_str} & {brier_str} & {rel_str} & {res_str} \\\\")
             
         tex.append("\\bottomrule")
-        tex.append("\\multicolumn{11}{p{8.2cm}}{\\scriptsize \\textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency. After label-alignment correction, ASSISTments 2012 shows recovered temporal predictive signal on the warm cohort. However, Junyi Academy and XES3G5M still show near-random AUC for deep KT baselines under temporal splits, suggesting dataset-specific temporal generalization challenges that require further analysis.}} \\\\")
+        tex.append("\\multicolumn{11}{p{8.2cm}}{\\scriptsize \\textit{Note: For the Junyi Academy dataset, the strict, k5, and k10 cohorts coincide exactly because all 4 concepts in this category have zero training frequency. After applying the label-alignment correction consistently across datasets, warm-cohort temporal AUC recovers for deep KT baselines on ASSISTments 2012, Junyi Academy, and XES3G5M. Strict and limited-frequency cold-start groups remain more challenging and should be interpreted together with sample size and sanity-check evidence.}} \\\\")
         tex.append("\\end{tabular}%")
         tex.append("}")
         tex.append("\\end{table}")
