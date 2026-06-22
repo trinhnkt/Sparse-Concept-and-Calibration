@@ -16,7 +16,7 @@ This template is designed for a **protocol / diagnostic / resource paper**. It i
 
 ## Main result objects expected
 - Table 1: dataset statistics
-- Table 2: leakage audit L1--L7
+- Table 2: evaluation hygiene audit L1--L8
 - Table 3: overall baseline results
 - Table 4: performance by KC stratum
 - Table 5: calibration by KC stratum
