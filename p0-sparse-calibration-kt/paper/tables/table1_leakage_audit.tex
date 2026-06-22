@@ -1,5 +1,5 @@
 \begin{table*}[t]
-\caption{Rigorous Multi-Channel Leakage Prevention Checklist}
+\caption{Leakage \& Predictive Sanity Audit Checklist (L1--L8)}
 \label{tab:leakage}
 \centering
 \footnotesize
@@ -14,6 +14,7 @@ L4 & Sparse-bucket leakage & \path{kc_strata.csv} & PASS & Bucket assignment is 
 L5 & Calibration leakage (test-based tuning) & \path{baseline_runner.py} & PASS & No post-hoc tuning on test set \\
 L6 & Hyperparameter leakage (model selection) & \path{baseline_runner.py} & PASS & Validation-based selection only \\
 L7 & Cold-start leakage & \path{split_constructor.py} & PASS & Classification uses train\_freq only \\
+L8 & Predictive sanity check & \path{temporal_audit.py} & PASS & Warm-cohort AUC vs static reference \\
 \bottomrule
 \end{tabular}
 \end{table*}

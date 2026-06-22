@@ -585,7 +585,7 @@ def main():
     def make_table5_temporal(df, filepath):
         tex = []
         tex.append("\\begin{table*}[H]")
-        tex.append("\\caption{Calibration Breakdown by Frequency Stratum (Temporal)}")
+        tex.append("\\caption{Calibration Breakdown by Frequency Stratum under Temporal Splits}")
         tex.append("\\label{tab:calib_temporal}")
         tex.append("\\centering")
         tex.append("\\resizebox{\\textwidth}{!}{%")
