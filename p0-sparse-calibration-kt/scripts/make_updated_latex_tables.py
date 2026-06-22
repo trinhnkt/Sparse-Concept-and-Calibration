@@ -98,6 +98,7 @@ def main():
     # 2. Find and calculate all rerun prediction metrics
     pred_dir = Path("results/predictions")
     pred_files = glob.glob(str(pred_dir / "*_predictions_rerun.csv"))
+    pred_files = [f for f in pred_files if not ("temporal" in f and "seed" in f and "seed42" not in f)]
     print(f"Scanned {len(pred_files)} rerun prediction files.")
     
     overall_rows = []
@@ -585,8 +586,8 @@ def main():
     def make_table5_temporal(df, filepath):
         tex = []
         tex.append("\\begin{table*}[H]")
-        tex.append("\\caption{Calibration Breakdown by Frequency Stratum under Temporal Splits}")
-        tex.append("\\label{tab:calib_temporal}")
+        tex.append("\\caption{Calibration Breakdown by Frequency Stratum under Temporal Splits. Values are computed from prediction-level outputs after the label-alignment correction documented in Appendix F. This table provides the source calibration values used for Figure 3.}")
+        tex.append("\\label{tab:temporal_calibration_breakdown}")
         tex.append("\\centering")
         tex.append("\\resizebox{\\textwidth}{!}{%")
         tex.append("\\begin{tabular}{lllrcccccc}")
@@ -599,6 +600,7 @@ def main():
         filtered['model_sort'] = filtered['model'].map({'irt_1pl': 0, 'bkt': 0, 'dkt': 1, 'simplekt': 2})
         filtered['bucket_sort'] = filtered['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
         filtered = filtered.sort_values(['dataset_sort', 'model_sort', 'bucket_sort'])
+        filtered.to_csv("results/tables/temporal_calibration_breakdown.csv", index=False)
         
         raw_events = df_raw_bucket[df_raw_bucket['split_mode'] == 'temporal'].groupby(['dataset', 'model', 'bucket'])['n_events'].mean().reset_index()
         clean_events = pd.read_csv("results/tables/clean_metric_per_bucket.csv")
@@ -666,7 +668,7 @@ def main():
         with open(filepath, "w") as f:
             f.write("\n".join(tex) + "\n")
             
-    make_table5_temporal(merged_bucket, out_dir / "tableA_calibration_by_bucket_temporal.tex")
+    make_table5_temporal(merged_bucket, out_dir / "table_xi_temporal_calibration_breakdown.tex")
     
     # Calibration compact (Table 5 compact)
     def make_table5_compact(df, filepath):

@@ -15,17 +15,20 @@
 This template is designed for a **protocol / diagnostic / resource paper**. It intentionally avoids claiming a new KT model. Do not add SSL, GNN, graph augmentation, learning path recommendation, or distillation into the main contribution of P0.
 
 ## Main result objects expected
-- Table 1: dataset statistics
-- Table 2: evaluation hygiene audit L1--L8
-- Table 3: overall baseline results
-- Table 4: performance by KC stratum
-- Table 5: calibration by KC stratum
-- Table 6: limited cold-start KC diagnostics
-- Figure 1: diagnostic pipeline
-- Figure 2/3: reliability diagrams and KC bucket distribution
+- Table I: Leakage & Predictive Sanity Audit Checklist (L1--L8)
+- Table II: Dataset statistics
+- Table III: Overall baseline results
+- Table IV: Performance by KC stratum (Learner-based)
+- Table V: Calibration by KC stratum (Learner-based)
+- Table VI: Limited cold-start KC diagnostics
+- Table X: Detailed calibration results (Learner-based)
+- Table XI: Calibration breakdown by stratum (Temporal)
+- Table XII: Diagnostic Interpretation Guide
+- Figure 1: Diagnostic pipeline
+- Figure 2/3: Reliability diagrams and KC bucket distribution
 
 ## Data preparation
-The original learner-based splits only contain 3 folds (seeds 42, 2024, 2025). To perform the full 5-fold cross-validation, run the script to generate the missing folds (seeds 2026, 2027):
+The learner-based and temporal splits provide 5-fold cross-validation or 5 seeds (seeds 42, 2024, 2025, 2026, 2027). You can run the script to regenerate splits if needed:
 ```
 python scripts/create_new_folds.py
 ```
