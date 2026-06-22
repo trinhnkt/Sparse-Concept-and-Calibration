@@ -41,7 +41,7 @@ p0-sparse-calibration-kt/
 │   ├── cold_start_split.py             # Chẩn đoán phân tách học sinh mới & kỹ năng mới (Cold-start)
 │   ├── sensitivity_analysis.py         # Phân tích độ nhạy biên phân tầng của KCs
 │   ├── statistical_tests.py            # Thực hiện các kiểm định thống kê ý nghĩa (paired t-test, Wilcoxon)
-│   ├── leakage_checklist_runner.py     # Thực hiện kiểm toán rò rỉ dữ liệu 7 cấp độ độc lập
+│   ├── leakage_checklist_runner.py     # Thực hiện kiểm toán rò rỉ dữ liệu 8 cấp độ độc lập
 │   ├── recalculate_diagnostics.py      # Cân bằng chênh lệch sự kiện (#Events) và chuẩn hóa dữ liệu đầu ra
 │   ├── make_clean_latex_tables.py      # Sinh tự động toàn bộ bảng biểu LaTeX khoa học chuẩn mực
 │   ├── reliability_diagram_plotter.py  # Vẽ biểu đồ độ tin cậy hiệu chuẩn (Reliability Diagrams)
@@ -179,7 +179,7 @@ graph TD
     B --> C["3. Huấn luyện & Dự đoán đa mô hình<br>run_reruns.py / baseline_runner.py"]
     C --> D["4. Phân tầng KCs theo độ phổ biến<br>kc_strata.py"]
     D --> E["5. Đánh giá AUC/ACC & Hiệu chuẩn ECE/Brier<br>metrics.py / calibration_eval.py / brier_decomposition.py"]
-    E --> F["6. Kiểm toán rò rỉ dữ liệu (7 Cấp độ)<br>leakage_checklist_runner.py"]
+    E --> F["6. Kiểm toán rò rỉ dữ liệu (8 Cấp độ)<br>leakage_checklist_runner.py"]
     F --> G["7. Đồng bộ & Vẽ biểu đồ tin cậy<br>recalculate_diagnostics.py / reliability_diagram_plotter.py"]
     G --> H["8. Biên dịch Báo cáo & Bảng LaTeX<br>make_clean_latex_tables.py / report_generator.py"]
 ```

@@ -72,7 +72,7 @@ Email: thanhnc80@gmail.com}
 % <RESULTS UPDATED: 2026-05-18 05:00:45>
 
 \begin{abstract}
-Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel evaluation hygiene audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, calibration error varies substantially across KC-frequency strata, and aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -96,7 +96,7 @@ We will release the complete reproducibility package upon acceptance at \url{htt
   \item \textbf{Calibration Verification:} Scripts computing Expected Calibration Error (ECE).
   \item \textbf{Brier Decomposition:} Implementation of Uncertainty, Reliability, and Resolution equations.
   \item \textbf{Reliability Diagrams:} Plotting utilities for multi‑strata calibration curves.
-  \item \textbf{Evaluation Hygiene Audit:} Automated logs verifying channels L1--L8.
+  \item \textbf{Leakage \& Predictive Sanity Audit:} Automated logs verifying channels L1--L8.
   \item \textbf{LaTeX Table Exporters:} Python exporters generating book‑tabs tables.
   \item \textbf{One‑Command Reproduction:} Unified script ensuring machine‑independent reproducibility.
 \end{itemize}

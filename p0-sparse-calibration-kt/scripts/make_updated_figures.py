@@ -87,13 +87,15 @@ def main():
     very_sparse_kcs = set(junyi_strata[junyi_strata['bucket'] == 'very_sparse']['kc_id'].astype(str))
     
     # Load predictions
-    pred_path = Path("results/predictions/junyi_temporal_simplekt_seed42.csv")
+    pred_path = Path("results/predictions/junyi_temporal_simplekt_seed42_predictions_rerun.csv")
     if not pred_path.exists():
         print(f"Prediction file {pred_path} not found. Fallback to drawing mock diagrams.")
         return
         
     df = pd.read_csv(pred_path)
     df = df.dropna(subset=['y_true', 'p_pred'])
+    df = df[df['kc_id'].astype(str) != "-1"]
+    df = df[df['kc_id'].astype(str) != "nan"]
     df['kc_id_str'] = df['kc_id'].astype(str)
     
     # Dense

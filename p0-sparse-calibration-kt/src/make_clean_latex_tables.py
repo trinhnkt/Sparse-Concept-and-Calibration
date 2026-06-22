@@ -368,6 +368,73 @@ def main():
     with open(out_dir / "tableA_calibration_by_bucket_full.tex", "w") as f:
         f.write("\n".join(tex_full) + "\n")
         
+    # Temporal Calibration Table (Appendix)
+    df_calib_temp = pd.read_csv("results/tables/clean_calibration_by_bucket_temporal.csv")
+    df_calib_temp['dataset_sort'] = df_calib_temp['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
+    df_calib_temp['model_sort'] = df_calib_temp['model'].map({'bkt': 0, 'dkt': 1, 'simplekt': 2})
+    df_calib_temp['bucket_sort'] = df_calib_temp['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
+    df_calib_temp = df_calib_temp.sort_values(['dataset_sort', 'model_sort', 'bucket_sort'])
+    
+    tex_temp = []
+    tex_temp.append("\\begin{table*}[h]")
+    tex_temp.append("\\caption{Calibration Breakdown and Brier Score Decomposition (Temporal Split)}")
+    tex_temp.append("\\label{tab:calib_temporal}")
+    tex_temp.append("\\centering")
+    tex_temp.append("\\small")
+    tex_temp.append("\\begin{tabular}{lllrcccccc}")
+    tex_temp.append("\\toprule")
+    tex_temp.append("Dataset & Model & Bucket & \\#Events & ECE & Brier & UNC & REL & RES \\\\")
+    tex_temp.append("\\midrule")
+    
+    last_ds = None
+    last_model = None
+    for _, row in df_calib_temp.iterrows():
+        ds_name = row['dataset'].upper()
+        if ds_name == "ASSIST2012":
+            ds_display = "ASSISTments 2012"
+        elif ds_name == "JUNYI":
+            ds_display = "Junyi Academy"
+        else:
+            ds_display = "XES3G5M"
+            
+        if ds_display != last_ds:
+            if last_ds is not None:
+                tex_temp.append("\\midrule")
+            last_ds = ds_display
+            ds_col = ds_display
+            last_model = None
+        else:
+            ds_col = ""
+            
+        model_display = row['model'].upper() if row['model'] != "simplekt" else "SimpleKT"
+        if model_display != last_model:
+            model_col = model_display
+            last_model = model_display
+        else:
+            model_col = ""
+            
+        bucket_display = row['bucket'].replace("_", "\\_")
+        
+        n_events = int(row['n_events']) if not pd.isna(row['n_events']) else 0
+        n_events_str = f"{n_events:,}"
+        
+        ece_str = fmt(row['ece_mean'], row['ece_std'])
+        brier_str = fmt(row['brier_mean'], row['brier_std'])
+        unc_str = f"${row['uncertainty_mean']:.4f}$" if not pd.isna(row['uncertainty_mean']) else "-"
+        rel_str = f"${row['reliability_mean']:.4f}$" if not pd.isna(row['reliability_mean']) else "-"
+        res_str = f"${row['resolution_mean']:.4f}$" if not pd.isna(row['resolution_mean']) else "-"
+        
+        tex_temp.append(f"{ds_col} & {model_col} & {bucket_display} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
+        
+    tex_temp.append("\\midrule")
+    tex_temp.append("\\multicolumn{9}{p{17.5cm}}{\\scriptsize \\textbf{Note:} BKT metrics often exhibit near-deterministic probability artifacts. These figures provide the temporal baseline for the reliability diagrams shown in Figure~3.} \\\\")
+    tex_temp.append("\\bottomrule")
+    tex_temp.append("\\end{tabular}")
+    tex_temp.append("\\end{table*}")
+    
+    with open(out_dir / "tableA_calibration_by_bucket_temporal.tex", "w") as f:
+        f.write("\n".join(tex_temp) + "\n")
+        
     # -------------------------------------------------------------
     # 6. Table VI: Cold-start Results (table6_cold_start_results.tex)
     # -------------------------------------------------------------

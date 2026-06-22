@@ -582,6 +582,92 @@ def main():
     make_table5(merged_bucket, out_dir / "table_v_calibration_by_bucket_updated.tex")
     make_table5(merged_bucket, out_dir / "tableA_calibration_by_bucket_full.tex")
     
+    def make_table5_temporal(df, filepath):
+        tex = []
+        tex.append("\\begin{table*}[H]")
+        tex.append("\\caption{Calibration Breakdown by Frequency Stratum (Temporal)}")
+        tex.append("\\label{tab:calib_temporal}")
+        tex.append("\\centering")
+        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\begin{tabular}{lllrcccccc}")
+        tex.append("\\toprule")
+        tex.append("Dataset & Model & Bucket & Rel. & \\#Events & ECE & Brier & UNC & REL & RES \\\\")
+        tex.append("\\midrule")
+        
+        filtered = df[df['split_mode'] == 'temporal'].copy()
+        filtered['dataset_sort'] = filtered['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
+        filtered['model_sort'] = filtered['model'].map({'irt_1pl': 0, 'bkt': 0, 'dkt': 1, 'simplekt': 2})
+        filtered['bucket_sort'] = filtered['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
+        filtered = filtered.sort_values(['dataset_sort', 'model_sort', 'bucket_sort'])
+        
+        raw_events = df_raw_bucket[df_raw_bucket['split_mode'] == 'temporal'].groupby(['dataset', 'model', 'bucket'])['n_events'].mean().reset_index()
+        clean_events = pd.read_csv("results/tables/clean_metric_per_bucket.csv")
+        clean_events = clean_events[clean_events['split_mode'] == 'temporal'].groupby(['dataset', 'model', 'bucket'])['n_events'].mean().reset_index()
+        
+        last_ds = None
+        last_model = None
+        for _, row in filtered.iterrows():
+            ds_name = row['dataset'].upper()
+            if ds_name == "ASSIST2012":
+                ds_display = "ASSISTments 2012"
+            elif ds_name == "JUNYI":
+                ds_display = "Junyi Academy"
+            else:
+                ds_display = "XES3G5M"
+                
+            if ds_display != last_ds:
+                if last_ds is not None:
+                    tex.append("\\midrule")
+                last_ds = ds_display
+                ds_col = ds_display
+                last_model = None
+            else:
+                ds_col = ""
+                
+            model_display = get_model_label(row['model'])
+            if model_display != last_model:
+                model_col = model_display
+                last_model = model_display
+            else:
+                model_col = ""
+                
+            bucket_display = row['bucket'].replace("_", "\\_")
+            
+            # Event count
+            has_rerun = not df_raw_bucket[(df_raw_bucket['dataset'] == row['dataset'])].empty
+            ev_df = raw_events if has_rerun else clean_events
+            match_model = row['model']
+            ev_match = ev_df[(ev_df['dataset'] == row['dataset']) & 
+                             (ev_df['model'] == match_model) & 
+                             (ev_df['bucket'] == row['bucket'])]
+                             
+            if not ev_match.empty:
+                n_events = int(round(ev_match.iloc[0]['n_events']))
+                rel_flag = get_reliability_flag(n_events)
+                n_events_str = f"{n_events:,}"
+            else:
+                rel_flag = "I"
+                n_events_str = "-"
+                
+            ece_str = fmt(row['ece_mean'], row['ece_std'])
+            brier_str = fmt(row['brier_mean'], row['brier_std'])
+            unc_str = f"${row['uncertainty_mean']:.4f}$" if not pd.isna(row['uncertainty_mean']) else "-"
+            rel_str = f"${row['reliability_mean']:.4f}$" if not pd.isna(row['reliability_mean']) else "-"
+            res_str = f"${row['resolution_mean']:.4f}$" if not pd.isna(row['resolution_mean']) else "-"
+            
+            tex.append(f"{ds_col} & {model_col} & {bucket_display} & {rel_flag} & {n_events_str} & {ece_str} & {brier_str} & {unc_str} & {rel_str} & {res_str} \\\\")
+            
+        tex.append("\\bottomrule")
+        tex.append("\\multicolumn{10}{p{17.5cm}}{\\scriptsize \\textbf{Note:} These values serve as the numerical basis for Figure 3. IRT shows base-rate-like behavior across strata.} \\\\")
+        tex.append("\\end{tabular}%")
+        tex.append("}")
+        tex.append("\\end{table*}")
+        
+        with open(filepath, "w") as f:
+            f.write("\n".join(tex) + "\n")
+            
+    make_table5_temporal(merged_bucket, out_dir / "tableA_calibration_by_bucket_temporal.tex")
+    
     # Calibration compact (Table 5 compact)
     def make_table5_compact(df, filepath):
         tex = []

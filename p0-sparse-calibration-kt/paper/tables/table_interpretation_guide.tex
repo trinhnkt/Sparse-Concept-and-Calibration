@@ -12,7 +12,7 @@
 \midrule
 3. Brier reliability (REL) component increases in sparse buckets & Probabilistic calibration degrades under limited training evidence. Under our experimental conditions, deep sequence models tend to generate overconfident or under-confident probability predictions as concepts become scarcer. \\
 \midrule
-4. Temporal split AUC converges near random guess ($\approx 0.50$) & Future-oriented concept generalization can be challenging. This diagnostic highlights that baseline models may rely on static concept-specific parameters (e.g., skill embeddings) and struggle under strict temporal cold-start constraints. \\
+4. Temporal split AUC converges near random guess ($\approx 0.50$), especially on strict cold-start groups & Future-oriented concept generalization can be challenging, especially under strict temporal cold-start constraints. However, if near-random AUC occurs on warm or dense cohorts where sufficient training evidence exists, the L8 predictive sanity check should be triggered to audit possible prediction--label alignment, sequence cut-off, export, or metric-computation errors before interpreting the result as genuine model failure. \\
 \midrule
 5. strict, k5, and k10 cold-start groups show near-identical event counts or metrics & The dataset under study has very few genuinely cold-start concepts under the chosen split, or the KCs are densely linked, meaning the cold-start setting is not highly active for this cohort. \\
 \midrule

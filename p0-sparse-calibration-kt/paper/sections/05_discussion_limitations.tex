@@ -10,7 +10,7 @@ This paper is intentionally limited to evaluation diagnostics. It does not intro
 
 \subsection{Threats to Validity}
 \label{sec:threats}
-We analyze the threats to the validity of our diagnostic protocol across four standard dimensions:
+We analyze the threats to the validity of our diagnostic protocol across standard dimensions plus temporal-alignment validity:
 \begin{itemize}
     \item \textbf{Internal Validity:} Risks to internal validity include potential preprocessing bugs, split leakage, sequence-label alignment errors (which motivated the explicit temporal alignment audit described below), and implementation-specific training differences across the IRT, DKT, and SimpleKT baselines. We mitigate these risks through a standardized interaction data schema, rigid validation-fold early stopping, and our automated leakage audit checklist.
     \item \textbf{Temporal Alignment Validity:} Our temporal-split audit identified a prediction--label alignment issue in part of the evaluation pipeline. We detected it using warm-cohort AUC and prediction--label correlation checks, then re-ran the affected diagnostics after correction. Therefore, temporal cold-start results are interpreted together with sanity checks to distinguish genuine concept-level cold-start difficulty from alignment artifacts.

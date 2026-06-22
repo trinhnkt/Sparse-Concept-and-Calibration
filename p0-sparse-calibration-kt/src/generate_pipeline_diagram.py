@@ -49,7 +49,7 @@ def main():
     ax.text(0.5, 0.37, "• Aggregate Metrics: AUC, Accuracy, NLL, RMSE", ha='center', va='center', **font_body)
     ax.text(0.5, 0.325, "• Calibration Strata: Expected Calibration Error (ECE) & Brier Decomposition", ha='center', va='center', **font_body)
     ax.text(0.5, 0.28, "• Visual Analytics: Multi-seed Reliability Diagrams per KC Bucket", ha='center', va='center', **font_body)
-    ax.text(0.5, 0.235, "• Cold-start Subsets: Strict (f_train = 0), k-shot (f_train \u2264 5 or \u2264 10) & Warm", ha='center', va='center', **font_body)
+    ax.text(0.5, 0.235, "• Cold-start Subsets: Strict (f_train = 0), k-shot (f_train <= 5 or <= 10) & Warm", ha='center', va='center', **font_body)
     
     # Arrow 4 -> 5
     ax.annotate("", xy=(0.5, 0.145), xytext=(0.5, 0.215), arrowprops=arrow_style)
@@ -57,9 +57,8 @@ def main():
     # Block 5: Hygiene and Reporting
     rect5 = patches.FancyBboxPatch((0.04, 0.015), 0.92, 0.13, boxstyle="round,pad=0.01", fc="#FDEDEC", ec="#CB4335", lw=2)
     ax.add_patch(rect5)
-    ax.text(0.5, 0.115, "5. Hygiene Audit & Reproducibility", ha='center', va='center', **font_title)
-    ax.text(0.5, 0.075, "7-Channel Leakage Checklist Audit (L1-L7)", ha='center', va='center', **font_body)
-    ax.text(0.5, 0.04, "Automatically Generated Reports $\\rightarrow$ Standardized LaTeX/PDF Artifacts", ha='center', va='center', **font_body)
+    ax.text(0.5, 0.095, "5. Leakage & Predictive Sanity Audit (L1--L8)", ha='center', va='center', **font_title)
+    ax.text(0.5, 0.045, "Automatically Generated Reports and Standardized LaTeX/PDF Artifacts", ha='center', va='center', **font_body)
     
     # Save as PDF
     os.makedirs("paper/figures", exist_ok=True)
