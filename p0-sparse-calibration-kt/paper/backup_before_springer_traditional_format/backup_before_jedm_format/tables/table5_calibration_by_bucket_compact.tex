@@ -1,0 +1,45 @@
+\begin{table}[t]
+\caption{Compact Calibration Breakdown by Frequency Stratum}
+\label{tab:calib_compact}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lllrcc}
+\toprule
+Dataset & Model & Bucket & \#Events & ECE & Brier \\
+\midrule
+ASSISTments 2012 & IRT & dense & 523,688 & $0.0032 \pm 0.0005$ & $0.2103 \pm 0.0002$ \\
+ & IRT & medium & 5,918 & $0.1635 \pm 0.0145$ & $0.2757 \pm 0.0057$ \\
+ & IRT & sparse & 408 & $0.0706 \pm 0.0506$ & $0.2392 \pm 0.0198$ \\
+ & IRT & very\_sparse & 16 & $0.2938 \pm 0.0833$ & $0.3268 \pm 0.0327$ \\
+ & DKT & dense & 523,688 & $0.0603 \pm 0.0021$ & $0.1931 \pm 0.0009$ \\
+ & DKT & medium & 5,918 & $0.1611 \pm 0.0252$ & $0.2275 \pm 0.0130$ \\
+ & DKT & sparse & 408 & $0.2316 \pm 0.0116$ & $0.2476 \pm 0.0116$ \\
+ & DKT & very\_sparse & 16 & $0.2034 \pm 0.0747$ & $0.1625 \pm 0.0734$ \\
+ & SimpleKT & dense & 523,688 & $0.1132 \pm 0.0076$ & $0.2114 \pm 0.0021$ \\
+ & SimpleKT & medium & 5,918 & $0.1534 \pm 0.0059$ & $0.2265 \pm 0.0068$ \\
+ & SimpleKT & sparse & 408 & $0.2257 \pm 0.0199$ & $0.2495 \pm 0.0121$ \\
+ & SimpleKT & very\_sparse & 16 & $0.2220 \pm 0.0833$ & $0.1948 \pm 0.0757$ \\
+\midrule
+Junyi Academy & IRT & dense & 3,229,508 & $0.0022 \pm 0.0018$ & $0.2079 \pm 0.0007$ \\
+ & IRT & medium & 3,589 & $0.1268 \pm 0.0101$ & $0.2603 \pm 0.0041$ \\
+ & DKT & dense & 3,229,508 & $0.0389 \pm 0.0019$ & $0.1805 \pm 0.0008$ \\
+ & DKT & medium & 3,589 & $0.2531 \pm 0.0144$ & $0.3120 \pm 0.0122$ \\
+ & SimpleKT & dense & 3,234,023 & $0.0804 \pm 0.0068$ & $0.1887 \pm 0.0032$ \\
+ & SimpleKT & medium & 3,979 & $0.1125 \pm 0.0194$ & $0.2350 \pm 0.0094$ \\
+\midrule
+XES3G5M & IRT & dense & 1,269,528 & $0.1542 \pm 0.0031$ & $0.1862 \pm 0.0007$ \\
+ & IRT & medium & 12,819 & $0.1415 \pm 0.0047$ & $0.1898 \pm 0.0012$ \\
+ & IRT & sparse & 1,979 & $0.1128 \pm 0.0102$ & $0.1979 \pm 0.0028$ \\
+ & IRT & very\_sparse & 107 & $0.0904 \pm 0.0188$ & $0.2043 \pm 0.0052$ \\
+ & DKT & dense & 1,268,882 & $0.0389 \pm 0.0023$ & $0.1223 \pm 0.0020$ \\
+ & DKT & medium & 12,918 & $0.0905 \pm 0.0195$ & $0.1225 \pm 0.0109$ \\
+ & DKT & sparse & 2,031 & $0.1168 \pm 0.0196$ & $0.1388 \pm 0.0129$ \\
+ & DKT & very\_sparse & 111 & $0.1865 \pm 0.0432$ & $0.1792 \pm 0.0403$ \\
+ & SimpleKT & dense & 1,268,882 & $0.1146 \pm 0.0010$ & $0.1550 \pm 0.0028$ \\
+ & SimpleKT & medium & 12,918 & $0.1105 \pm 0.0058$ & $0.1340 \pm 0.0045$ \\
+ & SimpleKT & sparse & 2,031 & $0.1214 \pm 0.0083$ & $0.1445 \pm 0.0054$ \\
+ & SimpleKT & very\_sparse & 111 & $0.1787 \pm 0.0162$ & $0.1659 \pm 0.0090$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

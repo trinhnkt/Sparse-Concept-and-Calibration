@@ -1,8 +1,9 @@
-\begin{table*}[t]
+﻿\begin{table}[t]
 \caption{Leakage \& Predictive Sanity Audit Checklist (L1--L8)}
 \label{tab:leakage}
 \centering
 \footnotesize
+\resizebox{\linewidth}{!}{
 \begin{tabular}{lp{5.5cm}p{4.2cm}lp{5.5cm}}
 \toprule
 Channel & Risk / Description & Evidence & Status & Notes \\
@@ -17,4 +18,5 @@ L7 & Cold-start leakage & \path{split_constructor.py} & PASS & Classification us
 L8 & Predictive sanity check & \path{temporal_audit.py} & PASS & Warm-cohort AUC vs static reference \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}

@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Eight-channel leakage audit for the evaluation pipeline.}
+\label{tab:leakage}
+\footnotesize
+\begin{tabular}{p{0.16\linewidth}p{0.48\linewidth}p{0.22\linewidth}}
+\toprule
+Channel & Audit question & Evidence file \\
+\midrule
+L1 Split & Is there learner overlap or temporal-order violation? & split\_report.csv \\
+L2 Preprocess & Are transformations fit only on train data? & preprocess\_log.json \\
+L3 Q-matrix & Is item--KC mapping expert-tagged or train-only? & qmatrix\_provenance.md \\
+L4 Bucket & Are KC buckets based only on train frequency? & kc\_strata.csv \\
+L5 Calibration & Are calibration parameters not fit on test data? & calibration\_log.csv \\
+L6 Hyperparameter & Is model selection based on validation only? & experiment\_log.csv \\
+L7 Cold-start & Is cold-start classification based only on train frequency? & cold\_start\_audit.csv \\
+L8 Sanity & Is predictive performance robust against alignment artifacts? & temporal\_audit.py \\
+\bottomrule
+\end{tabular}
+\end{table}

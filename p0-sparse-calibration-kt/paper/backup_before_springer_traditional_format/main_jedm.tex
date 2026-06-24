@@ -1,0 +1,130 @@
+% -----------------------------------------------------------------------------
+% JEDM LaTeX Format for P0 Paper
+% Title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+% -----------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{article}
+
+% --- JEDM Formatting ---
+\usepackage[left=2.75cm, right=2.75cm, top=2.25cm, bottom=2.25cm]{geometry}
+\usepackage{mathptmx} % Times Roman for body
+\usepackage[scaled=0.92]{helvet} % Helvetica for sans-serif
+\usepackage{titlesec} % For heading fonts
+\titleformat*{\section}{\Large\bfseries\sffamily}
+\titleformat*{\subsection}{\large\bfseries\sffamily}
+\titleformat*{\subsubsection}{\normalsize\bfseries\sffamily}
+
+\usepackage{caption}
+\captionsetup[table]{position=top, skip=5pt}
+\captionsetup[figure]{position=bottom, skip=5pt}
+
+% Packages
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{tabularx}
+
+% Float control parameters to prevent whitespace gaps
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.95}
+
+% Code listing style
+\lstdefinestyle{p0style}{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=2
+}
+\lstset{style=p0style}
+
+% Macros
+\newcommand{\pzero}{P0}
+\newcommand{\kt}{Knowledge Tracing}
+\newcommand{\kc}{Knowledge Component}
+\newcommand{\kcs}{Knowledge Components}
+\newcommand{\ece}{\mathrm{ECE}}
+\newcommand{\brier}{\mathrm{Brier}}
+\newcommand{\unc}{\mathrm{UNC}}
+\newcommand{\rel}{\mathrm{REL}}
+\newcommand{\res}{\mathrm{RES}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\begin{document}
+
+\title{\sffamily\bfseries Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing\\
+{\large A Protocol and Diagnostic Study}}
+
+\author{
+\sffamily Nguyen Khanh-Trinh\textsuperscript{1}, Dao Minh-Tuan\textsuperscript{1}, Nguyen Tien-Duong\textsuperscript{1}, \\
+\sffamily Nguyen Van-Hau\textsuperscript{1}, Nguyen Chi-Thanh\textsuperscript{2}\\[8pt]
+\normalsize \textsuperscript{1}\textit{Hung Yen University of Technology and Education}, Hung Yen, Viet Nam\\
+\normalsize Email: \{trinhnk, tuanymc, duongnt, haunv\}@utehy.edu.vn\\
+\normalsize ORCIDs: 0009-0004-3739-0484, 0009-0009-1641-6813, 0009-0007-1104-7129, 0000-0002-3256-5626\\[4pt]
+\normalsize \textsuperscript{2}\textit{Academy of Military Science and Technology}, Ha Noi, Viet Nam\\
+\normalsize Email: thanhnc80@gmail.com
+}
+\date{}
+
+\maketitle
+
+% Bucket thresholds: Very Sparse < 20, Sparse 20 \le freq < 100, Medium 100 \le freq < 500, Dense \ge 500
+% Data consistency: #Events in Table IV and Table V verified to be identical for all dataset/model/bucket combos.
+% <RESULTS UPDATED: 2026-05-18 05:00:45>
+
+\begin{abstract}
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
+\end{abstract}
+
+\vspace{10pt}
+\noindent\textbf{Keywords:} Knowledge Tracing, Educational Data Mining, Calibration, Expected Calibration Error, Brier Score, Sparse Concepts, Cold‑start Knowledge Components, Reproducibility
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_protocol}
+\input{sections/04_experiments}
+\input{sections/05_discussion_limitations}
+\input{sections/06_conclusion}
+
+\section*{Artifact Availability \& Reproducibility Checklist}
+We will release the complete reproducibility package upon acceptance at \url{https://github.com/trinhnkt/P0}. Consistent with the design principles of Section~\ref{sec:protocol}, the artifact includes the following standardized components:
+\begin{itemize}
+  \item \textbf{Dataset Preprocessing:} Scripts that normalize raw data into the schema defined in Section~\ref{sec:protocol}.
+  \item \textbf{Split Construction:} Reproducible partition logs and multi‑seed split constructors.
+  \item \textbf{Prediction‑level Exports:} CSV files containing baseline predicted probabilities and ground‑truth labels.
+  \item \textbf{KC‑Strata Assignment:} Code mapping training‑fold frequencies to strata buckets.
+  \item \textbf{Calibration Verification:} Scripts computing Expected Calibration Error (ECE).
+  \item \textbf{Brier Decomposition:} Implementation of Uncertainty, Reliability, and Resolution equations.
+  \item \textbf{Reliability Diagrams:} Plotting utilities for multi‑strata calibration curves.
+  \item \textbf{Leakage \& Predictive Sanity Audit:} Automated logs verifying channels L1--L8.
+  \item \textbf{LaTeX Table Exporters:} Python exporters generating book‑tabs tables.
+  \item \textbf{One‑Command Reproduction:} Unified script ensuring machine‑independent reproducibility.
+\end{itemize}
+
+\section*{Declaration of Generative AI Software Tools in the Writing Process}
+% TODO: Authors should declare AI tools here or state none were used.
+No generative AI software tools were used in the writing of this manuscript.
+
+\section*{Acknowledgements}
+This work was supported by the authors' respective institutions.
+
+\bibliographystyle{acm}
+\bibliography{references}
+
+\appendix
+\input{appendix/appendix_a_sensitivity}
+
+\end{document}

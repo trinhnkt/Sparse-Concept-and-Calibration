@@ -1,0 +1,20 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+In this section, we discuss the broader implications of our diagnostic protocol for educational technology research and practice. We then define the scope boundaries of our work and address the primary limitations of the current study.
+
+\subsection{Implications}
+The proposed protocol encourages KT evaluation to move beyond aggregate AUC. Sparse-concept and calibration diagnostics can reveal whether a model is reliable where training evidence is limited. This is important for educational systems that use predicted probabilities for intervention or progression decisions.
+
+\subsection{Scope Boundaries}
+This paper is intentionally limited to evaluation diagnostics. It does not introduce a new KT model, a self-supervised learning objective, a graph neural network, a graph augmentation strategy, a learning path recommender, or a distillation method. Those directions require separate methodological papers and should be evaluated using the protocol introduced here. This paper focuses on downstream evaluation diagnostics for KT. A complementary line of work in our group addresses leakage control in concept-graph construction for graph-augmented KT. These two protocols are designed to be composable in future structure-aware KT studies.
+
+\subsection{Threats to Validity}
+\label{sec:threats}
+We analyze the threats to the validity of our diagnostic protocol across standard dimensions plus temporal-alignment validity:
+\begin{itemize}
+    \item \textbf{Internal Validity:} Risks to internal validity include potential preprocessing bugs, split leakage, sequence-label alignment errors (which motivated the explicit temporal alignment audit described below), and implementation-specific training differences across the IRT, DKT, and SimpleKT baselines. We mitigate these risks through a standardized interaction data schema, rigid validation-fold early stopping, and our automated leakage audit checklist.
+    \item \textbf{Temporal Alignment Validity:} Our temporal-split audit identified a prediction--label alignment issue in part of the evaluation pipeline. We detected it using warm-cohort AUC and prediction--label correlation checks, then re-ran the affected diagnostics after correction. Therefore, temporal cold-start results are interpreted together with sanity checks to distinguish genuine concept-level cold-start difficulty from alignment artifacts.
+    \item \textbf{Construct Validity:} Construct validity refers to whether our metrics accurately capture latent learner mastery and concept calibration. In KT, KC definitions depend heavily on dataset annotation quality, Q-matrix provenance, and how multi-skill items are processed. For example, expert-tagged KCs in ASSISTments 2012 and Junyi Academy may introduce varying granularities, which directly impact strata boundaries.
+    \item \textbf{External Validity:} Our findings are based on three large-scale, public cohorts: ASSISTments 2012, Junyi Academy, and XES3G5M. While these datasets are diverse, our empirical results under our experimental conditions should not be generalized to all educational domains or custom platforms without additional localized validation.
+    \item \textbf{Statistical Conclusion Validity:} Statistical conclusion validity concerns the reliability of our metric estimates. As shown in Section~\ref{sec:experiments}, very sparse buckets contain very few active KCs and evaluation events (e.g., as few as 3 to 10 events). This sparsity inevitably introduces metric instability and high standard deviations, meaning strata differences must be interpreted in conjunction with explicit sample size counts.
+\end{itemize}

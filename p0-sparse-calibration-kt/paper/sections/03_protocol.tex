@@ -26,7 +26,7 @@ KCs are assigned to four pre-registered strata:
 \text{Medium:} &\quad 100 \le \mathrm{freq}\_{\mathrm{train}}(c) < 500,\\
 \text{Dense:} &\quad \mathrm{freq}\_{\mathrm{train}}(c) \ge 500.
 \end{align}
-The assignment must use only training-fold counts. Validation and test frequencies may be logged for auditing but must not determine the bucket.
+The assignment must use only training-fold counts. Validation and test frequencies may be logged for auditing but must not determine the bucket. It is important to acknowledge a conceptual caveat regarding this definition: sparsity is not an absolute property of the underlying knowledge itself. Rather, it is partially an artifact of human authorship in the Q-Matrix construction. A concept might appear sparse not because the fundamental knowledge is rarely practiced, but because domain experts defined it at an overly granular level or tagged it inconsistently across items. Consequently, while our strata reliably isolate low-frequency training patterns, they reflect the operational sparsity of the dataset's specific KC mapping rather than an ontological truth about the learning domain.
 
 \subsection{Calibration Metrics}
 Given predictions $p\_i$ and labels $y\_i$, ECE with $M=15$ bins is

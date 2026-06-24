@@ -19,12 +19,12 @@ We report mean $\pm$ standard deviation across five evaluation runs for all deep
 
 Figure~\ref{fig:strata_dist} illustrates heterogeneous KC-frequency distributions across datasets. Although dense KCs dominate the interaction volume, sparse and very sparse KCs remain important diagnostic strata because they expose low-frequency regions where aggregate metrics may be less informative.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
 \includegraphics[width=0.98\linewidth]{figures/figure2_bucket_distribution.pdf}
 \caption{KC-frequency strata distribution across ASSISTments 2012, Junyi Academy, and XES3G5M. \textbf{Very Sparse}: $\mathrm{train\_freq} < 20$; \textbf{Sparse}: $20 \le \mathrm{train\_freq} < 100$; \textbf{Medium}: $100 \le \mathrm{train\_freq} < 500$; \textbf{Dense}: $\mathrm{train\_freq} \ge 500$.}
 \label{fig:strata_dist}
-\end{figure*}
+\end{figure}
 
 \subsection{Baseline Implementations}
 We initially evaluated BKT but replaced it with IRT after observing numerical instability in EM-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representative classes of KT models:
@@ -51,7 +51,7 @@ However, when we break down the results by KC-frequency strata in Table~\ref{tab
 
 We note that the behavior observed in sparse and very sparse strata represents a combination of two distinct phenomena: (i) \textit{true performance degradation}, where the model genuinely struggles to capture the mastery transitions of less-frequently observed concepts, and (ii) \textit{metric instability}, where AUC or ACC values exhibit wide fluctuations due to the limited number of evaluation events. For instance, in very sparse strata under our experimental conditions, the number of test events can be as small as 3 to 10 events per seed. Consequently, bucket-level diagnostics should be interpreted jointly with sample size. Very sparse strata may yield unstable AUC estimates when the number of test events is very small. Therefore, in this protocol, the number of KCs and interaction events are not auxiliary information but required diagnostic context for a methodologically controlled, sample-size-aware evaluation.
 
-An interesting counter-pattern emerges on XES3G5M, where DKT and SimpleKT show higher AUC on sparse (0.8590, 0.8509) and very sparse (0.8413, 0.8379) strata than on dense (0.8168, 0.7547). This is opposite to the ASSISTments 2012 pattern. Several non-exclusive explanations are plausible: (i) XES3G5M's hierarchical KC tree structure may mean that sparse KCs are advanced concepts reached only by learners who have mastered prerequisites, creating a ceiling effect on accuracy; (ii) item-level features may carry more signal than KC-level features on XES3G5M, partially decoupling KC-frequency from predictive difficulty; and (iii) multi-skill expansion in XES3G5M may concentrate predictions on items whose primary skill is well trained even when the auxiliary skill is sparse. Disambiguating these explanations requires item-level error analysis beyond the scope of this protocol paper, but the pattern reinforces our point that bucket-level diagnostics reveal phenomena that overall AUC alone cannot.
+An interesting counter-pattern emerges on XES3G5M, where DKT and SimpleKT show higher AUC on sparse (0.8590, 0.8509) and very sparse (0.8413, 0.8379) strata than on dense (0.8168, 0.7547). This is opposite to the ASSISTments 2012 pattern. Several non-exclusive explanations are plausible: (i) XES3G5M's hierarchical KC tree structure may mean that sparse KCs are advanced concepts reached only by learners who have mastered prerequisites, creating a ceiling effect on accuracy; (ii) item-level features may carry more signal than KC-level features on XES3G5M, partially decoupling KC-frequency from predictive difficulty; and (iii) multi-skill expansion in XES3G5M may concentrate predictions on items whose primary skill is well trained even when the auxiliary skill is sparse. To briefly clarify this phenomenon via an item-level error analysis, we qualitatively inspected a sample of correct model predictions within XES3G5M's very sparse stratum. We observed a strong multi-skill co-occurrence pattern: many sparsely labeled KCs frequently co-occur with well-trained, dense KCs on the same questions. Consequently, the sequence models can successfully infer the likelihood of student correctness by relying on the robustly estimated embeddings of the dense KC, rather than genuinely modeling the sparse concept itself. This artifactual inflation of sparse-bucket AUC perfectly illustrates the value of our protocol: without explicit KC-frequency stratification, such dataset-specific structural anomalies remain entirely hidden behind high aggregate scores.
 
 \subsection{RQ2: Calibration and Reliability Profiles}
 To answer RQ2, we analyze Expected Calibration Error (ECE) and Brier Score decomposition (Uncertainty UNC, Reliability REL, and Resolution RES) across frequency strata. On Junyi Academy under the learner-based split, the sparse and very sparse buckets are empty because all KCs have training-fold frequency at least 100. This absence is itself a diagnostic observation: Junyi does not exhibit learner-based sparse-KC concerns under the pre-registered thresholds.
@@ -71,7 +71,7 @@ Our results suggest that, on datasets where sparse learner-based strata are pres
 
 Because temporal splits stress future-concept generalization, we use the Junyi temporal split in Fig.~\ref{fig:reliability_comparison} to visualize calibration behavior under a more challenging evaluation setting. Figure~\ref{fig:reliability_comparison} visualizes this calibration difference by plotting reliability diagrams for SimpleKT on Junyi under temporal splitting. While the dense stratum is smoother and supported by substantially more test events, it is still imperfectly calibrated; the very sparse curve exhibits stronger non-linear deviations. However, the very sparse stratum contains fewer KCs but sufficient test events ($N = 2{,}545$); thus, the curve is reported as a stratum-level calibration diagnostic rather than as an insufficient-sample estimate.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
 \begin{subfigure}{0.48\linewidth}
 \centering
@@ -88,7 +88,7 @@ Because temporal splits stress future-concept generalization, we use the Junyi t
 \end{subfigure}
 \caption{Comparison of reliability curves between Dense and Very Sparse KCs for SimpleKT on Junyi temporal split after the label-alignment correction. The diagonal dashed line represents perfect calibration. Source calibration values are reported in Table~\ref{tab:temporal_calibration_breakdown}. \textbf{Note:} The very sparse stratum contains fewer KCs but sufficient test events ($N = 2{,}545$); thus, the curve is reported as a stratum-level calibration diagnostic rather than as an insufficient-sample estimate.}
 \label{fig:reliability_comparison}
-\end{figure*}
+\end{figure}
 
 \subsection{RQ3 (Limited Cold-start Concept Diagnostics): How do baseline KT models behave on KCs with zero or limited training-fold frequency under temporal splits?}
 Finally, we address RQ3 by evaluating models on limited cold-start concepts (strict, k5, k10, warm) under time-partitioned (temporal) splitting in Table~\ref{tab:cold_start}.
