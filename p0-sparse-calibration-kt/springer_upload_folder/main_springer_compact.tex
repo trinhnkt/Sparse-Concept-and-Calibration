@@ -5,6 +5,7 @@
 \documentclass[sn-mathphys]{sn-jnl}
 
 % Packages
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -21,8 +22,8 @@
 \usepackage{listings}
 \usepackage{subcaption}
 \usepackage{tabularx}
-\usepackage{adjustbox}
 \usepackage{url}
+\usepackage{placeins}
 % \usepackage[hidelinks]{hyperref}
 
 % Code listing style
@@ -87,15 +88,14 @@
     \item \textbf{Consent for publication:} Not applicable.
     \item \textbf{Data availability:} The datasets analyzed during the current study are available in public repositories (ASSISTments 2012, Junyi Academy, XES3G5M).
     \item \textbf{Code availability:} The reproducible code, protocol checklist, and reporting templates will be available upon acceptance at \url{https://github.com/trinhnkt/P0}.
-    \item \textbf{Authors' contributions:} \todo{Authors to explicitly define individual contributions.}
-    \item \textbf{Use of generative AI tools:} No generative AI software tools were used in the scientific ideation, methodology, experimental process, or primary manuscript drafting of this work. AI assistants (e.g., Google Antigravity, Overleaf) were strictly utilized for formatting and converting the manuscript to the LaTeX template.
+    \item \textbf{Authors' contributions:} Nguyen Khanh-Trinh: conceptualization, methodology, implementation, experimental analysis, data curation, and writing---original draft. Dao Minh-Tuan: supervision, research design, validation, and writing---review and editing. Nguyen Tien-Duong: dataset preparation, reproducibility checking, result verification, and manuscript editing. Nguyen Van-Hau and Nguyen Chi-Thanh: critical review, validation, and academic consultation. All authors read and approved the final manuscript.
+    \item \textbf{Use of generative AI tools:} Generative AI tools were used to support language polishing, LaTeX formatting, consistency checking, and preparation of reproducibility prompts. These tools were not used to generate or alter experimental results. All scientific claims, experimental design decisions, numerical results, and final interpretations were checked, verified, and approved by the authors.
     \item \textbf{ORCID:} Nguyen Khanh-Trinh (0009-0004-3739-0484), Dao Minh-Tuan (0009-0009-1641-6813), Nguyen Tien-Duong (0009-0007-1104-7129), Nguyen Van-Hau (0000-0002-3256-5626).
 \end{itemize}
 
 \bibliography{references}
 
-\begin{appendices}
+\appendix
 \input{appendix/appendix_a_sensitivity}
-\end{appendices}
 
 \end{document}

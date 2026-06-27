@@ -1,8 +1,9 @@
-﻿\begin{table}[H]
+\begin{table}[htbp]
 \caption{Sensitivity Analysis to KC-frequency Threshold Settings. Values are averaged across datasets and baselines for each threshold setting; standard deviations reflect between-dataset and between-baseline variation.}
 \label{tab:sensitivity}
 \centering
 
+\resizebox{\linewidth}{!}{
 \begin{tabular}{llcc}
 \toprule
 Setting & Bucket & AUC & ECE \\
@@ -28,5 +29,5 @@ Main & dense & $0.5766 \pm 0.1187$ & $0.3245 \pm 0.3032$ \\
  & very\_sparse & $0.4898 \pm 0.0122$ & $0.3731 \pm 0.1278$ \\
 \bottomrule
 \end{tabular}
-
+}
 \end{table}
