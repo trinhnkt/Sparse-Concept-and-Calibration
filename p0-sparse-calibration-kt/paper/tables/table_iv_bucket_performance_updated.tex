@@ -1,8 +1,12 @@
-﻿\begin{table}[tbp]
+﻿\begin{tableorg}[htbp]
 \caption{Knowledge Tracing Performance Breakdown by Skill Strata (Learner-based)}
-\label{tab:bucket}
+\label{tab:strata_learner}
 \centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
 
+
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lllcrccccc}
 \toprule
 Dataset & Model & Bucket & Rel. & \#KCs & \#Events & AUC & ACC & NLL & RMSE \\
@@ -40,7 +44,12 @@ XES3G5M & IRT & dense & R & 498 & 1,269,528 & $0.5000$ & $0.7959 \pm 0.0028$ & $
  &  & sparse & R & 122 & 2,031 & $0.8509 \pm 0.0046$ & $0.8224 \pm 0.0060$ & $0.6746 \pm 0.0526$ & $0.3800 \pm 0.0071$ \\
  &  & very\_sparse & L & 42 & 111 & $0.8379 \pm 0.0319$ & $0.7949 \pm 0.0100$ & $0.8893 \pm 0.1214$ & $0.4072 \pm 0.0111$ \\
 \bottomrule
-\multicolumn{10}{p{8.2cm}}{\scriptsize \textit{Note: Reliability is assigned based on the number of test events: Reliable (R: $N \ge 1000$), Limited (L: $100 \le N < 1000$), and Insufficient (I: $N < 100$). Results in Insufficient buckets are descriptive only. Bold results are not used in Insufficient buckets.}} \\
-\end{tabular}%
 
-\end{table}
+\end{tabular}
+}
+
+\vspace{1ex}
+\noindent\footnotesize \textit{Note: Reliability is assigned based on the number of test events: Reliable (R: $N \ge 1000$), Limited (L: $100 \le N < 1000$), and Insufficient (I: $N < 100$). Results in Insufficient buckets are descriptive only. Bold results are not used in Insufficient buckets.}
+
+
+\end{tableorg}

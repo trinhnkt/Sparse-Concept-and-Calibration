@@ -1,10 +1,12 @@
-﻿\begin{table}[tbp]
+\begin{tableorg}[htbp]
 \caption{Knowledge Tracing Performance Breakdown by Skill Strata (Temporal splits)}
 \label{tab:temporal_strata}
 \centering
-
 \scriptsize
-\setlength{\tabcolsep}{2.5pt}
+\setlength{\tabcolsep}{3pt}
+
+
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lllcrccccc}
 \toprule
 Dataset & Model & Bucket & Rel. & \#KCs & \#Events & AUC & ACC & NLL & RMSE \\
@@ -48,6 +50,7 @@ XES3G5M & IRT & dense & R & 340 & 1,191,744 & $0.6673$ & $0.7993$ & $0.4744$ & $
  &  & sparse & R & 11 & 10,079 & $0.6911$ & $0.8286$ & $0.9727$ & $0.3862$ \\
  &  & very\_sparse & R & 127 & 259,426 & $0.5017$ & $0.5332$ & $0.7647$ & $0.5241$ \\
 \bottomrule
-\end{tabular}%
+\end{tabular}
+}
 
-\end{table}
+\end{tableorg}

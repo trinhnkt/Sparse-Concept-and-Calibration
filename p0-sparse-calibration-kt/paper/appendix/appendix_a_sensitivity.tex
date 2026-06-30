@@ -7,7 +7,7 @@ To establish the robustness of our diagnostic stratification, we conduct a sensi
 
 \section{Overall and Bucket-level Performance under Temporal Splits}
 \label{app:temporal_performance}
-In this section, we present the comprehensive overall performance (Table~\ref{tab:overall_temporal}) and strata-specific performance breakdowns (Table~\ref{tab:bucket_temporal}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable calibration degradation and predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting.
+In this section, we present the comprehensive overall performance (Table~\ref{tab:temporal_overall}) and strata-specific performance breakdowns (Table~\ref{tab:temporal_strata}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable calibration degradation and predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting.
 
 \input{tables/tableA_overall_full}
 \input{tables/tableA_performance_by_bucket_full}
@@ -15,7 +15,7 @@ In this section, we present the comprehensive overall performance (Table~\ref{ta
 \clearpage
 \section{Detailed Calibration Results}
 \label{app:calibration_performance}
-Detailed calibration results by frequency stratum for the learner-based split are reported in Table~\ref{tab:calib}. The corresponding temporal calibration breakdowns, computed after the label-alignment correction documented in Appendix F and used as the numerical basis for Figure 3, are reported in Table~\ref{tab:temporal_calibration_breakdown}.
+Detailed calibration results by frequency stratum for the learner-based split are reported in Table~\ref{tab:calibration_learner}. The corresponding temporal calibration breakdowns, computed after the label-alignment correction documented in Appendix F and used as the numerical basis for Figure 3, are reported in Table~\ref{tab:calibration_temporal}.
 
 \input{tables/table_v_calibration_by_bucket_updated}
 \input{tables/table_xi_temporal_calibration_breakdown}

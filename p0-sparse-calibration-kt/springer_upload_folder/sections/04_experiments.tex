@@ -11,7 +11,7 @@ In this section, we instantiate our diagnostic evaluation protocol on three larg
 \subsection{Experimental Setup and Datasets}
 We evaluate our protocol on three diverse educational datasets: ASSISTments 2012 (\path{assist2012}), Junyi Academy (\path{junyi}), and XES3G5M (\path{xes3g5m}). The preprocessing and filtering pipeline (Section~\ref{sec:protocol}) ensures that only high-quality interaction records are retained. Table~\ref{tab:dataset_stats} presents the final statistics of each dataset cohort.
 
-We use learner-based splits as the main predictive evaluation setting (reported in Tables~\ref{tab:overall_learner} and~\ref{tab:strata_learner}, with detailed calibration results in Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_learner}) because they test generalization to unseen learners while preserving enough interactions for stable bucket-level analysis. Temporal splits are used as a complementary stress-test for future-oriented and limited cold-start diagnostics, reported in Table~\ref{tab:cold_start_temporal} and Appendix~\ref{app:temporal_performance}. This explicit partitioning ensures that evaluation pipelines do not conflate learner-level and curriculum-level forecasting challenges.
+We use learner-based splits as the main predictive evaluation setting (reported in Tables~\ref{tab:overall_learner} and~\ref{tab:strata_learner}, \ifdefined\iscompact detailed calibration results are provided in Supplementary Table S2\else with detailed calibration results in Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_learner}\fi) because they test generalization to unseen learners while preserving enough interactions for stable bucket-level analysis. Temporal splits are used as a complementary stress-test for future-oriented and limited cold-start diagnostics, reported in Table~\ref{tab:cold_start_temporal} and \ifdefined\iscompact Supplementary Table S3\else Appendix~\ref{app:temporal_performance}\fi. This explicit partitioning ensures that evaluation pipelines do not conflate learner-level and curriculum-level forecasting challenges.
 
 We report mean $\pm$ standard deviation across five evaluation runs for all deep baselines on learner-based splits (folds corresponding to seeds 42, 2024, 2025, 2026, 2027). For temporal splits, after the label-alignment correction documented in Appendix~\ref{app:alignment}, we report deterministic metrics from the single corrected evaluation run used to regenerate Figure 3 and the temporal calibration tables. IRT is deterministic given a fold and its learner-based variations reflect fold differences, while its AUC in learner-based splits is static at 0.50 due to cold-start user constraints. Additionally, the \#Events column denotes the number of prediction rows used for metric computation after model-specific prediction export and KC-strata matching. Following design principle P3, we annotate each bucket-level result with a reliability flag based on its sample size. Results from Insufficient buckets (N $<$ 100) are reported for completeness but should be interpreted as descriptive, not as evidence of model behavior.
 
@@ -19,12 +19,13 @@ We report mean $\pm$ standard deviation across five evaluation runs for all deep
 
 Figure~\ref{fig:strata_dist} illustrates heterogeneous KC-frequency distributions across datasets. Although dense KCs dominate the interaction volume, sparse and very sparse KCs remain important diagnostic strata because they expose low-frequency regions where aggregate metrics may be less informative.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\linewidth]{figures/figure2_bucket_distribution.pdf}
 \caption{KC-frequency strata distribution across ASSISTments 2012, Junyi Academy, and XES3G5M. \textbf{Very Sparse}: $\mathrm{train\_freq} < 20$; \textbf{Sparse}: $20 \le \mathrm{train\_freq} < 100$; \textbf{Medium}: $100 \le \mathrm{train\_freq} < 500$; \textbf{Dense}: $\mathrm{train\_freq} \ge 500$.}
 \label{fig:strata_dist}
 \end{figure}
+\FloatBarrier
 
 \subsection{Baseline Implementations}
 We initially evaluated BKT but replaced it with IRT after observing numerical instability in EM-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representative classes of KT models:
@@ -71,7 +72,7 @@ Our results suggest that, on datasets where sparse learner-based strata are pres
 
 Because temporal splits stress future-concept generalization, we use the Junyi temporal split in Fig.~\ref{fig:reliability_junyi_temporal} to visualize calibration behavior under a more challenging evaluation setting. Figure~\ref{fig:reliability_junyi_temporal} visualizes this calibration difference by plotting reliability diagrams for SimpleKT on Junyi under temporal splitting. While the dense stratum is smoother and supported by substantially more test events, it is still imperfectly calibrated; the very sparse curve exhibits stronger non-linear deviations. However, the very sparse stratum contains fewer KCs but sufficient test events ($N = 2{,}545$); thus, the curve is reported as a stratum-level calibration diagnostic rather than as an insufficient-sample estimate.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
 \centering
 \begin{subfigure}{0.48\linewidth}
 \centering
@@ -86,9 +87,10 @@ Because temporal splits stress future-concept generalization, we use the Junyi t
 \caption{Reliability diagram of SimpleKT on Junyi temporal split for Very Sparse KCs.}
 \label{fig:reliability_sparse}
 \end{subfigure}
-\caption{Comparison of reliability curves between Dense and Very Sparse KCs for SimpleKT on Junyi temporal split after the label-alignment correction. The diagonal dashed line represents perfect calibration. Source calibration values are reported in Table~\ref{tab:calibration_temporal}. \textbf{Note:} The very sparse stratum contains fewer KCs but sufficient test events ($N = 2{,}545$); thus, the curve is reported as a stratum-level calibration diagnostic rather than as an insufficient-sample estimate.}
+\caption{Comparison of reliability curves between Dense and Very Sparse KCs for SimpleKT on Junyi temporal split after the label-alignment correction. The diagonal dashed line represents perfect calibration. \ifdefined\iscompact Source calibration values are reported in Supplementary Table S3.\else Source calibration values are reported in Table~\ref{tab:calibration_temporal}.\fi\ \textbf{Note:} The very sparse stratum contains fewer KCs but sufficient test events ($N = 2{,}545$); thus, the curve is reported as a stratum-level calibration diagnostic rather than as an insufficient-sample estimate.}
 \label{fig:reliability_junyi_temporal}
 \end{figure}
+\FloatBarrier
 
 \subsection{RQ3 (Limited Cold-start Concept Diagnostics): How do baseline KT models behave on KCs with zero or limited training-fold frequency under temporal splits?}
 Finally, we address RQ3 by evaluating models on limited cold-start concepts (strict, k5, k10, warm) under time-partitioned (temporal) splitting in Table~\ref{tab:cold_start_temporal}.

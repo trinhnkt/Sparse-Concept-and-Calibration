@@ -1,10 +1,12 @@
-﻿\begin{table}[htbp]
+\begin{tableorg}[htbp]
 \caption{Calibration Breakdown by Frequency Stratum under Temporal Splits. Values are computed from prediction-level outputs after the label-alignment correction documented in Appendix~\ref{app:alignment}. This table provides the source calibration values used for Figure 3.}
 \label{tab:calibration_temporal}
 \centering
-
 \scriptsize
-\setlength{\tabcolsep}{2.5pt}
+\setlength{\tabcolsep}{3pt}
+
+
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lllrcccccc}
 \toprule
 Dataset & Model & Bucket & Rel. & \#Events & ECE & Brier & UNC & REL & RES \\
@@ -48,7 +50,12 @@ XES3G5M & IRT & dense & R & 1,191,744 & $0.0547$ & $0.1516$ & $0.1563$ & $0.0046
  &  & sparse & R & 10,079 & $0.1405$ & $0.1491$ & $0.1202$ & $0.0391$ & $0.0099$ \\
  &  & very\_sparse & R & 259,426 & $0.2773$ & $0.2747$ & $0.1648$ & $0.1108$ & $0.0011$ \\
 \bottomrule
-\multicolumn{10}{p{\textwidth}}{\textbf{Note:} These values serve as the numerical basis for Figure 3. IRT shows base-rate-like behavior across strata.} \\
-\end{tabular}%
 
-\end{table}
+\end{tabular}
+}
+
+\vspace{1ex}
+\noindent\footnotesize \textbf{Note:} These values serve as the numerical basis for Figure 3. IRT shows base-rate-like behavior across strata.
+
+
+\end{tableorg}

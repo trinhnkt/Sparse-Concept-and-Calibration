@@ -5,11 +5,15 @@
 \documentclass[sn-mathphys]{sn-jnl}
 
 % Packages
+
 \usepackage{graphicx}
+\usepackage{adjustbox}
 \usepackage{multirow}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
+\usepackage{makecell}
+\usepackage{placeins}
 \usepackage[title]{appendix}
 \usepackage{xcolor}
 \usepackage{textcomp}
@@ -21,8 +25,8 @@
 \usepackage{listings}
 \usepackage{subcaption}
 \usepackage{tabularx}
-\usepackage{adjustbox}
 \usepackage{url}
+\usepackage{placeins}
 % \usepackage[hidelinks]{hyperref}
 
 % Code listing style
@@ -53,14 +57,14 @@
 
 \title[Reproducible Sparse-Concept and Calibration Diagnostics]{Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing: A Protocol and Diagnostic Study}
 
-\author*[1]{\fnm{Nguyen} \sur{Khanh-Trinh}}\email{trinhnk@utehy.edu.vn}
-\author[1]{\fnm{Dao} \sur{Minh-Tuan}}\email{tuanymc@utehy.edu.vn}
-\author[1]{\fnm{Nguyen} \sur{Tien-Duong}}\email{duongnt@utehy.edu.vn}
-\author[1]{\fnm{Nguyen} \sur{Van-Hau}}\email{haunv@utehy.edu.vn}
-\author[2]{\fnm{Nguyen} \sur{Chi-Thanh}}\email{thanhnc80@gmail.com}
+\author[1]{\fnm{Nguyen} \sur{Khanh Trinh}}\email{trinhnk@utehy.edu.vn}
+\author[1]{\fnm{Dao} \sur{Minh Tuan}}\email{tuanymc@utehy.edu.vn}
+\author[1]{\fnm{Nguyen} \sur{Tien Duong}}\email{duongnt@utehy.edu.vn}
+\author*[1]{\fnm{Nguyen} \sur{Van Hau}}\email{haunv@utehy.edu.vn}
+\author[2]{\fnm{Nguyen} \sur{Chi Thanh}}\email{thanhnc@ioit.ai.vn}
 
-\affil*[1]{\orgname{Hung Yen University of Technology and Education}, \orgaddress{\city{Hung Yen}, \country{Viet Nam}}}
-\affil[2]{\orgname{Academy of Military Science and Technology}, \orgaddress{\city{Ha Noi}, \country{Viet Nam}}}
+\affil*[1]{\orgname{Hung Yen University of Technology and Education}, \orgaddress{\city{Hung Yen}, \country{Vietnam}}}
+\affil[2]{\orgname{Academy of Military Science and Technology}, \orgaddress{\city{Ha Noi}, \country{Vietnam}}}
 
 \abstract{Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold-start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse-concept and calibration evaluation in KT. The protocol combines learner-based and temporal splits, train-only KC-frequency stratification, limited cold-start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight-channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse-concept and calibration diagnostics for future KT studies.}
 
@@ -86,16 +90,18 @@
     \item \textbf{Consent to participate:} Not applicable.
     \item \textbf{Consent for publication:} Not applicable.
     \item \textbf{Data availability:} The datasets analyzed during the current study are available in public repositories (ASSISTments 2012, Junyi Academy, XES3G5M).
-    \item \textbf{Code availability:} The reproducible code, protocol checklist, and reporting templates will be available upon acceptance at \url{https://github.com/trinhnkt/P0}.
-    \item \textbf{Authors' contributions:} \todo{Authors to explicitly define individual contributions.}
-    \item \textbf{Use of generative AI tools:} No generative AI software tools were used in the scientific ideation, methodology, experimental process, or primary manuscript drafting of this work. AI assistants (e.g., Google Antigravity, Overleaf) were strictly utilized for formatting and converting the manuscript to the LaTeX template.
-    \item \textbf{ORCID:} Nguyen Khanh-Trinh (0009-0004-3739-0484), Dao Minh-Tuan (0009-0009-1641-6813), Nguyen Tien-Duong (0009-0007-1104-7129), Nguyen Van-Hau (0000-0002-3256-5626).
+    \item \textbf{Code availability:} The code and reporting templates will be made publicly available upon acceptance.
+    \item \textbf{Authors' contributions:} Nguyen Khanh Trinh: conceptualization, methodology, implementation, experimental analysis, data curation, and writing---original draft. Dao Minh Tuan: supervision, research design, validation, and writing---review and editing. Nguyen Tien Duong: dataset preparation, reproducibility checking, result verification, and manuscript editing. Nguyen Van Hau and Nguyen Chi Thanh: critical review, validation, and academic consultation. All authors read and approved the final manuscript.
+    \item \textbf{Use of generative AI tools:} Generative AI tools were used to support language polishing, LaTeX formatting, consistency checking, and preparation of reproducibility prompts. These tools were not used to generate or alter experimental results. All scientific claims, experimental design decisions, numerical results, and final interpretations were checked, verified, and approved by the authors.
+    \item \textbf{ORCID:} Nguyen Khanh Trinh (0009-0004-3739-0484), Dao Minh Tuan (0009-0009-1641-6813), Nguyen Tien Duong (0009-0007-1104-7129), Nguyen Van Hau (0000-0002-3256-5626), Nguyen Chi Thanh (0000-0003-4335-7002).
 \end{itemize}
 
-\bibliography{references}
-
+\clearpage
 \begin{appendices}
 \input{appendix/appendix_a_sensitivity}
 \end{appendices}
+
+
+\input{references.bbl}
 
 \end{document}
