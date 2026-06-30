@@ -9,7 +9,7 @@
 
 % Set fonts and page layout according to JEDM guidelines
 \RequirePackage{times}
-\PassOptionsToPackage{left=2.75cm,right=2.75cm,top=2.25cm,bottom=2.25cm}{geometry}
+\RequirePackage[left=2.75cm,right=2.75cm,top=2.25cm,bottom=2.25cm]{geometry}
 
 % Redefine maketitle for JEDM format (sans-serif title, center authors)
 \renewcommand\maketitle{\par
