@@ -1,0 +1,79 @@
+\begin{thebibliography}{99}
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+
+\bibitem{corbett1994knowledge}
+Corbett AT, Anderson JR (1994) Knowledge Tracing: Modeling the Acquisition of Procedural Knowledge. \textit{User Modeling and User-Adapted Interaction} 4(4):253-278. \doi{10.1007/BF01099821}
+
+\bibitem{piech2015deep}
+Piech C, Bassen J, Huang J, Ganguli S, Sahami M, Guibas LJ, Sohl-Dickstein J (2015) Deep Knowledge Tracing. \textit{Advances in Neural Information Processing Systems}:505-513.
+
+\bibitem{zhang2017dynamic}
+Zhang J, Shi X, King I, Yeung D (2017) Dynamic Key-Value Memory Networks for Knowledge Tracing. \textit{Proceedings of the International Conference on World Wide Web}:765-774. \doi{10.1145/3038912.3052580}
+
+\bibitem{ghosh2020context}
+Ghosh A, Heffernan N, Lan AS (2020) Context-Aware Attentive Knowledge Tracing. \textit{Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining}:2330-2339. \doi{10.1145/3394486.3403282}
+
+\bibitem{liu2023simplekt}
+Liu Z, Liu Q, Chen J, Huang S, Luo W (2023) simpleKT: A Simple but Tough-to-Beat Baseline for Knowledge Tracing. \textit{The Eleventh International Conference on Learning Representations}.
+
+\bibitem{liu2022pykt}
+Liu Z, Liu Q, Chen J, Huang S, Tang J, Luo W (2022) pyKT: A Python Library to Benchmark Deep Learning based Knowledge Tracing Models. \textit{Thirty-sixth Conference on Neural Information Processing Systems Datasets and Benchmarks Track}.
+
+\bibitem{abdelrahman2023knowledge}
+Abdelrahman G, Wang Q, Nunes B (2023) Knowledge Tracing: A Survey. \textit{ACM Computing Surveys} 55(11):1-37. \doi{10.1145/3569576}
+
+\bibitem{guo2017calibration}
+Guo C, Pleiss G, Sun Y, Weinberger KQ (2017) On Calibration of Modern Neural Networks. \textit{Proceedings of the International Conference on Machine Learning}:1321-1330.
+
+\bibitem{brier1950verification}
+Brier GW (1950) Verification of Forecasts Expressed in Terms of Probability. \textit{Monthly Weather Review} 78(1):1-3.
+
+\bibitem{degroot1983comparison}
+DeGroot MH, Fienberg SE (1983) The Comparison and Evaluation of Forecasters. \textit{The Statistician} 32(1/2):12-22.
+
+\bibitem{delong1988comparing}
+DeLong ER, DeLong DM, Clarke-Pearson DL (1988) Comparing the Areas under Two or More Correlated Receiver Operating Characteristic Curves: A Nonparametric Approach. \textit{Biometrics} 44(3):837-845. \doi{10.2307/2531595}
+
+\bibitem{choi2020ednet}
+Choi Y, Lee Y, Cho J, Baek J, Kim B, Cha Y, Shin D, Bae C, Heo J (2020) EdNet: A Large-Scale Hierarchical Dataset in Education. \textit{International Conference on Artificial Intelligence in Education}:69-73. \doi{10.1007/978-3-030-52240-7_13}
+
+\bibitem{liu2023xes3g5m}
+Liu Z, Liu Q, Guo T, Chen J, Huang S, Zhao X, Tang J, Luo W, Weng J (2023) XES3G5M: A Knowledge Tracing Benchmark Dataset with Auxiliary Information. \textit{Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track}.
+
+\bibitem{embretson2000item}
+Embretson SE, Reise SP (2000) Item response theory for psychologists. \textit{Psychology Press}.
+
+\bibitem{rasch1960probabilistic}
+Rasch G (1960) Probabilistic models for some intelligence and attainment tests. \textit{Danish Institute for Educational Research}.
+
+\bibitem{nakagawa2019graph}
+Nakagawa H, Iwasawa Y, Matsuo Y (2019) Graph-based knowledge tracing: modeling student proficiency using graph neural network. \textit{IEEE/WIC/ACM International Conference on Web Intelligence}:156-163.
+
+\bibitem{yang2021gikt}
+Yang Y, Shen J, Qu Y, Liu Y, Wang K, Zhu Y, Zhang W, Yu Y (2021) GIKT: A Graph-based Interaction Model for Knowledge Tracing. \textit{Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2020}:299-315.
+
+\bibitem{choffin2019das3h}
+Choffin B, Popineau F, Bourda Y, Vie JJ (2019) DAS3H: Modeling Student Learning and Forgetting for Optimally Scheduling Distributed Practice of Skills. \textit{Proceedings of the 12th International Conference on Educational Data Mining}:276-281.
+
+\bibitem{gervet2020deep}
+Gervet T, Koedinger K, Schneider J, Mitchell T (2020) When is Deep Learning the Best Approach to Knowledge Tracing?. \textit{Journal of Educational Data Mining} 12(3):31-54.
+
+\bibitem{pelanek2015modeling}
+Pel{\'a}nek R (2015) Modeling students' memory for application in adaptive educational systems. \textit{User Modeling and User-Adapted Interaction} 25(3):167-204.
+
+\bibitem{naeini2015obtaining}
+Naeini MP, Cooper G, Hauskrecht M (2015) Obtaining Well Calibrated Probabilities Using Bayesian Binning. \textit{Proceedings of the AAAI Conference on Artificial Intelligence} 29(1).
+
+\bibitem{lee2022cl4kt}
+Lee W, Chun J, Lee Y, Park K, Choi D (2022) Contrastive Learning for Knowledge Tracing. \textit{Proceedings of the ACM Web Conference 2022}:2330-2338.
+
+\bibitem{kapoor2023leakage}
+Kapoor S, Narayanan A (2023) Leakage and the reproducibility crisis in machine-learning-based science. \textit{Patterns} 4(9):100804.
+
+\bibitem{wilcoxon1945individual}
+Wilcoxon F (1945) Individual comparisons by ranking methods. \textit{Biometrics bulletin} 1(6):80-83.
+
+\bibitem{pelanek2015metrics}
+Pel{\'{a}}nek R (2015) Metrics for Evaluation of Student Models. \textit{Journal of Educational Data Mining} 7(2):1-19. \doi{10.5281/zenodo.3554665}
+
+\end{thebibliography}

@@ -1,0 +1,33 @@
+\begin{table}[htbp]
+\caption{Sensitivity Analysis to KC-frequency Threshold Settings. Values are averaged across datasets and baselines for each threshold setting; standard deviations reflect between-dataset and between-baseline variation.}
+\label{tab:sensitivity}
+\centering
+
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcc}
+\toprule
+Setting & Bucket & AUC & ECE \\
+\midrule
+Alt\_1 & dense & $0.5766 \pm 0.1186$ & $0.3239 \pm 0.3020$ \\
+ & medium & $0.5511 \pm 0.0844$ & $0.3502 \pm 0.2101$ \\
+ & sparse & $0.4925 \pm 0.0083$ & $0.4109 \pm 0.3639$ \\
+ & very\_sparse & $0.4898 \pm 0.0122$ & $0.3731 \pm 0.1278$ \\
+\midrule
+Alt\_2 & dense & $0.5766 \pm 0.1187$ & $0.3250 \pm 0.3041$ \\
+ & medium & $0.5544 \pm 0.0851$ & $0.3180 \pm 0.1900$ \\
+ & sparse & $0.5778 \pm 0.1284$ & $0.3469 \pm 0.1972$ \\
+ & very\_sparse & $0.4861 \pm 0.0126$ & $0.3725 \pm 0.2277$ \\
+\midrule
+Alt\_Quantile & dense & $0.5777 \pm 0.1206$ & $0.3345 \pm 0.3261$ \\
+ & medium & $0.5719 \pm 0.1116$ & $0.3214 \pm 0.2951$ \\
+ & sparse & $0.5730 \pm 0.1140$ & $0.3163 \pm 0.2805$ \\
+ & very\_sparse & $0.5693 \pm 0.1065$ & $0.3075 \pm 0.2291$ \\
+\midrule
+Main & dense & $0.5766 \pm 0.1187$ & $0.3245 \pm 0.3032$ \\
+ & medium & $0.5557 \pm 0.0877$ & $0.3261 \pm 0.1897$ \\
+ & sparse & $0.4955 \pm 0.0045$ & $0.3648 \pm 0.2385$ \\
+ & very\_sparse & $0.4898 \pm 0.0122$ & $0.3731 \pm 0.1278$ \\
+\bottomrule
+\end{tabular}
+\end{table}
