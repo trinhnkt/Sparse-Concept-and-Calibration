@@ -1,0 +1,5 @@
+- Table 7 kept in main: NO (Softened and referred to as optional robustness check instead of primary evidence)
+- Source verified: NO (Did not find matching source CSV to justify XES3G5M AUC discrepancy)
+- XES3G5M dense AUC consistency: FAIL (0.9036 in Table 7 vs 0.7858 mean in Table 5)
+- XES3G5M dense ECE consistency: FAIL
+- Section 4.6 revised: YES (Claim softened)

@@ -21,10 +21,11 @@ For each training fold, we compute the training frequency of a KC $c$ as
 \end{equation}
 KCs are assigned to four pre-registered strata:
 \begin{align}
-\text{Very Sparse:} &\quad \mathrm{freq}\_{\mathrm{train}}(c) < 20,\\
-\text{Sparse:} &\quad 20 \le \mathrm{freq}\_{\mathrm{train}}(c) < 100,\\
-\text{Medium:} &\quad 100 \le \mathrm{freq}\_{\mathrm{train}}(c) < 500,\\
-\text{Dense:} &\quad \mathrm{freq}\_{\mathrm{train}}(c) \ge 500.
+\text{Strict Cold-start:} &\quad \mathrm{freq}_{\mathrm{train}}(c) = 0,\\
+\text{Very Sparse:} &\quad 0 < \mathrm{freq}_{\mathrm{train}}(c) < 20,\\
+\text{Sparse:} &\quad 20 \le \mathrm{freq}_{\mathrm{train}}(c) < 100,\\
+\text{Medium:} &\quad 100 \le \mathrm{freq}_{\mathrm{train}}(c) < 500,\\
+\text{Dense:} &\quad \mathrm{freq}_{\mathrm{train}}(c) \ge 500.
 \end{align}
 The assignment must use only training-fold counts. Validation and test frequencies may be logged for auditing but must not determine the bucket. It is important to acknowledge a conceptual caveat regarding this definition: sparsity is not an absolute property of the underlying knowledge itself. Rather, it is partially an artifact of human authorship in the Q-Matrix construction. A concept might appear sparse not because the fundamental knowledge is rarely practiced, but because domain experts defined it at an overly granular level or tagged it inconsistently across items. Consequently, while our strata reliably isolate low-frequency training patterns, they reflect the operational sparsity of the dataset's specific KC mapping rather than an ontological truth about the learning domain.
 
@@ -55,7 +56,7 @@ where the three components are defined as follows. Let $\bar{y}$ denote the glob
 \res = \frac{1}{N}\sum_{m=1}^{M} n_m
 \left(\mathrm{acc}_m - \bar{y}\right)^2.
 \end{equation}
-$\unc$ measures the intrinsic uncertainty of the prediction task and is independent of the model; $\rel$ measures the deviation between predicted probabilities and observed frequencies, where lower values indicate better reliability; $\res$ measures how well the model separates events with different outcome rates from the global mean, where higher values indicate better resolution.
+$\unc$ measures the intrinsic uncertainty of the prediction task and is independent of the model; $\rel$ measures the deviation between predicted probabilities and observed frequencies, where lower values indicate better reliability; $\res$ measures how well the model separates events with different outcome rates from the global mean, where higher values indicate better resolution. Note that because this standard formulation relies on binning continuous probabilities into $M$ discrete bins, the resulting decomposition is an empirical approximation and can be sensitive to binning artifacts.
 Calibration is reported both overall and per KC stratum.
 
 AUC and calibration answer fundamentally different questions. AUC measures discrimination (i.e., whether a model ranks correct responses above incorrect ones), whereas calibration measures whether predicted probabilities correspond to empirical correctness rates. In educational decision support, this distinction is critical because probability thresholds are often used to trigger automated remediation, suggest additional practice, or license concept advancement. A model with high AUC may still exhibit substantial or potentially harmful miscalibration, leading to inappropriate instructional interventions due to biased confidence scores. Thus, calibration metrics are not auxiliary statistics but primary indicators of a model's operational reliability.

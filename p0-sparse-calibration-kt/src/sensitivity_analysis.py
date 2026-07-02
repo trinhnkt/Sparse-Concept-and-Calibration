@@ -8,7 +8,9 @@ from src.metrics import compute_metrics
 from src.calibration_eval import compute_ece
 
 def get_bucket(freq, thresholds):
-    if freq < thresholds[0]:
+    if freq == 0:
+        return "strict_cold_start"
+    elif freq < thresholds[0]:
         return "very_sparse"
     elif freq < thresholds[1]:
         return "sparse"

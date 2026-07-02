@@ -26,7 +26,8 @@ def check_l4_l7_leakage():
     
     df = pd.read_csv(strata_path)
     def get_bucket(freq):
-        if freq < 20: return "very_sparse"
+        if freq == 0: return "strict_cold_start"
+        elif freq < 20: return "very_sparse"
         elif freq < 100: return "sparse"
         elif freq < 500: return "medium"
         else: return "dense"

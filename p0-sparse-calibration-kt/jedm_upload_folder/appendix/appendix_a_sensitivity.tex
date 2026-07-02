@@ -1,13 +1,12 @@
-\section{Threshold Sensitivity}
+\section{Threshold Sensitivity Protocol}
 \label{app:sensitivity}
-To establish the robustness of our diagnostic stratification, we conduct a sensitivity analysis evaluating whether the observed predictive degradation and calibration decay are sensitive to the choice of frequency thresholds. We evaluate three alternative threshold configurations: (i) an aggressive setting with thresholds \{10, 50, 250\} training interactions, (ii) a conservative setting with thresholds \{30, 150, 750\} training interactions, and (iii) a dynamic quantile-based bucketing scheme where buckets are defined by equal-quantile KCs. The results, summarized in Table~\ref{tab:sensitivity}, show that while the absolute counts of KCs in each category shift, the diagnostic patterns are broadly consistent, although effect magnitudes vary across threshold definitions. Overall, low-frequency buckets often exhibit higher or more variable calibration errors, although the exact ordering is not strictly monotonic across all threshold settings.
+Threshold sensitivity analysis is implemented in the released artifact as an optional robustness check. The present manuscript does not use threshold-sensitivity results as primary evidence because the main diagnostic conclusions are based on the pre-registered KC-frequency thresholds used in Tables 5, 6, 9, and 10. The artifact evaluates three alternative threshold configurations: (i) an aggressive setting with thresholds \{10, 50, 250\} training interactions, (ii) a conservative setting with thresholds \{30, 150, 750\} training interactions, and (iii) a dynamic quantile-based bucketing scheme where buckets are defined by equal-quantile KCs. These checks are intended to help future users evaluate whether their conclusions are sensitive to the chosen KC-frequency thresholds.
 
-\input{tables/tableA1_sensitivity}
 \FloatBarrier
 
 \section{Overall and Bucket-level Performance under Temporal Splits}
 \label{app:temporal_performance}
-In this section, we present the comprehensive overall performance (Table~\ref{tab:temporal_overall}) and strata-specific performance breakdowns (Table~\ref{tab:temporal_strata}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable calibration degradation and predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting.
+In this section, we present the comprehensive overall performance (Table~\ref{tab:temporal_overall}) and strata-specific performance breakdowns (Table~\ref{tab:temporal_strata}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting. Calibration degradation under temporal splits is reported separately in Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_temporal}.
 
 \input{tables/tableA_overall_full}
 \input{tables/tableA_performance_by_bucket_full}
@@ -15,7 +14,7 @@ In this section, we present the comprehensive overall performance (Table~\ref{ta
 \clearpage
 \section{Detailed Calibration Results}
 \label{app:calibration_performance}
-Detailed calibration results by frequency stratum for the learner-based split are reported in Table~\ref{tab:calibration_learner}. The corresponding temporal calibration breakdowns, computed after the label-alignment correction documented in Appendix F and used as the numerical basis for Figure 3, are reported in Table~\ref{tab:calibration_temporal}.
+Detailed calibration results by frequency stratum for the learner-based split are reported in Table~\ref{tab:calibration_learner}. The corresponding temporal calibration breakdowns, computed after the label-alignment correction documented in Appendix~\ref{app:alignment} and used as the numerical basis for Figure~\ref{fig:reliability_junyi_temporal}, are reported in Table~\ref{tab:calibration_temporal}.
 
 \input{tables/table_v_calibration_by_bucket_updated}
 \input{tables/table_xi_temporal_calibration_breakdown}

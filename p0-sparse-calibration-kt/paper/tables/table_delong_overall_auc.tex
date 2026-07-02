@@ -12,6 +12,6 @@ ASSISTments 2012 & $p < 0.001^{*}$ & $p < 0.001^{*}$ & $p < 0.001^{*}$ \\
 Junyi Academy    & $p < 0.001^{*}$ & $p < 0.001^{*}$ & $p < 0.001^{*}$ \\
 XES3G5M          & $p < 0.001^{*}$ & $p < 0.001^{*}$ & $p < 0.001^{*}$ \\
 \bottomrule
-\multicolumn{4}{p{\linewidth}}{\textit{Note:} Bonferroni-corrected significance threshold: $\alpha = 0.05/9 = 0.0056$. $^{*}$ indicates significant after correction. IRT comparisons serve as the classical baseline reference; IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability. DeLong tests are computed using paired prediction-level outputs aligned by test instances within each dataset.} \\
+\multicolumn{4}{p{\linewidth}}{\textit{Note:} Bonferroni-corrected significance threshold: $\alpha = 0.05/9 = 0.0056$. $^{*}$ indicates significant after correction. IRT comparisons serve as the classical baseline reference; IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters, causing the model to fall back to a constant global probability for all predictions. Consequently, its ACC simply reflects the majority-class base rate rather than any discriminative ranking ability. DeLong tests are computed using paired prediction-level outputs aligned by test instances within each dataset.} \\
 \end{tabular}
 \end{table}

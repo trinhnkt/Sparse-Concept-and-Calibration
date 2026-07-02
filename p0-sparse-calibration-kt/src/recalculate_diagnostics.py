@@ -106,7 +106,7 @@ def main():
     # Map (dataset, split, kc_id) to bucket and train_freq
     strata_map = {}
     for _, row in strata_df.iterrows():
-        key = (row['dataset'], row['split'], str(row['kc_id']))
+        key = (row['dataset'], row['split'], str(row['kc_id']).replace('.0', ''))
         strata_map[key] = {
             'bucket': row['bucket'],
             'train_freq': row['train_freq']
@@ -181,7 +181,7 @@ def main():
             
         y_true = df['y_true'].values.astype(int)
         p_pred = df['p_pred'].values.astype(float)
-        kc_ids = df['kc_id'].astype(str).values
+        kc_ids = df['kc_id'].astype(str).str.replace(r'\.0$', '', regex=True).values
         
         # A. Calculate Overall Metrics
         auc, acc, nll, rmse = calculate_metrics(y_true, p_pred)
@@ -206,7 +206,7 @@ def main():
                 train_freqs.append(strata_map[key]['train_freq'])
             else:
                 # If KC is not in strata train fold, frequency is 0 (cold start!)
-                buckets.append('very_sparse')
+                buckets.append('strict_cold_start')
                 train_freqs.append(0)
                 
         df['bucket'] = buckets

@@ -1,0 +1,3 @@
+- “Very Sparse (<20)” removed: YES
+- New label used: Very Sparse (1–19)
+- Caption consistent with Section 3.3: YES

@@ -7,7 +7,9 @@ import os
 import yaml
 
 def get_bucket(freq):
-    if freq < 20:
+    if freq == 0:
+        return "strict_cold_start"
+    elif freq < 20:
         return "very_sparse"
     elif freq < 100:
         return "sparse"
@@ -100,7 +102,7 @@ def main():
         # Pivot for easy plotting: mode as columns, bucket as index
         df_pivot = df_plot.pivot(index='bucket', columns='split', values='n_kcs')
         # Reorder buckets
-        order = ['very_sparse', 'sparse', 'medium', 'dense']
+        order = ['strict_cold_start', 'very_sparse', 'sparse', 'medium', 'dense']
         df_pivot = df_pivot.reindex(order)
         
         df_pivot.plot(kind='bar', ax=plt.gca())

@@ -71,7 +71,7 @@ def main():
     
     strata_map = {}
     for _, row in strata_df.iterrows():
-        key = (row['dataset'], str(row['kc_id']))
+        key = (row['dataset'], str(row['kc_id']).replace('.0', ''))
         strata_map[key] = row['bucket']
     
     # 2. Get unique temporal files
@@ -133,10 +133,10 @@ def main():
         if len(df) == 0:
             continue
             
-        kc_ids = df['kc_id'].astype(str).values
+        kc_ids = df['kc_id'].astype(str).str.replace(r'\.0$', '', regex=True).values
         buckets = []
         for kc in kc_ids:
-            b = strata_map.get((dataset, kc), 'very_sparse')
+            b = strata_map.get((dataset, kc), 'strict_cold_start')
             buckets.append(b)
         df['bucket'] = buckets
         

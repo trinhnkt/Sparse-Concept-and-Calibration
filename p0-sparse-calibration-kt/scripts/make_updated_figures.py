@@ -84,7 +84,7 @@ def main():
     # Filter for junyi temporal split SimpleKT
     junyi_strata = strata_df[(strata_df['dataset'] == 'junyi') & (strata_df['split'] == 'temporal')]
     dense_kcs = set(junyi_strata[junyi_strata['bucket'] == 'dense']['kc_id'].astype(str))
-    very_sparse_kcs = set(junyi_strata[junyi_strata['bucket'] == 'very_sparse']['kc_id'].astype(str))
+    sparse_kcs = set(junyi_strata[junyi_strata['bucket'] == 'sparse']['kc_id'].astype(str))
     
     # Load predictions
     pred_path = Path("results/predictions/junyi_temporal_simplekt_seed42_predictions_rerun.csv")
@@ -108,24 +108,30 @@ def main():
             fig_dir / "junyi_temporal_simplekt_dense.pdf"
         )
         
-    # Very Sparse
-    very_sparse_df = df[df['kc_id_str'].isin(very_sparse_kcs)]
-    if not very_sparse_df.empty:
+    # Sparse
+    sparse_df = df[df['kc_id_str'].isin(sparse_kcs)]
+    if not sparse_df.empty:
         plot_reliability_diagram(
-            very_sparse_df['y_true'].values.astype(int),
-            very_sparse_df['p_pred'].values.astype(float),
-            "Junyi Academy", "SimpleKT", "temporal", "Very Sparse KCs",
-            fig_dir / "junyi_temporal_simplekt_very_sparse.pdf"
+            sparse_df['y_true'].values.astype(int),
+            sparse_df['p_pred'].values.astype(float),
+            "Junyi Academy", "SimpleKT", "temporal", "Sparse KCs",
+            fig_dir / "junyi_temporal_simplekt_sparse.pdf"
         )
         
-    # Generate unified Figure 3 showing both or rename Very Sparse to Figure 3 updated
-    # Let's save Very Sparse as figure3_reliability_diagrams_updated.pdf
-    if not very_sparse_df.empty:
+    # Output specifically requested by user for report
+    if not sparse_df.empty:
         plot_reliability_diagram(
-            very_sparse_df['y_true'].values.astype(int),
-            very_sparse_df['p_pred'].values.astype(float),
-            "Junyi Academy", "SimpleKT", "temporal", "Very Sparse KCs",
-            fig_dir / "figure3_reliability_diagrams_updated.pdf"
+            sparse_df['y_true'].values.astype(int),
+            sparse_df['p_pred'].values.astype(float),
+            "Junyi Academy", "SimpleKT", "temporal", "Sparse KCs",
+            fig_dir / "figure3_junyi_dense_vs_sparse_reliability.pdf"
+        )
+        # also save png
+        plot_reliability_diagram(
+            sparse_df['y_true'].values.astype(int),
+            sparse_df['p_pred'].values.astype(float),
+            "Junyi Academy", "SimpleKT", "temporal", "Sparse KCs",
+            fig_dir / "figure3_junyi_dense_vs_sparse_reliability.png"
         )
         
     print("Figures successfully generated!")

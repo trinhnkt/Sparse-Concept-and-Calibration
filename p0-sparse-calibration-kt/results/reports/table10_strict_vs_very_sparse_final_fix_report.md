@@ -1,0 +1,6 @@
+- Table 10 recomputed or relabeled: YES
+- Junyi 2,545 events labeled strict cold start: YES
+- XES3G5M very sparse no longer 259,426: YES
+- XES3G5M strict cold start present: YES
+- ASSISTments very sparse and strict separated: YES
+- No freq_train=0 group labeled very sparse: YES

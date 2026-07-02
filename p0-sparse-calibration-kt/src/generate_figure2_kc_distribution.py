@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 def main():
     # Load the distribution data
@@ -25,7 +26,7 @@ def main():
         'xes3g5m': 'XES3G5M'
     }
     
-    buckets_order = ['very_sparse', 'sparse', 'medium', 'dense']
+    buckets_order = ['strict_cold_start', 'very_sparse', 'sparse', 'medium', 'dense']
     split_colors = {
         'learner_based': '#2980B9', # Soft blue
         'temporal': '#E67E22'       # Soft orange
@@ -59,7 +60,7 @@ def main():
         ax.set_title(dataset_titles[dataset], fontsize=13, fontweight='bold', pad=10)
         ax.set_ylabel("Number of KCs", fontsize=11)
         ax.set_xlabel("KC Strata", fontsize=11)
-        ax.set_xticklabels(['Very Sparse\n(<20)', 'Sparse\n(20-100)', 'Medium\n(100-500)', 'Dense\n(>=500)'], rotation=0, fontsize=9.5)
+        ax.set_xticklabels(['Strict\n(=0)', 'V. Sparse\n(1-19)', 'Sparse\n(20-99)', 'Medium\n(100-499)', 'Dense\n(>=500)'], rotation=0, fontsize=9.5)
         ax.grid(axis='y', linestyle='--', alpha=0.5)
         ax.legend().remove()
         
@@ -75,7 +76,9 @@ def main():
     
     # Save to both requested locations for compatibility
     plt.savefig(fig_dir / "figure2_bucket_distribution.pdf", bbox_inches="tight", format="pdf", dpi=300)
+    plt.savefig(fig_dir / "figure2_bucket_distribution.png", bbox_inches="tight", format="png", dpi=300)
     plt.savefig(fig_dir / "figure2_kc_bucket_distribution.pdf", bbox_inches="tight", format="pdf", dpi=300)
+    plt.savefig(fig_dir / "figure2_kc_bucket_distribution.png", bbox_inches="tight", format="png", dpi=300)
     
     # Also save in results/figures
     results_fig_dir = Path("results/figures")

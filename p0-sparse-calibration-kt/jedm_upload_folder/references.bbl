@@ -59,7 +59,7 @@ Choffin B, Popineau F, Bourda Y, Vie JJ (2019) DAS3H: Modeling Student Learning 
 Gervet T, Koedinger K, Schneider J, Mitchell T (2020) When is Deep Learning the Best Approach to Knowledge Tracing?. \textit{Journal of Educational Data Mining} 12(3):31-54.
 
 \bibitem{pelanek2015modeling}
-Pel{\'a}nek R (2015) Modeling students' memory for application in adaptive educational systems. \textit{User Modeling and User-Adapted Interaction} 25(3):167-204.
+Pelanek R (2015) Modeling students' memory for application in adaptive educational systems. \textit{User Modeling and User-Adapted Interaction} 25(3):167-204.
 
 \bibitem{naeini2015obtaining}
 Naeini MP, Cooper G, Hauskrecht M (2015) Obtaining Well Calibrated Probabilities Using Bayesian Binning. \textit{Proceedings of the AAAI Conference on Artificial Intelligence} 29(1).
@@ -74,6 +74,21 @@ Kapoor S, Narayanan A (2023) Leakage and the reproducibility crisis in machine-l
 Wilcoxon F (1945) Individual comparisons by ranking methods. \textit{Biometrics bulletin} 1(6):80-83.
 
 \bibitem{pelanek2015metrics}
-Pel{\'{a}}nek R (2015) Metrics for Evaluation of Student Models. \textit{Journal of Educational Data Mining} 7(2):1-19. \doi{10.5281/zenodo.3554665}
+Pelanek R (2015) Metrics for Evaluation of Student Models. \textit{Journal of Educational Data Mining} 7(2):1-19. \doi{10.5281/zenodo.3554665}
+
+\bibitem{jung2025clst}
+Jung H, Yoo J, Yoon Y, Jang Y (2025) CLST: Cold-Start Mitigation in Knowledge Tracing by Aligning a Generative Language Model as a Students' Knowledge Tracer. \textit{Journal of Educational Data Mining} 17(2):86-117.
+
+\bibitem{guo2024mitigating}
+Guo Y, Shen S, Liu Q, Huang Z, Zhu L, Su Y, Chen E (2024) Mitigating Cold-Start Problems in Knowledge Tracing with Large Language Models: An Attribute-aware Approach. \textit{Proceedings of the 33rd ACM International Conference on Information and Knowledge Management}:727-736. \doi{10.1145/3627673.3679664}
+
+\bibitem{kim2024beyond}
+Kim J, Chu S, Wong B, Yi M (2024) Not All Options Are Created Equal: Textual Option Weighting for Token-Efficient LLM-Based Knowledge Tracing. \textit{arXiv preprint arXiv:2410.12872}.
+
+\bibitem{bai2025cskt}
+Bai Y, Li X, Liu Z, Huang Y, Guo T, Hou M, Xia F, Luo W (2025) csKT: Addressing cold-start problem in knowledge tracing via kernel bias and cone attention. \textit{Expert Systems with Applications} 266:125988. \doi{10.1016/j.eswa.2024.125988}
+
+\bibitem{huang2023sparsekt}
+Huang S, Liu Z, Zhao X, Luo W, Weng J (2023) Towards Robust Knowledge Tracing Models via k-Sparse Attention. \textit{Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval}:2441-2445. \doi{10.1145/3539618.3592073}
 
 \end{thebibliography}

@@ -73,9 +73,9 @@ def get_reliability_flag(n_events):
         return 'I'
 
 def fmt(mean, std):
-    if pd.isna(mean):
+    if pd.isna(mean) or mean is None:
         return "-"
-    if pd.isna(std) or std == 0.0:
+    if pd.isna(std) or std is None or std == 0.0:
         return f"${mean:.4f}$"
     return f"${mean:.4f} \\pm {std:.4f}$"
 
@@ -163,10 +163,16 @@ def main():
         for kc in kc_ids:
             key = (dataset, split_mode, kc)
             if key in strata_map:
-                buckets.append(strata_map[key]['bucket'])
-                train_freqs.append(strata_map[key]['train_freq'])
+                bucket = strata_map[key]['bucket']
+                freq = strata_map[key]['train_freq']
+                if freq == 0:
+                    bucket = 'strict_cold_start'
+                elif bucket == 'very_sparse' and freq > 0:
+                    pass
+                buckets.append(bucket)
+                train_freqs.append(freq)
             else:
-                buckets.append('very_sparse')
+                buckets.append('strict_cold_start')
                 train_freqs.append(0)
         df['bucket'] = buckets
         df['train_freq'] = train_freqs
@@ -307,6 +313,9 @@ def main():
     merged_overall = merge_with_fallback(summary_clean_overall, summary_rerun_overall, ['dataset', 'split_mode', 'model'])
     merged_bucket = merge_with_fallback(summary_clean_bucket, summary_rerun_bucket, ['dataset', 'split_mode', 'model', 'bucket'])
     merged_cold = merge_with_fallback(summary_clean_cold, summary_rerun_cold, ['dataset', 'split_mode', 'model', 'group'])
+    
+    # Filter out very_sparse for junyi temporal because under new definition, N=0, but old fallback pollutes it
+    merged_bucket = merged_bucket[~((merged_bucket['dataset'] == 'junyi') & (merged_bucket['split_mode'] == 'temporal') & (merged_bucket['bucket'] == 'very_sparse'))]
     
     # Save merged data to disk for audit
     merged_overall.to_csv("results/tables/overall_results_summary.csv", index=False)
@@ -828,37 +837,75 @@ def main():
     
     # 5. Table VII: Threshold Sensitivity Analysis (Appendix)
     def make_table7(filepath):
-        df_sens = pd.read_csv("results/tables/clean_sensitivity_analysis.csv")
-        summary_sens = df_sens.groupby(['setting', 'bucket'])[['auc', 'ece']].agg(['mean', 'std']).reset_index()
-        summary_sens.columns = ['setting', 'bucket', 'auc_mean', 'auc_std', 'ece_mean', 'ece_std']
-        summary_sens['bucket_sort'] = summary_sens['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
-        summary_sens = summary_sens.sort_values(['setting', 'bucket_sort'])
+        df_sens = pd.read_csv("results/tables/sensitivity_analysis.csv")
+        df_sens = df_sens[df_sens['split_mode'] == 'learner_based'].copy()
+        df_sens = df_sens[df_sens['model'].isin(['irt_1pl', 'dkt', 'simplekt'])].copy()
+        df_sens['model_type'] = df_sens['model'].apply(lambda x: 'IRT' if x == 'irt_1pl' else 'Deep baselines')
+        
+        summary_sens = df_sens.groupby(['dataset', 'model_type', 'setting', 'bucket'])[['auc', 'ece']].agg(['mean', 'std']).reset_index()
+        summary_sens.columns = ['dataset', 'model_type', 'setting', 'bucket', 'auc_mean', 'auc_std', 'ece_mean', 'ece_std']
+        
+        pivot_df = summary_sens.pivot_table(
+            index=['dataset', 'setting', 'bucket'],
+            columns='model_type',
+            values=['auc_mean', 'auc_std', 'ece_mean', 'ece_std']
+        ).reset_index()
+        
+        pivot_df.columns = [f"{col[1]}_{col[0]}" if col[1] else col[0] for col in pivot_df.columns]
+        
+        pivot_df['dataset_sort'] = pivot_df['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
+        pivot_df['setting_sort'] = pivot_df['setting'].map({'Main': 0, 'Alt_1': 1, 'Alt_2': 2, 'Alt_Quantile': 3})
+        pivot_df['bucket_sort'] = pivot_df['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
+        pivot_df = pivot_df.sort_values(['dataset_sort', 'setting_sort', 'bucket_sort'])
         
         tex = []
         tex.append("\\begin{table}[H]")
-        tex.append("\\caption{Sensitivity Analysis to KC-frequency Threshold Settings. Values are averaged across datasets and baselines for each threshold setting; standard deviations reflect between-dataset and between-baseline variation.}")
+        tex.append("\\caption{Threshold sensitivity by dataset and model group. Deep baselines denote the mean over DKT and SimpleKT; standard deviations reflect between-baseline variation.}")
         tex.append("\\label{tab:sensitivity}")
         tex.append("\\centering")
-        tex.append("\\resizebox{\\columnwidth}{!}{%")
-        tex.append("\\begin{tabular}{llcc}")
+        tex.append("\\resizebox{\\textwidth}{!}{%")
+        tex.append("\\begin{tabular}{lllcccc}")
         tex.append("\\toprule")
-        tex.append("Setting & Bucket & AUC & ECE \\\\")
+        tex.append("& & & \\multicolumn{2}{c}{Deep baselines} & \\multicolumn{2}{c}{IRT} \\\\")
+        tex.append("\\cmidrule(lr){4-5} \\cmidrule(lr){6-7}")
+        tex.append("Dataset & Setting & Bucket & AUC & ECE & AUC & ECE \\\\")
         tex.append("\\midrule")
         
+        last_ds = None
         last_set = None
-        for _, row in summary_sens.iterrows():
+        for _, row in pivot_df.iterrows():
+            ds_name = row['dataset'].upper()
+            if ds_name == "ASSIST2012":
+                ds_display = "ASSISTments 2012"
+            elif ds_name == "JUNYI":
+                ds_display = "Junyi Academy"
+            else:
+                ds_display = "XES3G5M"
+                
+            if ds_display != last_ds:
+                if last_ds is not None:
+                    tex.append("\\midrule")
+                last_ds = ds_display
+                ds_col = ds_display
+                last_set = None
+            else:
+                ds_col = ""
+                
             set_name = row['setting'].replace("_", "\\_")
             if set_name != last_set:
-                if last_set is not None:
-                    tex.append("\\midrule")
-                last_set = set_name
                 set_col = set_name
+                last_set = set_name
             else:
                 set_col = ""
+                
             bucket_display = row['bucket'].replace("_", "\\_")
-            auc_str = fmt(row['auc_mean'], row['auc_std'])
-            ece_str = fmt(row['ece_mean'], row['ece_std'])
-            tex.append(f"{set_col} & {bucket_display} & {auc_str} & {ece_str} \\\\")
+            
+            deep_auc_str = fmt(row.get('Deep baselines_auc_mean'), row.get('Deep baselines_auc_std')) if 'DeepKT_auc_mean' in row and pd.notna(row['Deep baselines_auc_mean']) else "-"
+            deep_ece_str = fmt(row.get('Deep baselines_ece_mean'), row.get('Deep baselines_ece_std')) if 'DeepKT_ece_mean' in row and pd.notna(row['Deep baselines_ece_mean']) else "-"
+            irt_auc_str = fmt(row.get('IRT_auc_mean'), row.get('IRT_auc_std')) if 'IRT_auc_mean' in row and pd.notna(row['IRT_auc_mean']) else "-"
+            irt_ece_str = fmt(row.get('IRT_ece_mean'), row.get('IRT_ece_std')) if 'IRT_ece_mean' in row and pd.notna(row['IRT_ece_mean']) else "-"
+            
+            tex.append(f"{ds_col} & {set_col} & {bucket_display} & {deep_auc_str} & {deep_ece_str} & {irt_auc_str} & {irt_ece_str} \\\\")
             
         tex.append("\\bottomrule")
         tex.append("\\end{tabular}")

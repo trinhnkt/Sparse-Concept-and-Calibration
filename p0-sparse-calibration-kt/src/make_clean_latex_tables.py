@@ -175,7 +175,7 @@ def main():
         tex.append("Dataset & Model & Bucket & \\#KCs & \\#Events & AUC & ACC & NLL & RMSE \\\\")
         tex.append("\\midrule")
         
-        filtered = df[df['split_mode'] == split_mode].copy()
+        filtered = df[(df['split_mode'] == split_mode) & (df['bucket'] != 'strict_cold_start')].copy()
         filtered['dataset_sort'] = filtered['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
         filtered['model_sort'] = filtered['model'].map({'bkt': 0, 'dkt': 1, 'simplekt': 2})
         filtered['bucket_sort'] = filtered['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
@@ -258,6 +258,7 @@ def main():
     
     df_calib = df_calib.merge(events_summary, on=['dataset', 'model', 'bucket'], how='left')
     
+    df_calib = df_calib[df_calib['bucket'] != 'strict_cold_start'].copy()
     df_calib['dataset_sort'] = df_calib['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
     df_calib['model_sort'] = df_calib['model'].map({'bkt': 0, 'dkt': 1, 'simplekt': 2})
     df_calib['bucket_sort'] = df_calib['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
@@ -370,6 +371,7 @@ def main():
         
     # Temporal Calibration Table (Appendix)
     df_calib_temp = pd.read_csv("results/tables/clean_calibration_by_bucket_temporal.csv")
+    df_calib_temp = df_calib_temp[df_calib_temp['bucket'] != 'strict_cold_start'].copy()
     df_calib_temp['dataset_sort'] = df_calib_temp['dataset'].map({'assist2012': 0, 'junyi': 1, 'xes3g5m': 2})
     df_calib_temp['model_sort'] = df_calib_temp['model'].map({'bkt': 0, 'dkt': 1, 'simplekt': 2})
     df_calib_temp['bucket_sort'] = df_calib_temp['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
@@ -527,6 +529,7 @@ def main():
     summary_sens = df_sens.groupby(['setting', 'bucket'])[['auc', 'ece']].agg(['mean', 'std']).reset_index()
     summary_sens.columns = ['setting', 'bucket', 'auc_mean', 'auc_std', 'ece_mean', 'ece_std']
     
+    summary_sens = summary_sens[summary_sens['bucket'] != 'strict_cold_start'].copy()
     summary_sens['bucket_sort'] = summary_sens['bucket'].map({'dense': 0, 'medium': 1, 'sparse': 2, 'very_sparse': 3})
     summary_sens = summary_sens.sort_values(['setting', 'bucket_sort'])
     
