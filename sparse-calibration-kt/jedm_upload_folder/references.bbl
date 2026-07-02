@@ -70,11 +70,11 @@ Naeini MP, Cooper G, Hauskrecht M (2015) Obtaining Well Calibrated Probabilities
 \bibitem[Nakagawa et al.(2019)]{nakagawa2019graph}
 Nakagawa H, Iwasawa Y, Matsuo Y (2019) Graph-based knowledge tracing: modeling student proficiency using graph neural network. \textit{IEEE/WIC/ACM International Conference on Web Intelligence}:156-163.
 
-\bibitem[Pelanek(2015)]{pelanek2015modeling}
-Pelanek R (2015) Modeling students' memory for application in adaptive educational systems. \textit{User Modeling and User-Adapted Interaction} 25(3):167-204.
+\bibitem[Pelanek(2015a)]{pelanek2015modeling}
+Pelanek R (2015a) Modeling students' memory for application in adaptive educational systems. \textit{User Modeling and User-Adapted Interaction} 25(3):167-204.
 
-\bibitem[Pelanek(2015)]{pelanek2015metrics}
-Pelanek R (2015) Metrics for Evaluation of Student Models. \textit{Journal of Educational Data Mining} 7(2):1-19. \doi{10.5281/zenodo.3554665}
+\bibitem[Pelanek(2015b)]{pelanek2015metrics}
+Pelanek R (2015b) Metrics for Evaluation of Student Models. \textit{Journal of Educational Data Mining} 7(2):1-19. \doi{10.5281/zenodo.3554665}
 
 \bibitem[Piech et al.(2015)]{piech2015deep}
 Piech C, Bassen J, Huang J, Ganguli S, Sahami M, Guibas LJ, Sohl-Dickstein J (2015) Deep Knowledge Tracing. \textit{Advances in Neural Information Processing Systems}:505-513.
