@@ -1,5 +1,5 @@
 % -----------------------------------------------------------------------------
-% JEDM LaTeX Format for P0 Paper - ANONYMOUS PEER REVIEW
+% JEDM LaTeX Format - ANONYMOUS PEER REVIEW
 % Title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 % -----------------------------------------------------------------------------
 \documentclass[12pt,a4paper]{jedm}
@@ -44,7 +44,7 @@
 \renewcommand{\floatpagefraction}{0.95}
 
 % Code listing style
-\lstdefinestyle{p0style}{
+\lstdefinestyle{codestyle}{
   basicstyle=\ttfamily\footnotesize,
   breaklines=true,
   frame=single,
@@ -53,13 +53,13 @@
   showstringspaces=false,
   tabsize=2
 }
-\lstset{style=p0style}
+\lstset{style=codestyle}
 
 % Macros
-\newcommand{\pzero}{P0}
 \newcommand{\kt}{Knowledge Tracing}
 \newcommand{\kc}{Knowledge Component}
 \newcommand{\kcs}{Knowledge Components}
+\newcommand{\reals}{\mathbb{R}}
 \newcommand{\ece}{\mathrm{ECE}}
 \newcommand{\brier}{\mathrm{Brier}}
 \newcommand{\unc}{\mathrm{UNC}}
@@ -86,7 +86,7 @@
 \maketitle
 
 \begin{abstract}
-Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics systematically mask severe model degradation on sparse or limited cold‑start Knowledge Components (KCs)---the exact regions where reliable probability estimates are most critical for safe educational interventions. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC obscures these critical stratum-level reliability differences. Crucially, this framework champions dataset-local diagnostics, prioritizing fine-grained, context-aware evaluation over monolithic aggregate leaderboards. We release the scripts and reporting templates to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
 \end{abstract}
 
 \vspace{10pt}
@@ -100,7 +100,7 @@ Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive 
 \input{sections/06_conclusion}
 
 \section*{Artifact Availability \& Reproducibility Checklist}
-The anonymized code and reporting templates are available for peer review at \url{https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/}. The public repository will be released upon acceptance. Consistent with the design principles of Section~\ref{sec:protocol}, the artifact includes the following standardized components:
+The anonymized code, data preprocessing scripts, and reproducible evaluation pipelines are available for peer review at \url{https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/}. The public repository will be released upon acceptance. Consistent with the design principles of Section~\ref{sec:protocol}, the artifact includes the following standardized components:
 \begin{itemize}
   \item \textbf{Dataset Preprocessing:} Scripts that normalize raw data into the schema defined in Section~\ref{sec:protocol}.
   \item \textbf{Split Construction:} Reproducible partition logs and multi‑seed split constructors.

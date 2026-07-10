@@ -1,5 +1,5 @@
 % -----------------------------------------------------------------------------
-% JEDM LaTeX Format for P0 Paper
+% JEDM LaTeX Format
 % Title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 % -----------------------------------------------------------------------------
 \documentclass[12pt,a4paper]{jedm}
@@ -44,22 +44,31 @@
 \renewcommand{\floatpagefraction}{0.95}
 
 % Code listing style
-\lstdefinestyle{p0style}{
+\lstdefinestyle{codestyle}{
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
   basicstyle=\ttfamily\footnotesize,
-  breaklines=true,
-  frame=single,
-  columns=fullflexible,
-  keepspaces=true,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
   showstringspaces=false,
+  showtabs=false,                  
   tabsize=2
 }
-\lstset{style=p0style}
+\lstset{style=codestyle}
 
 % Macros
-\newcommand{\pzero}{P0}
 \newcommand{\kt}{Knowledge Tracing}
 \newcommand{\kc}{Knowledge Component}
 \newcommand{\kcs}{Knowledge Components}
+\newcommand{\reals}{\mathbb{R}}
 \newcommand{\ece}{\mathrm{ECE}}
 \newcommand{\brier}{\mathrm{Brier}}
 \newcommand{\unc}{\mathrm{UNC}}
@@ -77,8 +86,8 @@
 {\large A Protocol and Diagnostic Study}}
 
 \author{
-\sffamily Nguyen Khanh Trinh\textsuperscript{1}, Dao Minh Tuan\textsuperscript{1}, Nguyen Tien Duong\textsuperscript{1}, \\
-\sffamily Nguyen Van Hau\textsuperscript{*,1}, Nguyen Chi Thanh\textsuperscript{2}\\[8pt]
+\sffamily Khanh-Trinh Nguyen\textsuperscript{1}, Tuan Dao Minh\textsuperscript{1}, Duong Nguyen Tien\textsuperscript{1}, \\
+\sffamily Van-Hau Nguyen\textsuperscript{*,1}, Nguyen Chi Thanh\textsuperscript{2}\\[8pt]
 \normalsize \textsuperscript{1}\textit{Hung Yen University of Technology and Education}, Hung Yen, Vietnam\\
 \normalsize Email: \{trinhnk, tuanymc, duongnt, haunv\}@utehy.edu.vn\\[4pt]
 \normalsize \textsuperscript{2}\textit{Academy of Military Science and Technology}, Ha Noi, Vietnam\\
@@ -90,7 +99,7 @@
 \maketitle
 
 \begin{abstract}
-Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics may hide model behavior on sparse or limited cold‑start Knowledge Components (KCs), where reliable probability estimates are crucial for educational decision support. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC may obscure stratum-level reliability differences. We prepare scripts and report templates for release upon acceptance to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
+Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics systematically mask severe model degradation on sparse or limited cold‑start Knowledge Components (KCs)---the exact regions where reliable probability estimates are most critical for safe educational interventions. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC obscures these critical stratum-level reliability differences. Crucially, this framework champions dataset-local diagnostics, prioritizing fine-grained, context-aware evaluation over monolithic aggregate leaderboards. We release the scripts and reporting templates to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
 \end{abstract}
 
 \vspace{10pt}
@@ -107,15 +116,15 @@ Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive 
 The code, data preprocessing scripts, and reproducible evaluation pipelines are publicly available at \url{https://github.com/trinhnkt/Sparse-Concept-and-Calibration}. Consistent with the design principles of Section~\ref{sec:protocol}, the artifact includes the following standardized components:
 \begin{itemize}
   \item \textbf{Dataset Preprocessing:} Scripts that normalize raw data into the schema defined in Section~\ref{sec:protocol}.
-  \item \textbf{Split Construction:} Reproducible partition logs and multi‑seed split constructors.
-  \item \textbf{Prediction‑level Exports:} CSV files containing baseline predicted probabilities and ground‑truth labels.
-  \item \textbf{KC‑Strata Assignment:} Code mapping training‑fold frequencies to strata buckets.
+  \item \textbf{Split Construction:} Reproducible partition logs and multi-seed split constructors.
+  \item \textbf{Prediction-level Exports:} CSV files containing baseline predicted probabilities and ground-truth labels.
+  \item \textbf{KC-Strata Assignment:} Code mapping training-fold frequencies to strata buckets.
   \item \textbf{Calibration Verification:} Scripts computing Expected Calibration Error (ECE).
   \item \textbf{Brier Decomposition:} Implementation of Uncertainty, Reliability, and Resolution equations.
-  \item \textbf{Reliability Diagrams:} Plotting utilities for multi‑strata calibration curves.
+  \item \textbf{Reliability Diagrams:} Plotting utilities for multi-strata calibration curves.
   \item \textbf{Leakage \& Predictive Sanity Audit:} Automated logs verifying channels L1--L8.
-  \item \textbf{LaTeX Table Exporters:} Python exporters generating book‑tabs tables.
-  \item \textbf{One‑Command Reproduction:} Unified script ensuring machine‑independent reproducibility.
+  \item \textbf{LaTeX Table Exporters:} Python exporters generating book-tabs tables.
+  \item \textbf{One-Command Reproduction:} Unified script ensuring machine-independent reproducibility.
 \end{itemize}
 
 \appendix
