@@ -41,11 +41,11 @@
 
 \bibitem[Lee et al.(2022)]{lee2022cl4kt}LEE W, CHUN J, LEE Y, PARK K, CHOI D (2022) Contrastive Learning for Knowledge Tracing. \textit{Proceedings of the ACM Web Conference 2022}:2330-2338.
 
-\bibitem[Liu et al.(2023)]{liu2023simplekt}LIU Z, LIU Q, CHEN J, HUANG S, LUO W (2023) simpleKT: A Simple but Tough-to-Beat Baseline for Knowledge Tracing. \textit{The Eleventh International Conference on Learning Representations}.
+\bibitem[Liu et al.(2023a)]{liu2023simplekt}LIU Z, LIU Q, CHEN J, HUANG S, LUO W (2023a) simpleKT: A Simple but Tough-to-Beat Baseline for Knowledge Tracing. \textit{The Eleventh International Conference on Learning Representations}.
 
 \bibitem[Liu et al.(2022)]{liu2022pykt}LIU Z, LIU Q, CHEN J, HUANG S, TANG J, LUO W (2022) pyKT: A Python Library to Benchmark Deep Learning based Knowledge Tracing Models. \textit{Thirty-sixth Conference on Neural Information Processing Systems Datasets and Benchmarks Track}.
 
-\bibitem[Liu et al.(2023)]{liu2023xes3g5m}LIU Z, LIU Q, GUO T, CHEN J, HUANG S, ZHAO X, TANG J, LUO W, WENG J (2023) XES3G5M: A Knowledge Tracing Benchmark Dataset with Auxiliary Information. \textit{Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track}.
+\bibitem[Liu et al.(2023b)]{liu2023xes3g5m}LIU Z, LIU Q, GUO T, CHEN J, HUANG S, ZHAO X, TANG J, LUO W, WENG J (2023b) XES3G5M: A Knowledge Tracing Benchmark Dataset with Auxiliary Information. \textit{Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track}.
 
 \bibitem[Naeini et al.(2015)]{naeini2015obtaining}NAEINI MP, COOPER G, HAUSKRECHT M (2015) Obtaining Well Calibrated Probabilities Using Bayesian Binning. \textit{Proceedings of the AAAI Conference on Artificial Intelligence} 29(1).
 
