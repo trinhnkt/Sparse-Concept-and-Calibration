@@ -86,7 +86,7 @@
 \maketitle
 
 \begin{abstract}
-Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive metrics such as AUC and accuracy. However, overall metrics systematically mask severe model degradation on sparse or limited cold‑start Knowledge Components (KCs)---the exact regions where reliable probability estimates are most critical for safe educational interventions. This paper presents a reproducible diagnostic protocol for sparse‑concept and calibration evaluation in KT. The protocol combines learner‑based and temporal splits, train‑only KC‑frequency stratification, limited cold‑start analysis, calibration metrics (ECE, Brier decomposition), reliability diagrams per stratum, and an eight‑channel leakage and predictive sanity audit checklist. We instantiate the protocol on ASSISTments 2012, Junyi Academy, and XES3G5M with baselines IRT, DKT, and SimpleKT. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts, while aggregate AUC obscures these critical stratum-level reliability differences. Crucially, this framework champions dataset-local diagnostics, prioritizing fine-grained, context-aware evaluation over monolithic aggregate leaderboards. We release the scripts and reporting templates to support reproducible sparse‑concept and calibration diagnostics for future KT studies.
+Knowledge Tracing (KT) models are typically evaluated with aggregate predictive metrics such as the area under the ROC curve (AUC) and accuracy. Such metrics can mask how a model behaves on sparse and cold-start Knowledge Components (KCs)---concepts with limited or no training-fold evidence---even though reliable probability estimates on these concepts are precisely what educational decision support depends on. Rather than proposing a new model, we treat KT evaluation as a reproducibility and diagnostic problem. We present a reproducible diagnostic protocol that combines learner-based and temporal splits, train-only KC-frequency stratification with an explicit strict cold-start group, per-stratum calibration analysis via the Expected Calibration Error (ECE) and a Brier-score decomposition, reliability diagrams, sample-size-aware reporting, and an eight-channel leakage and predictive-sanity audit. We instantiate the protocol on three datasets---ASSISTments 2012, Junyi Academy, and XES3G5M---with IRT (Item Response Theory), DKT (Deep Knowledge Tracing), and SimpleKT baselines. Under our experimental conditions, on datasets with populated sparse strata, calibration error tends to increase from dense to sparse concepts while aggregate AUC may obscure these stratum-level reliability differences; the predictive-sanity channel additionally flagged a prediction--label misalignment that aggregate metrics alone would not reveal. Sparse-concept behavior varies substantially across datasets, which motivates dataset-local diagnostics rather than reliance on a single aggregate score. We provide an anonymized reproducibility artifact for peer review and will release the public version upon acceptance.
 \end{abstract}
 
 \vspace{10pt}
@@ -100,7 +100,9 @@ Knowledge Tracing (KT) models are commonly evaluated using aggregate predictive 
 \input{sections/06_conclusion}
 
 \section*{Artifact Availability \& Reproducibility Checklist}
+\begin{sloppypar}
 The anonymized code, data preprocessing scripts, and reproducible evaluation pipelines are available for peer review at \url{https://anonymous.4open.science/r/Sparse-Concept-and-Calibration-6E5B/}. The public repository will be released upon acceptance. Consistent with the design principles of Section~\ref{sec:protocol}, the artifact includes the following standardized components:
+\end{sloppypar}
 \begin{itemize}
   \item \textbf{Dataset Preprocessing:} Scripts that normalize raw data into the schema defined in Section~\ref{sec:protocol}.
   \item \textbf{Split Construction:} Reproducible partition logs and multi‑seed split constructors.
@@ -118,10 +120,12 @@ The anonymized code, data preprocessing scripts, and reproducible evaluation pip
 \input{appendix/appendix_a_sensitivity}
 
 \section*{Declaration of Generative AI Software Tools in the Writing Process}
-During the preparation of this work, the authors used ChatGPT and Google Antigravity to support language polishing, LaTeX formatting, consistency checking, and preparation of reproducibility prompts in the Abstract, Introduction, Methods, Results, Discussion, and Appendix sections. These tools were not used to generate, fabricate, or alter experimental results. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
+During the preparation of this work, the authors used ChatGPT, Claude and Google Antigravity to support language polishing, LaTeX formatting, consistency checking, and preparation of reproducibility prompts in the Abstract, Introduction, Methods, Results, Discussion, and Appendix sections. These tools were not used to generate, fabricate, or alter experimental results. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
 
 \section*{Acknowledgements}
 Omitted for double-blind review.
 
+% \bibliographystyle{acmtrans}
+% \bibliography{references}
 \input{references.bbl}
 \end{document}

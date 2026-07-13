@@ -52,7 +52,11 @@ XES3G5M & IRT & dense & R & 1,191,744 & $0.0547$ & $0.1516$ & $0.1563$ & $0.0046
  &  & Very Sparse & R & 26,212 & $0.1002$ & $0.1423$ & $0.1404$ & $0.0137$ & $0.0109$ \\
  &  & Strict Cold-start & R & 233,214 & $0.2973$ & $0.2896$ & $0.1673$ & $0.1223$ & $0.0004$ \\
 \bottomrule
-\multicolumn{10}{p{17.5cm}}{\scriptsize \textbf{Note:} These values serve as the numerical basis for Figure 3. As in Table~\ref{tab:temporal_strata}, calibration rows are reported only for strata with valid evaluated prediction events. IRT calibration should be interpreted jointly with discrimination and Brier resolution. Under learner-based splits, IRT behaves like a base-rate predictor for unseen learners; under temporal splits, it can recover non-zero resolution because learners are observed during training.} \\
+
 \end{tabular}%
 }
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} Reliability flags (R/L/I) follow Section 3.5. These values serve as the numerical basis for Figure 3. Very Sparse excludes Strict Cold-start KCs; Strict Cold-start is reported separately where applicable. IRT calibration should be interpreted jointly with discrimination and Brier resolution: under learner-based splits, IRT behaves as a base-rate reference for unseen learners (Section 4.2); under temporal splits, it recovers non-zero resolution because learners are observed during training.\par}
+
 \end{table*}

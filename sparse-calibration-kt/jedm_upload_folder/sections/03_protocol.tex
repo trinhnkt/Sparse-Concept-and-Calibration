@@ -4,22 +4,14 @@
 This section specifies the protocol in dataset-agnostic terms; its instantiation on three datasets follows in Section~\ref{sec:experiments}.
 
 \subsection{Data Schema}
-Each dataset is normalized into a common interaction schema:
+Each dataset is normalized into a common interaction schema
 \begin{equation}
-(u\_t, i\_t, c\_t, r\_t, \tau\_t),
+(u_t, i_t, c_t, r_t, \tau_t),
 \end{equation}
-where $u\_t$ is the learner, $i\_t$ is the item, $c\_t$ is the KC, $r\_t\in\{0,1\}$ is correctness, and $\tau\_t$ is the timestamp.
-In this paper, multi-skill items are represented using a one-row-per-KC convention: each interaction involving multiple KCs is pre-expanded into one row per KC by the dataset source, so that each row in the processed data corresponds to exactly one (learner, item, KC, correctness, timestamp) tuple. Specifically, XES3G5M is loaded from the \texttt{kc\_level} split provided by the dataset authors~\citep{liu2023xes3g5m}, which already stores one KC per row; ASSISTments 2012 is read from the standard release file in which each row carries a single \texttt{skill\_id}; Junyi Academy items are inherently single-skill. No additional expansion is performed by our \texttt{preprocess.py} pipeline. KC-frequency stratification (Section~\ref{sec:kc-strat}) is computed on these pre-expanded rows using training-fold counts only.
+where $u_t$ is the learner, $i_t$ the item, $c_t$ the knowledge component (KC), $r_t \in \{0,1\}$ the correctness, and $\tau_t$ the timestamp. Multi-skill items are represented by a one-row-per-KC convention: each interaction involving multiple KCs is pre-expanded into one row per KC by the dataset source, so that each processed row corresponds to exactly one (learner, item, KC, correctness, timestamp) tuple. Specifically, XES3G5M is loaded from the \texttt{kc\_level} split provided by the dataset authors \citep{liu2023xes3g5m}, which already stores one KC per row; ASSISTments 2012 \citep{assistments2012data} is read from the standard release file in which each row carries a single \texttt{skill\_id}; Junyi Academy \citep{junyi2019kaggle} items are inherently single-skill. Our \texttt{preprocess.py} pipeline performs no additional expansion. KC-frequency stratification (Section~\ref{sec:kc-strat}) is computed on these pre-expanded rows using training-fold counts only.
 
 \subsection{Split Modes and Cold-start Groups}
-We evaluate three split modes. The learner-based split assigns learners to train/validation/test partitions without learner overlap. The temporal split trains on earlier interactions and evaluates on later interactions. Finally, the limited cold-start concept analysis evaluates KCs with limited training-fold frequency. These modes answer different diagnostic questions and should not be conflated. To conduct limited cold-start concept analysis under temporal splits, we define four nested groups based on their training-fold frequency:
-\begin{itemize}
-    \item \textbf{strict}: $f_{\mathrm{train}}(c) = 0$
-    \item \textbf{k5}: $f_{\mathrm{train}}(c) \le 5$
-    \item \textbf{k10}: $f_{\mathrm{train}}(c) \le 10$
-    \item \textbf{warm}: Complementary warm group for remaining KCs.
-\end{itemize}
-The warm group serves as a critical sanity reference for the L8 audit check (see Section~\ref{sec:audit}).
+The protocol evaluates under three split modes, which answer different diagnostic questions and must not be conflated. The learner-based split assigns learners disjointly to train/validation/test partitions and tests generalization to unseen learners. The temporal split trains on earlier interactions and evaluates on later ones, testing future-oriented forecasting. The limited cold-start concept analysis evaluates KCs by their training-fold frequency under the temporal split, using four groups: strict cold-start KCs ($f_{\mathrm{train}}(c) = 0$), the limited cold-start groups \textbf{k5} ($f_{\mathrm{train}}(c) \le 5$) and \textbf{k10} ($f_{\mathrm{train}}(c) \le 10$), and the complementary warm group. The strict group isolates concepts with no training evidence; \textbf{k5} and \textbf{k10} probe near-zero evidence regimes; the warm group serves as the within-split sanity reference used by audit channel L8 (Section~\ref{sec:audit}).
 
 \subsection{KC-frequency Stratification}
 \label{sec:kc-strat}
@@ -67,7 +59,7 @@ where the three components are defined as follows. Let $\bar{y}$ denote the glob
 $\unc$ measures the intrinsic uncertainty of the prediction task and is independent of the model; $\rel$ measures the deviation between predicted probabilities and observed frequencies, where lower values indicate better reliability; $\res$ measures how well the model separates events with different outcome rates from the global mean, where higher values indicate better resolution. Note that because this formulation bins continuous probabilities into $M$ discrete bins, the resulting decomposition is an empirical approximation and components need not sum exactly to the directly computed Brier score.
 Calibration is reported both overall and per KC stratum.
 
-AUC and calibration answer fundamentally different questions. AUC measures discrimination (i.e., whether a model ranks correct responses above incorrect ones), whereas calibration measures whether predicted probabilities correspond to empirical correctness rates. In educational decision support, this distinction is critical because probability thresholds are often used to trigger automated remediation, suggest additional practice, or license concept advancement. A model with high AUC may still exhibit substantial or potentially harmful miscalibration, leading to inappropriate instructional interventions due to biased confidence scores. Thus, calibration metrics are not auxiliary statistics but primary indicators of a model's operational reliability.
+Discrimination and calibration answer different questions. AUC measures whether a model ranks correct responses above incorrect ones, whereas calibration measures whether predicted probabilities correspond to empirical correctness rates. The distinction matters operationally because probability thresholds are often used to trigger remediation, suggest additional practice, or license concept advancement: a model with high AUC can still exhibit substantial miscalibration and thereby induce inappropriate instructional interventions. The converse also holds---a model can appear well calibrated while being uninformative---which is why the protocol requires calibration to be interpreted jointly with discrimination and resolution, never in isolation.
 
 \subsection{Sample-size-aware Reliability Flags}
 To ensure methodological rigor, we introduce sample-size-aware reliability flags that reflect the stability of the metric estimates:
@@ -80,7 +72,7 @@ These flags provide descriptive context about the stability of the evaluation me
 
 \subsection{Eight-channel Leakage \& Predictive Sanity Audit}
 \label{sec:audit}
-Table~\ref{tab:leakage} summarizes the leakage and predictive sanity audit. The audit is not a model component; it is an evaluation hygiene requirement. Notably, channel L8 assesses warm-cohort AUC under temporal splits against a static reference baseline; near-random performance on well-evidenced concepts serves as a pipeline warning that underlying prediction--label misalignment might exist.
+Table~\ref{tab:leakage} summarizes the audit. The audit is not a model component; it is an evaluation hygiene requirement. Channels L1--L7 are preventative checks on split construction, preprocessing scope, KC mapping, bucket assignment, calibration, hyperparameter selection, and cold-start classification. Channel L8 is a predictive sanity check: it compares warm-cohort AUC under the temporal split against a static reference baseline, so that near-random performance on well-evidenced concepts is treated as a pipeline warning rather than as a scientific finding.
 
 \input{tables/table1_leakage_audit}
 

@@ -1,5 +1,5 @@
 \begin{table*}[htbp]
-\caption{Knowledge Tracing Performance Breakdown by Skill Strata (Temporal splits)}
+\caption{Knowledge Tracing Performance Breakdown by KC-frequency Strata (Temporal Splits)}
 \label{tab:temporal_strata}
 \centering
 \resizebox{\textwidth}{!}{%
@@ -52,7 +52,11 @@ XES3G5M & IRT & dense & R & 340 & 1,191,744 & $0.6673$ & $0.7993$ & $0.4744$ & $
  &  & Very Sparse & R & 10 & 26,212 & $0.7308$ & $0.8194$ & $0.5170$ & $0.3772$ \\
  &  & Strict Cold-start & R & 117 & 233,214 & $0.4773$ & $0.5011$ & $0.7925$ & $0.5381$ \\
 \bottomrule
-\multicolumn{10}{p{16.5cm}}{\scriptsize \textbf{Note:} This table reports only KCs with at least one valid evaluated prediction row after temporal test-fold filtering, sequence construction, prediction export, and KC-strata matching. The evaluated temporal KC totals are 245/265 for ASSISTments 2012, 1,323/1,326 for Junyi Academy, and 550/866 for XES3G5M. The remaining KCs have no valid evaluated temporal prediction events after filtering and are therefore omitted from metric rows; their omission does not affect the reported event-level metrics but should be considered when interpreting KC coverage.} \\
+
 \end{tabular}%
 }
+
+\vspace{1ex}
+{\scriptsize \textbf{Note:} This table reports only KCs with at least one valid evaluated prediction row after temporal test-fold filtering, sequence construction, prediction export, and KC-strata matching. The evaluated temporal KC totals are 245/265 for ASSISTments 2012, 1,323/1,326 for Junyi Academy, and 550/866 for XES3G5M. The remaining KCs have no valid evaluated temporal prediction events after filtering (i.e., no learners interacted with them during the chronological test period) and are therefore omitted from metric rows; their omission does not affect the reported event-level metrics but should be considered when interpreting KC coverage. Within a stratum, evaluated event counts may differ slightly across models; this is a standard artifact of sequence-based frameworks where architecture-specific sequence windowing, padding, and minimum-length filtering cause certain interactions to be dropped differently.\par}
+
 \end{table*}

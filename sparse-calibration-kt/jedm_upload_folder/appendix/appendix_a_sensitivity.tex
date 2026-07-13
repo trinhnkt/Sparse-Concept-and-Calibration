@@ -8,23 +8,23 @@ Threshold sensitivity analysis is implemented in the released artifact as an opt
 \label{app:temporal_performance}
 In this section, we present the detailed overall performance (Table~\ref{tab:temporal_overall}) and strata-specific performance breakdowns (Table~\ref{tab:temporal_strata}) under the time-partitioned (temporal) split mode. As shown, deep learning baselines undergo noticeable predictive decay compared to their population-level learner-based counterparts, highlighting the increased difficulty of curriculum-level forecasting. Calibration degradation under temporal splits is reported separately in Appendix~\ref{app:calibration_performance}, Table~\ref{tab:calibration_temporal}.
 
-\input{tables/tableA_overall_full}
-\input{tables/tableA_performance_by_bucket_full}
+\input{tables/table_07_overall_performance_temporal}
+\input{tables/table_08_kc_strata_performance_temporal}
 
 \clearpage
 \section{Detailed Calibration Results}
 \label{app:calibration_performance}
 Detailed calibration results by frequency stratum for the learner-based split are reported in Table~\ref{tab:calibration_learner}. The corresponding temporal calibration breakdowns, computed after the label-alignment correction documented in Appendix~\ref{app:alignment} and used as the numerical basis for Figure~\ref{fig:reliability_junyi_temporal}, are reported in Table~\ref{tab:calibration_temporal}.
 
-\input{tables/table7_calibration_by_bucket}
-\input{tables/table8_temporal_calibration}
+\input{tables/table_09_calibration_breakdown_learner_based}
+\input{tables/table_10_calibration_breakdown_temporal}
 \clearpage
 
 \section{Diagnostic Interpretation Guide}
 \label{app:interpretation}
 To assist researchers and practitioners in applying our diagnostic protocol, we provide Table~\ref{tab:interpretation_guide} which maps common empirical diagnostic patterns observed during evaluation to their theoretical and operational educational interpretation.
 
-\input{tables/table_interpretation_guide}
+\input{tables/table_11_diagnostic_interpretation_guide}
 
 \section[Bayesian Knowledge Tracing Numerical Instability and Transition]{Bayesian Knowledge Tracing Numerical Instability and Transition}
 \label{app:bkt_instability}
@@ -32,7 +32,7 @@ During our initial protocol implementation, we instantiated Bayesian Knowledge T
 
 \section{Prediction--Label Alignment Audit for Temporal Splits}
 \label{app:alignment}
-During the temporal-split audit, we identified a prediction--label alignment issue in the temporal evaluation pipeline. The issue occurred when exported model predictions were matched back to temporal test instances after sequence construction and cohort filtering. In the affected code path, prediction rows and correctness labels could be aligned by transient row order rather than by a stable instance identifier, which made some exported $p_{pred}$ values correspond to incorrect $y_{true}$ entries.
+During the temporal-split audit, we identified a prediction--label alignment issue in the temporal evaluation pipeline. The issue occurred when exported model predictions were matched back to temporal test instances after sequence construction and cohort filtering. In the affected code path, an alignment discrepancy in the temporal evaluation pipeline made some exported $p_{pred}$ values correspond to incorrect $y_{true}$ entries.
 
 The main symptom was not limited to strict cold-start KCs. Deep KT baselines produced near-random AUC even on warm temporal cohorts, where KCs had sufficient training-fold evidence. This behavior was a red flag because a static IRT baseline still achieved meaningful AUC on the same warm cohorts, whereas DKT and SimpleKT collapsed to approximately random ranking.
 
