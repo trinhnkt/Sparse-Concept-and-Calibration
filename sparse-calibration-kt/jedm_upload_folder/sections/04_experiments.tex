@@ -25,17 +25,17 @@ Figure~\ref{fig:strata_dist} illustrates heterogeneous KC-frequency distribution
 \FloatBarrier
 
 \subsection{Baseline Implementations}
-We initially evaluated BKT but replaced it with IRT after observing numerical instability in EM-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representative classes of KT models:
+We initially evaluated BKT but replaced it with IRT after observing numerical instability in Expectation-Maximization (EM)-based \texttt{pyBKT} estimation; details are provided in Appendix~\ref{app:bkt_instability}. We evaluate three representative classes of KT models:
 \begin{enumerate}
     \item \textbf{Item Response Theory (IRT 1PL):} a classical logistic baseline (one-parameter logistic Rasch model) estimating a static learner ability and concept difficulty from training interactions. Because the model relies on learner identities, unseen learners in learner-based splits have no estimated ability parameters; in our implementation the prediction then falls back to a global, base-rate-like probability. Under learner-based splits we therefore treat IRT as a base-rate reference rather than as a discriminative baseline ($\text{AUC} = 0.50$ by construction). Under temporal splits, where learners are observed during training, IRT functions as a genuine classical baseline and serves as the static reference for audit channel L8 (Appendix~\ref{app:alignment}).
-    \item \textbf{Deep Knowledge Tracing (DKT):} The pioneering recurrent neural network KT architecture mapping student sequential states via LSTM/RNN cells.
+    \item \textbf{Deep Knowledge Tracing (DKT):} The pioneering recurrent neural network KT architecture mapping student sequential states via Long Short-Term Memory (LSTM) or Recurrent Neural Network (RNN) cells.
     \item \textbf{SimpleKT:} A modern, self-attention-based model utilizing key-query similarities between concept embeddings to track mastery.
 \end{enumerate}
 
 All deep learning models are trained with validation-based early stopping to prevent hyperparameter leakage.
 
 \subsection{RQ1: Stratum-level Predictive Heterogeneity}
-To address RQ1, we first inspect the overall performance of all three baselines in Table~\ref{tab:overall_learner}. SimpleKT and DKT achieve high aggregate AUC scores under learner-based splits, with DKT slightly leading SimpleKT on ASSISTments 2012 ($0.6980 \pm 0.0013$ vs. $0.6840 \pm 0.0025$). As discussed, IRT performs at random (AUC $= 0.5000$) on learner-based splits due to its base-rate-like prediction for unseen learners. Under temporal splits (Table~\ref{tab:temporal_overall} in Appendix~\ref{app:temporal_performance}), where learners are observed, IRT's AUC rises to $0.5913$ on ASSISTments 2012, while SimpleKT ($0.6731$) slightly outperforms DKT ($0.6606$).
+To address RQ1, we first inspect the overall performance of all three baselines in Table~\ref{tab:overall_learner}. We report AUC, ACC, the negative log-likelihood (NLL), and the root mean squared error (RMSE). SimpleKT and DKT achieve high aggregate AUC scores under learner-based splits, with DKT slightly leading SimpleKT on ASSISTments 2012 ($0.6980 \pm 0.0013$ vs. $0.6840 \pm 0.0025$). As discussed, IRT performs at random (AUC $= 0.5000$) on learner-based splits due to its base-rate-like prediction for unseen learners. Under temporal splits (Table~\ref{tab:temporal_overall} in Appendix~\ref{app:temporal_performance}), where learners are observed, IRT's AUC rises to $0.5913$ on ASSISTments 2012, while SimpleKT ($0.6731$) slightly outperforms DKT ($0.6606$).
 
 \input{tables/table_03_overall_performance_learner_based}
 
