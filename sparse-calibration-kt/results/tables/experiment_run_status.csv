@@ -31,7 +31,6 @@ junyi_learner_based_dkt_seed2024,SUCCESS,Success (Loaded cached predictions)
 junyi_learner_based_dkt_seed2025,SUCCESS,Success (Loaded cached predictions)
 junyi_learner_based_simplekt_seed42,SUCCESS,Success (Loaded cached predictions)
 junyi_learner_based_simplekt_seed2024,SUCCESS,Success (Loaded cached predictions)
-junyi_learner_based_simplekt_seed2025,SUCCESS,Success (Loaded cached predictions)
 xes3g5m_learner_based_irt_1pl_seed42,SUCCESS,Success in 0.21 min
 xes3g5m_learner_based_irt_1pl_seed2024,SUCCESS,Success in 0.20 min
 xes3g5m_learner_based_irt_1pl_seed2025,SUCCESS,Success in 0.20 min
@@ -89,3 +88,9 @@ junyi_learner_based_simplekt_seed2026,SUCCESS,Success in 99.93 min
 junyi_learner_based_simplekt_seed2027,SUCCESS,Success in 329.88 min
 xes3g5m_learner_based_simplekt_seed2026,SUCCESS,Success in 36.85 min
 xes3g5m_learner_based_simplekt_seed2027,SUCCESS,Success in 36.72 min
+junyi_learner_based_simplekt_seed2025,FAILED,"CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+"

@@ -36,42 +36,27 @@ for ds in DATASETS:
         continue
     
     # Ensure alignment
-    y_true_bkt = dfs['irt_1pl']['y_true'].values
-    y_true_dkt = dfs['dkt']['y_true'].values
-    y_true_skt = dfs['simplekt']['y_true'].values
-    
-    # check lengths and values
-    if not (len(y_true_bkt) == len(y_true_dkt) == len(y_true_skt)):
-        print(f"[{ds}] Length mismatch! BKT:{len(y_true_bkt)}, DKT:{len(y_true_dkt)}, SKT:{len(y_true_skt)}")
-        continue
-        
-    if not (np.array_equal(y_true_bkt, y_true_dkt) and np.array_equal(y_true_bkt, y_true_skt)):
-        print(f"[{ds}] y_true values do not align perfectly. Sorting by some index if exists...")
-        # Since we just have them, let's assume they might not be aligned.
-        # But if they are from the same split and same seed, they should be aligned.
-        # Let's check if there's an index column we can align by.
-        # BKT might drop NaNs or something? Wait, BKT predictions are generated separately.
-        # If lengths are equal but y_true not equal, let's check alignment columns.
-        cols = ['user_id', 'item_id', 'timestamp']
-        if all(c in dfs['irt_1pl'].columns for c in cols):
-            for m in MODELS:
-                dfs[m] = dfs[m].sort_values(cols).reset_index(drop=True)
-            y_true_bkt = dfs['irt_1pl']['y_true'].values
-            y_true_dkt = dfs['dkt']['y_true'].values
-            y_true_skt = dfs['simplekt']['y_true'].values
-            if not (np.array_equal(y_true_bkt, y_true_dkt) and np.array_equal(y_true_bkt, y_true_skt)):
-                print(f"[{ds}] Still not aligned after sorting! Skipping.")
-                continue
-        else:
-            print(f"[{ds}] Not aligned and no alignment columns found. Skipping.")
-            continue
+    cols = ['user_id', 'item_id', 'timestamp']
+    if all(c in df.columns for df in dfs.values() for c in cols):
+        for m in MODELS:
+            dfs[m] = dfs[m].sort_values(['user_id', 'item_id', 'timestamp', 'kc_id'])
+            dfs[m]['dup_idx'] = dfs[m].groupby(['user_id', 'item_id', 'timestamp', 'kc_id']).cumcount()
+            dfs[m]['instance_id'] = dfs[m]['user_id'].astype(str) + "_" + dfs[m]['item_id'].astype(str) + "_" + dfs[m]['timestamp'].astype(str) + "_" + dfs[m]['kc_id'].astype(str) + "_" + dfs[m]['dup_idx'].astype(str)
+
             
-    print(f"[{ds}] Successfully aligned. Running DeLong...")
-    
-    y = y_true_bkt
-    p_bkt = dfs['irt_1pl']['p_pred'].values
-    p_dkt = dfs['dkt']['p_pred'].values
-    p_skt = dfs['simplekt']['p_pred'].values
+        # Inner join all 3 dfs to get exact intersection
+        merged = pd.merge(dfs['irt_1pl'], dfs['dkt'], on='instance_id', suffixes=('_irt', '_dkt'))
+        merged = pd.merge(merged, dfs['simplekt'].rename(columns={'y_true': 'y_true_skt', 'p_pred': 'p_pred_skt'}), on='instance_id')
+        
+        y = merged['y_true_irt'].values
+        p_bkt = merged['p_pred_irt'].values
+        p_dkt = merged['p_pred_dkt'].values
+        p_skt = merged['p_pred_skt'].values
+        
+        print(f"[{ds}] Successfully aligned. Intersection N: {len(merged)}")
+    else:
+        print(f"[{ds}] Missing alignment columns! Skipping.")
+        continue
         
     comparisons = [
         ('irt_1pl', 'dkt', p_bkt, p_dkt),

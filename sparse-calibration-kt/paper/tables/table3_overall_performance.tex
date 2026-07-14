@@ -1,6 +1,6 @@
 \begin{table}[tbp]
 \caption{Overall Performance under Learner-based Split}
-\label{tab:overall_learner}
+\label{tab:overall}
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{lllcccc}
@@ -13,17 +13,13 @@ ASSISTments 2012 & Learner-based & IRT & $0.5000$ & $0.6974 \pm 0.0004$ & $0.613
 \midrule
 Junyi Academy & Learner-based & IRT & $0.5000$ & $0.7050 \pm 0.0017$ & $0.6066 \pm 0.0015$ & $0.4561 \pm 0.0008$ \\
  & Learner-based & DKT & $0.7317 \pm 0.0012$ & $0.7340 \pm 0.0015$ & $0.5446 \pm 0.0026$ & $0.4251 \pm 0.0009$ \\
- & Learner-based & SimpleKT & $0.7238 \pm 0.0030$ & $0.7278 \pm 0.0026$ & $0.6047 \pm 0.0179$ & $0.4335 \pm 0.0031$ \\
+ & Learner-based & SimpleKT & $0.7228 \pm 0.0035$ & $0.7271 \pm 0.0032$ & $0.6100 \pm 0.0216$ & $0.4345 \pm 0.0037$ \\
 \midrule
 XES3G5M & Learner-based & IRT & $0.5000$ & $0.7957 \pm 0.0028$ & $0.5627 \pm 0.0015$ & $0.4316 \pm 0.0008$ \\
  & Learner-based & DKT & $0.8170 \pm 0.0028$ & $0.8323 \pm 0.0030$ & $0.3940 \pm 0.0085$ & $0.3498 \pm 0.0030$ \\
  & Learner-based & SimpleKT & $0.7559 \pm 0.0013$ & $0.8063 \pm 0.0036$ & $0.6215 \pm 0.0141$ & $0.3934 \pm 0.0036$ \\
 \bottomrule
-
+\multicolumn{7}{p{8.2cm}}{\scriptsize \textit{Note: IRT is used as the classical baseline across all datasets. Under learner-based splits, IRT's learner-based AUC remains at 0.5000 because unseen learners do not have estimated ability parameters; however, its ACC reflects majority-class and item/concept difficulty effects rather than discriminative ranking ability.}} \\
 \end{tabular}%
 }
-
-\vspace{1ex}
-{\scriptsize \textbf{Note:} IRT is used as the classical baseline across all datasets. Under learner-based splits, IRT's AUC remains at 0.5000 because unseen learners do not have estimated ability parameters, causing the model to fall back to a constant or base-rate-like prediction. Consequently, its ACC mainly reflects majority-class base-rate and thresholding behavior rather than discriminative ranking ability.\par}
-
 \end{table}

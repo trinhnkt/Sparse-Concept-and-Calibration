@@ -1,0 +1,54 @@
+\begin{table}[H]
+\caption{Threshold sensitivity by dataset and model group. Deep baselines denote the mean over DKT and SimpleKT; standard deviations reflect between-baseline variation.}
+\label{tab:sensitivity}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllcccc}
+\toprule
+& & & \multicolumn{2}{c}{Deep baselines} & \multicolumn{2}{c}{IRT} \\
+\cmidrule(lr){4-5} \cmidrule(lr){6-7}
+Dataset & Setting & Bucket & AUC & ECE & AUC & ECE \\
+\midrule
+ASSISTments 2012 & Main & dense & - & - & $0.5000$ & $0.0033 \pm 0.0006$ \\
+ &  & medium & - & - & $0.5000$ & $0.1655 \pm 0.0182$ \\
+ &  & sparse & - & - & $0.5000$ & $0.0812 \pm 0.0516$ \\
+ &  & very\_sparse & - & - & $0.5000$ & $0.2850 \pm 0.0943$ \\
+ &  & strict\_cold\_start & - & - & - & $0.6962$ \\
+ & Alt\_1 & dense & - & - & $0.5000$ & $0.0016 \pm 0.0004$ \\
+ &  & medium & - & - & $0.5000$ & $0.0732 \pm 0.0149$ \\
+ &  & sparse & - & - & $0.5000$ & $0.1280 \pm 0.0596$ \\
+ &  & very\_sparse & - & - & $0.5000$ & $0.5336 \pm 0.0663$ \\
+ &  & strict\_cold\_start & - & - & - & $0.6962$ \\
+ & Alt\_2 & dense & - & - & $0.5000$ & $0.0036 \pm 0.0007$ \\
+ &  & medium & - & - & $0.5000$ & $0.1551 \pm 0.0214$ \\
+ &  & sparse & - & - & $0.5000$ & $0.1106 \pm 0.0306$ \\
+ &  & very\_sparse & - & - & $0.5000$ & $0.0296 \pm 0.0227$ \\
+ &  & strict\_cold\_start & - & - & - & $0.6962$ \\
+\midrule
+Junyi Academy & Main & dense & - & - & $0.5000$ & $0.0020 \pm 0.0020$ \\
+ &  & medium & - & - & $0.5000$ & $0.1242 \pm 0.0095$ \\
+ & Alt\_1 & dense & - & - & $0.5000$ & $0.0018 \pm 0.0020$ \\
+ &  & medium & - & - & $0.5000$ & $0.1107 \pm 0.0547$ \\
+ & Alt\_2 & dense & - & - & $0.5000$ & $0.0022 \pm 0.0021$ \\
+ &  & medium & - & - & $0.5000$ & $0.1506 \pm 0.0110$ \\
+ &  & sparse & - & - & $0.5000$ & $0.0499 \pm 0.0334$ \\
+\midrule
+XES3G5M & Main & dense & - & - & $0.5000$ & $0.0019 \pm 0.0012$ \\
+ &  & medium & - & - & $0.5000$ & $0.1424 \pm 0.0050$ \\
+ &  & sparse & - & - & $0.5000$ & $0.1129 \pm 0.0124$ \\
+ &  & very\_sparse & - & - & $0.5000$ & $0.0859 \pm 0.0266$ \\
+ &  & strict\_cold\_start & - & - & $0.5000$ & $0.2087 \pm 0.1534$ \\
+ & Alt\_1 & dense & - & - & $0.5000$ & $0.0017 \pm 0.0016$ \\
+ &  & medium & - & - & $0.5000$ & $0.1370 \pm 0.0091$ \\
+ &  & sparse & - & - & $0.5000$ & $0.1255 \pm 0.0237$ \\
+ &  & very\_sparse & - & - & $0.5000$ & $0.0886 \pm 0.0652$ \\
+ &  & strict\_cold\_start & - & - & $0.5000$ & $0.2087 \pm 0.1534$ \\
+ & Alt\_2 & dense & - & - & $0.5000$ & $0.0022 \pm 0.0009$ \\
+ &  & medium & - & - & $0.5000$ & $0.1353 \pm 0.0042$ \\
+ &  & sparse & - & - & $0.5000$ & $0.1212 \pm 0.0132$ \\
+ &  & very\_sparse & - & - & $0.5000$ & $0.1068 \pm 0.0234$ \\
+ &  & strict\_cold\_start & - & - & $0.5000$ & $0.2087 \pm 0.1534$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

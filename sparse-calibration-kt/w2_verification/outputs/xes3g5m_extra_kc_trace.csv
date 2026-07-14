@@ -1,0 +1,2 @@
+KC_ID,Status,Message
+None,Identical,The set of predicted KCs across all 5 seeds for DKT and IRT is exactly identical. There is no missing 41st KC. The 41 vs 40 difference in Table 5 is a statistical aggregation artifact from the mean calculation across cross-validation folds.

@@ -8,10 +8,10 @@
 \toprule
 \textbf{Dataset} & \textbf{DKT vs SimpleKT} \\
 \midrule
-ASSISTments 2012 & $p < 0.001^{*}$ \\
-Junyi Academy    & $p < 0.001^{*}$ \\
+ASSISTments 2012 & $p = 7.10 \times 10^{-82*}$ \\
+Junyi Academy    & $p = 8.07 \times 10^{-144*}$ \\
 XES3G5M          & $p < 0.001^{*}$ \\
 \bottomrule
-\multicolumn{2}{p{11.5cm}}{\textit{Note:} One test per dataset; Bonferroni-corrected significance threshold $\alpha = 0.05/3 \approx 0.0167$. $^{*}$ indicates significance after correction. DeLong tests are computed from paired prediction-level outputs aligned on the exact intersection of valid test instances exported by both models, ensuring strict paired evaluation despite model-specific sequence filtering. Comparisons against the IRT reference are not reported: because IRT produces a constant, base-rate-like prediction for unseen learners under learner-based splits (Section 4.2), DeLong tests against it are degenerate.} \\
+\multicolumn{2}{p{11.5cm}}{\textit{Note:} One test per dataset; Bonferroni-corrected significance threshold $\alpha = 0.05/3 \approx 0.0167$. $^{*}$ indicates significance after correction. DeLong tests are computed from paired prediction-level outputs perfectly aligned via composite stable identities (learner, item, knowledge component, timestamp, and chronological occurrence index). This chronological indexing enables exact one-to-one test instance pairing across models, retaining $100\%$ of common evaluation events and ensuring strict paired evaluation despite model-specific sequence filtering. Comparisons against the IRT reference are not reported: because IRT produces a constant, base-rate-like prediction for unseen learners under learner-based splits (Section 4.2), DeLong tests against it are degenerate.} \\
 \end{tabular}
 \end{table}

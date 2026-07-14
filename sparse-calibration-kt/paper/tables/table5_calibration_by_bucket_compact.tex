@@ -1,0 +1,51 @@
+\begin{table}[t]
+\caption{Compact Calibration Breakdown by Frequency Stratum}
+\label{tab:calib_compact}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lllrcc}
+\toprule
+Dataset & Model & Bucket & \#Events & ECE & Brier \\
+\midrule
+ASSISTments 2012 & IRT & dense & 523,395 & $0.0033 \pm 0.0005$ & $0.2102 \pm 0.0002$ \\
+ & IRT & medium & 6,211 & $0.1711 \pm 0.0139$ & $0.2787 \pm 0.0055$ \\
+ & IRT & sparse & 403 & $0.0708 \pm 0.0503$ & $0.2393 \pm 0.0197$ \\
+ & IRT & very\_sparse & 19 & $0.2036 \pm 0.0432$ & $0.2914 \pm 0.0170$ \\
+ & IRT & strict\_cold\_start & 4 & $0.6962$ & $0.4848$ \\
+ & DKT & dense & 523,395 & $0.0602 \pm 0.0021$ & $0.1930 \pm 0.0009$ \\
+ & DKT & medium & 6,211 & $0.1658 \pm 0.0270$ & $0.2358 \pm 0.0142$ \\
+ & DKT & sparse & 403 & $0.2320 \pm 0.0109$ & $0.2481 \pm 0.0105$ \\
+ & DKT & very\_sparse & 19 & $0.2079 \pm 0.0424$ & $0.1690 \pm 0.0538$ \\
+ & DKT & strict\_cold\_start & 4 & $0.5014 \pm 0.0678$ & $0.2540 \pm 0.0682$ \\
+ & SimpleKT & dense & 523,395 & $0.1131 \pm 0.0076$ & $0.2114 \pm 0.0021$ \\
+ & SimpleKT & medium & 6,211 & $0.1578 \pm 0.0070$ & $0.2336 \pm 0.0079$ \\
+ & SimpleKT & sparse & 403 & $0.2254 \pm 0.0204$ & $0.2493 \pm 0.0115$ \\
+ & SimpleKT & very\_sparse & 19 & $0.2464 \pm 0.0679$ & $0.2161 \pm 0.0643$ \\
+ & SimpleKT & strict\_cold\_start & 4 & $0.5224 \pm 0.0225$ & $0.2761 \pm 0.0269$ \\
+\midrule
+Junyi Academy & IRT & dense & 3,230,601 & $0.0021 \pm 0.0018$ & $0.2080 \pm 0.0007$ \\
+ & IRT & medium & 2,496 & $0.1071 \pm 0.0127$ & $0.2523 \pm 0.0051$ \\
+ & DKT & dense & 3,230,601 & $0.0390 \pm 0.0019$ & $0.1806 \pm 0.0008$ \\
+ & DKT & medium & 2,496 & $0.2588 \pm 0.0219$ & $0.3114 \pm 0.0184$ \\
+ & SimpleKT & dense & 3,235,313 & $0.0804 \pm 0.0068$ & $0.1887 \pm 0.0032$ \\
+ & SimpleKT & medium & 2,689 & $0.1118 \pm 0.0194$ & $0.2315 \pm 0.0136$ \\
+\midrule
+XES3G5M & IRT & dense & 1,269,390 & $0.1542 \pm 0.0031$ & $0.1862 \pm 0.0007$ \\
+ & IRT & medium & 12,977 & $0.1416 \pm 0.0053$ & $0.1898 \pm 0.0013$ \\
+ & IRT & sparse & 1,959 & $0.1074 \pm 0.0094$ & $0.1995 \pm 0.0026$ \\
+ & IRT & very\_sparse & 106 & $0.0772 \pm 0.0291$ & $0.2080 \pm 0.0082$ \\
+ & IRT & strict\_cold\_start & 2 & $0.2794 \pm 0.0950$ & $0.2584 \pm 0.0894$ \\
+ & DKT & dense & 1,268,748 & $0.0389 \pm 0.0023$ & $0.1223 \pm 0.0020$ \\
+ & DKT & medium & 13,082 & $0.0906 \pm 0.0195$ & $0.1229 \pm 0.0111$ \\
+ & DKT & sparse & 2,002 & $0.1205 \pm 0.0195$ & $0.1435 \pm 0.0123$ \\
+ & DKT & very\_sparse & 109 & $0.2009 \pm 0.0455$ & $0.1954 \pm 0.0396$ \\
+ & DKT & strict\_cold\_start & 2 & $0.4259 \pm 0.1454$ & $0.2534 \pm 0.0462$ \\
+ & SimpleKT & dense & 1,268,748 & $0.1146 \pm 0.0010$ & $0.1550 \pm 0.0028$ \\
+ & SimpleKT & medium & 13,082 & $0.1117 \pm 0.0060$ & $0.1349 \pm 0.0048$ \\
+ & SimpleKT & sparse & 2,002 & $0.1244 \pm 0.0074$ & $0.1484 \pm 0.0049$ \\
+ & SimpleKT & very\_sparse & 109 & $0.1951 \pm 0.0186$ & $0.1854 \pm 0.0163$ \\
+ & SimpleKT & strict\_cold\_start & 2 & $0.5836 \pm 0.1525$ & $0.3603 \pm 0.1819$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

@@ -1,0 +1,17 @@
+Table,Metric,Old_Value,New_Value
+Table 3,Overall AUC,0.7228,0.7238
+Table 3,Overall Accuracy,0.7271,0.7278
+Table 3,Overall NLL,0.6100,0.6047
+Table 3,Overall RMSE,0.4345,0.4335
+Table 5,Dense AUC,0.7228,0.7238
+Table 5,Dense Accuracy,0.7272,0.7279
+Table 5,Dense NLL,0.6100,0.6046
+Table 5,Dense RMSE,0.4344,0.4335
+Table 5,Medium AUC,0.6804,0.6817
+Table 5,Medium Accuracy,0.6449,0.6451
+Table 5,Medium NLL,0.6911,0.6886
+Table 5,Medium RMSE,0.4810,0.4805
+Table 9,Dense ECE,0.0804,0.0788
+Table 9,Dense Brier,0.1887,0.1879
+Table 9,Medium ECE,0.1118,0.1100
+Table 9,Medium Brier,0.2315,0.2310
