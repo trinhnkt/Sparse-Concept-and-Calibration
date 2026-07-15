@@ -41,7 +41,7 @@ To address RQ1, we first inspect the overall performance of all three baselines 
 
 \input{tables/table_04_delong_tests_dkt_vs_simplekt}
 
-Overall AUC differences between DKT and SimpleKT are statistically significant on all three datasets after Bonferroni correction, confirming that aggregate predictive quality differs between the two deep baselines. We achieve this strict paired evaluation by matching predictions via a robust composite key that includes a chronological occurrence index, retaining $100\%$ of common test events across models despite their different sequence-filtering mechanisms.
+Overall AUC differences between DKT and SimpleKT are statistically significant on all three datasets after Bonferroni correction, confirming that aggregate predictive quality differs between the two deep baselines.
 
 The stratum-level breakdown in Table~\ref{tab:strata_learner} reveals a heterogeneous pattern rather than a simple monotonic AUC degradation. In several cases, medium or sparse strata even show higher AUC than dense strata; however, calibration, NLL/RMSE, and sample-size stability can still deteriorate. This supports the central point that aggregate AUC alone is insufficient for diagnosing KT reliability. Therefore, RQ1 should not be interpreted as proving universal AUC degradation on sparse KCs, but as showing that aggregate metrics can hide heterogeneous stratum-level behavior.
 
