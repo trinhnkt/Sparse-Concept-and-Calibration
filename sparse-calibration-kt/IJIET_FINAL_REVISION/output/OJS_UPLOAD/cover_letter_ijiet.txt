@@ -15,15 +15,13 @@ decision-error probe. It does not propose a new KT architecture or a
 classroom intervention.
 
 Exclusive submission. This manuscript is not under consideration elsewhere.
-A longer related write-up previously submitted to the Journal of Educational
-Data Mining (JEDM) has been withdrawn by the authors. The IJIET submission
-is the sole active version of this work.
+The IJIET submission is the sole active version of this work.
 
 Double-blind files. Please send reviewers Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf together with
 supplementary.pdf and code_for_review_anonymous.zip. The named Word/PDF are
-for the editorial office only. The zip excludes identity-bearing JEDM sources.
+for the editorial office only. The zip excludes identity-bearing draft sources.
 
-Data. Public code after review: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
+Data. Public code: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
 Datasets: ASSISTments 2012, Junyi Academy, and XES3G5M (original providers).
 
 Generative AI. ChatGPT GPT-6 Astra, Claude Sonnet 5, Google Antigravity

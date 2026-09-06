@@ -1,8 +1,8 @@
 # Reproduce one diagnostic table
 
-Two tracks. Track A retrains local models. Track B rebuilds locked tables from frozen CSVs and **does not** change ASSISTments T-KT ECE `0.1136` / `0.2280` or FAR `0.196` / `0.268`.
+Two tracks. **LEVEL A** (also called Track B) rebuilds locked tables from frozen CSVs and **does not** change ASSISTments T-KT ECE `0.1136` / `0.2280` or FAR `0.196` / `0.268`. Track A retrains local models and does **not** recreate those locked cells.
 
-## Track B — rebuild locked tables (no retrain)
+## LEVEL A / Track B — rebuild locked tables (no retrain)
 
 ```bash
 scripts/rebuild_locked_tables.sh

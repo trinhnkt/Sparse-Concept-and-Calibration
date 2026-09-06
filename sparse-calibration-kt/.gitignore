@@ -56,3 +56,32 @@ IJIET_FINAL_REVISION/a2b/data/
 IJIET_FINAL_REVISION/a2b/checkpoints/
 IJIET_FINAL_REVISION/a2b/results/predictions/
 IJIET_FINAL_REVISION/a2b/logs/
+
+# Public-repo hides (kept on disk; not pushed)
+.agents/
+Check list/
+_archive/
+IJIET_FINAL_v3/
+IJIET_SUBMISSION/
+_freeze_ijiet_final_v3.py
+IJIET_FINAL_REVISION/manuscript/_export_tmp/
+IJIET_FINAL_REVISION/anonymous_overlay/
+IJIET_FINAL_REVISION/_p0_*.py
+IJIET_FINAL_REVISION/_a3*.py
+IJIET_FINAL_REVISION/_rename_paper_to_title.py
+IJIET_FINAL_REVISION/_export_a31_pdfs.py
+IJIET_FINAL_REVISION/apply_a*.py
+IJIET_FINAL_REVISION/apply_xes_a2b_manuscript.py
+IJIET_FINAL_REVISION/build_a8_sparsification.py
+IJIET_FINAL_REVISION/build_a12_s1.py
+IJIET_FINAL_REVISION/build_a13_far.py
+IJIET_FINAL_REVISION/patch_a16_supplementary.py
+IJIET_FINAL_REVISION/setup_copy.py
+IJIET_FINAL_REVISION/analyze_irt_fallback.py
+IJIET_FINAL_REVISION/a3_regression_unit_audit.py
+IJIET_FINAL_REVISION/a4_cluster_regression.py
+results/reports/jedm_*.md
+IJIET_FINAL_REVISION/audit/*
+!IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md
+*.rar
+*.editor.txt
