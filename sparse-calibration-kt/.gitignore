@@ -83,7 +83,7 @@ IJIET_FINAL_REVISION/a3_regression_unit_audit.py
 IJIET_FINAL_REVISION/a4_cluster_regression.py
 results/reports/*.md
 analysis/audit_claim_inventory.md
-analysis/*.tex
+analysis/**/*.tex
 scripts/a9_run_*.py
 scripts/a9_watch_then_five.py
 scripts/make_table7_standalone.py

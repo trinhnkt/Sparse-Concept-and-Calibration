@@ -71,7 +71,7 @@ sparse-calibration-kt/IJIET_FINAL_REVISION/a3_regression_unit_audit.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/a4_cluster_regression.py
 sparse-calibration-kt/results/reports/*.md
 sparse-calibration-kt/analysis/audit_claim_inventory.md
-sparse-calibration-kt/analysis/*.tex
+sparse-calibration-kt/analysis/**/*.tex
 sparse-calibration-kt/scripts/a9_run_*.py
 sparse-calibration-kt/scripts/a9_watch_then_five.py
 sparse-calibration-kt/scripts/make_table7_standalone.py
