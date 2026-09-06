@@ -8,8 +8,8 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a15"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a15"
 LOG = HERE / "audit" / "apply_a15_word_log.txt"
 
 OLD = "Tool versions were not recorded. These tools were not used to fabricate or alter experimental results."

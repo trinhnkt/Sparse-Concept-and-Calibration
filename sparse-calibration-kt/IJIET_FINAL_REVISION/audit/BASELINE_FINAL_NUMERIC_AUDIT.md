@@ -1,6 +1,6 @@
 # Final numeric audit (scientific integrity)
 
-**Scope:** every numerical claim in Abstract, Introduction, Results, Discussion, and Conclusion of `IJIET_SUBMISSION/output/main_ijiet_full.pdf` (Word source `source/main_ijiet_full.docx`).
+**Scope:** every numerical claim in Abstract, Introduction, Results, Discussion, and Conclusion of `IJIET_SUBMISSION/output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` (Word source `source/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx`).
 
 **Rule:** do not rewrite the manuscript unless an inconsistency is found. Do not leave **NOT TRACEABLE** claims in the final manuscript.
 

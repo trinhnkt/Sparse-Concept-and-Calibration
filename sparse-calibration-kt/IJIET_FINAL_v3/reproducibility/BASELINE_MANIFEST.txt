@@ -1,0 +1,9 @@
+freeze_date=2026-09-06
+source=IJIET_FINAL_REVISION (living pack at freeze)
+baseline_pdf=manuscript/main_ijiet_blind.pdf
+also_copied_as=manuscript/BASELINE_main_ijiet_blind.pdf
+pages_named_blind=9/9
+sha256_main_ijiet_blind.pdf=96b58bf700c598b18c222c0b25479b01fceac27f03b5a118dfe32136675252a6
+sha256_main_ijiet_full.pdf=b83be56aa6f9f24b00d2aa06e234bd1c70ce60efc17144d2d3df7f1116d1307a
+sha256_supplementary.pdf=43dc02b63cf6ed5106725e42f74bdc00ac9a253a9709af823b06a0f091ac4e7f
+do_not_overwrite_baseline_pdf

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export manuscript/main_ijiet_full.docx → output/main_ijiet_full.pdf.
+"""Export manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx → output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf.
 
 Does not save the Word source. Does not touch IJIET_SUBMISSION/.
 """
@@ -11,8 +11,8 @@ import fitz
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
-PDF = HERE / "output" / "main_ijiet_full.pdf"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+PDF = HERE / "output" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf"
 REPORT = HERE / "audit" / "compile_verify.txt"
 
 WD_FORMAT_PDF = 17

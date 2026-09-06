@@ -29,7 +29,7 @@ from build_a16_double_blind import (  # noqa: E402
     set_word_props,
 )
 
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a24"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a24"
 LOG = HERE / "audit" / "apply_a24_format_log.txt"
 VERIFY = HERE / "audit" / "compile_verify.txt"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A24.md"
@@ -163,7 +163,7 @@ formatting on the title.
 
 Named/blind: {pages} / {blind_pages} pages.
 
-Backup: `manuscript/main_ijiet_full.docx.bak_pre_a24`.
+Backup: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a24`.
 """,
         encoding="utf-8",
     )
@@ -175,7 +175,7 @@ def write_audit(pages: int, blind_pages: int, title_ok: bool) -> None:
 
 **Date:** 2026-09-01  
 **Authority:** https://www.ijiet.org/files/IJIET_template.doc  
-**Files:** `manuscript/main_ijiet_full.docx`, `output/main_ijiet_full.pdf` / `main_ijiet_blind.pdf`  
+**Files:** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx`, `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` / `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf`  
 **Pages:** named {pages}, blind {blind_pages}
 
 ## After A24

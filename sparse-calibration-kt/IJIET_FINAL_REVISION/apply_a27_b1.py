@@ -26,7 +26,7 @@ from build_a16_double_blind import (  # noqa: E402
     set_word_props,
 )
 
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a27"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a27"
 LOG = HERE / "audit" / "apply_a27_b1_log.txt"
 VERIFY = HERE / "audit" / "compile_verify.txt"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A27.md"
@@ -118,7 +118,7 @@ Finding: population FAR does not move; the design choice appears in the sparse s
 
 Named/blind: {pages} / {blind_pages} pages. Table S4 in supplementary.pdf.
 
-Backup: `manuscript/main_ijiet_full.docx.bak_pre_a27`.
+Backup: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a27`.
 """,
         encoding="utf-8",
     )

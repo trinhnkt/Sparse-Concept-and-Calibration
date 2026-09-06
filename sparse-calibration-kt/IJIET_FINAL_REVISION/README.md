@@ -16,7 +16,7 @@ Do not upload `_archive/`.
 | `tables/` | Numeric table copies |
 | `a2b/` | Masked XES3G5M series (source of truth for XES ECE) |
 
-Target: named `main_ijiet_full` and double-blind `main_ijiet_blind`. Rebuild both with `build_a16_double_blind.py` after named edits.
+Target: named and blind files use the paper title (`manuscript_paths.py`). Rebuild both with `build_a16_double_blind.py` after named edits.
 
 ## Submit here
 

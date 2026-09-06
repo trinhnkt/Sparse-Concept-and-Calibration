@@ -1,0 +1,46 @@
+blind_pages=9 named_pages=9
+fig1_display=501.7x166.6 native=809x497 aspect=3.011 png=1.628
+fig3_display=501.9x465.9
+t8_row='Low-frequency tail mass (E1)'
+PASS pages_9_9
+PASS ece_1136
+PASS far_196_268
+PASS dfar_056
+PASS xes_ece
+PASS xes_865
+FAIL xes_114_L
+PASS no_three_alt
+PASS has_two_grids_intro
+PASS has_two_grids_results
+PASS no_competitive
+FAIL has_agg_disc
+PASS no_success_claims
+PASS has_substantive
+PASS no_sparse_mass
+PASS has_tail_mass
+PASS t8_cell
+FAIL c12_abstract
+FAIL c12_contrib
+PASS fig1_aspect_ok
+PASS fig1_height_ok
+PASS no_tscda
+PASS no_chatgpt
+FAIL grok_only
+PASS no_gkt_token
+PASS word_E_heading
+PASS word_F_heading
+PASS named_not_anon
+PASS blind_anon
+PASS placeholder_dates
+PASS far_not_rq3
+PASS rebuild_script
+PASS official_simplekt
+PASS junyi_ucid
+PASS xes_vs_flag
+LEFT 'Three alternative' blind=0 named=0 word=0
+LEFT 'competitive AUC' blind=0 named=0 word=0
+LEFT 'Success claims require' blind=0 named=0 word=0
+LEFT 'plenty of sparse mass' blind=0 named=0 word=0
+LEFT 'Sparse mass (E1)' blind=0 named=0 word=0
+LEFT 'TSCDA' blind=0 named=0 word=0
+LEFT 'five independent' blind=1 named=1 word=1

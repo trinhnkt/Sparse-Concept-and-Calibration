@@ -44,5 +44,8 @@
 | 33 | Pack date: cover letter → 6 September 2026; editor summary matches C1–C3 (occupancy, L1–L7, one-command rebuild). Article placeholders remain Month date, 2026. Locks unchanged. |
 | 34 | GO/NO-GO necessary wording/format only: C01 two alternative cut grids; C06 drop competitive AUC; C07 Fig. 1 501.8×166.5 (PNG aspect); C10 low-frequency tail mass; C12 learner-based primary + complementary temporal split (no new SI table); C13 occupancy-interpretation sentence. No numeric lock edits. Pages 9/9. |
 | 35 | Generative AI Statement + cover letter: ChatGPT GPT-6 Astra, Claude Sonnet 5, Google Antigravity 2.12.0, Cursor Grok 4.6 (public versions as of 6 Sep 2026). No numeric lock edits. |
+| 36 | Pre-edit recommended fixes only: P01 strip Heading-2 auto-number so PDF reads `E. Secondary explanatory analysis`; P07 temporal = S10 leakage audit only; P09 Fig. 1 display aspect 809×497 (~501.7×308); P11 Table 6 caption points to S1 (no XES “Brier rows below”). Locks unchanged. Named 10 / blind 9 (allowed 8–10). |
+| 37 | Rename living Word/PDF + OJS/SUBMISSION copies to the paper title (blind suffix `_blind`). No numeric lock edits. |
+| 38 | Fig. 1 redrawn (compact, L-tags unchanged) and pulled out of Table 3. Table 3 booktabs 7 pt, header Channel restored. Locks unchanged. |
 
 Official `pykt.models.simplekt.simpleKT` ASSISTments AUC/ECE is now in the manuscript. BKT remains un-scored (pyBKT 1.4.1 degenerate on ASSISTments fold 0 seed 42).

@@ -57,15 +57,15 @@ This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not
 
 | OJS slot | File | Who sees it |
 |----------|------|-------------|
-| Manuscript (editor) | `main_ijiet_full.doc` (or `.docx`) | Editorial office |
-| Manuscript PDF (editor) | `main_ijiet_full.pdf` | Editorial office |
-| Review file (double-blind) | `main_ijiet_blind.pdf` | Reviewers |
-| Optional Word for review | `main_ijiet_blind.doc` | Reviewers if OJS asks for Word |
+| Manuscript (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc` (or `.docx`) | Editorial office |
+| Manuscript PDF (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | Editorial office |
+| Review file (double-blind) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | Reviewers |
+| Optional Word for review | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc` | Reviewers if OJS asks for Word |
 | Supplementary | `supplementary.pdf` | Reviewers (S1–S10) |
 | Code for review | `code_for_review_anonymous.zip` | Reviewers |
 | Cover letter | `cover_letter_ijiet.txt` | Editor only (names JEDM withdrawal) |
 
-Do **not** send reviewers `main_ijiet_full.pdf` / named Word.  
+Do **not** send reviewers `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` / named Word.  
 Do **not** upload `_archive/`.
 
 ## Checks already done
@@ -103,7 +103,10 @@ def zip_ok(path: Path) -> None:
         blob = " ".join(names).lower()
         if "main_jedm" in blob or "khanh-trinh" in blob or "_archive/" in blob:
             raise SystemExit("zip still contains identity/JEDM paths")
-        if "main_ijiet_full.docx" in blob:
+        named_word = (
+            "reproducible sparse-concept and calibration diagnostics for knowledge tracing.docx"
+        )
+        if "main_ijiet_full.docx" in blob or named_word in blob:
             raise SystemExit("zip contains named Word")
         if "Table_S4_occupancy_policies.tex" not in " ".join(names):
             raise SystemExit("zip missing Table S4 tex")
@@ -139,12 +142,12 @@ def sync_submission_slots(log: list[str]) -> None:
     dest_src.mkdir(parents=True, exist_ok=True)
     dest_out.mkdir(parents=True, exist_ok=True)
     pairs = [
-        (FULL_DOCX, dest_src / "main_ijiet_full.docx"),
-        (FULL_DOC, dest_src / "main_ijiet_full.doc"),
-        (BLIND_DOCX, dest_src / "main_ijiet_blind.docx"),
-        (BLIND_DOC, dest_src / "main_ijiet_blind.doc"),
-        (FULL_PDF, dest_out / "main_ijiet_full.pdf"),
-        (BLIND_PDF, dest_out / "main_ijiet_blind.pdf"),
+        (FULL_DOCX, dest_src / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"),
+        (FULL_DOC, dest_src / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc"),
+        (BLIND_DOCX, dest_src / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.docx"),
+        (BLIND_DOC, dest_src / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc"),
+        (FULL_PDF, dest_out / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf"),
+        (BLIND_PDF, dest_out / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf"),
         (SUP_PDF, dest_out / "supplementary.pdf"),
         (REVIEW_ZIP, dest_out / "code_for_review_anonymous.zip"),
         (COVER, dest_out / "cover_letter_ijiet.txt"),
@@ -153,7 +156,7 @@ def sync_submission_slots(log: list[str]) -> None:
         shutil.copy2(src, dst)
         log.append(f"sync {dst.relative_to(SUB.parent)}")
     (dest_out / "CURRENT_A29.txt").write_text(
-        "These main_ijiet_full/blind PDFs and source Word files were copied from "
+        "These titled named/blind PDFs and source Word files were copied from "
         "IJIET_FINAL_REVISION on 2026-09-06 (P0 protocol pack; 8–10 pages). "
         "Submit from IJIET_FINAL_REVISION/output/OJS_UPLOAD/. Do not upload _archive/.\n",
         encoding="utf-8",
@@ -187,7 +190,7 @@ def write_sub_readme() -> None:
     p.write_text(
         """# IJIET submission copies
 
-Current named/blind Word: `source/main_ijiet_full.*` and `source/main_ijiet_blind.*`
+Current named/blind Word: title-named files in `source/` (see `manuscript_paths.py`).
 Current PDFs, supplementary, cover letter, anonymous zip: `output/`
 
 Official template: `source/template/IJIET_template.doc`

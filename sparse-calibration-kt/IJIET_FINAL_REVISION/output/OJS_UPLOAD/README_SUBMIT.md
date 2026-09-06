@@ -11,15 +11,15 @@ This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not
 
 | OJS slot | File | Who sees it |
 |----------|------|-------------|
-| Manuscript (editor) | `main_ijiet_full.doc` (or `.docx`) | Editorial office |
-| Manuscript PDF (editor) | `main_ijiet_full.pdf` | Editorial office |
-| Review file (double-blind) | `main_ijiet_blind.pdf` | Reviewers |
-| Optional Word for review | `main_ijiet_blind.doc` | Reviewers if OJS asks for Word |
+| Manuscript (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc` (or `.docx`) | Editorial office |
+| Manuscript PDF (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | Editorial office |
+| Review file (double-blind) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | Reviewers |
+| Optional Word for review | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc` | Reviewers if OJS asks for Word |
 | Supplementary | `supplementary.pdf` | Reviewers (S1–S10) |
 | Code for review | `code_for_review_anonymous.zip` | Reviewers |
 | Cover letter | `cover_letter_ijiet.txt` | Editor only (names JEDM withdrawal) |
 
-Do **not** send reviewers `main_ijiet_full.pdf` / named Word.  
+Do **not** send reviewers `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` / named Word.  
 Do **not** upload `_archive/`.
 
 ## Checks already done

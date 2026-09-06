@@ -1,0 +1,38 @@
+0009 [Abstract] Abstract—Knowledge Tracing (KT) systems that skip, remediate, or advance practice typically consume a predicted probability rather than an area-under-the-curve (AUC) score, so population ranking can l
+0011 [Heading 1] I. INTRODUCTION
+0015 [Text] The empirical answers are bounded. Lower KC training frequency does not universally degrade discrimination: on XES3G5M, sparse AUC is higher than dense AUC for DKT and T-KT. Calibration can, however, 
+0017 [Heading 1] II. LITERATURE REVIEW
+0018 [Heading 2] A. Knowledge Tracing and benchmark models
+0020 [Heading 2] B. Evaluation rigor and leakage in KT
+0022 [Heading 2] C. Sparse-data and cold-start problems
+0025 [Heading 2] D. Calibration and educational decision support
+0028 [Heading 1] III. MATERIALS AND METHODS
+0029 [Heading 2] A. Datasets
+0034 [Heading 2] B. Splits and seeds
+0037 [Heading 2] C. Model settings
+0044 [Heading 2] D. Train-only frequency strata
+0051 [Heading 2] E. Reliability flags
+0053 [Heading 2] F. Calibration
+0057 [Heading 2] G. Difficulty coupling
+0059 [Heading 2] H. Simulated decision-error probe (not the primary claim)
+0061 [Text] Let A={p≥τ}. The false-advance rate (FAR) is P(y=0 | p≥τ): among responses for which the simulated system would advance the learner, the proportion whose observed next response is incorrect. This is n
+0062 [Heading 1] IV. RESULTS
+0063 [Heading 2] A. Aggregate discrimination
+0068 [Heading 2] B. Calibration across frequency strata
+0079 [Heading 2] C. Cold-start concept feasibility
+0082 [Heading 2] D. Diagnostic conditions and threshold sensitivity
+0086 [Heading 2] E. Secondary explanatory analysis
+0094 [Heading 2] F. Secondary decision-error probe
+0095 [Text] A locked gate at τ=0.7 is a simulated next-response decision-error probe, not RQ3. On ASSISTments 2012, T-KT FAR is 0.196 on dense KCs and 0.268 on sparse KCs (ΔFAR=+0.072; seed 42) and is positive in
+0102 [Heading 1] V. DISCUSSION
+0103 [Heading 2] A. Main empirical findings
+0104 [Text] Three empirical regularities, not laws, structure the results. First, training frequency is not a universal predictor of AUC failure: on XES3G5M, sparse-stratum AUC is higher than dense-stratum AUC fo
+0105 [Heading 2] B. Practical implications for educational technology
+0107 [Heading 2] C. Why datasets differ
+0109 [Heading 2] D. Limitations
+0111 [Heading 1] VI. CONCLUSION
+0126 [References] A. T. Corbett and J. R. Anderson, “Knowledge Tracing: Modeling the acquisition of procedural knowledge,” User Modeling and User-Adapted Interaction, vol. 4, no. 4, pp. 253–278, 1994. doi: 10.1007/BF01
+0127 [References] C. Piech, J. Bassen, J. Huang, S. Ganguli, M. Sahami, L. J. Guibas, and J. Sohl-Dickstein, “Deep Knowledge Tracing,” in Advances in Neural Information Processing Systems, vol. 28, 2015, pp. 505–513.
+0132 [References] A. Ghosh, N. Heffernan, and A. S. Lan, “Context-aware attentive Knowledge Tracing,” in Proc. ACM SIGKDD Conf. Knowledge Discovery and Data Mining, 2020, pp. 2330–2339. doi: 10.1145/3394486.3403282
+0136 [References] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. 34th International Conference on Machine Learning, vol. 70, 2017, pp. 1321–1330.
+0148 [References] A. H. Murphy, “A new vector partition of the probability score,” Journal of Applied Meteorology, vol. 12, no. 4, pp. 595–600, 1973. doi: 10.1175/1520-0450(1973)012<0595:ANVPOT>2.0.CO;2

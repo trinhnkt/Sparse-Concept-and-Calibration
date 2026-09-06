@@ -3,7 +3,7 @@
 **Date:** 2026-09-01  
 **Authority:** https://www.ijiet.org/files/IJIET_template.doc  
 **Measured:** Word COM + PDF spans (`audit/_measure_a29_format.py` → `format_a29_measure.txt`)  
-**Files:** `manuscript/main_ijiet_full.docx`, `output/main_ijiet_full.pdf`
+**Files:** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx`, `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf`
 
 ## Verdict
 

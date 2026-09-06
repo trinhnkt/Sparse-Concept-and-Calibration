@@ -1,0 +1,613 @@
+pages 9 9 3
+TABLE10_HAS_XES_ROW True
+---TABLE10---
+Table 10. Four-partition Brier score and Murphy decomposition (UNC − RES + REL) by train-only stratum. N is the mean test-event count. Junyi sparse is 
+empty. XES3G5M T-KT ECE cells in the main text use the masked series 0.1176 / 0.1129 / 0.1254; Brier rows below are the same four-partition aggregation 
+as Supplementary Table S1. 
+Dataset 
+Model 
+Stratum 
+N 
+ECE 
+Brier 
+UNC 
+REL 
+RES 
+ASSISTments 
+DKT 
+dense 
+523,971 
+0.0602 
+0.1931 
+0.2103 
+0.0053 
+0.0223 
+ASSISTments 
+DKT 
+sparse 
+415 
+0.2333 
+0.2502 
+0.2337 
+0.0624 
+0.0451 
+ASSISTments 
+T-KT 
+dense 
+523,971 
+0.1136 
+0.2116 
+0.2103 
+0.0201 
+0.0186 
+ASSISTments 
+T-KT 
+sparse 
+415 
+0.2280 
+0.2525 
+0.2337 
+0.0594 
+0.0392 
+Junyi 
+DKT 
+dense 
+3,226,541 
+0.0389 
+0.1804 
+0.2078 
+0.0022 
+0.0294 
+Junyi 
+DKT 
+medium 
+3,706 
+0.2513 
+0.3077 
+0.2432 
+0.0741 
+0.0091 
+Junyi 
+T-KT 
+dense 
+3,232,614 
+0.0792 
+0.1884 
+0.2079 
+0.0084 
+0.0279 
+Junyi 
+T-KT 
+medium 
+3,836 
+0.1073 
+0.2307 
+0.2417 
+0.0149 
+0.0260 
+Fig. 2. Reliability diagrams (15 equal-width bins; seed 42). Rows: ASSISTments 2012 and Junyi Academy. Columns: DKT and T-KT. ASSISTments panels 
+show dense vs sparse; Junyi panels show dense vs medium (learner-based sparse is empty). Not a classroom trial. 
+
+ 
+ 
+ 
+C. Threshold-based decision error 
+Table 5 is a simulated gate at τ=0.7 on ASSISTments 2012 fold 0 (seed 42), reported as a decision-error probe rather than 
+contribution (ii). For T-KT, false-advance rate (FAR) is 0.196 [0.186, 0.208] on dense KCs (N=528,018; Nadvance=284,326; 
+Nincorrect=158,623; E[FAR]=0.113; Excess FAR=0.083; Miss=0.352) and 0.268 [0.202, 0.337] on sparse KCs (N=444, 
+Limited; Nadvance=235; Nincorrect=197; E[FAR]=0.050; Excess FAR=0.218; Miss=0.320). ΔFAR=+0.072. DKT FAR is 
+0.200 [0.190, 0.211] dense and 0.296 [0.221, 0.383] sparse. Sparse T-KT FAR uses Limited occupancy (Nadvance=235). 
+Graph and contrastive models are not scored. 
+Table 5. Simulated gate at τ=0.7, ASSISTments 2012 fold 0 (seed 42); T-KT and DKT only. Sparse occupancy is Limited. FAR 95% CIs: KC-cluster 
+percentile, B=2000. Not a classroom trial. 
+Model 
+Stratum 
+N 
+Nadvance 
+Nincorrect 
+FAR [95% CI] 
+E[FAR] 
+Excess FAR 
+Miss 
+T-KT 
+dense 
+528,018 
+284,326 
+158,623 
+0.196 [0.186–0.208] 
+0.113 
+0.083 
+0.352 
+T-KT 
+sparse 
+444 
+235 
+197 
+0.268 [0.202–0.337] 
+0.050 
+0.218 
+0.320 
+DKT 
+dense 
+528,018 
+315,650 
+158,623 
+0.200 [0.190–0.211] 
+0.147 
+0.053 
+0.398 
+DKT 
+sparse 
+444 
+243 
+197 
+0.296 [0.221–0.383] 
+0.057 
+0.239 
+0.365 
+Seed-42 ΔFAR 95% CI (KC-cluster, B=2000): T-KT [0.006, 0.138]; DKT [0.019, 0.175]. 
+Table 6 checks whether T-KT ΔFAR is a single-partition artifact. It is positive in 4/4 unique partition-level estimates (mean 
+0.056, range 0.015–0.087) and in 5/5 training runs (mean 0.047, sd 0.033; two runs share a split). Mean sparse denominators 
+are N=413, Nadvance=227, Nincorrect=155. A KC-clustered bootstrap on seed 42 yields a 95% interval [0.006, 0.138] for 
+ΔFAR—excluding 0, but wide, as Limited occupancy and Nadvance=235 require. DKT ΔFAR is positive on only three of five 
+runs and is not treated as a five-run finding. On XES3G5M, T-KT ΔFAR is negative on all five runs (mean −0.017), and ΔMiss 
+is also negative (mean −0.183): after padding 
+---END TABLE10---
+---TABLE11 PAGE 7 ---
+ 
+ 
+Model 
+Mean ΔFAR 
+SD 
+Runs ΔFAR>0 
+Mean N 
+Mean Nadvance 
+Mean Nincorrect 
+T-KT 
+0.056 
+0.015–0.087 
+4/4 unique partitions 
+413 
+227 
+155 
+DKT 
+0.033 
+0.048 
+3/5 runs 
+413 
+226 
+155 
+D. Dataset-dependent explanatory analysis 
+If a learning platform uses KT probabilities only to sort students, Table 3 may suffice. If it uses p to skip practice or declare 
+mastery, Table 3 is an insufficient evaluation summary. The ASSISTments T-KT cell is an illustrative case: competitive AUC, 
+Limited-but-estimable sparse occupancy (about 19% of KCs fall below the sparse threshold on fold 0), a monotonic ECE rise, 
+and a gate that yields a higher error rate among sparse advance decisions. The XES3G5M cell is the contrasting case: plenty of 
+sparse mass and Reliable occupancy, yet T-KT ECE does not degrade. Junyi shows that the protocol can refuse a sparse claim 
+when the bucket is empty. 
+Table 7 separates two questions. E1–E2 determine whether a sparse contrast can be estimated under the protocol thresholds; 
+E3 and other structural descriptors help characterize the direction of the observed pattern. E1 is a non-empty low-frequency tail 
+under the split actually used; E2 is enough sparse test events for at least a Limited-flag ECE. E3 (frequency–difficulty 
+coupling) is not treated as necessary or sufficient for an adverse gradient. Junyi fails E1–E2. ASSISTments and XES3G5M 
+both meet E1–E2, yet only ASSISTments shows a dense-to-sparse T-KT ECE rise. 
+Table 7. Empirical conditions associated with the availability and direction of sparse-calibration contrasts on the three evaluated datasets. Sparse mass: share 
+of KCs with train-only frequency ftrain<100. E3 is not necessary or sufficient for an adverse gradient. 
+Condition 
+ASSISTments 
+Junyi 
+XES3G5M 
+A. Estimability 
+Sparse mass (E1) 
+18.9% of KCs 
+0% 
+22.5% of KCs 
+Sparse test support (E2) 
+415 (L) 
+empty 
+1,969 (R) 
+B. Observed pattern/context 
+Difficulty coupling (E3) 
+ρ=−0.227 (sparse harder) 
+ρ=−0.416 
+ρ=+0.110 (weak, inverted) 
+Item support 
+median 44.5 (dense 205 vs sparse 1) 
+median 18 (IQR 5) 
+median 3 (dense 9 vs sparse 1) 
+Curriculum-position coupling 
+ρ=−0.308 
+ρ=−0.324 
+ρ=−0.126 
+Observed T-KT ECE 
+0.114→0.228 
+dense→medium only 
+flat 0.1176→0.1254 
+Learner exposure (distinct training learners per KC) enters the regressions below; it is not an E1–E2 estimability criterion. This 
+subsection reports two distinct estimands. Neither is a causal claim. 
+A test-event-weighted KC-level regression of T-KT expected calibration error (ECE) on those five training-only covariates is 
+a between-KC association: it compares different concepts. ASSISTments (478 KC-fold rows; 261 unique KCs) and Junyi 
+(2,645 KC-fold rows; 1,326 unique KCs) use cluster-robust standard errors at kc_id; XES3G5M is 829 unique KCs in the 
+masked weighted fit. Standardized log(1+ftrain) coefficients are −0.068 [−0.086, −0.050] on ASSISTments, −0.014 [−0.018, 
+−0.010] on Junyi, and −0.028 [−0.042, −0.014] on XES3G5M in the weighted fit. Difficulty is independently associated on all 
+three datasets. Learner exposure is independently associated on ASSISTments (+0.016 [0.004, 0.027]) and on XES3G5M 
+(+0.013 [+0.005, +0.021]). These signs do not test a frequency dose on a fixed KC. 
+Within-KC controlled sparsification holds KC identity, the test set, labels, and all other KCs' training rows fixed, and reduces 
+training rows for 30 originally dense KCs (ftrain≥500; seed 42, fold 0) to 500 or 50 rows. The selection rule was fixed and 
+recorded before reduced-evidence ECE was inspected. Table 8 reports protocol endpoints (500 and 50 rows) for DKT and 
+T-KT on all three datasets. Complete results for all models, datasets, and reduction levels are reported in Supplementary Table 
+S2. Reducing training evidence for the same KC does not universally worsen calibration: several CIs lie below 0 or include 0. 
+XES3G5M T-KT shows a positive ΔECE at 50 rows (+0.110 [+0.071, +0.156]); DKT at 500 rows is also positive (Table 8; 
+Supplementary Table S2). The observational ASSISTments T-KT dense-to-sparse ECE gradient (0.114→0.228) is not 
+reproduced by sparsifying originally dense ASSISTments KCs (T-KT, 50 rows: +0.002 [−0.021, +0.025]). Frequency alone is 
+therefore not a universal causal explanation. Junyi T-KT at 50 rows does show a large positive ΔECE; that cell shows a 
+within-KC increase is possible, not that it is a law. 
+Table 8. Within-KC controlled sparsification at protocol endpoints (500 and 50 training rows; seed 42; 30 originally dense KCs per dataset). The 100-row level 
+is omitted here by that pre-declared endpoint rule, not by outcome. ΔECE = reduced−full; positive means worse calibration. 95% CIs bootstrap over KCs. Not 
+a causal law for real-world sparsity. Complete results for all models, datasets, and reduction levels are reported in Supplementary Table S2. 
+Dataset 
+Model 
+Reduction 
+ΔECE 
+95% CI 
+Interpretation 
+ASSISTments 2012 
+DKT 
+500 rows 
+−0.047 
+[−0.060, −0.033] 
+ECE lower 
+ASSISTments 2012 
+DKT 
+50 rows 
+−0.017 
+[−0.034, +0.002] 
+CI includes 0 
+ASSISTments 2012 
+T-KT 
+500 rows 
+−0.026 
+[−0.047, −0.002] 
+ECE lower 
+ASSISTments 2012 
+T-KT 
+50 rows 
++0.002 
+[−0.021, +0.025] 
+CI includes 0 
+Junyi Academy 
+DKT 
+500 rows 
+−0.021 
+[−0.041, −0.001] 
+ECE lower 
+Junyi Academy 
+DKT 
+50 rows 
+−0.004 
+[−0.022, +0.013] 
+CI includes 0 
+Junyi Academy 
+T-KT 
+500 rows 
++0.101 
+[+0.081, +0.120] 
+ECE higher 
+Junyi Academy 
+T-KT 
+50 rows 
++0.135 
+[+0.110, +0.161] 
+ECE higher 
+XES3G5M 
+DKT 
+500 rows 
++0.142 
+[+0.104, +0.189] 
+ECE higher 
+XES3G5M 
+DKT 
+50 rows 
++0.161 
+[+0.127, +0.196] 
+ECE higher 
+XES3G5M 
+T-KT 
+500 rows 
++0.041 
+[+0.020, +0.063] 
+ECE higher 
+XES3G5M 
+T-KT 
+50 rows 
++0.110 
+[+0.071, +0.156] 
+ECE higher 
+E. Cold-start concept feasibility 
+Strict cold-start is freq_train(c)=0; limited-train cold-start is 
+0<freq_train(c)<20. Table 11 reports feasibility, not a 
+production claim. On ASSISTments 2012 the strict bin has 
+about four test events (Insufficient) and the very-sparse bin 
+about 17 events (Insufficient), so ECE/AUC on those slices 
+are descriptive only. Junyi’s learner-based ucid tagging 
+yields no estimable sparse or strict-cold-start stratum. 
+XES3G5M very-sparse support is larger (N≈112) but still not 
+a high-N finding. Where the strict slice is too small, the 
+
+---TABLE11 PAGE 8 ---
+ 
+ 
+protocol records the empty or Insufficient bucket instead of 
+borrowing a recommender user/item cold-start definition. 
+Table 11. Cold-start concept feasibility (four-partition means). Strict: 
+f_train=0. Limited/very-sparse: 0<f_train<20. I = Insufficient (N<100). Not 
+a recommender user/item split. 
+DATASET 
+SLICE 
+MEAN N 
+FLAG 
+T-KT 
+ECE 
+DKT ECE 
+ASSISTME
+NTS 
+STRICT F=0 
+4 
+I 
+DESCRIPTI
+VE 
+DESCRIPTI
+VE 
+ASSISTME
+NTS 
+VERY-SPAR
+SE 
+17 
+I 
+0.245 
+0.178 
+JUNYI 
+STRICT / 
+SPARSE 
+0 
+EMPTY 
+— 
+— 
+XES3G5M 
+VERY-SPAR
+SE 
+112 
+I/L 
+0.183 
+0.184 
+V. DISCUSSION 
+A. Main empirical findings 
+Three empirical regularities, not laws, structure the results. 
+First, training frequency is not a universal predictor of AUC 
+failure: on XES3G5M, sparse-stratum AUC is higher than 
+dense-stratum AUC for DKT and T-KT (Reliable 
+occupancy), and Junyi’s learner-based sparse bucket is empty 
+(exercise-level tagging) rather than a ranking collapse. 
+Second, calibration vulnerability is dataset-dependent. 
+ASSISTments 2012 T-KT ECE is associated with a 
+dense-to-sparse rise under Limited sparse support (Table 4, 
+N=415); XES3G5M T-KT ECE is a counter-pattern that 
+stays essentially flat despite Reliable sparse occupancy. 
+Calibration is not guaranteed to worsen as frequency falls. 
+Third, threshold behavior can differ by frequency stratum. 
+The simulated ASSISTments gate (Tables 5–6) can raise 
+T-KT FAR on sparse KCs relative to dense KCs, with ΔFAR 
+positive in 4/4 unique learner partitions (and in 5/5 training 
+runs, two of which share a split); on XES3G5M, T-KT ΔFAR 
+and ΔMiss are both negative after padding is excluded, so a 
+flat ECE is not by itself a decision-error result. 
+B. Practical implications for educational technology 
+The protocol is four checks before using one global KT 
+probability threshold: (i) inspect KC-frequency occupancy on 
+the training fold actually used, including empty buckets; (ii) 
+evaluate per-stratum ECE and Brier separately from AUC; 
+(iii) if a locked gate is simulated, report FAR with its 
+denominators (Tables 5–6; Supplementary Tables S3–S4); 
+(iv) ensure sufficient sample support before treating a slice as 
+actionable. R/L/I flags are descriptive occupancy labels, not 
+inferential guarantees. This study does not apply temperature 
+scaling [11] or Platt scaling [26]. A population AUC win is 
+not by itself evidence that probabilities are reliable on the tail. 
+C. Why datasets differ 
+The three logs differ on E1–E2 estimability and on structural 
+context (Table 7). Junyi’s learner-based sparse bucket is 
+empty because the operational KC is an exercise identifier 
+(ucid), so the protocol can refuse a sparse claim when tagging 
+is finer than a skill. ASSISTments and XES3G5M both have 
+a non-empty sparse tail and at least Limited test support, yet 
+T-KT ECE rises on ASSISTments and stays essentially flat 
+on XES3G5M. Frequency–difficulty coupling, item support, 
+and curriculum-position coupling are reported as context, not 
+as necessary or sufficient conditions for that direction. 
+Within-KC sparsification (Table 8) does not reproduce the 
+observational ASSISTments T-KT ECE gradient. These are 
+associations on these datasets. Untested 
+explanations—curriculum hierarchy, tagging granularity, 
+ceiling effects, and item semantics—are hypotheses unless 
+experimentally isolated, which this study does not do. 
+D. Limitations 
+Next-response correctness is not latent mastery: y=0 is an 
+incorrect next attempt, not a latent-skill diagnosis. The 
+threshold gate is a simulated probe, not a classroom policy, 
+and is not contribution (ii). There is no classroom RCT. We 
+do not train graph, contrastive, or self-supervised KT models. 
+BKT is not a scored baseline; IRT is the classical reference. 
+Pairwise DeLong tests on AUC are not the main reporting 
+device; we report mean±sd across four unique learner 
+partitions. Temporal evaluation uses a single corrected cutoff 
+(seed 42). Seeds 2025 and 2026 share a split. R/L/I are 
+descriptive support flags. ECE depends on binning. Three 
+datasets cannot establish a universal diagnostic law. Local 
+IRT, DKT, and T-KT are not byte-identical to a recovered 
+pyKT training image, so Table 2 Version/commit remains 
+NOT RECOVERED; reproduction is from 
+code_for_review_anonymous.zip and the recovered 
+hyperparameters. 
+VI. CONCLUSION 
+Under the evaluated conditions, KT probabilities that look 
+adequate on aggregate AUC can still be poorly calibrated on 
+sparse KCs in some dataset-model settings. That ECE 
+association appears for T-KT on ASSISTments 2012 
+(Limited sparse support). It is not reported for Junyi’s empty 
+learner-based sparse bucket, and XES3G5M T-KT ECE 
+remains essentially flat. The train-only strata, leakage 
+checklist, and per-stratum ECE/Brier diagnostics are 
+therefore conditionally useful. Graph and contrastive KT, and 
+any path or distillation module, are left to later studies. This 
+paper is a protocol and calibration diagnostic, not a new KT 
+model and not a classroom intervention. 
+CONFLICT OF INTEREST 
+The authors declare no conflict of interest. 
+AUTHOR CONTRIBUTIONS 
+K.-T.N.: Conceptualization, Methodology, Software, 
+Formal analysis, and Writing (led diagnostic design, 
+experiments, and manuscript). T.D.M. and D.N.T.: Software 
+(data processing and baseline runs). C.T.N.: Methodology 
+(methodological review). V.-H.N.: Supervision and Writing 
+(manuscript revision). All authors approved the final version. 
+ETHICAL STATEMENT 
+This study is a secondary analysis of publicly released, 
+de-identified benchmark educational datasets (ASSISTments 
+2012, Junyi Academy, and XES3G5M). No new human 
+participants were recruited and no classroom intervention 
+was conducted. The work uses only records already released 
+by the original dataset providers. This manuscript is not 
+under consideration for publication elsewhere. 
+DATA AND CODE AVAILABILITY 
+Code, data-preprocessing scripts, and evaluation pipelines 
+are 
+available 
+at 
+https://github.com/trinhnkt/
+Sparse-Concept-and-Calibration. Source benchmark datasets 
+are publicly released by their original providers. 
+
+---BLIND NEEDLES---
+'Hung Yen' blind False named True
+'utehy' blind False named True
+'trinhnkt' blind False named True
+'Khanh' blind False named True
+'ORCID' blind False named False
+'haunv@' blind False named True
+'github.com' blind False named True
+'JEDM' blind False named False
+'TSCDA' blind False named False
+'pre-registered' blind False named False
+'10.18178' blind False named False
+'Anonymous Authors' blind True named False
+GKT count body 0
+CL4KT count body 0
+graph-based count 2
+A5 audit True
+eab9f67 True
+NOT RECOVERED 7
+contribution (ii) True
+Manuscript received True
+zip size 1187643
+n files 99
+names:
+  README_CODE_FOR_REVIEW.txt
+  requirements.txt
+  IJIET_FINAL_REVISION/README.md
+  IJIET_FINAL_REVISION/compile_manuscript.py
+  IJIET_FINAL_REVISION/a4_cluster_regression.py
+  IJIET_FINAL_REVISION/docs/how_to_reproduce.md
+  src/baseline_runner.py
+  src/brier_decomposition.py
+  src/calibration_eval.py
+  src/cold_start_split.py
+  src/create_assist_sample.py
+  src/create_junyi_sample.py
+  src/create_xes3g5m_full.py
+  src/create_xes3g5m_sample.py
+  src/full_baseline_runner.py
+  src/generate_figure2_kc_distribution.py
+  src/generate_pipeline_diagram.py
+  src/kc_strata.py
+  src/leakage_checklist_runner.py
+  src/make_clean_latex_tables.py
+  src/metrics.py
+  src/prediction_exporter.py
+  src/preprocess.py
+  src/recalculate_diagnostics.py
+  src/reliability_diagram_plotter.py
+  src/report_generator.py
+  src/sensitivity_analysis.py
+  src/split_checker.py
+  src/statistical_tests.py
+  src/three_split_constructor.py
+  src/__init__.py
+  src/models/cl4kt.py
+  src/models/gkt_graph.py
+  src/models/irt_baseline.py
+  src/models/__init__.py
+  IJIET_FINAL_REVISION/a2b/analyze_a9.py
+  IJIET_FINAL_REVISION/a2b/build_dataset.py
+  IJIET_FINAL_REVISION/a2b/evaluate.py
+  IJIET_FINAL_REVISION/a2b/paths.py
+  IJIET_FINAL_REVISION/a2b/run_rest.py
+  IJIET_FINAL_REVISION/a2b/train_a9.py
+  IJIET_FINAL_REVISION/a2b/train_models.py
+  IJIET_FINAL_REVISION/a2b/write_manifest.py
+  IJIET_FINAL_REVISION/a2b/analysis/c2_xes_verdict.txt
+  IJIET_FINAL_REVISION/a2b/analysis/gate_fivefold.csv
+  IJIET_FINAL_REVISION/a2b/analysis/kc_covariates.csv
+  IJIET_FINAL_REVISION/a2b/analysis/regression_input.csv
+  IJIET_FINAL_REVISION/a2b/analysis/regression_results.csv
+  IJIET_FINAL_REVISION/a2b/analysis/run_bucket.csv
+  IJIET_FINAL_REVISION/a2b/analysis/run_overall.csv
+  IJIET_FINAL_REVISION/a2b/analysis/summary_4part_bucket.csv
+  IJIET_FINAL_REVISION/a2b/analysis/summary_4part_overall.csv
+  IJIET_FINAL_REVISION/a2b/analysis/temporal_seed42.csv
+  IJIET_FINAL_REVISION/a2b/results/tables/dataset_stats.csv
+  IJIET_FINAL_REVISION/a2b/results/tables/kc_strata.csv
+  IJIET_FINAL_REVISION/a2b/analysis/a9/kc_eligibility.csv
+  IJIET_FINAL_REVISION/a2b/analysis/a9/kc_metrics.csv
+  IJIET_FINAL_REVISION/a2b/analysis/a9/pooled_selected_kc_metrics.csv
+  IJIET_FINAL_REVISION/a2b/analysis/a9/selected_kcs.csv
+  IJIET_FINAL_REVISION/a2b/analysis/a9/statistical_summary.csv
+  IJIET_FINAL_REVISION/analysis/a1_xes_padding_counts.py
+  IJIET_FINAL_REVISION/analysis/b1_occupancy_gate_policies.csv
+  IJIET_FINAL_REVISION/analysis/b1_occupancy_gate_policies.txt
+  IJIET_FINAL_REVISION/analysis/c2_fivefold_verdict.txt
+  IJIET_FINAL_REVISION/analysis/compute_b1_policies.py
+  IJIET_FINAL_REVISION/analysis/controlled_sparsification_full.csv
+  IJIET_FINAL_REVISION/analysis/far_partition_robustness.csv
+  IJIET_FINAL_REVISION/analysis/four_partition_punchline_ece.csv
+  IJIET_FINAL_REVISION/analysis/ijiet08_fivefold_denominators.csv
+  IJIET_FINAL_REVISION/analysis/ijiet08_seed42_gate_points.csv
+  IJIET_FINAL_REVISION/analysis/ijiet08_seed42_kc_cluster_ci.csv
+  IJIET_FINAL_REVISION/analysis/ijiet08_table4_from_threshold_rates.csv
+  IJIET_FINAL_REVISION/analysis/irt_fallback_stats.csv
+  IJIET_FINAL_REVISION/analysis/leakage_audit_log.csv
+  IJIET_FINAL_REVISION/analysis/README.md
+  IJIET_FINAL_REVISION/analysis/regression_clustered_results.csv
+  IJIET_FINAL_REVISION/analysis/regression_fold_sensitivity.csv
+  IJIET_FINAL_REVISION/analysis/regression_unit_audit.csv
+  IJIET_FINAL_REVISION/analysis/summary_4part_bucket.csv
+  IJIET_FINAL_REVISION/analysis/XES3G5M_RERUN_MANIFEST.md
+  IJIET_FINAL_REVISION/analysis/xes_padding_counts.csv
+  IJIET_FINAL_REVISION/tables/compare_published.csv
+  IJIET_FINAL_REVISION/tables/punchline_ece.csv
+  IJIET_FINAL_REVISION/tables/README.md
+  IJIET_FINAL_REVISION/tables/table_03_four_partition.tex
+  IJIET_FINAL_REVISION/figures/fig1_kc_and_train_volume.png
+  IJIET_FINAL_REVISION/figures/fig2_reliability_p0.png
+  IJIET_FINAL_REVISION/figures/generate_fig1_a2b.py
+  IJIET_FINAL_REVISION/figures/generate_fig2_reliability.py
+  IJIET_FINAL_REVISION/figures/generate_ijiet_fig1.py
+  IJIET_FINAL_REVISION/supplementary/supplementary.aux
+  IJIET_FINAL_REVISION/supplementary/supplementary.pdf
+  IJIET_FINAL_REVISION/supplementary/supplementary.tex
+  IJIET_FINAL_REVISION/supplementary/Table_S1_calibration_full.tex
+  IJIET_FINAL_REVISION/supplementary/TABLE_S1_MODEL_SETTINGS.md
+  IJIET_FINAL_REVISION/supplementary/Table_S2_controlled_sparsification.tex
+  IJIET_FINAL_REVISION/supplementary/Table_S3_tau_grid.tex
+  IJIET_FINAL_REVISION/supplementary/Table_S4_occupancy_policies.tex
+  IJIET_FINAL_REVISION/supplementary/Table_S_regression.tex
+SI TITLE MATCH True
+SI TSCDA False
+SI JEDM False

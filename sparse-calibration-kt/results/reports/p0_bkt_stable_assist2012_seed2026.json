@@ -1,0 +1,16 @@
+{
+  "dataset": "assist2012",
+  "split": "learner_based",
+  "fold": 3,
+  "seed": 2026,
+  "n": 528681,
+  "auc": 0.624450736711517,
+  "brier": 0.20139413189987573,
+  "p_unique": 92201,
+  "p_min": 0.04530709975983592,
+  "p_max": 0.9843724285413242,
+  "p_mean": 0.6969169136961596,
+  "implementation": "local_4param_BKT_laplace_EM",
+  "not_pyBKT": true,
+  "wrote": "C:\\TRINH\\Sparse-Concept and Calibration\\sparse-calibration-kt\\results\\predictions\\assist2012_learner_based_bkt_stable_seed2026.csv"
+}

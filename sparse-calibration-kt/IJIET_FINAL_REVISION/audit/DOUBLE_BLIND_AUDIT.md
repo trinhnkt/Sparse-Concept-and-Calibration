@@ -5,10 +5,10 @@
 
 | Build | Path | Pages |
 |-------|------|------:|
-| Named (editor / camera-ready) | `output/main_ijiet_full.pdf` | 8 |
-| Double-blind review | `output/main_ijiet_blind.pdf` | 8 |
+| Named (editor / camera-ready) | `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | 8 |
+| Double-blind review | `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | 8 |
 
-Word sources: `manuscript/main_ijiet_full.docx` (unchanged science) and `manuscript/main_ijiet_blind.docx`.
+Word sources: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (unchanged science) and `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.docx`.
 
 ## PASS / FAIL
 

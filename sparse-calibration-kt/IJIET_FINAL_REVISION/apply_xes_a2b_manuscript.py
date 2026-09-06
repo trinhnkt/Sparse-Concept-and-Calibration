@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply A2B-masked XES3G5M numbers to IJIET_FINAL_REVISION/manuscript/main_ijiet_full.docx.
+"""Apply A2B-masked XES3G5M numbers to IJIET_FINAL_REVISION/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.
 
 Does not write IJIET_SUBMISSION/. Does not change ASSISTments or Junyi cells.
 """
@@ -10,7 +10,7 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
 FIG = HERE / "figures" / "fig1_kc_and_train_volume.png"
 LOG = HERE / "audit" / "apply_xes_a2b_log.txt"
 

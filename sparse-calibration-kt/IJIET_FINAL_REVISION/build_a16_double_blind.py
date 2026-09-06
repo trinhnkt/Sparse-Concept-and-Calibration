@@ -15,12 +15,17 @@ import fitz
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-FULL_DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
-FULL_DOC = HERE / "manuscript" / "main_ijiet_full.doc"
-BLIND_DOCX = HERE / "manuscript" / "main_ijiet_blind.docx"
-BLIND_DOC = HERE / "manuscript" / "main_ijiet_blind.doc"
-FULL_PDF = HERE / "output" / "main_ijiet_full.pdf"
-BLIND_PDF = HERE / "output" / "main_ijiet_blind.pdf"
+import sys
+
+sys.path.insert(0, str(HERE))
+from manuscript_paths import (  # noqa: E402
+    BLIND_DOC,
+    BLIND_DOCX,
+    BLIND_PDF,
+    FULL_DOC,
+    FULL_DOCX,
+    FULL_PDF,
+)
 AUDIT = HERE / "audit" / "DOUBLE_BLIND_AUDIT.md"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A16.md"
 VERIFY = HERE / "audit" / "compile_verify.txt"
@@ -399,10 +404,10 @@ def write_audit(
 
 | Build | Path | Pages |
 |-------|------|------:|
-| Named (editor / camera-ready) | `output/main_ijiet_full.pdf` | {full_pages} |
-| Double-blind review | `output/main_ijiet_blind.pdf` | {blind_pages} |
+| Named (editor / camera-ready) | `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | {full_pages} |
+| Double-blind review | `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | {blind_pages} |
 
-Word sources: `manuscript/main_ijiet_full.docx` (unchanged science) and `manuscript/main_ijiet_blind.docx`.
+Word sources: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (unchanged science) and `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.docx`.
 
 ## PASS / FAIL
 
@@ -615,11 +620,11 @@ Same-day XES/A2B scientific apply is preserved in `audit/CHANGELOG_A16_XES.md`.
 
 | File | Role |
 |------|------|
-| `output/main_ijiet_full.pdf` | Named manuscript ({full_pages} pages) |
-| `output/main_ijiet_blind.pdf` | Double-blind review ({blind_pages} pages) |
-| `manuscript/main_ijiet_full.docx` | Named Word (science unchanged) |
-| `manuscript/main_ijiet_blind.docx` | Blind Word |
-| `manuscript/main_ijiet_blind.doc` | Blind Word 97–2003 |
+| `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | Named manuscript ({full_pages} pages) |
+| `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | Double-blind review ({blind_pages} pages) |
+| `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` | Named Word (science unchanged) |
+| `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.docx` | Blind Word |
+| `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc` | Blind Word 97–2003 |
 
 ## Blind removals
 

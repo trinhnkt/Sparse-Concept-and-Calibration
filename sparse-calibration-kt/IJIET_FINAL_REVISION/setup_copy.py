@@ -12,9 +12,9 @@ REV = ROOT / "IJIET_FINAL_REVISION"
 HASH_LOG = REV / "audit" / "SETUP_HASHES.txt"
 
 COPIES = [
-    (SUB / "source" / "main_ijiet_full.docx", REV / "manuscript" / "main_ijiet_full.docx"),
-    (SUB / "source" / "main_ijiet_full.doc", REV / "manuscript" / "main_ijiet_full.doc"),
-    (SUB / "output" / "main_ijiet_full.pdf", REV / "output" / "baseline_from_ijiet_submission.pdf"),
+    (SUB / "source" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx", REV / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"),
+    (SUB / "source" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc", REV / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc"),
+    (SUB / "output" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf", REV / "output" / "baseline_from_ijiet_submission.pdf"),
     (SUB / "source" / "generate_ijiet_fig1.py", REV / "figures" / "generate_ijiet_fig1.py"),
     (SUB / "tables" / "punchline_ece.csv", REV / "tables" / "punchline_ece.csv"),
     (SUB / "tables" / "compare_published.csv", REV / "tables" / "compare_published.csv"),

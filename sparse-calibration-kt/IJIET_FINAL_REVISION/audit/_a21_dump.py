@@ -5,7 +5,7 @@ from xml.etree import ElementTree as ET
 import win32com.client as win32
 
 sys.stdout.reconfigure(encoding="utf-8")
-DOCX = Path("IJIET_FINAL_REVISION/manuscript/main_ijiet_full.docx")
+DOCX = Path("IJIET_FINAL_REVISION/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx")
 OUT = Path("IJIET_FINAL_REVISION/audit/_a21_dump.txt")
 ns_p = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}p"
 ns_t = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t"

@@ -1,0 +1,44 @@
+===== p62 =====
+IV. RESULTS
+
+===== p63 =====
+A. Aggregate discrimination
+
+===== p64 =====
+Table 4 reports overall learner-based area under the ROC curve (AUC) and accuracy (ACC), mean±sd over four unique partitions. This subsection is discrimination, not calibration. DKT is slightly above T-KT on all three datasets (ASSISTments DKT 0.6979±0.0014 versus T-KT 0.6837±0.0025). Official SimpleKT [4] on the same ASSISTments partitions reaches 0.7700±0.0013 (ACC 0.7522±0.0014); T-KT is not that checkpoint. Stratum-level AUC and ACC for IRT, DKT, and T-KT are in Supplementary Table S8. In our implementation, unseen learners trigger a constant/base-rate fallback, yielding AUC=0.5000; it is a base-rate reference, not a ranking competitor.
+
+===== p65 =====
+Table 4. Overall learner-based area under the ROC curve (AUC) and accuracy (ACC) (mean±sd over four unique partitions). Official SimpleKT [4] is reported on ASSISTments only.
+
+===== p68 =====
+B. Calibration across frequency strata
+
+===== p69 =====
+Table 5 reports event-level expected calibration error (ECE), not AUC. On ASSISTments 2012, T-KT ECE increases from 0.1136±0.0066 (dense, Reliable, N=523,971) to 0.1541±0.0051 (medium) to 0.2280±0.0197 (sparse, Limited, N=415). That sparse cell is Limited support, not a high-N finding. Official SimpleKT [4] on those partitions has ECE 0.0203±0.0035 dense and 0.0884±0.0187 sparse (Limited, N=415); the rise remains, and the T-KT cells stay locked. The main ASSISTments calibration ordering remains qualitatively unchanged under two alternative train-only frequency cut grids (Supplementary Table S7). DKT moves in the same direction on this dataset (dense 0.0602±0.0022 versus sparse 0.2333±0.0084)
+
+===== p72 =====
+Table 5. T-KT and official SimpleKT [4] (ASSISTments only) event-level expected calibration error (ECE) by train-only frequency stratum. N is the mean test-event count across four unique learner partitions, not a single-partition count. Flags: Reliable (R) N≥1000; Limited (L) 100≤N<1000. Junyi sparse is empty.
+
+===== p76 =====
+Table 6. Four-partition Brier score and Murphy decomposition (UNC − RES + REL) by train-only stratum. N is the mean test-event count. Junyi sparse is empty. XES3G5M T-KT ECE cells in the main text use the masked series 0.1176 / 0.1129 / 0.1254; Brier rows below are the same four-partition aggregation as Supplementary Table S1.
+
+===== p77 =====
+Fig. 3. Reliability diagrams (15 equal-width bins; seed 42). Rows: ASSISTments 2012 and Junyi Academy. Columns: DKT and T-KT. ASSISTments panels show dense vs sparse; Junyi panels show dense vs medium (learner-based sparse is empty). Not a classroom trial.
+
+===== p79 =====
+C. Threshold-based decision error
+
+===== p87 =====
+D. Dataset-dependent explanatory analysis
+
+===== p90 =====
+Table 7. Empirical conditions associated with the availability and direction of sparse-calibration contrasts on the three evaluated datasets. Sparse mass: share of KCs with train-only frequency ftrain<100. E3 is not necessary or sufficient for an adverse gradient.
+
+===== p98 =====
+E. Cold-start concept feasibility
+
+===== p100 =====
+Table 8. Cold-start concept feasibility (four-partition means). Strict: f_train=0. Very-sparse: 0<f_train<20. L/I are occupancy flags (N), not k5/k10 groups. I = Insufficient (N<100). Not a recommender user/item split. XES3G5M very-sparse uses the same masked four-partition series as Table 5 (N=114).
+
+===== p101 =====
+V. DISCUSSION

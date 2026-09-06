@@ -1,7 +1,7 @@
 # BeforeSubmitting_h — rà soát 06/09/2026
 
 **Phiếu:** `Check list/BeforeSubmitting_h.docx`  
-**Nguồn:** living `main_ijiet_full.pdf` (9 trang) + SI (5 trang) + `OJS_UPLOAD/`
+**Nguồn:** living `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` (9 trang) + SI (5 trang) + `OJS_UPLOAD/`
 
 Quy tắc phiếu: mục **Chưa** → chưa gửi bài.
 
@@ -14,7 +14,7 @@ Quy tắc phiếu: mục **Chưa** → chưa gửi bài.
 | 2 | 1–8 Toán, leakage, thuật ngữ, Table 1 | **Đạt** | Khóa số khớp; T-KT ≠ [4]; 865 KC |
 | 3 | 1–6 Related work, gap, nhất quán | **Đạt** | II.A–D; ECE/FAR/XES khớp abstract–bảng–kết luận |
 | 4 | 1 isgen.ai | **Chưa** | Chưa quét PDF 9 trang |
-| 4 | 2 Turnitin | **Đạt** | Đã chạy 06/09: **1%** trên `main_ijiet_full.pdf`. Không dùng 2% (01/09) hay 21% (cùng ngày). |
+| 4 | 2 Turnitin | **Đạt** | Đã chạy 06/09: **1%** trên `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf`. Không dùng 2% (01/09) hay 21% (cùng ngày). |
 | 4 | 3–7 DOI, grammar, zip, GitHub, format | **Đạt** | Zip 114; named/blind 9/9 |
 
 **Chặn nộp còn lại:** Mức 4.1 isgen.ai.

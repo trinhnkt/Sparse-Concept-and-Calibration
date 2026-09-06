@@ -11,7 +11,7 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
 LOG = HERE / "audit" / "apply_a6_word_log.txt"
 
 

@@ -9,8 +9,8 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-FULL = HERE / "manuscript" / "main_ijiet_full.docx"
-BAK = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_p0_uplift15"
+FULL = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+BAK = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_p0_uplift15"
 COVER = HERE / "output" / "cover_letter_ijiet.txt"
 WD_FORMAT_XML = 16
 WD_SAVE = -1

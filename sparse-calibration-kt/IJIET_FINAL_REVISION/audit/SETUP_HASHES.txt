@@ -1,11 +1,11 @@
 # Hashes of originals (must be unchanged after copy)
-COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\main_ijiet_full.docx -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.docx
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx
   src_sha256=ba8665a5c943d5297540f3b789cdc12106a65f38ef5dcd507a5fc1c52e18cacb
   dst_sha256=ba8665a5c943d5297540f3b789cdc12106a65f38ef5dcd507a5fc1c52e18cacb
-COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\main_ijiet_full.doc -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.doc
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc
   src_sha256=fa6e7bbcb634e874e3ea02cbcda2674803a2dc8804a930d2fedc8bcce030c874
   dst_sha256=fa6e7bbcb634e874e3ea02cbcda2674803a2dc8804a930d2fedc8bcce030c874
-COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\output\main_ijiet_full.pdf -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\baseline_from_ijiet_submission.pdf
+COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\output\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\baseline_from_ijiet_submission.pdf
   src_sha256=2302e26c31584e9fc3cf79ccd64c4aaff82ae9ae8bcfe7528d12a4ef4ddb34a3
   dst_sha256=2302e26c31584e9fc3cf79ccd64c4aaff82ae9ae8bcfe7528d12a4ef4ddb34a3
 COPIED C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_SUBMISSION\source\generate_ijiet_fig1.py -> C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\figures\generate_ijiet_fig1.py

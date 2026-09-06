@@ -34,7 +34,7 @@ from build_a16_double_blind import (  # noqa: E402
     set_word_props,
 )
 
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a28"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a28"
 LOG = HERE / "audit" / "apply_a28_reviewer_nits_log.txt"
 VERIFY = HERE / "audit" / "compile_verify.txt"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A28.md"
@@ -197,7 +197,7 @@ def write_changelog(pages: int, blind_pages: int, title_sz: float | None) -> Non
 
 Named/blind: {pages} / {blind_pages} pages.
 
-Backup: `manuscript/main_ijiet_full.docx.bak_pre_a28`.
+Backup: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a28`.
 """,
         encoding="utf-8",
     )

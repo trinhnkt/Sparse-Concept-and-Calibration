@@ -1,7 +1,7 @@
 # Preregistration language audit
 
 **Date:** 2026-09-01  
-**Scope:** `IJIET_FINAL_REVISION/manuscript/main_ijiet_full.docx` and `IJIET_FINAL_REVISION/supplementary/` (Table S1, Table S2, Table S regression).  
+**Scope:** `IJIET_FINAL_REVISION/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` and `IJIET_FINAL_REVISION/supplementary/` (Table S1, Table S2, Table S regression).  
 **Not in scope for wording edits:** `paper/`, `REV_REVIEWER_CALIBRATION_v1/`, `IJIET_SUBMISSION/`.
 
 Search terms: `pre-registered`, `preregistered`, `pre-registration`, `preregistration` (case-insensitive; hyphen optional).

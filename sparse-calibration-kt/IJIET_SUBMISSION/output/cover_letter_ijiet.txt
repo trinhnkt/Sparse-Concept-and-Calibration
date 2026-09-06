@@ -19,7 +19,7 @@ A longer related write-up previously submitted to the Journal of Educational
 Data Mining (JEDM) has been withdrawn by the authors. The IJIET submission
 is the sole active version of this work.
 
-Double-blind files. Please send reviewers main_ijiet_blind.pdf together with
+Double-blind files. Please send reviewers Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf together with
 supplementary.pdf and code_for_review_anonymous.zip. The named Word/PDF are
 for the editorial office only. The zip excludes identity-bearing JEDM sources.
 

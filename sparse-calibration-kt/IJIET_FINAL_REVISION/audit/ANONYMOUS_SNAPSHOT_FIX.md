@@ -18,7 +18,7 @@ Keep, if present:
 - `paper/main_jedm_anonymous.pdf`
 - `jedm_upload_folder/main_jedm_anonymous.tex`
 
-Do not include `IJIET_FINAL_REVISION/manuscript/main_ijiet_full.docx` (named authors). The IJIET blind PDF is `output/main_ijiet_blind.pdf`.
+Do not include `IJIET_FINAL_REVISION/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (named authors). The IJIET blind PDF is `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf`.
 
 ## Overlay copies (this folder)
 

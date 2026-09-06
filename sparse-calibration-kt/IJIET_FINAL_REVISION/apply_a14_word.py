@@ -8,8 +8,8 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a14"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a14"
 LOG = HERE / "audit" / "apply_a14_word_log.txt"
 
 # Unique prose snippets only. Tables / numbers / citations untouched.

@@ -2,8 +2,8 @@
 
 **Date:** 6 September 2026  
 **Mode:** audit only. Manuscript, numbers, models, and tables were not edited.  
-**Compiled source actually inspected:** `IJIET_FINAL_REVISION/output/main_ijiet_blind.pdf` (9 pages).  
-**Requested filename `main_ijiet_blind(1).pdf`:** not found in the repository, Desktop, or Downloads. The living blind PDF is treated as the corresponding compiled artifact. Twin named source: `IJIET_FINAL_REVISION/manuscript/main_ijiet_full.docx`.  
+**Compiled source actually inspected:** `IJIET_FINAL_REVISION/output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` (9 pages).  
+**Requested filename `main_ijiet_blind(1).pdf`:** not found in the repository, Desktop, or Downloads. The living blind PDF is treated as the corresponding compiled artifact. Twin named source: `IJIET_FINAL_REVISION/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx`.  
 **Word headings** were read from the `.docx` (not from PDF text-extraction order).
 
 Special returns used below:
@@ -28,7 +28,7 @@ Special returns used below:
 3. **Impact.** Wording only. Locked ECE 0.1136 / 0.2280 unchanged.
 4. **Risk if unchanged.** Reviewer can treat Intro vs Results vs S7 as sloppy counting and ask whether a third unpublished grid exists.
 5. **Action.** Change the Introduction sentence to “two alternative train-only frequency cut grids.” Do not count Main as an alternative. Leave S7 and Results as they are.
-6. **Files.** `manuscript/main_ijiet_full.docx` (Introduction paragraph only). Then rebuild blind PDF.
+6. **Files.** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (Introduction paragraph only). Then rebuild blind PDF.
 7. **Retrain.** No.
 8. **CPU recompute.** No.
 9. **Conflict.** Aligns Results and S7; does not conflict with Table 5.
@@ -120,7 +120,7 @@ Special returns used below:
 3. **Impact.** Wording only. No numeric change.
 4. **Risk if unchanged.** “Competitive” is not justified against the paper’s own baselines and invites a “why not SimpleKT?” reading.
 5. **Action.** Replace with: “aggregate discrimination that does not reveal the sparse-stratum calibration pattern.”
-6. **Files.** `manuscript/main_ijiet_full.docx` (Discussion sentence).
+6. **Files.** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (Discussion sentence).
 7. **Retrain.** No.
 8. **CPU recompute.** No.
 9. **Conflict.** The replacement supports Contribution (ii). It does not contradict Table 4.
@@ -191,7 +191,7 @@ Special returns used below:
 3. **Impact.** Wording only. No numeric change.
 4. **Risk if unchanged.** A careful reader can equate “sparse mass” with the sparse bucket and misread XES occupancy.
 5. **Action.** Replace with “low-frequency tail mass (`f_train<100`)” in the table row, caption, and the Discussion sentence. Keep the numeric share.
-6. **Files.** `manuscript/main_ijiet_full.docx` (Table 8 + Discussion). SI only if it repeats the phrase.
+6. **Files.** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (Table 8 + Discussion). SI only if it repeats the phrase.
 7. **Retrain.** No.
 8. **CPU recompute.** No.
 9. **Conflict.** None if the `<100` definition is preserved.
@@ -255,7 +255,7 @@ Special returns used below:
 3. **Impact.** Wording / scientific register only.
 4. **Risk if unchanged.** “Success claims” sounds like a performance guarantee in a diagnostic paper.
 5. **Action.** Replace with: “Substantive stratum-level interpretations require at least Limited support; Insufficient cells are descriptive only.”
-6. **Files.** `manuscript/main_ijiet_full.docx` (III.E).
+6. **Files.** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx` (III.E).
 7. **Retrain.** No.
 8. **CPU recompute.** No.
 9. **Conflict.** None; the next sentence already says Insufficient cells are descriptive.

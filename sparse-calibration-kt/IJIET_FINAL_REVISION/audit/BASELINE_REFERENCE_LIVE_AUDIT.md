@@ -1,7 +1,7 @@
 # Live reference audit — titles vs opened documents
 
 **Date:** 2026-08-31  
-**Source:** `output/main_ijiet_full.pdf` REFERENCES `[1]`–`[22]`  
+**Source:** `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` REFERENCES `[1]`–`[22]`  
 **Method:** Crossref API for every DOI; publisher/arXiv/NeurIPS/PMLR/Springer/Zenodo/Kaggle/Google Sites landing pages and PDFs for titles.
 
 **Verdict:** Every numbered item is a real work. No DOI or URL opens a different paper. Differences below are capitalization, IEEE style, or one dataset year.

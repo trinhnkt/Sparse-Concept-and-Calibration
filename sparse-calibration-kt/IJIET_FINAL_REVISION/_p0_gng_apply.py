@@ -9,14 +9,14 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-FULL = HERE / "manuscript" / "main_ijiet_full.docx"
-BAK = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_p0_gng"
+FULL = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+BAK = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_p0_gng"
 
 WD_FORMAT_XML = 16
 WD_SAVE = -1
 WD_ALIGN_CENTER = 1
 FIG_W = 501.8
-FIG_H = 501.8 * 268 / 809
+FIG_H = 501.8 * 589 / 1650
 
 PAIRS = [
     (

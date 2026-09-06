@@ -34,7 +34,7 @@ from build_a16_double_blind import (  # noqa: E402
     set_word_props,
 )
 
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a20"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a20"
 LOG = HERE / "audit" / "apply_a20_word_log.txt"
 VERIFY = HERE / "audit" / "compile_verify.txt"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A20.md"
@@ -130,7 +130,7 @@ generation (Sol on paid plans; Luna on Free/Go).
 
 Named/blind: {pages} / {blind_pages} pages.
 
-Backup: `manuscript/main_ijiet_full.docx.bak_pre_a20`.
+Backup: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a20`.
 """,
         encoding="utf-8",
     )

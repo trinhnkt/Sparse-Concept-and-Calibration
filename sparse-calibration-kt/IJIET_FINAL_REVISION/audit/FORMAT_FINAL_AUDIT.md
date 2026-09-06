@@ -6,8 +6,8 @@
 
 | Build | Pages |
 |-------|------:|
-| `output/main_ijiet_full.pdf` | 8 |
-| `output/main_ijiet_blind.pdf` | 8 |
+| `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | 8 |
+| `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | 8 |
 
 ## Requested items
 

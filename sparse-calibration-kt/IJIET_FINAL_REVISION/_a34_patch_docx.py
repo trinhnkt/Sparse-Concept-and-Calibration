@@ -50,7 +50,7 @@ def patch(path: Path) -> None:
 
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
-    for name in ("main_ijiet_full.docx", "main_ijiet_blind.docx"):
+    for name in ("Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx", "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.docx"):
         patch(HERE / "manuscript" / name)
 
 

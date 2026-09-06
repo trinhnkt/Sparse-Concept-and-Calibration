@@ -1,0 +1,2 @@
+dataset,split,auc,acc,nll,brier,p_pred_min,p_pred_max,p_pred_mean,p_lt_001_rate,p_gt_999_rate,p_lt_01_rate,p_gt_99_rate
+assist2012,learner_based,0.5,0.28,24.5,0.71,0.0,0.5,0.0017,0.86,0.0,0.86,0.0

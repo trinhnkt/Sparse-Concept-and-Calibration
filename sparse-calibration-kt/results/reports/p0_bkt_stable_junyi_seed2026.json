@@ -1,0 +1,16 @@
+{
+  "dataset": "junyi",
+  "split": "learner_based",
+  "fold": 3,
+  "seed": 2026,
+  "n": 3244494,
+  "auc": 0.686854360027628,
+  "brier": 0.18966139401501306,
+  "p_unique": 962056,
+  "p_min": 0.1076695540672911,
+  "p_max": 0.9654564606060734,
+  "p_mean": 0.7054594425806257,
+  "implementation": "local_4param_BKT_laplace_EM",
+  "not_pyBKT": true,
+  "wrote": "C:\\TRINH\\Sparse-Concept and Calibration\\sparse-calibration-kt\\results\\predictions\\junyi_learner_based_bkt_stable_seed2026.csv"
+}

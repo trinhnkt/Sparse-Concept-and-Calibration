@@ -10,8 +10,8 @@ import fitz
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent.parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
-PDF = HERE / "output" / "main_ijiet_full.pdf"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+PDF = HERE / "output" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf"
 OUT = HERE / "audit" / "format_a29_measure.txt"
 
 WD_ALIGN = {0: "left", 1: "center", 2: "right", 3: "justify"}

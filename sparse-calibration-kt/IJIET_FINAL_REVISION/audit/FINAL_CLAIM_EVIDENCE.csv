@@ -1,0 +1,8 @@
+Claim,Dataset,Model,Source,Status
+Sparse AUC not universally worse,XES,DKT/T-KT,S8; IJIET_FINAL_REVISION/a2b/analysis/summary_4part_bucket.csv,VERIFIED
+ASSIST sparse ECE higher,Assist,T-KT; official SimpleKT [4],Table 5; analysis/summary_4part_bucket.csv; tables/punchline_ece.csv; results/reports/p0_official_simplekt_assist_ece.json,VERIFIED
+Junyi sparse empty,Junyi,—,IJIET_FINAL_REVISION/analysis/summary_4part_bucket.csv (no sparse row),VERIFIED
+XES ECE flat,XES,T-KT,Table 5; IJIET_FINAL_REVISION/a2b/analysis/summary_4part_bucket.csv,VERIFIED
+k5/k10 cold-start,Assist,DKT/T-KT,"results/tables/clean_cold_start_results_summary.csv (export groups; main Table 7 uses f=0 and 0<f<20, not k5/k10)",VERIFIED
+threshold sensitivity stable,Assist,T-KT/DKT,"S7; IJIET_FINAL_REVISION/analysis/si_threecut_tkt.csv (frequency-cut grids 20/100/500, 10/50/250, 30/150/750; not τ)",VERIFIED
+reproducibility one-command,Assist,T-KT,scripts/rebuild_locked_tables.sh; scripts/p0_rebuild_locked_tables.py; IJIET_FINAL_REVISION/audit/reproduction_rebuild_locked_tables.log,VERIFIED

@@ -8,8 +8,8 @@ from pathlib import Path
 import win32com.client as win32
 
 HERE = Path(__file__).resolve().parent
-DOCX = HERE / "manuscript" / "main_ijiet_full.docx"
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a16"
+DOCX = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a16"
 FIG = HERE / "figures" / "fig1_kc_and_train_volume.png"
 LOG = HERE / "audit" / "apply_a16_word_log.txt"
 WD_INLINE_PICTURE = 3

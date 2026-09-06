@@ -1,5 +1,5 @@
-file=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.docx
-pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\main_ijiet_full.pdf
+file=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx
+pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf
 pages=8 words=6425 paras=537 tables=8 figs=1
 sec1 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=1 colw=501.75 gutter=0.00 header='' footer=''
 sec2 paper=595.35x841.95 T=50.45 B=50.45 L=46.80 R=46.80 cols=2 colw=243.64999389648438 gutter=14.40 header='' footer=''

@@ -3,7 +3,7 @@
 **Date:** 2026-09-01  
 **Authority:** FAQ Q3 / https://www.ijiet.org/files/IJIET_template.doc  
 **Measured:** Word COM + PDF spans on `IJIET_FINAL_REVISION` (A24)  
-**Files:** `manuscript/main_ijiet_full.docx`; `output/main_ijiet_full.pdf` / `main_ijiet_blind.pdf`
+**Files:** `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx`; `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` / `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf`
 
 ## Verdict
 

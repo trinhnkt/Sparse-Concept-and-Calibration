@@ -1,0 +1,47 @@
+===== p88 =====
+
+D. Dataset-dependent explanatory analysis
+
+===== p89 =====
+
+If a learning platform uses KT probabilities only to sort students, Table 4 may suffice. If it uses p to skip practice or declare mastery, Table 4 is an insufficient evaluation summary. The ASSISTments T-KT cell is an illustrative case: competitive AUC, Limited-but-estimable sparse occupancy (about 19% of KCs fall below the sparse threshold on fold 0), a monotonic ECE rise, and a gate that yields a higher error rate among sparse advance decisions. The XES3G5M cell is the contrasting case: plenty of sparse mass and Reliable occupancy, yet T-KT ECE does not degrade. Junyi shows that the protocol can refuse a sparse claim when the bucket is empty.
+
+===== p90 =====
+
+The following checks are secondary evidence for why and when a sparse-calibration contrast is estimable; they do not replace the per-stratum ECE and Brier results. Table 7 separates two questions. E1–E2 determine whether a sparse contrast can be estimated under the protocol thresholds; E3 and other structural descriptors help characterize the direction of the observed pattern. E1 is a non-empty low-frequency tail under the split actually used; E2 is enough sparse test events for at least a Limited-flag ECE. E3 (frequency–difficulty coupling) is not treated as necessary or sufficient for an adverse gradient. Junyi fails E1–E2. ASSISTments and XES3G5M both meet E1–E2, yet only ASSISTments shows a dense-to-sparse T-KT ECE rise.
+
+===== p91 =====
+
+Table 7. Empirical conditions associated with the availability and direction of sparse-calibration contrasts on the three evaluated datasets. Sparse mass: share of KCs with train-only frequency ftrain<100. E3 is not necessary or sufficient for an adverse gradient.
+
+===== p92 =====
+
+Learner exposure (distinct training learners per KC) enters the regressions below; it is not an E1–E2 estimability criterion. Neither is a causal claim.
+
+===== p93 =====
+
+A test-event-weighted KC-level regression of T-KT expected calibration error (ECE) on those five training-only covariates is a between-KC association: it compares different concepts. ASSISTments (478 KC-fold rows; 261 unique KCs) and Junyi (2,645 KC-fold rows; 1,326 unique KCs) use cluster-robust standard errors at kc_id; XES3G5M is 829 unique KCs in the masked weighted fit. Standardized log(1+ftrain) coefficients are −0.068 [−0.086, −0.050] on ASSISTments, −0.014 [−0.018, −0.010] on Junyi, and −0.028 [−0.042, −0.014] on XES3G5M in the weighted fit. Difficulty is independently associated on all three datasets. Learner exposure is independently associated on ASSISTments (+0.016 [0.004, 0.027]) and on XES3G5M (+0.013 [+0.005, +0.021]). These signs do not test a frequency dose on a fixed KC.
+
+===== p94 =====
+
+Controlled sparsification does not reproduce a universal monotonic frequency effect; complete dataset-model results are in Supplementary Table S2.
+
+===== p96 =====
+
+
+
+===== p99 =====
+
+E. Cold-start concept feasibility
+
+===== p100 =====
+
+Strict cold-start is freq_train(c)=0. The next Table 8 slice is the protocol very-sparse bucket (0<freq_train(c)<20), not a limited cold-start (k5/k10) group. Table 8 reports feasibility, not a production claim. On ASSISTments 2012 the strict bin has about four test events (Insufficient) and the very-sparse bin about 17 events (Insufficient), so ECE/AUC on those slices are descriptive only. Junyi’s learner-based operational identifier (ucid) yields no estimable sparse or strict-cold-start stratum. XES3G5M very-sparse support is larger (N≈114) but still not a high-N finding. Where the strict slice is too small, the protocol records the empty or Insufficient bucket instead of borrowing a recommender user/item cold-start definition.
+
+===== p101 =====
+
+Table 8. Cold-start concept feasibility (four-partition means). Strict: f_train=0. Very-sparse: 0<f_train<20. L/I are occupancy flags (N), not k5/k10 groups. I = Insufficient (N<100). Not a recommender user/item split. XES3G5M very-sparse uses the same masked four-partition series as Table 5 (N=114).
+
+===== p108 =====
+
+The three logs differ on E1–E2 estimability and on structural context (Table 7). Junyi’s learner-based sparse bucket is empty because the operational field is ucid (an exercise-level identifier, not a skill tag), so the protocol can refuse a sparse claim when the unit is finer than a skill. Junyi is therefore interpreted primarily as a granularity-and-estimability case rather than direct evidence about pedagogical KC sparsity. ASSISTments and XES3G5M both have a non-empty sparse tail and at least Limited test support, yet T-KT ECE rises on ASSISTments and stays essentially flat on XES3G5M. Frequency–difficulty coupling, item support, and curriculum-position coupling are reported as context, not as necessary or sufficient conditions for that direction. Within-KC sparsification (Supplementary Table S2) does not reproduce the observational ASSISTments T-KT ECE gradient. These are associations on these datasets. Untested explanations—curriculum hierarchy, tagging granularity, ceiling effects, and item semantics—are hypotheses unless experimentally isolated, which this study does not do.

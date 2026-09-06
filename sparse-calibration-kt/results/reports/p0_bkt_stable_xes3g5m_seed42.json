@@ -1,0 +1,16 @@
+{
+  "dataset": "xes3g5m",
+  "split": "learner_based",
+  "fold": 0,
+  "seed": 42,
+  "n": 1589145,
+  "auc": 0.8305701251460917,
+  "brier": 0.12408075155755387,
+  "p_unique": 35051,
+  "p_min": 0.0009999999999999998,
+  "p_max": 0.9989645330637899,
+  "p_mean": 0.6423408272865692,
+  "implementation": "local_4param_BKT_laplace_EM",
+  "not_pyBKT": true,
+  "wrote": "C:\\TRINH\\Sparse-Concept and Calibration\\sparse-calibration-kt\\results\\predictions\\xes3g5m_learner_based_bkt_stable_seed42.csv"
+}

@@ -33,7 +33,7 @@ from build_a16_double_blind import (  # noqa: E402
     stamp_pdf_metadata,
 )
 
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a17"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a17"
 LOG = HERE / "audit" / "apply_a17_word_log.txt"
 AUDIT = HERE / "audit" / "FORMAT_FINAL_AUDIT.md"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A17.md"
@@ -385,8 +385,8 @@ def write_reports(
 
 | Build | Pages |
 |-------|------:|
-| `output/main_ijiet_full.pdf` | {full_pages} |
-| `output/main_ijiet_blind.pdf` | {blind_pages} |
+| `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | {full_pages} |
+| `output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | {blind_pages} |
 
 ## Requested items
 
@@ -443,7 +443,7 @@ Blind: {blind_locks}
 
 Named and blind PDFs: {full_pages} / {blind_pages} pages. Locks true.
 
-Backup: `manuscript/main_ijiet_full.docx.bak_pre_a17`.
+Backup: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a17`.
 """,
         encoding="utf-8",
     )

@@ -1,6 +1,6 @@
-source=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\main_ijiet_full.docx
-pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\main_ijiet_full.pdf
-blind_pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\main_ijiet_blind.pdf
+source=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\manuscript\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx
+pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf
+blind_pdf=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf
 pages=8
 blind_pages=8
 ojs=C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\IJIET_FINAL_REVISION\output\OJS_UPLOAD

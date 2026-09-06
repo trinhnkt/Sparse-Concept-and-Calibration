@@ -26,7 +26,7 @@ from build_a16_double_blind import (  # noqa: E402
     set_word_props,
 )
 
-BACKUP = HERE / "manuscript" / "main_ijiet_full.docx.bak_pre_a19"
+BACKUP = HERE / "manuscript" / "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a19"
 LOG = HERE / "audit" / "apply_a19_word_log.txt"
 VERIFY = HERE / "audit" / "compile_verify.txt"
 CHANGELOG = HERE / "audit" / "CHANGELOG_A19.md"
@@ -109,7 +109,7 @@ A longer related write-up previously submitted to the Journal of Educational
 Data Mining (JEDM) has been withdrawn by the authors. The IJIET submission
 is the sole active version of this work.
 
-Double-blind files. Please send reviewers main_ijiet_blind.pdf together with
+Double-blind files. Please send reviewers Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf together with
 supplementary.pdf and code_for_review_anonymous.zip. The named Word/PDF are
 for the editorial office only. The zip excludes identity-bearing JEDM sources.
 
@@ -229,8 +229,8 @@ def pack_review_zip(log: list[str]) -> None:
     skip_files = {
         "main_jedm.tex",
         "main_jedm.pdf",
-        "main_ijiet_full.docx",
-        "main_ijiet_full.doc",
+        "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx",
+        "Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc",
     }
     skip_name_prefixes = ("generate_pdf_",)
     include_roots = [
@@ -316,7 +316,7 @@ retained with uses. Do not re-insert tool names without a recorded version.
 
 Named/blind: {pages} / {blind_pages} pages.
 
-Backup: `manuscript/main_ijiet_full.docx.bak_pre_a19`.
+Backup: `manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.docx.bak_pre_a19`.
 """,
         encoding="utf-8",
     )
