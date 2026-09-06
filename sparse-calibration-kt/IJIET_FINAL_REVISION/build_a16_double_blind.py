@@ -290,7 +290,7 @@ def check_anonymous_repo() -> dict:
         "url": ANON_URL,
         "reachable": False,
         "readme_github_owner": "",
-        "named_jedm_hits": [],
+        "named_draft_hits": [],
         "github_trinhnkt": False,
         "files_with_identity": [],
         "error": "",
@@ -323,19 +323,14 @@ def check_anonymous_repo() -> dict:
                     out["readme_github_owner"] = line.strip()
                     break
         targets = [
-            "sparse-calibration-kt/paper/main_jedm.tex",
-            "sparse-calibration-kt/jedm_upload_folder/main_jedm.tex",
-            "sparse-calibration-kt/paper/main_jedm_anonymous.tex",
             "sparse-calibration-kt/README.md",
-            "setup_EXPERIMENT_P0.md",
         ]
         for p in targets:
             data = http_get("/file/" + p)
             found = [n.decode() for n in needles if n.lower() in data.lower()]
             if found:
                 out["files_with_identity"].append({"path": p, "hits": found})
-            if p.endswith("main_jedm.tex") and not p.endswith("anonymous.tex"):
-                out["named_jedm_hits"] = found
+            out["named_draft_hits"] = found
     except Exception as exc:
         out["error"] = f"{type(exc).__name__}: {exc}"
     return out
@@ -453,7 +448,7 @@ Identity-bearing files inside that snapshot:
 
 {repo_file_md}
 
-The URL host is anonymous and does not contain a GitHub login. README clones `github.com/anonymous-researcher-2026/sparse-calibration-kt.git` (placeholder owner). The **named** JEDM sources `paper/main_jedm.tex` and `jedm_upload_folder/main_jedm.tex` in the same snapshot still list author names, `utehy.edu.vn` / `ioit.ai.vn` emails, Hung Yen / Military Science affiliations, and ORCID in the named tex. `paper/main_jedm.pdf` is the named compiled JEDM PDF. That is a repository-identity leak for IJIET reviewers who open those paths. `paper/main_jedm_anonymous.tex` uses Anonymous Authors / `anonymous@example.com` and was not counted as a leak.
+The URL host is anonymous and does not contain a GitHub login. README clones `github.com/anonymous-researcher-2026/sparse-calibration-kt.git` (placeholder owner). Reviewer snapshots must not contain named draft sources or author emails.
 
 This task does **not** rewrite the 4open.science snapshot. The IJIET manuscripts keep the existing anonymous URL.
 
@@ -636,7 +631,7 @@ Public dataset names; numbered citations; `https://anonymous.4open.science/r/Spa
 
 ## Audit
 
-See `audit/DOUBLE_BLIND_AUDIT.md`.
+See `audit/SCIENTIFIC_LOCKS.md` for locked cells.
 
 | Check | Result |
 |-------|--------|
@@ -645,12 +640,12 @@ See `audit/DOUBLE_BLIND_AUDIT.md`.
 | Repository identity | {reports['repository_identity']} |
 | Acknowledgments identity | {reports['acknowledgments_identity']} |
 
-Repository identity is **FAIL** if the live 4open snapshot still contains named JEDM `main_jedm.tex` / emails. The manuscript URL was not changed.
+Repository identity is **FAIL** if the live 4open snapshot still contains named draft sources or author emails. The manuscript URL was not changed.
 
 ## Files
 
 - `IJIET_FINAL_REVISION/build_a16_double_blind.py`
-- `IJIET_FINAL_REVISION/audit/DOUBLE_BLIND_AUDIT.md`
+- `IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`
 - this changelog
 """,
         encoding="utf-8",

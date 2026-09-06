@@ -1,9 +1,17 @@
 cff-version: 1.2.0
 message: If you use this protocol, code, or locked tables, please cite the IJIET manuscript.
 title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+abstract: A reproducible protocol and calibration diagnostic for sparse knowledge components in Knowledge Tracing, with train-only strata, occupancy-aware reporting, ECE/Brier, reliability diagrams, L1-L7 leakage control, and a frozen table rebuild.
 type: article
 license: MIT
+url: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
 repository-code: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
+keywords:
+  - knowledge tracing
+  - calibration
+  - sparse concepts
+  - educational data mining
+  - reproducibility
 authors:
   - family-names: Nguyen
     given-names: Khanh-Trinh

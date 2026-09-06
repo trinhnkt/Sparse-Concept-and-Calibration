@@ -38,6 +38,9 @@ p0-sparse-calibration-kt/results/predictions/
 **/*.pkl
 **/*.bin
 
+# Internal notes (kept on disk)
+setup_EXPERIMENT_P0.md
+
 # Log files
 **/logs/
 **/*.log
@@ -66,7 +69,17 @@ sparse-calibration-kt/IJIET_FINAL_REVISION/setup_copy.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/analyze_irt_fallback.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/a3_regression_unit_audit.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/a4_cluster_regression.py
-sparse-calibration-kt/results/reports/jedm_*.md
+sparse-calibration-kt/results/reports/*.md
+sparse-calibration-kt/analysis/audit_claim_inventory.md
+sparse-calibration-kt/analysis/*.tex
+sparse-calibration-kt/scripts/a9_run_*.py
+sparse-calibration-kt/scripts/a9_watch_then_five.py
+sparse-calibration-kt/scripts/make_table7_standalone.py
+sparse-calibration-kt/scripts/check_pdf_text.py
+sparse-calibration-kt/scripts/debug_temporal_split.py
+sparse-calibration-kt/scripts/t13_rerun_manager.py
+sparse-calibration-kt/scripts/p0_retrain_queue.py
+sparse-calibration-kt/src/generate_pdf_*.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/audit/*
 !sparse-calibration-kt/IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md
 *.rar

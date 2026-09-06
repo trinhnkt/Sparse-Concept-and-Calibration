@@ -6,6 +6,7 @@ data/**
 
 # Unignore .gitkeep files so they are tracked
 !data/**/.gitkeep
+!data/README.md
 
 # Predictions (large files)
 results/predictions/
@@ -80,7 +81,17 @@ IJIET_FINAL_REVISION/setup_copy.py
 IJIET_FINAL_REVISION/analyze_irt_fallback.py
 IJIET_FINAL_REVISION/a3_regression_unit_audit.py
 IJIET_FINAL_REVISION/a4_cluster_regression.py
-results/reports/jedm_*.md
+results/reports/*.md
+analysis/audit_claim_inventory.md
+analysis/*.tex
+scripts/a9_run_*.py
+scripts/a9_watch_then_five.py
+scripts/make_table7_standalone.py
+scripts/check_pdf_text.py
+scripts/debug_temporal_split.py
+scripts/t13_rerun_manager.py
+scripts/p0_retrain_queue.py
+src/generate_pdf_*.py
 IJIET_FINAL_REVISION/audit/*
 !IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md
 *.rar
