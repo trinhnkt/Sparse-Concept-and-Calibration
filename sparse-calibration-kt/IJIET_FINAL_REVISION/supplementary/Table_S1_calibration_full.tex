@@ -1,5 +1,5 @@
 \begin{table}[htbp]
-\caption{Four-unique-partition event-level calibration by train-only frequency stratum (same aggregation and $M=15$ equal-width bins as main-text Table 5). $N$ is the mean test-event count across four unique learner partitions. Flags: Reliable (R) $N\ge 1000$; Limited (L) $100\le N<1000$. Junyi sparse is empty. T-KT is the local Transformer KT baseline. Brier $=$ UNC $-$ RES $+$ REL is the binned decomposition already used in the manuscript; components need not sum exactly to Brier. IRT RES $=0$ on these learner-based strata. Junyi T-KT dense $N$ (3,232,614) differs from IRT/DKT (3,226,541) because those models were scored on separately processed test files; ASSISTments and XES3G5M share $N$ across models.}
+\caption{Four-unique-partition event-level calibration by train-only frequency stratum (same aggregation and $M=15$ equal-width bins as main-text Table 5). $N$ is the mean test-event count across four unique learner partitions. Flags: Reliable (R) $N\ge 1000$; Limited (L) $100\le N<1000$. Junyi sparse is empty. T-KT is the local Transformer reference, not published SimpleKT. Brier $=$ UNC $-$ RES $+$ REL is the binned decomposition already used in the manuscript; components need not sum exactly to Brier. IRT RES $=0$ on these learner-based strata. Junyi T-KT $N$ matches IRT/DKT after aligning T-KT prediction files to official learner partitions (two inits on fold 0 averaged first). ASSISTments and XES3G5M share $N$ across models.}
 \label{tab:s1_calibration_full}
 \centering
 \resizebox{\textwidth}{!}{%
@@ -21,8 +21,8 @@ Junyi Academy & IRT & dense & 3,226,541 & R & $0.0026\pm0.0018$ & $0.2078\pm0.00
 Junyi Academy & IRT & medium & 3,706 & R & $0.1209\pm0.0082$ & $0.2579\pm0.0033$ & $0.2432\pm0.0013$ & $0.0147\pm0.0021$ & $0.0000$ \\
 Junyi Academy & DKT & dense & 3,226,541 & R & $0.0389\pm0.0022$ & $0.1804\pm0.0008$ & $0.2078\pm0.0007$ & $0.0022\pm0.0002$ & $0.0294\pm0.0002$ \\
 Junyi Academy & DKT & medium & 3,706 & R & $0.2513\pm0.0217$ & $0.3077\pm0.0144$ & $0.2432\pm0.0013$ & $0.0741\pm0.0123$ & $0.0091\pm0.0033$ \\
-Junyi Academy & T-KT & dense & 3,232,614 & R & $0.0792\pm0.0051$ & $0.1884\pm0.0020$ & $0.2079\pm0.0003$ & $0.0084\pm0.0015$ & $0.0279\pm0.0008$ \\
-Junyi Academy & T-KT & medium & 3,836 & R & $0.1073\pm0.0156$ & $0.2307\pm0.0103$ & $0.2417\pm0.0038$ & $0.0149\pm0.0046$ & $0.0260\pm0.0058$ \\
+Junyi Academy & T-KT & dense & 3,226,541 & R & $0.0817\pm0.0070$ & $0.1892\pm0.0034$ & $0.2078\pm0.0007$ & $0.0091\pm0.0022$ & $0.0275\pm0.0009$ \\
+Junyi Academy & T-KT & medium & 3,706 & R & $0.1136\pm0.0155$ & $0.2347\pm0.0074$ & $0.2432\pm0.0013$ & $0.0163\pm0.0040$ & $0.0251\pm0.0045$ \\
 \midrule
 XES3G5M & IRT & dense & 1,269,345 & R & $0.0025\pm0.0022$ & $0.1622\pm0.0018$ & $0.1622\pm0.0018$ & $0.0000\pm0.0000$ & $0.0000$ \\
 XES3G5M & IRT & medium & 12,889 & R & $0.0122\pm0.0062$ & $0.1696\pm0.0034$ & $0.1695\pm0.0032$ & $0.0002\pm0.0001$ & $0.0000$ \\

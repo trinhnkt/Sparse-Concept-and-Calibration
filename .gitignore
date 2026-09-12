@@ -50,6 +50,9 @@ setup_EXPERIMENT_P0.md
 sparse-calibration-kt/.agents/
 sparse-calibration-kt/Check list/
 sparse-calibration-kt/_archive/
+# Withdrawn earlier submission: sources, audits, and work logs. Never push.
+sparse-calibration-kt/_withdrawn_private/
+sparse-calibration-kt/_withdrawn_private/**
 sparse-calibration-kt/IJIET_FINAL_v3/
 sparse-calibration-kt/IJIET_SUBMISSION/
 sparse-calibration-kt/_freeze_ijiet_final_v3.py
@@ -59,7 +62,10 @@ sparse-calibration-kt/IJIET_FINAL_REVISION/_p0_*.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/_a3*.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/_rename_paper_to_title.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/_export_a31_pdfs.py
-sparse-calibration-kt/IJIET_FINAL_REVISION/apply_a*.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/apply_*.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/fix_*.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/repair_*.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/**/supplementary.pdf
 sparse-calibration-kt/IJIET_FINAL_REVISION/apply_xes_a2b_manuscript.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/build_a8_sparsification.py
 sparse-calibration-kt/IJIET_FINAL_REVISION/build_a12_s1.py

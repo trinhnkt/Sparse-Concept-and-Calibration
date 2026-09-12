@@ -27,7 +27,7 @@ ROW1 = [
 ROW2 = [
     ("KC strata", "L4"),
     ("Cold-start", "L7"),
-    ("Train", "L6"),
+    ("No test-based\nselection", "L6"),
     ("ECE / Brier", "L5"),
     ("Reliability\n+ report", None),
 ]
@@ -52,7 +52,7 @@ def box(ax, x, y, w, h, title: str, tag: str | None) -> None:
             title,
             ha="center",
             va="center",
-            fontsize=8.2,
+            fontsize=7.4 if "No test-based" in title else 8.2,
             fontname="Times New Roman",
             color=INK,
             linespacing=1.05,
@@ -75,7 +75,7 @@ def box(ax, x, y, w, h, title: str, tag: str | None) -> None:
             title,
             ha="center",
             va="center",
-            fontsize=8.2,
+            fontsize=7.4 if "No test-based" in title else 8.2,
             fontname="Times New Roman",
             color=INK,
             linespacing=1.05,

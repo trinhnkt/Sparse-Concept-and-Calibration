@@ -46,12 +46,6 @@ logs/
 *.bak*
 *.bak_pre_*
 ~$*
-_archive/jedm_paper/*.aux
-_archive/jedm_paper/*.bbl
-_archive/jedm_paper/*.blg
-_archive/jedm_paper/*.out
-_archive/jedm_paper/*.synctex.gz
-
 # IJIET a2b rerun dumps (multi-GB; GitHub 100 MB file cap)
 IJIET_FINAL_REVISION/a2b/data/
 IJIET_FINAL_REVISION/a2b/checkpoints/
@@ -62,6 +56,9 @@ IJIET_FINAL_REVISION/a2b/logs/
 .agents/
 Check list/
 _archive/
+# Withdrawn earlier submission: sources, audits, and work logs. Never push.
+_withdrawn_private/
+_withdrawn_private/**
 IJIET_FINAL_v3/
 IJIET_SUBMISSION/
 _freeze_ijiet_final_v3.py
@@ -71,7 +68,10 @@ IJIET_FINAL_REVISION/_p0_*.py
 IJIET_FINAL_REVISION/_a3*.py
 IJIET_FINAL_REVISION/_rename_paper_to_title.py
 IJIET_FINAL_REVISION/_export_a31_pdfs.py
-IJIET_FINAL_REVISION/apply_a*.py
+IJIET_FINAL_REVISION/apply_*.py
+IJIET_FINAL_REVISION/fix_*.py
+IJIET_FINAL_REVISION/repair_*.py
+IJIET_FINAL_REVISION/**/supplementary.pdf
 IJIET_FINAL_REVISION/apply_xes_a2b_manuscript.py
 IJIET_FINAL_REVISION/build_a8_sparsification.py
 IJIET_FINAL_REVISION/build_a12_s1.py

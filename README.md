@@ -5,25 +5,25 @@ Khanh-Trinh Nguyen, Tuan Dao Minh, Duong Nguyen Tien, Chi Thanh Nguyen, and Van-
 
 A protocol paper for Knowledge Tracing on sparse concepts: train-only KC strata, occupancy-aware reporting, ECE/Brier, reliability diagrams, L1–L7 leakage control, and a frozen one-command table rebuild. It is not a new KT architecture and not a classroom trial.
 
-**T-KT** is a local Transformer KT baseline, not published SimpleKT.
+**T-KT** is a local Transformer reference, not published SimpleKT.
 
 ## Paper
 
-9-page named and double-blind PDFs (IJIET allows 8–10) are in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/).
+Named **13-page** and blind **12-page** PDFs (IJIET has no page cap; template is binding) are in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/). Essential extra tables are **Appendix A1–A5** in the main file.
 
 | Artefact | Path |
 |----------|------|
 | Named PDF | [Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/Reproducible%20Sparse-Concept%20and%20Calibration%20Diagnostics%20for%20Knowledge%20Tracing.pdf) |
 | Blind PDF | […_blind.pdf](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/Reproducible%20Sparse-Concept%20and%20Calibration%20Diagnostics%20for%20Knowledge%20Tracing_blind.pdf) |
-| Supplementary S1–S10 | `supplementary.pdf` in the same folder |
+| Appendix | Tables A1–A5 inside the main PDF (do not treat `supplementary.pdf` as the journal file) |
 | Locked numbers | [`IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`](sparse-calibration-kt/IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md) |
 
 ## Datasets
 
 Raw logs are **not** shipped. Obtain them from the original providers and place dumps under `sparse-calibration-kt/data/` (see [`data/README.md`](sparse-calibration-kt/data/README.md)):
 
-1. [ASSISTments 2012](https://sites.google.com/site/assistmentsdata/)
-2. [Junyi Academy](https://pslcdatashop.web.cmu.edu/)
+1. [ASSISTments 2012](https://sites.google.com/site/assistmentsdata/) — 2012–2013 release with affect
+2. [Junyi Academy Online Learning Activity Dataset](https://www.kaggle.com/datasets/junyiacademy/learning-activity-public-dataset-by-junyi-academy) on Kaggle — **not** Junyi2015 / PSLC DataShop; the operational KC is `ucid`
 3. [XES3G5M](https://github.com/pykt-team/pykt-toolkit)
 
 ## Reproduce
@@ -46,7 +46,7 @@ bash scripts/rebuild_locked_tables.sh      # Windows: scripts/rebuild_locked_tab
 | `sparse-calibration-kt/scripts/` | LEVEL A rebuild, Track A runners |
 | `sparse-calibration-kt/configs/` | Dataset / model YAML |
 | `sparse-calibration-kt/results/tables/` | Frozen numeric tables |
-| `sparse-calibration-kt/IJIET_FINAL_REVISION/` | Living manuscript, figures, SI, OJS pack |
+| `sparse-calibration-kt/IJIET_FINAL_REVISION/` | Living manuscript, figures, Appendix sources, OJS pack |
 | `sparse-calibration-kt/tests/` | Unit tests |
 
 ## Citation
@@ -67,4 +67,4 @@ Or use [`CITATION.cff`](CITATION.cff).
 ## License
 
 - Code: [MIT](LICENSE)
-- Manuscript text, figures, and supplementary tables: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Manuscript text, figures, and appendix tables: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

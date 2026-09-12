@@ -1,11 +1,18 @@
-# IJIET OJS upload (P0 protocol manuscript)
+# IJIET OJS upload (protocol manuscript)
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
-**Date packed:** 6 September 2026  
-**Length:** 8–10 pages named + blind (current PDFs: 9). Title 20 pt.
+**Date packed:** 12 September 2026  
+**Length:** named **13 pages**, blind **12 pages**. IJIET sets no page cap; the template is the binding style. Title 20 pt. Appendix Tables A1–A5 are in the main file.
 
-This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.
+This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.  
+**T-KT** is a local Transformer reference, not published SimpleKT.
+
+Submission rules (www.ijiet.org): one editable `.doc`/`.pdf` with every figure and
+table embedded; abstract 150–250 words (currently ~203); at most 7 keywords (currently 6);
+double-blind review; AI use disclosed (ChatGPT, Claude, Google Antigravity, Cursor, Grok).
+APC is **800 USD after** acceptance. Authors keep copyright (CC BY 4.0).
+Do not submit through `ijiet.com` — that is a different journal.
 
 ## Upload these files
 
@@ -15,16 +22,22 @@ This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not
 | Manuscript PDF (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | Editorial office |
 | Review file (double-blind) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | Reviewers |
 | Optional Word for review | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc` | Reviewers if OJS asks for Word |
-| Supplementary | `supplementary.pdf` | Reviewers (S1–S10) |
 | Code for review | `code_for_review_anonymous.zip` | Reviewers |
 | Cover letter | `cover_letter_ijiet.txt` | Editor only |
 
-Do **not** send reviewers `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` / named Word.
+Do **not** send reviewers the named PDF/Word.  
+Do **not** upload `supplementary.pdf` as the journal file — those tables are Appendix A1–A5.
+
+Cover: 12 September 2026; exclusive submission; no prior-venue name.
+
+C8 (signatures, ≥3 days) and A2 backup venues are for the supervisor, not OJS.
 
 ## Checks already done
 
 - ASSISTments locks: ECE 0.1136 / 0.2280; FAR 0.196 / 0.268
+- XES3G5M T-KT ECE (descriptive): 0.1176 / 0.1129 / 0.1254
 - Blind PDF has no author names or github.com/trinhnkt
-- Zip excludes named Word
+- Zip excludes identity-bearing draft sources and named Word
+- Reference [19] cites the Junyi Kaggle dump as Chen/Hsieh/Tsai, 2020
 
 Public repo: https://github.com/trinhnkt/Sparse-Concept-and-Calibration

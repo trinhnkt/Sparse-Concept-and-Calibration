@@ -1,5 +1,5 @@
 \begin{table}[htbp]
-\caption{Four-partition AUC and ACC by train-only frequency stratum (seeds 2025/2026 averaged first). Complements main-text Table~4 (overall AUC/ACC), Table~5 (ECE), and Table~6 (Brier). ASSISTments and Junyi: \texttt{analysis/summary\_4part\_bucket.csv}. XES3G5M: masked a2b summary (same $N$ as Table~5). T-KT is the local Transformer, not published SimpleKT. Official SimpleKT [4] ASSISTments AUC is the four-partition mean from \texttt{p0\_official\_simplekt\_assist\_ece.json} (ACC per stratum not exported). Junyi sparse is empty. Does not change locked T-KT ECE $0.1136$/$0.2280$.}
+\caption{Four-partition AUC and ACC by train-only frequency stratum (seeds 2025/2026 averaged first). Complements main-text Table~4 (overall AUC/ACC), Table~5 (ECE), and Table~6 (Brier). ASSISTments and Junyi: \texttt{analysis/summary\_4part\_bucket.csv}. XES3G5M: masked a2b summary (same $N$ as Table~5). T-KT is the local Transformer reference, not published SimpleKT. Official SimpleKT [4] ASSISTments AUC is the four-partition mean from \texttt{p0\_official\_simplekt\_assist\_ece.json} (ACC per stratum not exported). Junyi sparse is empty. Does not change locked T-KT ECE $0.1136$/$0.2280$.}
 \label{tab:s8_bucket_disc}
 \centering
 \small
@@ -22,8 +22,8 @@ Junyi Academy & IRT & dense & 3,226,541 & $0.5000\pm0.0000$ & $0.7055\pm0.0018$ 
 Junyi Academy & IRT & medium & 3,706 & $0.5000\pm0.0000$ & $0.5820\pm0.0083$ \\
 Junyi Academy & DKT & dense & 3,226,541 & $0.7322\pm0.0010$ & $0.7345\pm0.0015$ \\
 Junyi Academy & DKT & medium & 3,706 & $0.6054\pm0.0299$ & $0.5839\pm0.0172$ \\
-Junyi Academy & T-KT & dense & 3,232,614 & $0.7231\pm0.0030$ & $0.7275\pm0.0015$ \\
-Junyi Academy & T-KT & medium & 3,836 & $0.6865\pm0.0241$ & $0.6442\pm0.0191$ \\
+Junyi Academy & T-KT & dense & 3,226,541 & $0.7220\pm0.0035$ & $0.7268\pm0.0035$ \\
+Junyi Academy & T-KT & medium & 3,706 & $0.6809\pm0.0199$ & $0.6377\pm0.0145$ \\
 \midrule
 XES3G5M & IRT & dense & 1,269,345 & $0.5000\pm0.0000$ & $0.7962\pm0.0031$ \\
 XES3G5M & IRT & medium & 12,889 & $0.5000\pm0.0000$ & $0.7838\pm0.0057$ \\
