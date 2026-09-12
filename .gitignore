@@ -47,6 +47,18 @@ setup_EXPERIMENT_P0.md
 **/*.csv.log
 
 # Public-repo hides (kept on disk; not pushed)
+sparse-calibration-kt/analysis/
+sparse-calibration-kt/IJIET_FINAL_REVISION/output/*
+!sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/
+!sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/**
+sparse-calibration-kt/IJIET_FINAL_REVISION/build_a16_double_blind.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/compile_manuscript.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/prior_venue_guard.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/analysis/*.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/analysis/XES3G5M_RERUN_MANIFEST.md
+sparse-calibration-kt/IJIET_FINAL_REVISION/figures/fig1_kc_and_train_volume.png
+sparse-calibration-kt/IJIET_FINAL_REVISION/figures/generate_fig1_a2b.py
+sparse-calibration-kt/IJIET_FINAL_REVISION/figures/generate_ijiet_fig1.py
 sparse-calibration-kt/.agents/
 sparse-calibration-kt/Check list/
 sparse-calibration-kt/_archive/
