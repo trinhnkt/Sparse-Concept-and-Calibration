@@ -2,7 +2,7 @@ Cover letter — International Journal of Information and Education Technology
 
 Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 12 September 2026
+Date: 16 September 2026
 
 Dear Editor,
 
@@ -18,13 +18,14 @@ locked probability threshold is reported only as a simulated
 decision-error probe. The paper does not propose a new KT architecture,
 a new calibrator, or a classroom intervention.
 
-The named file is 13 pages in the IJIET template, including Appendix
-Tables A1–A5 (alternative frequency cuts, the locked FAR probe, the full
-Brier grid, and the full leakage audit). The double-blind file is 12
-pages. Essential tables are in the main file. Please send reviewers only
-the blind PDF (and the blind Word file if required) together with
-code_for_review_anonymous.zip. The named Word/PDF are for the editorial
-office. Please do not send reviewers the named files.
+The named file is 14 pages in the IJIET template, including Appendix
+Tables A1–A6 (alternative frequency cuts, the locked FAR probe, the full
+Brier grid, the full leakage audit, and the locked T-KT τ-grid). The
+double-blind file is 14 pages. Essential tables are in the main file.
+Please send reviewers only the blind PDF (and the blind Word file if
+required) together with code_for_review_anonymous.zip. The named
+Word/PDF are for the editorial office. Please do not send reviewers the
+named files.
 
 Exclusive submission. This manuscript is not under consideration
 elsewhere. A prior submission of this work received an editorial
@@ -35,7 +36,8 @@ office requires it.
 Data. Public code: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
 Datasets are those released by the original providers. The review zip
 rebuilds the reported tables from frozen summaries; it does not retrain
-models or include raw dumps.
+models or include raw dumps. Upon acceptance, those review-artifact
+contents will be included in the public repository.
 
 Generative AI. During manuscript preparation the authors used
 AI-assisted writing tools, including ChatGPT, Claude, Google
