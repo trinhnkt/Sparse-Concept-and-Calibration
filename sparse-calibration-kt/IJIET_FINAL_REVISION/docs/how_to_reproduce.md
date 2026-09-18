@@ -9,7 +9,7 @@ scripts/rebuild_locked_tables.sh
 # Windows: scripts/rebuild_locked_tables.ps1
 ```
 
-This reads `IJIET_FINAL_REVISION/analysis/summary_4part_bucket.csv` (ASSISTments, Junyi) and the masked XES a2b summary, verifies the T-KT ECE locks, and writes Supplementary Tables S8–S9. Three-cut sensitivity (Table S7) is `scripts/p0_si_threecut.py` on the frozen T-KT and DKT prediction CSVs. Full L1–L7 records (Table S10) are `scripts/p0_si_s10_leakage.py` on the frozen train/test split files.
+This reads `IJIET_FINAL_REVISION/analysis/summary_4part_bucket.csv` (ASSISTments, Junyi) and the masked XES a2b summary, verifies the T-KT ECE locks, and writes the frozen CSVs that feed the printed Appendix (A1–A6 in the Word manuscript; TeX sources may still use old S-numbers). Three-cut sensitivity (Appendix Table A1) is `scripts/p0_si_threecut.py` on the frozen T-KT and DKT prediction CSVs. Full L1–L7 records (Appendix Table A5) are `scripts/p0_si_s10_leakage.py` on the frozen train/test split files.
 
 ## Track A — retrain local IRT / DKT / T-KT
 

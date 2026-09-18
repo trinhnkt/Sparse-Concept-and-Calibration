@@ -9,13 +9,13 @@ A protocol paper for Knowledge Tracing on sparse concepts: train-only KC strata,
 
 ## Paper
 
-Named **13-page** and blind **12-page** PDFs (IJIET has no page cap; template is binding) are in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/). Essential extra tables are **Appendix A1–A5** in the main file.
+Named and blind PDFs are **13 pages** each (18 September 2026; IJIET has no page cap; template is binding) in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/). Extra tables are **Appendix A1–A6** in the main Word/PDF.
 
 | Artefact | Path |
 |----------|------|
 | Named PDF | [Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/Reproducible%20Sparse-Concept%20and%20Calibration%20Diagnostics%20for%20Knowledge%20Tracing.pdf) |
 | Blind PDF | […_blind.pdf](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/Reproducible%20Sparse-Concept%20and%20Calibration%20Diagnostics%20for%20Knowledge%20Tracing_blind.pdf) |
-| Appendix | Tables A1–A5 inside the main PDF (do not treat `supplementary.pdf` as the journal file) |
+| Appendix | Tables A1–A6 inside the main PDF (do not upload `supplementary.pdf`) |
 | Locked numbers | [`IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`](sparse-calibration-kt/IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md) |
 
 ## Datasets

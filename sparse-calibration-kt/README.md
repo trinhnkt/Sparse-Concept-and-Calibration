@@ -5,7 +5,7 @@ Code, configs, frozen tables, and the living IJIET manuscript for
 
 Start at the repository root [`README.md`](../README.md).
 
-Living IJIET pack: named 13 pages / blind 12 pages; Appendix A1–A5 in the main file.
+Living IJIET pack (18 Sep 2026): named 13 pages / blind 13 pages; Appendix A1–A6 in the main file. Do not upload `supplementary.pdf`.
 T-KT is a local Transformer reference, not published SimpleKT.
 
 **LEVEL A** (no retrain): `bash scripts/rebuild_locked_tables.sh`

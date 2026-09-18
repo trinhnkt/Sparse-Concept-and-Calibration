@@ -1,4 +1,4 @@
-# Rebuild SI Tables S8–S9 from frozen summaries. Does not retrain.
+# Rebuild frozen Appendix tables from summaries. Does not retrain.
 $ErrorActionPreference = "Stop"
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $env:PYTHONPATH = "."

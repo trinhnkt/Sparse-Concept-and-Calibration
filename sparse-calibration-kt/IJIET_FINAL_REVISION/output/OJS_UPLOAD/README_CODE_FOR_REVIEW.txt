@@ -6,7 +6,7 @@ This zip is the reviewer-facing code artifact. It does not contain:
 - multi-GB a2b data dumps or prediction files
 
 It does contain local training/evaluation scripts, frozen table CSVs used by
-the living manuscript (named 13 pages / blind 12 pages, Appendix A1–A5),
+the living manuscript (named 13 pages / blind 13 pages, Appendix A1–A6),
 and a2b Python (no processed logs). Public benchmarks must be obtained
 from the original providers (ASSISTments 2012, Junyi Academy, XES3G5M).
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild SI Tables S8–S9 from frozen summaries. Does not retrain.
+"""Rebuild frozen Appendix table CSVs from summaries. Does not retrain.
 
 Verifies locked ASSISTments T-KT ECE 0.1136 / 0.2280 in the four-partition
 CSV. Does not overwrite those cells. XES rows use the masked a2b summary
