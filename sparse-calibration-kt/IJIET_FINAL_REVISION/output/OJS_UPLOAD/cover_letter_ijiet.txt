@@ -2,7 +2,7 @@ Cover letter — International Journal of Information and Education Technology
 
 Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 16 September 2026
+Date: 18 September 2026
 
 Dear Editor,
 
@@ -21,7 +21,9 @@ a new calibrator, or a classroom intervention.
 The named file is 14 pages in the IJIET template, including Appendix
 Tables A1–A6 (alternative frequency cuts, the locked FAR probe, the full
 Brier grid, the full leakage audit, and the locked T-KT τ-grid). The
-double-blind file is 14 pages. Essential tables are in the main file.
+double-blind file is 14 pages. All tables (main-text Tables 1–8 and
+Appendix A1–A6) remain in this single Word manuscript; there is no
+separate supplementary table file.
 Please send reviewers only the blind PDF (and the blind Word file if
 required) together with code_for_review_anonymous.zip. The named
 Word/PDF are for the editorial office. Please do not send reviewers the

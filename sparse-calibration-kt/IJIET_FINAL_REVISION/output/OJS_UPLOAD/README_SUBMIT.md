@@ -2,8 +2,8 @@
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
-**Date packed:** 12 September 2026  
-**Length:** named **13 pages**, blind **12 pages**. IJIET sets no page cap; the template is the binding style. Title 20 pt. Appendix Tables A1–A5 are in the main file.
+**Date packed:** 18 September 2026  
+**Length:** named **14 pages**, blind **14 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–8 + Appendix A1–A6). Title 20 pt.
 
 This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.  
 **T-KT** is a local Transformer reference, not published SimpleKT.
@@ -26,9 +26,7 @@ Do not submit through `ijiet.com` — that is a different journal.
 | Cover letter | `cover_letter_ijiet.txt` | Editor only |
 
 Do **not** send reviewers the named PDF/Word.  
-Do **not** upload `supplementary.pdf` as the journal file — those tables are Appendix A1–A5.
-
-Cover: 12 September 2026; exclusive submission; no prior-venue name.
+Do **not** upload `supplementary.pdf` — office (18 Sep 2026): every table remains in the single Word manuscript; no word limit.
 
 C8 (signatures, ≥3 days) and A2 backup venues are for the supervisor, not OJS.
 
