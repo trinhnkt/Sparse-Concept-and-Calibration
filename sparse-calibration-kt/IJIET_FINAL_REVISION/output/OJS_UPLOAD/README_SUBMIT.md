@@ -3,7 +3,7 @@
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
 **Date packed:** 18 September 2026  
-**Length:** named **14 pages**, blind **14 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–8 + Appendix A1–A6). Title 20 pt.
+**Length:** named **13 pages**, blind **13 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–8 + Appendix A1–A6). Title 20 pt.
 
 This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.  
 **T-KT** is a local Transformer reference, not published SimpleKT.
